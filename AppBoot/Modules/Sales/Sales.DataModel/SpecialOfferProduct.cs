@@ -26,5 +26,6 @@ namespace Sales.DataModel
     
         public virtual ICollection<SalesOrderDetail> SalesOrderDetails { get; set; }
         public virtual SpecialOffer SpecialOffer { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

@@ -63,6 +63,9 @@
     <Compile Include="PersonCreditCard.cs">
       <DependentUpon>SalesEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>SalesEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SalesEntities.cs">
       <AutoGen>True</AutoGen>

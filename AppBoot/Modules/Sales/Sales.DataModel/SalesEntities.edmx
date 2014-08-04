@@ -23,6 +23,36 @@
           <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductNumber" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="MakeFlag" Type="bit" Nullable="false" />
+          <Property Name="FinishedGoodsFlag" Type="bit" Nullable="false" />
+          <Property Name="Color" Type="nvarchar" MaxLength="15" />
+          <Property Name="SafetyStockLevel" Type="smallint" Nullable="false" />
+          <Property Name="ReorderPoint" Type="smallint" Nullable="false" />
+          <Property Name="StandardCost" Type="money" Nullable="false" />
+          <Property Name="ListPrice" Type="money" Nullable="false" />
+          <Property Name="Size" Type="nvarchar" MaxLength="5" />
+          <Property Name="SizeUnitMeasureCode" Type="nchar" MaxLength="3" />
+          <Property Name="WeightUnitMeasureCode" Type="nchar" MaxLength="3" />
+          <Property Name="Weight" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="DaysToManufacture" Type="int" Nullable="false" />
+          <Property Name="ProductLine" Type="nchar" MaxLength="2" />
+          <Property Name="Class" Type="nchar" MaxLength="2" />
+          <Property Name="Style" Type="nchar" MaxLength="2" />
+          <Property Name="ProductSubcategoryID" Type="int" />
+          <Property Name="ProductModelID" Type="int" />
+          <Property Name="SellStartDate" Type="datetime" Nullable="false" />
+          <Property Name="SellEndDate" Type="datetime" />
+          <Property Name="DiscontinuedDate" Type="datetime" />
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="CountryRegionCurrency">
           <Key>
             <PropertyRef Name="CountryRegionCode" />
@@ -521,6 +551,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ShoppingCartItem_Product_ProductID">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ShoppingCartItem" Type="Self.ShoppingCartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ShoppingCartItem">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecialOfferProduct_Product_ProductID">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SpecialOfferProduct" Type="Self.SpecialOfferProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="SpecialOfferProduct">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SpecialOfferProduct_SpecialOffer_SpecialOfferID">
           <End Role="SpecialOffer" Type="Self.SpecialOffer" Multiplicity="1" />
           <End Role="SpecialOfferProduct" Type="Self.SpecialOfferProduct" Multiplicity="*" />
@@ -547,6 +601,7 @@
         </Association>
         <EntityContainer Name="AdventureWorks2012ModelStoreContainer">
           <EntitySet Name="Person" EntityType="Self.Person" Schema="Person" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="Production" store:Type="Tables" />
           <EntitySet Name="CountryRegionCurrency" EntityType="Self.CountryRegionCurrency" Schema="Sales" store:Type="Tables" />
           <EntitySet Name="CreditCard" EntityType="Self.CreditCard" Schema="Sales" store:Type="Tables" />
           <EntitySet Name="Currency" EntityType="Self.Currency" Schema="Sales" store:Type="Tables" />
@@ -649,6 +704,14 @@
           <AssociationSet Name="FK_SalesTerritoryHistory_SalesTerritory_TerritoryID" Association="Self.FK_SalesTerritoryHistory_SalesTerritory_TerritoryID">
             <End Role="SalesTerritory" EntitySet="SalesTerritory" />
             <End Role="SalesTerritoryHistory" EntitySet="SalesTerritoryHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCartItem_Product_ProductID" Association="Self.FK_ShoppingCartItem_Product_ProductID">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ShoppingCartItem" EntitySet="ShoppingCartItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecialOfferProduct_Product_ProductID" Association="Self.FK_SpecialOfferProduct_Product_ProductID">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SpecialOfferProduct" EntitySet="SpecialOfferProduct" />
           </AssociationSet>
           <AssociationSet Name="FK_SpecialOfferProduct_SpecialOffer_SpecialOfferID" Association="Self.FK_SpecialOfferProduct_SpecialOffer_SpecialOfferID">
             <End Role="SpecialOffer" EntitySet="SpecialOffer" />
@@ -904,6 +967,7 @@
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Product" Relationship="SalesDataModel.FK_ShoppingCartItem_Product_ProductID" FromRole="ShoppingCartItem" ToRole="Product" />
         </EntityType>
         <EntityType Name="SpecialOffer">
           <Key>
@@ -933,6 +997,7 @@
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="SalesOrderDetails" Relationship="Self.FK_SalesOrderDetail_SpecialOfferProduct_SpecialOfferIDProductID" FromRole="SpecialOfferProduct" ToRole="SalesOrderDetail" />
           <NavigationProperty Name="SpecialOffer" Relationship="Self.FK_SpecialOfferProduct_SpecialOffer_SpecialOfferID" FromRole="SpecialOfferProduct" ToRole="SpecialOffer" />
+          <NavigationProperty Name="Product" Relationship="SalesDataModel.FK_SpecialOfferProduct_Product_ProductID" FromRole="SpecialOfferProduct" ToRole="Product" />
         </EntityType>
         <EntityType Name="Store">
           <Key>
@@ -1318,6 +1383,15 @@
             <End Role="Person" EntitySet="People" />
             <End Role="PersonCreditCard" EntitySet="PersonCreditCards" />
           </AssociationSet>
+          <EntitySet Name="Products" EntityType="SalesDataModel.Product" />
+          <AssociationSet Name="FK_ShoppingCartItem_Product_ProductID" Association="SalesDataModel.FK_ShoppingCartItem_Product_ProductID">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ShoppingCartItem" EntitySet="ShoppingCartItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecialOfferProduct_Product_ProductID" Association="SalesDataModel.FK_SpecialOfferProduct_Product_ProductID">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="SpecialOfferProduct" EntitySet="SpecialOfferProducts" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Person">
           <Key>
@@ -1360,6 +1434,62 @@
             </Principal>
             <Dependent Role="PersonCreditCard">
               <PropertyRef Name="BusinessEntityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductNumber" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="MakeFlag" Type="Boolean" Nullable="false" />
+          <Property Name="FinishedGoodsFlag" Type="Boolean" Nullable="false" />
+          <Property Name="Color" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="SafetyStockLevel" Type="Int16" Nullable="false" />
+          <Property Name="ReorderPoint" Type="Int16" Nullable="false" />
+          <Property Name="StandardCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ListPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Size" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="SizeUnitMeasureCode" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="WeightUnitMeasureCode" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="Weight" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="DaysToManufacture" Type="Int32" Nullable="false" />
+          <Property Name="ProductLine" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Class" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Style" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="ProductSubcategoryID" Type="Int32" />
+          <Property Name="ProductModelID" Type="Int32" />
+          <Property Name="SellStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SellEndDate" Type="DateTime" Precision="3" />
+          <Property Name="DiscontinuedDate" Type="DateTime" Precision="3" />
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ShoppingCartItems" Relationship="SalesDataModel.FK_ShoppingCartItem_Product_ProductID" FromRole="Product" ToRole="ShoppingCartItem" />
+          <NavigationProperty Name="SpecialOfferProducts" Relationship="SalesDataModel.FK_SpecialOfferProduct_Product_ProductID" FromRole="Product" ToRole="SpecialOfferProduct" />
+        </EntityType>
+        <Association Name="FK_ShoppingCartItem_Product_ProductID">
+          <End Type="SalesDataModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="SalesDataModel.ShoppingCartItem" Role="ShoppingCartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ShoppingCartItem">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecialOfferProduct_Product_ProductID">
+          <End Type="SalesDataModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="SalesDataModel.SpecialOfferProduct" Role="SpecialOfferProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="SpecialOfferProduct">
+              <PropertyRef Name="ProductID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1636,6 +1766,37 @@
                 <ScalarProperty Name="NameStyle" ColumnName="NameStyle" />
                 <ScalarProperty Name="PersonType" ColumnName="PersonType" />
                 <ScalarProperty Name="BusinessEntityID" ColumnName="BusinessEntityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="SalesDataModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+                <ScalarProperty Name="DiscontinuedDate" ColumnName="DiscontinuedDate" />
+                <ScalarProperty Name="SellEndDate" ColumnName="SellEndDate" />
+                <ScalarProperty Name="SellStartDate" ColumnName="SellStartDate" />
+                <ScalarProperty Name="ProductModelID" ColumnName="ProductModelID" />
+                <ScalarProperty Name="ProductSubcategoryID" ColumnName="ProductSubcategoryID" />
+                <ScalarProperty Name="Style" ColumnName="Style" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="ProductLine" ColumnName="ProductLine" />
+                <ScalarProperty Name="DaysToManufacture" ColumnName="DaysToManufacture" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="WeightUnitMeasureCode" ColumnName="WeightUnitMeasureCode" />
+                <ScalarProperty Name="SizeUnitMeasureCode" ColumnName="SizeUnitMeasureCode" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="ListPrice" ColumnName="ListPrice" />
+                <ScalarProperty Name="StandardCost" ColumnName="StandardCost" />
+                <ScalarProperty Name="ReorderPoint" ColumnName="ReorderPoint" />
+                <ScalarProperty Name="SafetyStockLevel" ColumnName="SafetyStockLevel" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="FinishedGoodsFlag" ColumnName="FinishedGoodsFlag" />
+                <ScalarProperty Name="MakeFlag" ColumnName="MakeFlag" />
+                <ScalarProperty Name="ProductNumber" ColumnName="ProductNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

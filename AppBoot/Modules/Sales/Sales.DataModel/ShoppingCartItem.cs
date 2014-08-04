@@ -20,5 +20,7 @@ namespace Sales.DataModel
         public int ProductID { get; set; }
         public System.DateTime DateCreated { get; set; }
         public System.DateTime ModifiedDate { get; set; }
+    
+        public virtual Product Product { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace Contracts.Sales
         /// <summary>
         /// Order placement was successful
         /// </summary>
-        Success,
+        Placed,
 
         /// <summary>
         /// Order wasn't placed because of business rules

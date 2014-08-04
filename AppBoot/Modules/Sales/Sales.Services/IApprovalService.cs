@@ -1,3 +1,4 @@
+using Contracts.Sales;
 using Sales.DataModel;
 using Seido.AppBoot;
 
@@ -60,7 +61,7 @@ namespace Sales
     internal class ApproveRequest
     {
         public Customer Customer { get; set; }
-        public SalesOrderHeader Order { get; set; }
+        public OrderRequest Order { get; set; }
         public decimal Taxes { get; set; }
         public decimal Discount { get; set; }
     }

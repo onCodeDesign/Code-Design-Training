@@ -2,6 +2,6 @@ namespace Contracts.Sales
 {
     public interface IOrderingService
     {
-        SalesOrder PlaceOrder(string customerName, SalesOrderRequest request);
+        SalesOrder PlaceOrder(string customerName, OrderRequest request);
     }
 }

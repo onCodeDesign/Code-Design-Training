@@ -1,9 +1,11 @@
-﻿namespace DataAccess
+﻿using System;
+
+namespace DataAccess
 {
     /// <summary>
     ///     A unit of work that allows to modify and save entities in the database
     /// </summary>
-    public interface IUnitOfWork : IRepository
+    public interface IUnitOfWork : IRepository, IDisposable
     {
         /// <summary>
         ///     Saves the changes that were done on the entities on the current unit of work

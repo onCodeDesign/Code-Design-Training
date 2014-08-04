@@ -48,6 +48,9 @@
         <EntityTypeShape EntityType="SalesDataModel.Person" Width="1.5" PointX="10.375" PointY="1" />
         <AssociationConnector Association="SalesDataModel.FK_Customer_Person_PersonID" />
         <AssociationConnector Association="SalesDataModel.FK_PersonCreditCard_Person_BusinessEntityID" />
+        <EntityTypeShape EntityType="SalesDataModel.Product" Width="1.5" PointX="0.75" PointY="10.375" />
+        <AssociationConnector Association="SalesDataModel.FK_ShoppingCartItem_Product_ProductID" />
+        <AssociationConnector Association="SalesDataModel.FK_SpecialOfferProduct_Product_ProductID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

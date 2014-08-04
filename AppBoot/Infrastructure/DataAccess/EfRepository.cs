@@ -38,7 +38,7 @@ namespace DataAccess
             }
         }
 
-        private class EfUnitOfWork : IUnitOfWork, IDisposable
+        private class EfUnitOfWork : IUnitOfWork
         {
             private DbContext context;
             private TransactionScope transactionScope;
