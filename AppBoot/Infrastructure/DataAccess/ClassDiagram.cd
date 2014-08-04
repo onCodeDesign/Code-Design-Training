@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DataAccess.EfRepository">
+    <Position X="3.5" Y="0.75" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="DataAccess.EfRepository.EfUnitOfWork">
+        <TypeIdentifier>
+          <NewMemberFileName>EfRepository.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAiAAAQAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>EfRepository.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="context" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Data.Entity.DbContext" Collapsed="true">
+    <Position X="1" Y="6" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="DataAccess.IUnitOfWork">
+    <Position X="1.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAIAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>IUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataAccess.IRepository">
+    <Position X="1.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

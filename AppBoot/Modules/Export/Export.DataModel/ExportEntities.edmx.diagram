@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="05ff4b8e25294e809dc2d468a21d0e05" Name="Diagram1">
+        <EntityTypeShape EntityType="AdventureWorks2012Model.Category" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks2012Model.CustomerDemographic" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks2012Model.Customer" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks2012Model.Employee" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks2012Model.Order_Detail" Width="1.5" PointX="7.5" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks2012Model.Order" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks2012Model.Product" Width="1.5" PointX="5.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks2012Model.Region" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks2012Model.Shipper" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks2012Model.Supplier" Width="1.5" PointX="3" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks2012Model.Territory" Width="1.5" PointX="8" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="AdventureWorks2012Model.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks2012Model.FK_Orders_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks2012Model.FK_Employees_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks2012Model.FK_Orders_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks2012Model.FK_Order_Details_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks2012Model.FK_Order_Details_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks2012Model.FK_Orders_Shippers" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks2012Model.FK_Products_Suppliers" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks2012Model.FK_Territories_Region" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks2012Model.CustomerCustomerDemo" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorks2012Model.EmployeeTerritories" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
