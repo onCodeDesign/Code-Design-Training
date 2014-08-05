@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Transactions;
 using DataAccess.DbContexts;
+using DataAccess.Exceptions;
 using Seido.AppBoot;
 
 namespace DataAccess
@@ -11,6 +12,15 @@ namespace DataAccess
     public class EfRepository : IRepository, IDisposable
     {
         private DbContext context;
+
+        private static readonly IRepositoryExceptionHandler[] exceptionHandlers =
+        {
+            new RepositorySqlExceptionHandler(),
+            new RepositoryConcurrencyExceptionHandler(),
+            new RepositoryUpdateExceptionHandler(),
+            new RepositoryDbEntityValidationExceptionHandler(), 
+            new RepositoryDefaultExceptionHandler()
+        };
 
         public IQueryable<T> GetEntities<T>() where T : class
         {
@@ -38,6 +48,14 @@ namespace DataAccess
             }
         }
 
+        private static void Handle(Exception exception)
+        {
+            foreach (var exceptionHandler in exceptionHandlers)
+            {
+                exceptionHandler.Handle(exception);
+            }
+        }
+
         private class EfUnitOfWork : IUnitOfWork
         {
             private DbContext context;
@@ -55,10 +73,17 @@ namespace DataAccess
 
             public void SaveChanges()
             {
-                context.SaveChanges();
+                try
+                {
+                    context.SaveChanges();
 
-                if (transactionScope != null)
-                    transactionScope.Complete();
+                    if (transactionScope != null)
+                        transactionScope.Complete();
+                }
+                catch (Exception e)
+                {
+                    Handle(e);
+                }
             }
 
             public void Add<T>(T entity) where T : class

@@ -38,6 +38,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="iQuarc.SystemEx">
+      <HintPath>..\..\packages\iQuarc.SystemEx.1.0.0.0\lib\net40\iQuarc.SystemEx.dll</HintPath>
+    </Reference>
     <Reference Include="Seido.AppBoot">
       <HintPath>..\..\Lib\Seido.AppBoot.dll</HintPath>
     </Reference>
@@ -53,6 +56,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EfRepository.cs" />
+    <Compile Include="Exceptions\ConcurrencyRepositoryViolationException.cs" />
+    <Compile Include="Exceptions\RepositoryConcurrencyExceptionHandler.cs" />
+    <Compile Include="Exceptions\RepositoryDbEntityValidationExceptionHandler.cs" />
+    <Compile Include="Exceptions\RepositoryDefaultExceptionHandler.cs" />
+    <Compile Include="Exceptions\RepositoryUpdateException.cs" />
+    <Compile Include="Exceptions\RepositoryUpdateExceptionHandler.cs" />
+    <Compile Include="IAuditable.cs" />
+    <Compile Include="Exceptions\RepositorySqlExceptionHandler.cs" />
+    <Compile Include="Exceptions\DateTimeRangeRepositoryViolationException.cs" />
+    <Compile Include="Exceptions\DeadlockVictimRepositoryViolationException.cs" />
+    <Compile Include="Exceptions\DeleteConstraintRepositoryViolationException.cs" />
+    <Compile Include="Exceptions\IRepositoryExceptionHandler.cs" />
+    <Compile Include="Exceptions\RepositoryViolationException.cs" />
+    <Compile Include="Exceptions\UniqueConstraintRepositoryViolationException.cs" />
+    <Compile Include="IEntityEntryFacade.cs" />
+    <Compile Include="IEntityInterceptor.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
