@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IApprovalService.cs" />
+    <Compile Include="ModelInterceptors\InvalidOrderException.cs" />
+    <Compile Include="ModelInterceptors\SalesOrderCalculationsInterceptors.cs" />
+    <Compile Include="ModelInterceptors\SalesOrderValidationInterceptor.cs" />
     <Compile Include="OrderingService.cs" />
     <Compile Include="PriceCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

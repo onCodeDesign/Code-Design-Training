@@ -18,7 +18,7 @@ namespace DataAccess
             new RepositorySqlExceptionHandler(),
             new RepositoryConcurrencyExceptionHandler(),
             new RepositoryUpdateExceptionHandler(),
-            new RepositoryDbEntityValidationExceptionHandler(), 
+            new RepositoryDbEntityValidationExceptionHandler(),
             new RepositoryDefaultExceptionHandler()
         };
 
