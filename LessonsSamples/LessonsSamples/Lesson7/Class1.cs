@@ -34,16 +34,16 @@ namespace ClassLibrary1.Lesson7
             }
         }
 
-         public void SendShutDown_()
+        public void SendShutDown_()
         {
-             try
-             {
-                 TryToShutDown();
-             }
-             catch (DeviceShutdownException e)
-             {
-                 Logger.Log(e);
-             }
+            try
+            {
+                TryToShutDown();
+            }
+            catch (DeviceShutdownException e)
+            {
+                Logger.Log(e);
+            }
         }
 
         private void TryToShutDown()
@@ -87,14 +87,15 @@ namespace ClassLibrary1.Lesson7
         public int GetTotal()
         {
             // return the per diem default
+            throw new NotImplementedException();
         }
     }
 
-    internal class MealExpensesNotFound : Exception
+    class MealExpensesNotFound : Exception
     {
     }
 
-    internal class MealExpenses
+    public class MealExpenses
     {
     }
 
@@ -115,7 +116,7 @@ namespace ClassLibrary1.Lesson7
         }
     }
 
-    internal class Record
+    class Record
     {
         public int GetStatus()
         {
@@ -127,3 +128,4 @@ namespace ClassLibrary1.Lesson7
     {
         public static DeviceHandle INVALID;
     }
+}
