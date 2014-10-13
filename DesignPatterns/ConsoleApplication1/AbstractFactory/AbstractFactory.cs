@@ -42,7 +42,7 @@ namespace AbstractFactory
     {
         public override Herbivore CreateHerbivore()
         {
-            return new Wildebeest();
+            return new Wildebeast();
         }
 
         public override Carnivore CreateCarnivore()
@@ -85,7 +85,7 @@ namespace AbstractFactory
     /// <summary>
     ///     The 'ProductA1' class
     /// </summary>
-    internal class Wildebeest : Herbivore
+    internal class Wildebeast : Herbivore
     {
     }
 

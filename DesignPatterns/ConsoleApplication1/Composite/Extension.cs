@@ -11,7 +11,7 @@ namespace Composite.Graphics
         }
     }
 
-    internal static class GraphiEelementExtensions
+    internal static class GraphicElementExtensions
     {
         public static void Draw(this IGraphicElement graphic)
         {

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractFactory\AbstractFactory.cs" />
+    <Compile Include="AbstractFactory\WidgetFactory.cs" />
     <Compile Include="ChainOfResponsibility\01_PurchaseOrder.cs" />
     <Compile Include="ChainOfResponsibility\011_PurcharseOrderApprover.cs" />
     <Compile Include="ChainOfResponsibility\02_FileManager.cs" />
@@ -55,8 +56,8 @@
     <Compile Include="Composite\_Client.cs" />
     <Compile Include="Composite\Extension.cs" />
     <Compile Include="Decorator\_Client.cs" />
-    <Compile Include="Decorator\ScrollBarWindow.cs" />
-    <Compile Include="Decorator\ScrollWindow.cs" />
+    <Compile Include="Decorator\02_ScrollBarWindow.cs" />
+    <Compile Include="Decorator\01_ScrollWindow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strategy\01_Composition.cs" />

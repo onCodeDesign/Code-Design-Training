@@ -35,7 +35,8 @@ namespace Sales
             {
                 using (IUnitOfWork uof = repository.CreateUnitOfWork())
                 {
-                    SalesOrderHeader order = uof.GetEntities<SalesOrderHeader>()
+                    SalesOrderHeader order
+                        = uof.GetEntities<SalesOrderHeader>()
                                                 .FirstOrDefault(o => o.CustomerID == c.CustomerID &&
                                                                      o.OrderDate.Month == DateTime.Now.Month);
 

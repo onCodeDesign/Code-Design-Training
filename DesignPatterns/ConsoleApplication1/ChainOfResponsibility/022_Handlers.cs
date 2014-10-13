@@ -87,14 +87,6 @@ namespace ConsoleApplication1.ChainOfResponsibility
 
     internal class CreateNew : RequestHandler
     {
-        public CreateNew()
-        {
-        }
-
-        public CreateNew(IRequestHandler successor) : base(successor)
-        {
-        }
-
         protected override bool CanHandle(Request request)
         {
             return
