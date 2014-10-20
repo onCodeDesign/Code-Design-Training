@@ -57,6 +57,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -92,6 +93,13 @@
     <Compile Include="Lesson6\ServiceLocatorTestability\IService.cs" />
     <Compile Include="Lesson6\ServiceLocatorTestability\ServiceLocatorDoubleStorage.cs" />
     <Compile Include="Lesson7\Class1.cs" />
+    <Compile Include="Lesson7\CohesionCoupling\00_PageXmlExport.cs" />
+    <Compile Include="Lesson7\CohesionCoupling\EfRepository.cs" />
+    <Compile Include="Lesson7\CohesionCoupling\ICrmService.cs" />
+    <Compile Include="Lesson7\CohesionCoupling\ILocationService.cs" />
+    <Compile Include="Lesson7\CohesionCoupling\IRepository.cs" />
+    <Compile Include="Lesson7\CohesionCoupling\PageData.cs" />
+    <Compile Include="Lesson7\CohesionCoupling\PageXml.cs" />
     <Compile Include="Lesson7\ErrorHandling\DeviceController.cs" />
     <Compile Include="Lesson7\ErrorHandling\CodeSnippet.cs" />
     <Compile Include="Point.cs" />

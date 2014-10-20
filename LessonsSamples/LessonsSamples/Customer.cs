@@ -7,14 +7,15 @@ namespace LessonsSamples
     {
         public string Name { get; set; }
         public Address Address { get; set; }
-        ICollection<Customer> Cusotmers { get; set; } 
+        ICollection<Customer> Cusotmers { get; set; }
+        public string CompanyName { get; set; }
     }
 
     public class Order
     {
         public string Description { get; set; }
         public Customer Customer { get; set; }
-        public DateTime PlaceAt { get; set; }
+        public DateTime OrderDate { get; set; }
     }
 
     public class Address

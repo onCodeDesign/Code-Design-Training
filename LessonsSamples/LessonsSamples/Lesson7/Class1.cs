@@ -2,8 +2,6 @@
 
 namespace ClassLibrary1.Lesson7
 {
-   
-
     public class PerDiemMealExpenses : MealExpenses
     {
         public int GetTotal()
@@ -33,7 +31,7 @@ namespace ClassLibrary1.Lesson7
     {
         public static void Log(string p0)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public static void Log(DeviceShutdownException p0)
@@ -46,7 +44,7 @@ namespace ClassLibrary1.Lesson7
     {
         public int GetStatus()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 
