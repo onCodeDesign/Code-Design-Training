@@ -1,5 +1,6 @@
 ﻿using System;
 using LessonsSamples.Lesson3.DataModel;
+using LessonsSamples.Lesson6.DependencyInjection;
 
 namespace LessonsSamples.Lesson6
 {

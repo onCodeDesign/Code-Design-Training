@@ -6,7 +6,7 @@ namespace LessonsSamples.Lesson5
     class ImageScale
     {
         private double errorThreshold;
-        private RenderedOp image;
+        private Image image;
 
         public void ScaleToOneDimension(float desiredDimension, float imageDimension)
         {
@@ -14,7 +14,7 @@ namespace LessonsSamples.Lesson5
                 return;
             float scalingFactor = desiredDimension/imageDimension;
             scalingFactor = (float) (Math.Floor(scalingFactor*100)*0.01f);
-            RenderedOp newImage = ImageUtilities.GetScaledImage(image, scalingFactor, scalingFactor);
+            Image newImage = ImageUtilities.GetScaledImage(image, scalingFactor, scalingFactor);
             image.Dispose();
             System.GC.Collect();
             image = newImage;
@@ -22,14 +22,14 @@ namespace LessonsSamples.Lesson5
 
         public void Rotate(int degrees)
         {
-            RenderedOp newImage = ImageUtilities.GetRotatedImage(image, degrees);
+            Image newImage = ImageUtilities.GetRotatedImage(image, degrees);
 
             image.Dispose();
             System.GC.Collect();
             image = newImage;
         }
 
-        private void ReplaceImage(RenderedOp newImage)
+        private void ReplaceImage(Image newImage)
         {
             image.Dispose();
             System.GC.Collect();
@@ -42,20 +42,12 @@ namespace LessonsSamples.Lesson5
 
     class ImageUtilities
     {
-        public static RenderedOp GetScaledImage(object image, float scalingFactor, float f)
+        public static Image GetScaledImage(object image, float scalingFactor, float f)
         {
             throw new NotImplementedException();
         }
 
-        public static RenderedOp GetRotatedImage(Image image, int degrees)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    class RenderedOp : IDisposable
-    {
-        public void Dispose()
+        public static Image GetRotatedImage(Image image, int degrees)
         {
             throw new NotImplementedException();
         }

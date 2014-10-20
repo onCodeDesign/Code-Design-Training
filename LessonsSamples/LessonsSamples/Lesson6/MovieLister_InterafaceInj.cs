@@ -52,6 +52,7 @@ namespace LessonsSamples.Lesson6.InterfaceInjection
         }
     }
 
+    //DI Container collects all these and kicks resolve
     interface IDependencyResolver<T>
     {
         void Resolve(T injector);

@@ -29,15 +29,15 @@ namespace LessonsSamples.ItCamp
         public IEnumerable<Policy> GetPolicyImagesAffectedByMutation(Mutation mutation)
         {
             var policies = repository.GetEntities<PolicyImage>()
-                .Where(image => image.MutationId == mutation.Id)
-                .Select(image =>
-                    new Policy
-                    {
-                        Id = image.PolicyId,
-                        ValidAt = image.Mutation.Date
-                        //..
-                    })
-                .ToList();
+                                     .Where(image => image.MutationId == mutation.Id)
+                                     .Select(image =>
+                                         new Policy
+                                         {
+                                             Id = image.PolicyId,
+                                             ValidAt = image.Mutation.Date
+                                             //..
+                                         })
+                                     .ToList();
             // do other calculations / grouping on data
             return policies;
         }
@@ -47,8 +47,8 @@ namespace LessonsSamples.ItCamp
             using (var uof = repository.CreateUnitOfWork())
             {
                 var policies = repository.GetEntities<PolicyImage>()
-                    .Where(i => i.Status == ImageStatus.Calculating && i.EvendId == change.Id)
-                    .ToList();
+                                         .Where(i => i.Status == ImageStatus.Calculating && i.EvendId == change.Id)
+                                         .ToList();
 
                 foreach (PolicyImage image in policies)
                 {
@@ -128,3 +128,4 @@ namespace LessonsSamples.ItCamp
             }
         }
     }
+}

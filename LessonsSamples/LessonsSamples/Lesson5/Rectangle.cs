@@ -24,8 +24,7 @@ namespace LessonsSamples.Lesson5
 
         public decimal Area()
         {
-            
-
+            throw new NotImplementedException();
         }
     }
 

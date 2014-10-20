@@ -8,14 +8,11 @@ namespace LessonsSamples.Lesson3.Geometry
 
         public double GetArea(object shape)
         {
-            IGeometryCalculator calculator = GetCalculator(shape.GetType());
+            IGeometryCalculator calculator = factory.GetCalculator(shape.GetType());
             return calculator.GetArea(shape);
         }
 
-        private IGeometryCalculator GetCalculator(Type shape)
-        {
-            return factory.GetCalculator(shape);
-        }
+
     }
 
     interface IGeometryCalculator

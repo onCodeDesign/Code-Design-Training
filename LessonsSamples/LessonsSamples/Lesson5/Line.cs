@@ -14,16 +14,16 @@ namespace LessonsSamples.Lesson5
             public Line(Point p1, Point p2) { this.p1 = p1; this.p2 = p2; }
             public Point P1 { get { return p1; } }
             public Point P2 { get { return p2; } }
-            public double Slope { get {/*code*/} }
-            public double YIntercept { get {/*code*/} }
-            public virtual bool IsOn(Point p) {/*code*/}
+            public double Slope { get {/*code*/throw new NotImplementedException(); } }
+            public double YIntercept { get {/*code*/throw new NotImplementedException(); } }
+            public virtual bool IsOn(Point p) {/*code*/throw new NotImplementedException(); }
         }
 
         public class LineSegment : Line
         {
             public LineSegment(Point p1, Point p2) : base(p1, p2) { }
-            public double Length { get {/*code*/} }
-            public override bool IsOn(Point p) {/*code*/}
+            public double Length { get {/*code*/throw new NotImplementedException(); } }
+            public override bool IsOn(Point p) {/*code*/throw new NotImplementedException(); }
         }
 
         public abstract class LinearObject
@@ -40,20 +40,20 @@ namespace LessonsSamples.Lesson5
         public class Line_ : LinearObject
         {
             public Line_(Point p1, Point p2) : base(p1, p2) { }
-            public override bool IsOn(Point p) {/*code*/}
+            public override bool IsOn(Point p) {/*code*/throw new NotImplementedException(); }
         }
 
         public class LineSegment_ : LinearObject
         {
             public LineSegment_(Point p1, Point p2) : base(p1, p2) { }
-            public double GetLength() {/*code*/}
-            public override bool IsOn(Point p) {/*code*/}
+            public double GetLength() {/*code*/ throw new NotImplementedException();}
+            public override bool IsOn(Point p) {/*code*/ throw new NotImplementedException(); }
         }
 
         public class Ray : LinearObject
         {
             public Ray(Point p1, Point p2) : base(p1, p2) {/*code*/}
-            public override bool IsOn(Point p) {/*code*/}
+            public override bool IsOn(Point p) {/*code*/throw new NotImplementedException(); }
         }
 
 }
