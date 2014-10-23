@@ -6,20 +6,40 @@ using System.Xml.Serialization;
 
 namespace LessonsSamples.Lesson7.CohesionCoupling
 {
-    // Initial class
-    //  - Refactor in small steps. Start by looking at functions parameters
+    // More of the function repetitive parameters were extracted as fields. 
+    //  look at how they can be grouped to improve the class cohesion, by reducing the number of fields
 
-    public class PageXmlExport
+    public class PageXmlExport_2
     {
         private const string exportFolder = "c:\temp";
+        private readonly string fileNameFormat; //used in 3/5 methods
+        private readonly bool overwrite; //used in 3/5 methods
 
-        public bool ExportCustomerPage(string format,
+        private readonly int maxSalesOrders; // used in 4/5 methods
+        private readonly bool addCustomerDetails; // used in 2/5 methods
+
+        private readonly ICrmService crmService; // used in 3/5 methods
+        private readonly ILocationService locationService; // used in 3/5 methods
+
+        public PageXmlExport_2(
+            string fileNameFormat,
             bool overwrite,
-            string customerName,
             int maxSalesOrders,
-            bool addCustomerDetails)
+            bool addCustomerDetails, 
+            ICrmService crmService, 
+            ILocationService locationService)
         {
-            string fileName = string.Format(format, "CustomerPage", customerName, DateTime.Now);
+            this.fileNameFormat = fileNameFormat;
+            this.overwrite = overwrite;
+            this.maxSalesOrders = maxSalesOrders;
+            this.addCustomerDetails = addCustomerDetails;
+            this.crmService = crmService;
+            this.locationService = locationService;
+        }
+
+        public bool ExportCustomerPage(string customerName)
+        {
+            string fileName = string.Format(fileNameFormat, "CustomerPage", customerName, DateTime.Now);
             string filePath = Path.Combine(exportFolder, fileName);
 
             if (!overwrite && File.Exists(filePath))
@@ -33,7 +53,7 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
                 if (maxSalesOrders > 0)
                 {
                     var orders = repository.GetEntities<Order>()
-                                           .Where(o => o.Customer.CompanyName == customerName)
+                                           .Where(o => o.Customer.CompanyName == content.Customer.Name)
                                            .OrderBy(o => o.OrderDate)
                                            .Take(maxSalesOrders);
 
@@ -61,16 +81,11 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
         }
 
         public bool ExportCustomerPageWithExternalData(
-            string fileNameFormat,
-            bool overwrite,
             string customerName,
-            int maxSalesOrders,
-            bool addCustomerDetails,
-            PageData externalData,
-            ICrmService crmService,
-            ILocationService locationService)
+            PageData externalData)
+
         {
-            string fileName = string.Format(fileNameFormat, "CustomerPage", customerName, DateTime.Now);
+            string fileName = string.Format("{0}-{1}.xml", fileNameFormat, customerName);
             string filePath = Path.Combine(exportFolder, fileName);
 
             if (!overwrite && File.Exists(filePath))
@@ -87,9 +102,6 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             else
             {
                 CustomerInfo customerData = crmService.GetCustomerInfo(content.Customer.Name);
-
-                // enrich content with customer data
-                // ...
             }
 
             using (EfRepository repository = new EfRepository())
@@ -102,6 +114,7 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
                                            .Take(maxSalesOrders);
 
                     //enrich content with orders
+                    // ...
                 }
 
                 if (addCustomerDetails)
@@ -133,7 +146,7 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             return true;
         }
 
-        public bool ExportOrders(string fileNameFormat, bool overwrite, int maxSalesOrders, string customerName)
+        public bool ExportOrders(string customerName)
         {
             string fileName = string.Format(fileNameFormat, "CustomerOrdersPage", customerName, DateTime.Now);
             string filePath = Path.Combine(exportFolder, fileName);
@@ -161,10 +174,8 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             return true;
         }
 
-        public IEnumerable<PageXml> GetPagesFromOrders(IEnumerable<Order> orders,
-            int maxSalesOrders,
-            ICrmService crmService,
-            ILocationService locationService)
+        public IEnumerable<PageXml> GetPagesFromOrders(IEnumerable<Order> orders)
+
         {
             Dictionary<string, IEnumerable<Order>> customerOrders = GroupOrdersByCustomer(orders);
             foreach (var customerName in customerOrders.Keys)
@@ -206,19 +217,15 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             throw new NotImplementedException();
         }
 
-        public bool ExportPagesFromOrders(string fileNameFormat,
-            bool overwrite,
-            IEnumerable<Order> orders,
-            int maxSalesOrders,
-            ICrmService crmService,
-            ILocationService locationService)
+        public bool ExportPagesFromOrders(IEnumerable<Order> orders)
         {
-            IEnumerable<PageXml> pages = GetPagesFromOrders(orders, maxSalesOrders, crmService, locationService);
+            IEnumerable<PageXml> pages = GetPagesFromOrders(orders);
             foreach (var pageXml in pages)
             {
                 string customerName = pageXml.Customer.Name;
-                string fileName = string.Format(fileNameFormat, "CustomerOrdersPage", customerName, DateTime.Now);
+                string fileName = string.Format("CustomerOrders-{0}-{1}.xml", customerName, DateTime.Now);
                 string filePath = Path.Combine(exportFolder, fileName);
+
                 if (!overwrite && File.Exists(filePath))
                     return false;
 
