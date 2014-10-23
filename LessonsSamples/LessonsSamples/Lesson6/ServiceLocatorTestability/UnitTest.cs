@@ -7,7 +7,7 @@ using Moq;
 namespace LessonsSamples.Lesson6.ServiceLocatorTestability
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTest
     {
         [AssemblyInitialize]
         public static void AssemblyInit(TestContext context)
@@ -21,6 +21,7 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
         public void TestInitialize()
         {
             slStub = new Mock<IServiceLocator>();
+            //ServiceLocator.SetLocatorProvider(() => slStub.Object);
             ServiceLocatorDoubleStorage.SetInstance(slStub.Object);
         }
 
@@ -30,7 +31,7 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
             ServiceLocatorDoubleStorage.Cleanup();
         }
 
-        public void Test1(int sleep, Action<string> log)
+        public void Test1(int sleep, Action<string> logTrace)
         {
             IService serviceStub = GetServiceStubWhichReturns(10);
 
@@ -38,12 +39,14 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
                   .Returns(serviceStub);
 
 
-            log(string.Format("ThreadId:{0} | test1: locator setup finished", Thread.CurrentThread.ManagedThreadId));
+            logTrace(string.Format("ThreadId:{0} | test1: locator setup finished", Thread.CurrentThread.ManagedThreadId));
 
             Thread.Sleep(sleep);
-            int result = UnderTest.Boo();
 
-            log(string.Format("ThreadId:{0} | test1: act finished; Result={1}", Thread.CurrentThread.ManagedThreadId, result));
+            var target = new UnderTest();
+            int result = target.Boo();
+
+            logTrace(string.Format("ThreadId:{0} | test1: act finished; Result={1}", Thread.CurrentThread.ManagedThreadId, result));
 
             Assert.AreEqual(10, result);
         }
@@ -58,7 +61,9 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
             log(string.Format("ThreadId:{0} | test2: locator setup finished", Thread.CurrentThread.ManagedThreadId));
 
             Thread.Sleep(sleep);
-            int result = UnderTest.Boo();
+
+            var target = new UnderTest();
+            int result = target.Boo();
 
             log(string.Format("ThreadId:{0} | test2: locator setup finished; Result={1}", Thread.CurrentThread.ManagedThreadId, result));
 

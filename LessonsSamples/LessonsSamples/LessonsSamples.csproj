@@ -88,8 +88,9 @@
     <Compile Include="Lesson6\MovieLister_InterafaceInj.cs" />
     <Compile Include="Lesson6\MovieLister_SL.cs" />
     <Compile Include="Lesson6\Expenses\ExpenseData.cs" />
+    <Compile Include="Lesson6\ServiceLocatorTestability\TestRunner.cs" />
     <Compile Include="Lesson6\ServiceLocatorTestability\UnderTest.cs" />
-    <Compile Include="Lesson6\ServiceLocatorTestability\UnitTest1.cs" />
+    <Compile Include="Lesson6\ServiceLocatorTestability\UnitTest.cs" />
     <Compile Include="Lesson6\ServiceLocatorTestability\IService.cs" />
     <Compile Include="Lesson6\ServiceLocatorTestability\ServiceLocatorDoubleStorage.cs" />
     <Compile Include="Lesson7\Class1.cs" />
