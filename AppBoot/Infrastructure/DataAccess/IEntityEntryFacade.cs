@@ -9,7 +9,6 @@ namespace DataAccess
         object GetOriginalValue(string propertyName);
         IEntityEntryFacade<T> Convert<T>() where T : class;
         void SetOriginalValue(string propertyName, object value);
-
     }
 
     public interface IEntityEntryFacade<T>

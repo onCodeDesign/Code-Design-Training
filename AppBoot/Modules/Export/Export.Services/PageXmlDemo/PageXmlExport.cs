@@ -14,6 +14,13 @@ namespace Export.Services.PageXmlDemo
     {
         private const string exportFolder = "c:\temp";
 
+        private readonly IRepository repository;
+
+        public PageXmlExport(IRepository repository)
+        {
+            this.repository = repository;
+        }
+
         public bool ExportCustomerPage(string fileNamePrefix, bool overwrite,
             string customerName, int maxSalesOrders, bool addCustomerDetails)
         {
@@ -26,25 +33,22 @@ namespace Export.Services.PageXmlDemo
 
             PageXml content = new PageXml {Customer = new CustomerXml {Name = customerName}};
 
-            using (EfRepository repository = new EfRepository())
+            if (maxSalesOrders > 0)
             {
-                if (maxSalesOrders > 0)
-                {
-                    var orders = repository.GetEntities<Order>()
-                                           .Where(o => o.Customer.CompanyName == content.Customer.Name)
-                                           .OrderBy(o => o.OrderDate)
-                                           .Take(maxSalesOrders);
+                var orders = repository.GetEntities<Order>()
+                                       .Where(o => o.Customer.CompanyName == content.Customer.Name)
+                                       .OrderBy(o => o.OrderDate)
+                                       .Take(maxSalesOrders);
 
-                    //enrich content with orders
-                }
+                //enrich content with orders
+            }
 
-                if (addCustomerDetails)
-                {
-                    var customer = repository.GetEntities<Customer>()
-                                             .Where(c => c.CompanyName == customerName);
+            if (addCustomerDetails)
+            {
+                var customer = repository.GetEntities<Customer>()
+                                         .Where(c => c.CompanyName == customerName);
 
-                    // enrich content with customer data
-                }
+                // enrich content with customer data
             }
 
 
@@ -78,25 +82,22 @@ namespace Export.Services.PageXmlDemo
                 CustomerInfo customerData = crmService.GetCustomerInfo(content.Customer.Name);
             }
 
-            using (EfRepository repository = new EfRepository())
+            if (maxSalesOrders > 0)
             {
-                if (maxSalesOrders > 0)
-                {
-                    var orders = repository.GetEntities<Order>()
-                                           .Where(o => o.Customer.CompanyName == content.Customer.Name)
-                                           .OrderBy(o => o.OrderDate)
-                                           .Take(maxSalesOrders);
+                var orders = repository.GetEntities<Order>()
+                                       .Where(o => o.Customer.CompanyName == content.Customer.Name)
+                                       .OrderBy(o => o.OrderDate)
+                                       .Take(maxSalesOrders);
 
-                    //enrich content with orders
-                }
+                //enrich content with orders
+            }
 
-                if (addCustomerDetails)
-                {
-                    var customer = repository.GetEntities<Customer>()
-                                             .Where(c => c.CompanyName == customerName);
+            if (addCustomerDetails)
+            {
+                var customer = repository.GetEntities<Customer>()
+                                         .Where(c => c.CompanyName == customerName);
 
-                    // enrich content with customer data
-                }
+                // enrich content with customer data
             }
 
             if (locationService != null)
@@ -125,15 +126,12 @@ namespace Export.Services.PageXmlDemo
 
             PageXml content = new PageXml {Customer = new CustomerXml {Name = customerName}};
 
-            using (EfRepository repository = new EfRepository())
-            {
-                var orders = repository.GetEntities<Order>()
-                                       .Where(o => o.Customer.CompanyName == content.Customer.Name)
-                                       .OrderBy(o => o.OrderDate)
-                                       .Take(maxSalesOrders);
+            var orders = repository.GetEntities<Order>()
+                                   .Where(o => o.Customer.CompanyName == content.Customer.Name)
+                                   .OrderBy(o => o.OrderDate)
+                                   .Take(maxSalesOrders);
 
-                //enrich content with orders
-            }
+            //enrich content with orders
 
             XmlSerializer serializer = new XmlSerializer(typeof (PageXml));
             using (StreamWriter sw = File.CreateText(filePath))

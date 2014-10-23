@@ -43,9 +43,6 @@
     <Compile Include="PageXmlDemo\PageContentEnricher.cs" />
     <Compile Include="PageXmlDemo\PageXml.cs" />
     <Compile Include="PageXmlDemo\PageData.cs" />
-    <Compile Include="PageXmlDemo\PageXmlExport - Copy_3.cs" />
-    <Compile Include="PageXmlDemo\PageXmlExport - Copy_2.cs" />
-    <Compile Include="PageXmlDemo\PageXmlExport - Copy_1.cs" />
     <Compile Include="PageXmlDemo\PageXmlExport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

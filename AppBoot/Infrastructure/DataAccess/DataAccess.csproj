@@ -41,6 +41,9 @@
     <Reference Include="iQuarc.SystemEx">
       <HintPath>..\..\packages\iQuarc.SystemEx.1.0.0.0\lib\net40\iQuarc.SystemEx.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="Seido.AppBoot">
       <HintPath>..\..\Lib\Seido.AppBoot.dll</HintPath>
     </Reference>
@@ -55,7 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CollectionExtensions.cs" />
     <Compile Include="EfRepository.cs" />
+    <Compile Include="EntityEntry.cs" />
     <Compile Include="EntityInterceptor.cs" />
     <Compile Include="Exceptions\ConcurrencyRepositoryViolationException.cs" />
     <Compile Include="Exceptions\RepositoryConcurrencyExceptionHandler.cs" />
@@ -73,6 +78,7 @@
     <Compile Include="Exceptions\UniqueConstraintRepositoryViolationException.cs" />
     <Compile Include="IEntityEntryFacade.cs" />
     <Compile Include="IEntityInterceptor.cs" />
+    <Compile Include="InterceptorsResolver.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

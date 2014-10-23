@@ -4,7 +4,7 @@ namespace DataAccess
 {
     public interface IRepository
     {
-        IQueryable<T> GetEntities<T>() where T : class;
+        IQueryable<TDbEntity> GetEntities<TDbEntity>() where TDbEntity : class;
         IUnitOfWork CreateUnitOfWork();
     }
 }
