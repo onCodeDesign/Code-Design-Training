@@ -49,7 +49,7 @@
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
     </Reference>
@@ -108,6 +108,10 @@
     <Compile Include="Lesson7\CohesionCoupling\01_PageXmlExport.cs" />
     <Compile Include="Lesson7\ErrorHandling\DeviceController.cs" />
     <Compile Include="Lesson7\ErrorHandling\CodeSnippet.cs" />
+    <Compile Include="Lesson7\InheritanceComposition\ILogFormatReader.cs" />
+    <Compile Include="Lesson7\InheritanceComposition\LogEntry.cs" />
+    <Compile Include="Lesson7\InheritanceComposition\LogParser.cs" />
+    <Compile Include="Lesson7\InheritanceComposition\LogParser_2.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
