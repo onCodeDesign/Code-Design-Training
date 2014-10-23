@@ -79,6 +79,11 @@
     <Compile Include="Lesson5\Line.cs" />
     <Compile Include="Lesson5\Modem.cs" />
     <Compile Include="Lesson5\Rectangle.cs" />
+    <Compile Include="Lesson6\DI_AndDisposable\Model.cs" />
+    <Compile Include="Lesson6\DI_AndDisposable\Repository.cs" />
+    <Compile Include="Lesson6\DI_AndDisposable\RepositoryFactory.cs" />
+    <Compile Include="Lesson6\DI_AndDisposable\Service11.cs" />
+    <Compile Include="Lesson6\DI_AndDisposable\Service12.cs" />
     <Compile Include="Lesson6\Expenses\Expense.cs" />
     <Compile Include="Lesson6\Expenses\ExpensesService.cs" />
     <Compile Include="Lesson6\Expenses\IExpensesService.cs" />
