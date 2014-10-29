@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractFactory\AbstractFactory.cs" />
+    <Compile Include="AbstractFactory\ScrollBar.cs" />
+    <Compile Include="AbstractFactory\Window.cs" />
     <Compile Include="AbstractFactory\WidgetFactory.cs" />
     <Compile Include="ChainOfResponsibility\01_PurchaseOrder.cs" />
     <Compile Include="ChainOfResponsibility\011_PurcharseOrderApprover.cs" />
