@@ -11,7 +11,7 @@ namespace ConsoleApplication
             UnityBootstrapper bootstrapper = new UnityBootstrapper(new Assembly[] {});
             var assemblies = GetApplicationAssemblies();
 
-            
+            bootstrapper.Run();
         }
 
         private static Assembly[] GetApplicationAssemblies()

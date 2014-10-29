@@ -13,7 +13,8 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
     {
         private const string exportFolder = "c:\temp";
 
-        public bool ExportCustomerPage(string format,
+        public bool ExportCustomerPage(
+            string format,
             bool overwrite,
             string customerName,
             int maxSalesOrders,
