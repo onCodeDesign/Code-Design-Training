@@ -46,7 +46,7 @@
     <Compile Include="AbstractFactory\Window.cs" />
     <Compile Include="AbstractFactory\WidgetFactory.cs" />
     <Compile Include="ChainOfResponsibility\01_PurchaseOrder.cs" />
-    <Compile Include="ChainOfResponsibility\011_PurcharseOrderApprover.cs" />
+    <Compile Include="ChainOfResponsibility\011_PurchaseOrderApprover.cs" />
     <Compile Include="ChainOfResponsibility\02_FileManager.cs" />
     <Compile Include="ChainOfResponsibility\022_Handlers.cs" />
     <Compile Include="ChainOfResponsibility\023_FileManager2.cs" />

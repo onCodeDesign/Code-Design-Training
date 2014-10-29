@@ -81,7 +81,7 @@ namespace ConsoleApplication1.ChainOfResponsibility
     }
 
 
-    public static class ChainOfResponsabilityClient
+    public static class ChainOfResponsibilityClient
     {
         public static void PurchaseOrderApproverDemo()
         {

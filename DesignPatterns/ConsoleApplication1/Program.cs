@@ -15,9 +15,9 @@ public static class Program
 
         //CompositeClient.Demo();
 
-        StrategyClient.RobotsDemo();
+        //StrategyClient.RobotsDemo();
 
-        //ChainOfResponsabilityClient.PurchaseOrderApproverDemo();
+        ChainOfResponsibilityClient.PurchaseOrderApproverDemo();
 
 
 

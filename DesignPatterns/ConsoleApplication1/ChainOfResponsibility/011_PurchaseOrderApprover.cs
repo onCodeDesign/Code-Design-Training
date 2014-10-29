@@ -2,7 +2,7 @@
 
 namespace ConsoleApplication1.ChainOfResponsibility
 {
-    class PurcharseOrderApprover
+    class PurchaseOrderApprover
     {
         public void Approve(PurchaseOrder purchase)
         {
