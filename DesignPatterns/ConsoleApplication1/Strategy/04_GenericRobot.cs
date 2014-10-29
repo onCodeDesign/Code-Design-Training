@@ -21,8 +21,8 @@ namespace ConsoleApplication1.Strategy
 
         public void Move()
         {
-            Console.WriteLine(this.name + ": Based on current position" +
-                              "the behaviour object decide the next Move:");
+            Console.WriteLine(this.name + ": Based on current position " +
+                              "the behavior decides the next Move:");
             int command = behaviour.Move();
         }
 
@@ -33,7 +33,7 @@ namespace ConsoleApplication1.Strategy
         }
     }
 
-    // the client does not need to know about the behaviors. It can directely use the AgresiveRobot
+    // the client does not need to know about the behaviors. It can directly use the AgresiveRobot
     public class AgresiveRobot : GenericRobot<AgressiveBehaviour>
     {
         public AgresiveRobot(string name)

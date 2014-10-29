@@ -52,8 +52,8 @@ namespace ConsoleApplication1.Strategy
 
         public void Move()
         {
-            Console.WriteLine(this.name + ": Based on current position" +
-                              "the behaviour object decide the next Move:");
+            Console.WriteLine(this.name + ": Based on current position " +
+                                        "the behavior decides the next Move:"); 
             int command = behaviour.Move();
         }
 

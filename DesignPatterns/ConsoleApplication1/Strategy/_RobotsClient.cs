@@ -18,7 +18,7 @@ namespace ConsoleApplication1.Strategy
             george.Move();
             r2.Move();
 
-            Console.WriteLine("\r\nNew behaviours: " +
+            Console.WriteLine("\r\n Base on current context, new behaviors: " +
                               "\r\n\t'Big Robot' gets really scared" +
                               "\r\n\t, 'George v.2.1' becomes really mad because" +
                               "it's always attacked by other robots" +

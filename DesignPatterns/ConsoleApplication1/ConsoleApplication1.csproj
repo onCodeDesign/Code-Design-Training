@@ -62,7 +62,7 @@
     <Compile Include="Decorator\01_ScrollWindow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Strategy\01_Composition.cs" />
+    <Compile Include="Strategy\031_Composition.cs" />
     <Compile Include="Strategy\03_Composition_.cs" />
     <Compile Include="Strategy\Coordonates.cs" />
     <Compile Include="Strategy\04_GenericRobot.cs" />

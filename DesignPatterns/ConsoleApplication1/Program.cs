@@ -11,11 +11,11 @@ public static class Program
     {
         //WidgetsClientApp.Demo();
         
-        DecoratorClient.Run();
+        //DecoratorClient.Run();
 
         //CompositeClient.Demo();
 
-        //StrategyClient.RobotsDemo();
+        StrategyClient.RobotsDemo();
 
         //ChainOfResponsabilityClient.PurchaseOrderApproverDemo();
 

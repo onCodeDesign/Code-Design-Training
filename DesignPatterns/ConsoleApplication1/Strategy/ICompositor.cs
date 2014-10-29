@@ -1,13 +1,15 @@
+using System.Collections.Generic;
+
 namespace ConsoleApplication1.Strategy
 {
     public interface ICompositor
     {
-        int Compose(Configuration configuration, int count, int lineWidth, int breaks);
+        LineBreaks Compose(Configuration configuration, IEnumerable<Component> components);
     }
 
     class SimpleCompositor : ICompositor
     {
-        public int Compose(Configuration configuration, int count, int lineWidth, int breaks)
+        public LineBreaks Compose(Configuration configuration, IEnumerable<Component> components)
         {
             throw new System.NotImplementedException();
         }
@@ -15,15 +17,15 @@ namespace ConsoleApplication1.Strategy
 
     class TeXCompositor : ICompositor
     {
-        public int Compose(Configuration configuration, int count, int lineWidth, int breaks)
+        public LineBreaks Compose(Configuration configuration, IEnumerable<Component> components)
         {
             throw new System.NotImplementedException();
         }
     }
 
-    class ArrayCompositor : ICompositor
+    class TabularComposition : ICompositor
     {
-        public int Compose(Configuration configuration, int count, int lineWidth, int breaks)
+        public LineBreaks Compose(Configuration configuration, IEnumerable<Component> components)
         {
             throw new System.NotImplementedException();
         }
