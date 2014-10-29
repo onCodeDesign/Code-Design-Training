@@ -1,4 +1,6 @@
-﻿namespace Decorator
+﻿using System;
+
+namespace Decorator
 {
     public static class DecoratorClient
     {
@@ -9,6 +11,12 @@
             var scrollWindow = new HorizontalScrollBarWindow(verticalScrollWindow);
 
             scrollWindow.Draw();
+
+
+            Console.WriteLine();
+            Console.WriteLine();
+            ScrollBarWindow scrollBarWindow = new ScrollBarWindow(simpleWindow);
+            scrollBarWindow.Draw();
         }
     }
 }

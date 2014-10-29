@@ -12,7 +12,7 @@ namespace Decorator
     {
         public void Draw()
         {
-            Console.Write("Drawing window ");
+            Console.Write("Drawing window");
         }
 
         public string GetDescription()
@@ -21,11 +21,11 @@ namespace Decorator
         }
     }
 
-    public abstract class DecoratorForWindow : IWindow
+    public abstract class WindowDecorator : IWindow
     {
         private readonly IWindow decorated;
 
-        protected DecoratorForWindow(IWindow decorated)
+        protected WindowDecorator(IWindow decorated)
         {
             this.decorated = decorated;
         }
@@ -41,7 +41,7 @@ namespace Decorator
         }
     }
 
-    internal class HorizontalScrollBarWindow : DecoratorForWindow
+    internal class HorizontalScrollBarWindow : WindowDecorator
     {
         public HorizontalScrollBarWindow(IWindow decorated)
             : base(decorated)
@@ -56,11 +56,11 @@ namespace Decorator
 
         private void DrawHorizontalScrollBar()
         {
-            Console.Write(" with horizontal scroll bar ");
+            Console.Write(" with horizontal scroll bar");
         }
     }
 
-    internal class VerticalScrollBarWindow : DecoratorForWindow
+    internal class VerticalScrollBarWindow : WindowDecorator
     {
         public VerticalScrollBarWindow(IWindow decorated)
             : base(decorated)
@@ -75,7 +75,7 @@ namespace Decorator
 
         private void DrawVerticalScrollBar()
         {
-            Console.Write(" with vertical scroll bar ");
+            Console.Write(" with vertical scroll bar");
         }
     }
 

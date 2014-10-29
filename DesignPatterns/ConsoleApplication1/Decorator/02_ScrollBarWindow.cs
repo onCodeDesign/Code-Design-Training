@@ -1,6 +1,6 @@
 namespace Decorator
 {
-    class ScrollBarWindow : DecoratorForWindow
+    class ScrollBarWindow : WindowDecorator
     {
         private readonly IWindow scrollBarWindow;
 
@@ -10,10 +10,9 @@ namespace Decorator
             var horizontalScrollBarWindow = new HorizontalScrollBarWindow(decorated);
             scrollBarWindow = new VerticalScrollBarWindow(horizontalScrollBarWindow);
         }
-
+        
         public override void Draw()
         {
-            base.Draw();
             scrollBarWindow.Draw();
         }
     }
