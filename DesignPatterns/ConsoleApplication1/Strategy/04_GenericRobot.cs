@@ -34,9 +34,9 @@ namespace ConsoleApplication1.Strategy
     }
 
     // the client does not need to know about the behaviors. It can directly use the AgresiveRobot
-    public class AgresiveRobot : GenericRobot<AgressiveBehaviour>
+    public class AggressiveRobot : GenericRobot<AgressiveBehaviour>
     {
-        public AgresiveRobot(string name)
+        public AggressiveRobot(string name)
             : base(name)
         {
         }

@@ -11,7 +11,7 @@ namespace AbstractFactory
 
         public void Close()
         {
-            Console.WriteLine("Mac Window opened");
+            Console.WriteLine("Mac Window closed");
         }
 
         public IScrollBar VerticalScrollBar { get; private set; }
@@ -32,7 +32,7 @@ namespace AbstractFactory
 
         public void Close()
         {
-            Console.WriteLine("Win Window opened");
+            Console.WriteLine("Win Window closed");
         }
 
         public IScrollBar VerticalScrollBar { get; private set; }

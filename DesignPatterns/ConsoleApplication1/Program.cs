@@ -9,15 +9,17 @@ public static class Program
 {
     public static void Main()
     {
+        //AbstractFactory.ClientApp.RunAbstractFactoryDemo();
+
         //WidgetsClientApp.Demo();
         
         //DecoratorClient.Run();
 
         //CompositeClient.Demo();
 
-        //StrategyClient.RobotsDemo();
+        StrategyClient.RobotsDemo();
 
-        ChainOfResponsibilityClient.PurchaseOrderApproverDemo();
+        //ChainOfResponsibilityClient.PurchaseOrderApproverDemo();
 
 
 
