@@ -31,43 +31,43 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
             ServiceLocatorDoubleStorage.Cleanup();
         }
 
-        public void Test1(int sleep, Action<string> logTrace)
+        public void IsOdd_ServiceReturns5_True(int sleep, Action<string> logTrace)
         {
-            IService serviceStub = GetServiceStubWhichReturns(10);
+            IService serviceStub = GetServiceStubWhichReturns(5);
 
             slStub.Setup(sl => sl.GetInstance<IService>())
                   .Returns(serviceStub);
 
 
-            logTrace(string.Format("ThreadId:{0} | test1: locator setup finished", Thread.CurrentThread.ManagedThreadId));
+            logTrace(string.Format("ThreadId:{0} | Test1: IsOdd_ServiceReturns5_True: locator setup finished", Thread.CurrentThread.ManagedThreadId));
 
             Thread.Sleep(sleep);
 
             var target = new UnderTest();
-            int result = target.Boo();
+            bool result = target.IsOdd();
 
-            logTrace(string.Format("ThreadId:{0} | test1: act finished; Result={1}", Thread.CurrentThread.ManagedThreadId, result));
+            logTrace(string.Format("ThreadId:{0} | Test1: IsOdd_ServiceReturns5_True: act finished; Result={1}", Thread.CurrentThread.ManagedThreadId, result));
 
-            Assert.AreEqual(10, result);
+            Assert.IsTrue(result);
         }
 
-        public void Test2(int sleep, Action<string> log)
+        public void IsOdd_ServiceReturns4_False(int sleep, Action<string> log)
         {
-            IService serviceStub = GetServiceStubWhichReturns(20);
+            IService serviceStub = GetServiceStubWhichReturns(4);
 
             slStub.Setup(sl => sl.GetInstance<IService>())
                   .Returns(serviceStub);
 
-            log(string.Format("ThreadId:{0} | test2: locator setup finished", Thread.CurrentThread.ManagedThreadId));
+            log(string.Format("ThreadId:{0} | Test2: IsOdd_ServiceReturns4_False: locator setup finished", Thread.CurrentThread.ManagedThreadId));
 
             Thread.Sleep(sleep);
 
             var target = new UnderTest();
-            int result = target.Boo();
+            bool result = target.IsOdd();
 
-            log(string.Format("ThreadId:{0} | test2: locator setup finished; Result={1}", Thread.CurrentThread.ManagedThreadId, result));
+            log(string.Format("ThreadId:{0} | Test2: IsOdd_ServiceReturns4_False: act finished; Result={1}", Thread.CurrentThread.ManagedThreadId, result));
 
-            Assert.AreEqual(20, result);
+            Assert.IsFalse(result);
         }
 
         private static IService GetServiceStubWhichReturns(int result)
@@ -80,13 +80,13 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
         [TestMethod]
         public void Prototype2_TestMethod1()
         {
-            Test1(0, s => { });
+            IsOdd_ServiceReturns5_True(0, s => { });
         }
 
         [TestMethod]
         public void Prototype2_TestMethod2()
         {
-            Test2(0, s => { });
+            IsOdd_ServiceReturns4_False(0, s => { });
         }
     }
 }

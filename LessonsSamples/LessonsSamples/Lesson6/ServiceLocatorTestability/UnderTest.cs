@@ -4,10 +4,11 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
 {
     public class UnderTest
     {
-        public int Boo()
+        public bool IsOdd()
         {
             IService service = ServiceLocator.Current.GetInstance<IService>();
-            return service.Foo();
+            int number = service.Foo();
+            return number%2 == 1;
         }
     }
 }

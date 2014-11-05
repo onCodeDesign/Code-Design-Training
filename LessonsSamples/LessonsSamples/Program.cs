@@ -13,7 +13,7 @@ namespace LessonsSamples
         {
             TestRunner.RunTests();
 
-
+            Console.WriteLine();
             Console.WriteLine("Demo ran. Press enter to close");
             Console.ReadLine();
         }

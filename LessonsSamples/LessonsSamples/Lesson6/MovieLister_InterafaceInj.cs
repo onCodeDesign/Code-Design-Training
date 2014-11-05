@@ -13,10 +13,6 @@ namespace LessonsSamples.Lesson6.InterfaceInjection
         void InjectTitleMatcher(ITitleMatcher matcher);
     }
 
-    interface ITitleMatcher
-    {
-    }
-
     class MovieLister_ : IMovieProviderInjector, IMovieCountryInjector
     {
         private IMovieProvider movieProvider;

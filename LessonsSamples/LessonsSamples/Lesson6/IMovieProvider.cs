@@ -15,6 +15,10 @@ namespace LessonsSamples.Lesson6
     {
     }
 
+    interface ITitleMatcher
+    {
+    }
+
     class Movie
     {
     }

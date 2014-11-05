@@ -15,7 +15,7 @@ namespace LessonsSamples.Lesson6
 
         public void Process(ExpenseData expense)
         {
-            using (ProcessContext contex = new ProcessContext(expense))
+            using (ProcessContext contex = new ProcessContext())
             {
                 foreach (var processStep in steps)
                 {
@@ -46,22 +46,16 @@ namespace LessonsSamples.Lesson6
     //  It hides the state and gives meaningful functions to access and alter it 
     class ProcessContext : IDisposable
     {
-        private readonly ExpenseData expense;
-        private readonly List<ExpenseData> additions = new List<ExpenseData>(); 
-
-        public ProcessContext(ExpenseData expense)
-        {
-            this.expense = expense;
-        }
+        private readonly List<ExpenseData> additionalExpenses = new List<ExpenseData>(); 
 
         public void AdditionalExpenses(ExpenseData additional)
         {
-            additions.Add(additional);
+            additionalExpenses.Add(additional);
         }
 
         public decimal GetAdditionalAmount()
         {
-            return additions.Sum(data => data.Amount);
+            return additionalExpenses.Sum(data => data.Amount);
         }
 
         public void Dispose()

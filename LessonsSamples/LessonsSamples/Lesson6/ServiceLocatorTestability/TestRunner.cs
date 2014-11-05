@@ -12,11 +12,14 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
         {
             UnitTest.AssemblyInit(null);
 
-            Thread t1 = new Thread(() => RunTest(new UnitTest(), tc => tc.Test1(500, Console.WriteLine)));
-            Thread t2 = new Thread(() => RunTest(new UnitTest(), tc => tc.Test2(0, Console.WriteLine)));
+            Thread t1 = new Thread(() => RunTest(new UnitTest(), tc => tc.IsOdd_ServiceReturns5_True(1000, Console.WriteLine)));
+            Thread t2 = new Thread(() => RunTest(new UnitTest(), tc => tc.IsOdd_ServiceReturns4_False(0, Console.WriteLine)));
 
             t1.Start();
             t2.Start();
+
+            t1.Join();
+            t2.Join();
         }
 
         private static void RunTest(UnitTest testClass, Action<UnitTest> test)
