@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace LessonsSamples.Lesson7.InheritanceComposition
 {
-    abstract class LogParser
+    abstract class LogSource
     {
         protected abstract string GetVersion(string logTrace);
         protected abstract DateTime GetTime(string logTrace);
@@ -43,7 +43,7 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
     }
 
 
-    class XmlLogParser : LogParser
+    class XmlLogSource : LogSource
     {
         protected override string GetVersion(string logTrace)
         {
@@ -66,7 +66,7 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
         }
     }
 
-    class CsvLogParser : LogParser
+    class CsvLogSource : LogSource
     {
         protected override string GetVersion(string logTrace)
         {

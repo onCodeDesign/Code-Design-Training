@@ -2,7 +2,7 @@ using System;
 
 namespace LessonsSamples.Lesson7.InheritanceComposition
 {
-    internal interface ILogFormatReader
+    internal interface ILogTraceParser
     {
         string GetVersion(string logTrace);
         DateTime GetTime(string logTrace);

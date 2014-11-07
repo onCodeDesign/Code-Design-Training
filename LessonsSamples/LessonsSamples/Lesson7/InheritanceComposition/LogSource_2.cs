@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace LessonsSamples.Lesson7.InheritanceComposition
 {
-    sealed class LogParser_2
+    sealed class LogSource_2
     {
-        private readonly ILogFormatReader formatReader;
+        private readonly ILogTraceParser traceParser;
 
-        public LogParser_2(ILogFormatReader formatReader)
+        public LogSource_2(ILogTraceParser traceParser)
         {
-            this.formatReader = formatReader;
+            this.traceParser = traceParser;
         }
 
         public IEnumerable<LogEntry> GetAllLogEntries()
@@ -21,10 +21,10 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
             {
                 yield return new LogEntry
                 {
-                    Time = formatReader.GetTime(logTrace),
-                    Severity = formatReader.GetSeverity(logTrace),
-                    Description = formatReader.GetDescription(logTrace),
-                    Version = formatReader.GetVersion(logTrace),
+                    Time = traceParser.GetTime(logTrace),
+                    Severity = traceParser.GetSeverity(logTrace),
+                    Description = traceParser.GetDescription(logTrace),
+                    Version = traceParser.GetVersion(logTrace),
                     Body = logTrace
                 };
             }
@@ -44,7 +44,7 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
         }
     }
 
-    internal class XmlReader : ILogFormatReader
+    internal class XmlLogTraceParser : ILogTraceParser
     {
         public string GetVersion(string logTrace)
         {
@@ -67,7 +67,7 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
         }
     }
 
-    class CsvReader : ILogFormatReader
+    class CsvLogTraceParser : ILogTraceParser
     {
         public string GetVersion(string logTrace)
         {

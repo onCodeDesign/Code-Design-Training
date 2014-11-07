@@ -50,6 +50,7 @@ namespace LessonsSamples.Lesson6
 
         public void AdditionalExpenses(ExpenseData additional)
         {
+            // ...
             additionalExpenses.Add(additional);
         }
 

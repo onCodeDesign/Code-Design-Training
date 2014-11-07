@@ -6,6 +6,8 @@ namespace LessonsSamples.Lesson6.DI_AndDisposable
 {
     class Service12
     {
+        // IRepositoryFactory is not IDisposable, so there is nothing to dispose from the Service class perspective
+        //   the repository instances it will return are disposable, but there is explicit code which asks for an instance.
         private readonly IRepositoryFactory repFactory;
 
         public Service12(IRepositoryFactory repFactory)
@@ -21,8 +23,9 @@ namespace LessonsSamples.Lesson6.DI_AndDisposable
                     .Where(o => o.Year == year);
 
                 decimal ammount = 0;
-                foreach (var order in orders)
+                foreach (var order in orders) // lets say I'm keen on performance and I only want to iterate once through the resultset. / lets say I'm keen on performance and I only want to iterate once through the resultset. 
                 {
+                    // If I would use the return order.ToArray().Count(IsHighRisk) there is one iteration for ToArray and one for Count()
                     if (IsHighRisk(order))
                         ammount += order.OrderLines.Sum(ol => ol.Ammount); // I only read DB the orderlines of high risk orders. I expect that only 10% of orders are high risk
                 }
