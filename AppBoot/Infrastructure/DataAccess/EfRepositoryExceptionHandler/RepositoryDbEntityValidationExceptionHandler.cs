@@ -2,12 +2,20 @@
 using System.Data.Entity.Validation;
 using System.Globalization;
 using System.Text;
+using DataAccess.Exceptions;
 using iQuarc.SystemEx;
 
-namespace DataAccess.Exceptions
+namespace DataAccess.EfRepositoryExceptionHandler
 {
     class RepositoryDbEntityValidationExceptionHandler : IRepositoryExceptionHandler
     {
+        private readonly IRepositoryExceptionHandler successor;
+
+        public RepositoryDbEntityValidationExceptionHandler(IRepositoryExceptionHandler successor)
+        {
+            this.successor = successor;
+        }
+
         public void Handle(Exception exception)
         {
             var validationException = exception.FirstInner<DbEntityValidationException>();
@@ -16,7 +24,11 @@ namespace DataAccess.Exceptions
                 var message = GetErrorMessage(validationException);
                 throw new RepositoryViolationException(message, validationException);
             }
+
+            successor.Handle(exception);
         }
+
+        public IRepositoryExceptionHandler Successor { get; private set; }
 
         private static string GetErrorMessage(DbEntityValidationException validationException)
         {
@@ -26,7 +38,7 @@ namespace DataAccess.Exceptions
                 AppendLineFormat(sb, "Entity [{0}] in state {1} has the following errors: ", entityErrors.Entry.Entity.GetType().Name, entityErrors.Entry.State);
                 foreach (var err in entityErrors.ValidationErrors)
                 {
-                    AppendLineFormat(sb,"\tPropery [{0}]: {1}", err.PropertyName, err.ErrorMessage);
+                    AppendLineFormat(sb, "\tPropery [{0}]: {1}", err.PropertyName, err.ErrorMessage);
                 }
             }
             return sb.ToString();

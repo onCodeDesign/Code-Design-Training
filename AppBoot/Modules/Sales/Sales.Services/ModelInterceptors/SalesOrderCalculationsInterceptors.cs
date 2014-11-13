@@ -4,7 +4,7 @@ using Seido.AppBoot;
 
 namespace Sales.ModelInterceptors
 {
-    [Service("SalesOrderCalculationsInterceptors", typeof(IEntityEntryFacade<SalesOrderHeader>))]
+    [Service("SalesOrderCalculationsInterceptors", typeof(IEntityInterceptor<SalesOrderHeader>))]
     class SalesOrderCalculationsInterceptors : EntityInterceptor<SalesOrderHeader>
     {
         public override void OnSave(IEntityEntryFacade<SalesOrderHeader> entry, IRepository repository)

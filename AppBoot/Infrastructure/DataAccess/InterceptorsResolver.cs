@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using iQuarc.SystemEx.Priority;
 using Microsoft.Practices.ServiceLocation;
-using Seido.AppBoot;
+using iQuarc.AppBoot;
 
 namespace DataAccess
 {

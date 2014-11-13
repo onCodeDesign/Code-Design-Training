@@ -1,11 +1,19 @@
 ﻿using System;
 using System.Data.Entity.Core;
+using DataAccess.Exceptions;
 using iQuarc.SystemEx;
 
-namespace DataAccess.Exceptions
+namespace DataAccess.EfRepositoryExceptionHandler
 {
     class RepositoryUpdateExceptionHandler : IRepositoryExceptionHandler
     {
+        private readonly IRepositoryExceptionHandler successor;
+
+        public RepositoryUpdateExceptionHandler(IRepositoryExceptionHandler successor)
+        {
+            this.successor = successor;
+        }
+
         public void Handle(Exception exception)
         {
             var updateException = exception.FirstInner<UpdateException>();
@@ -13,6 +21,8 @@ namespace DataAccess.Exceptions
             {
                 throw new RepositoryUpdateException(updateException);
             }
+
+            successor.Handle(exception);
         }
     }
 }

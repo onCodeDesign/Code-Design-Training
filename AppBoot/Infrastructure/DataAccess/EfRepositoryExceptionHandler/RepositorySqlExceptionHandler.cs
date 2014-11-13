@@ -1,11 +1,19 @@
 ﻿using System;
 using System.Data.SqlClient;
+using DataAccess.Exceptions;
 using iQuarc.SystemEx;
 
-namespace DataAccess.Exceptions
+namespace DataAccess.EfRepositoryExceptionHandler
 {
     class RepositorySqlExceptionHandler : IRepositoryExceptionHandler
     {
+        private readonly IRepositoryExceptionHandler successor;
+
+        public RepositorySqlExceptionHandler(IRepositoryExceptionHandler successor)
+        {
+            this.successor = successor;
+        }
+
         public void Handle(Exception exception)
         {
             var sqlException = exception.FirstInner<SqlException>();
@@ -26,6 +34,8 @@ namespace DataAccess.Exceptions
                         throw new RepositoryViolationException(sqlException);
                 }
             }
+
+            successor.Handle(exception);
         }
     }
 }

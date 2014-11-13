@@ -6,22 +6,14 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Transactions;
 using DataAccess.DbContexts;
+using DataAccess.EfRepositoryExceptionHandler;
 using DataAccess.Exceptions;
-using Seido.AppBoot;
+using iQuarc.AppBoot;
 
 namespace DataAccess
 {
-    public class OrdersRepository : IOrdersRepository
-{
-    
-}
-
-    public interface IOrdersRepository
-    {
-    }
-
     [Service(typeof (IRepository))]
-    public class EfRepository : IRepository, IDisposable
+    class EfRepository : IRepository, IDisposable
     {
         private readonly IInterceptorsResolver interceptorsResolver;
         private DbContext context;
@@ -33,14 +25,7 @@ namespace DataAccess
             this.globalInterceptors = interceptorsResolver.GetGlobalInterceptors();
         }
 
-        private static readonly IRepositoryExceptionHandler[] exceptionHandlers =
-        {
-            new RepositorySqlExceptionHandler(),
-            new RepositoryConcurrencyExceptionHandler(),
-            new RepositoryUpdateExceptionHandler(),
-            new RepositoryDbEntityValidationExceptionHandler(),
-            new RepositoryDefaultExceptionHandler()
-        };
+        private static readonly IRepositoryExceptionHandler exceptionHandlers = new RepositoryExceptionHandler();
 
         public IQueryable<T> GetEntities<T>() where T : class
         {
@@ -63,7 +48,7 @@ namespace DataAccess
             get
             {
                 if (context == null)
-                context = CreateContext();
+                    context = CreateContext();
                 return context;
             }
         }
@@ -71,7 +56,7 @@ namespace DataAccess
         private SalesEntities CreateContext()
         {
             SalesEntities salesEntities = new SalesEntities();
-            ObjectContext objectContext = ((IObjectContextAdapter)salesEntities).ObjectContext;
+            ObjectContext objectContext = ((IObjectContextAdapter) salesEntities).ObjectContext;
             objectContext.ObjectMaterialized += OnEntityLoaded;
 
             return salesEntities;
@@ -98,10 +83,7 @@ namespace DataAccess
 
         private static void Handle(Exception exception)
         {
-            foreach (var exceptionHandler in exceptionHandlers)
-            {
-                exceptionHandler.Handle(exception);
-            }
+            exceptionHandlers.Handle(exception);
         }
 
         private sealed class EfUnitOfWork : IUnitOfWork

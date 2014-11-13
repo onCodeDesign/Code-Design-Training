@@ -105,11 +105,13 @@ namespace Sales
             });
         }
 
-        private bool ValidateProducts(OrderRequest order)
+        private bool ValidateProducts(OrderRequest request)
         {
-            var requiredByCode = order.Products.Where(o => o.Product.ProductId == null && o.Product.Code != null);
-            List<string> requiredCodes = requiredByCode.Select(p => p.Product.Code).ToList();
+            var requestsByProductCode = request.Products
+                        .Where(o => o.Product.ProductId == null && o.Product.Code != null);
+            List<string> requiredCodes = requestsByProductCode.Select(p => p.Product.Code).ToList();
             var productsByCode = repository.GetEntities<Product>().Where(p => requiredCodes.Contains(p.ProductNumber));
+           
             //TODO enrich each product from requiredByCode with the products from DB. If there are codes for which there are no products return false
 
             // validate that required by Id is correct
