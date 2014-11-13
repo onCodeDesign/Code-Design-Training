@@ -6,26 +6,36 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 {
     abstract class LogSource
     {
-        protected abstract string GetVersion(string logTrace);
-        protected abstract DateTime GetTime(string logTrace);
-        protected abstract string GetDescription(string logTrace);
-        protected abstract int GetSeverity(string logTrace);
+        protected int messageIndex;
 
         public IEnumerable<LogEntry> GetAllLogEntries()
         {
-            IEnumerable<string> logTraces = LoadAllLogEntires();
+            IEnumerable<string> logMessages = LoadLogMessages();
 
-            foreach (var logTrace in logTraces)
+            foreach (var message in logMessages)
             {
                 yield return new LogEntry
                 {
-                    Time = GetTime(logTrace),
-                    Severity = GetSeverity(logTrace),
-                    Description = GetDescription(logTrace),
-                    Version = GetVersion(logTrace),
-                    Body = logTrace
+                    Time = GetTime(message),
+                    Severity = GetSeverity(message),
+                    Description = GetDescription(message),
+                    Version = GetVersion(message),
+                    Body = message
                 };
             }
+        }
+
+        private IEnumerable<string> LoadLogMessages()
+        {
+            messageIndex = 0;
+
+            // This is the algorithm / code we would like to reuse.
+            //    it reads the data source with the log traces and splits it in trace messages 
+            
+            // Base class may put here, or in GetAllLogEntries(), some data into some protected fields to make them available to the inheritors
+            messageIndex++;
+
+            throw new NotImplementedException();
         }
 
         public IEnumerable<LogEntry> GetCriticalLogEntries()
@@ -33,34 +43,31 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
             return GetAllLogEntries().Where(l => l.Severity > 10);
         }
 
-        private IEnumerable<string> LoadAllLogEntires()
-        {
-            // this is the algorithm / code we would like to reuse
-            // base class may put here, or in GetAllLogEntries, some data into some protected fields to make them available to the inheritors
-
-            throw new NotImplementedException();
-        }
+        protected abstract string GetVersion(string logMessage);
+        protected abstract DateTime GetTime(string logMessage);
+        protected abstract string GetDescription(string logMessage);
+        protected abstract int GetSeverity(string logMessage);
     }
 
 
     class XmlLogSource : LogSource
     {
-        protected override string GetVersion(string logTrace)
+        protected override string GetVersion(string logMessage)
         {
             throw new NotImplementedException();
         }
 
-        protected override DateTime GetTime(string logTrace)
+        protected override DateTime GetTime(string logMessage)
         {
             throw new NotImplementedException();
         }
 
-        protected override string GetDescription(string logTrace)
+        protected override string GetDescription(string logMessage)
         {
             throw new NotImplementedException();
         }
 
-        protected override int GetSeverity(string logTrace)
+        protected override int GetSeverity(string logMessage)
         {
             throw new NotImplementedException();
         }
@@ -68,22 +75,22 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 
     class CsvLogSource : LogSource
     {
-        protected override string GetVersion(string logTrace)
+        protected override string GetVersion(string logMessage)
         {
             throw new NotImplementedException();
         }
 
-        protected override DateTime GetTime(string logTrace)
+        protected override DateTime GetTime(string logMessage)
         {
             throw new NotImplementedException();
         }
 
-        protected override string GetDescription(string logTrace)
+        protected override string GetDescription(string logMessage)
         {
             throw new NotImplementedException();
         }
 
-        protected override int GetSeverity(string logTrace)
+        protected override int GetSeverity(string logMessage)
         {
             throw new NotImplementedException();
         }

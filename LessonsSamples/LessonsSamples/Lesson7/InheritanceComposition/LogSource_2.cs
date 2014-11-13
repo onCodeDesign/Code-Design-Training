@@ -6,26 +6,26 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 {
     sealed class LogSource_2
     {
-        private readonly ILogTraceParser traceParser;
+        private readonly ILogMessageParser messageParser;
 
-        public LogSource_2(ILogTraceParser traceParser)
+        public LogSource_2(ILogMessageParser messageParser)
         {
-            this.traceParser = traceParser;
+            this.messageParser = messageParser;
         }
 
         public IEnumerable<LogEntry> GetAllLogEntries()
         {
-            IEnumerable<string> logTraces = LoadAllLogEntires();
+            IEnumerable<string> logMessages = LoadAllLogEntires();
 
-            foreach (var logTrace in logTraces)
+            foreach (var message in logMessages)
             {
                 yield return new LogEntry
                 {
-                    Time = traceParser.GetTime(logTrace),
-                    Severity = traceParser.GetSeverity(logTrace),
-                    Description = traceParser.GetDescription(logTrace),
-                    Version = traceParser.GetVersion(logTrace),
-                    Body = logTrace
+                    Time = messageParser.GetTime(message),
+                    Severity = messageParser.GetSeverity(message),
+                    Description = messageParser.GetDescription(message),
+                    Version = messageParser.GetVersion(message),
+                    Body = message
                 };
             }
         }
@@ -37,54 +37,56 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 
         private IEnumerable<string> LoadAllLogEntires()
         {
-            // this is the algorithm / code we would like to reuse
-            // any communication /  interaction between this code and the format readers must be explicit into the interface
+            // This is the algorithm / code we would like to reuse.
+            //    it reads the data source with the log traces and splits it in trace messages 
+
+            // Any communication /  interaction between this code and the parsers must be explicit into the interface
 
             throw new NotImplementedException();
         }
     }
 
-    internal class XmlLogTraceParser : ILogTraceParser
+    internal class XmlLogMessageParser : ILogMessageParser
     {
-        public string GetVersion(string logTrace)
+        public string GetVersion(string logMessage)
         {
             throw new NotImplementedException();
         }
 
-        public DateTime GetTime(string logTrace)
+        public DateTime GetTime(string logMessage)
         {
             throw new NotImplementedException();
         }
 
-        public int GetSeverity(string logTrace)
+        public int GetSeverity(string logMessage)
         {
             throw new NotImplementedException();
         }
 
-        public string GetDescription(string logTrace)
+        public string GetDescription(string logMessage)
         {
             throw new NotImplementedException();
         }
     }
 
-    class CsvLogTraceParser : ILogTraceParser
+    class CsvLogMessageParser : ILogMessageParser
     {
-        public string GetVersion(string logTrace)
+        public string GetVersion(string logMessage)
         {
             throw new NotImplementedException();
         }
 
-        public DateTime GetTime(string logTrace)
+        public DateTime GetTime(string logMessage)
         {
             throw new NotImplementedException();
         }
 
-        public int GetSeverity(string logTrace)
+        public int GetSeverity(string logMessage)
         {
             throw new NotImplementedException();
         }
 
-        public string GetDescription(string logTrace)
+        public string GetDescription(string logMessage)
         {
             throw new NotImplementedException();
         }

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="LessonsSamples.Lesson7.InheritanceComposition.LogSource">
-    <Position X="3.75" Y="4" Width="1.5" />
+    <Position X="3.5" Y="3.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AwAAAAAAAoAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AwAAAACAAIAAAAAAYAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>Lesson7\InheritanceComposition\LogSource.cs</FileName>
     </TypeIdentifier>
   </Class>
