@@ -115,7 +115,7 @@
     <Compile Include="Lesson7\ErrorHandling\DeviceController.cs" />
     <Compile Include="Lesson7\ErrorHandling\CodeSnippet.cs" />
     <Compile Include="Lesson7\InheritanceComposition\Account.cs" />
-    <Compile Include="Lesson7\InheritanceComposition\ILogTraceParser.cs" />
+    <Compile Include="Lesson7\InheritanceComposition\ILogMessageParser.cs" />
     <Compile Include="Lesson7\InheritanceComposition\LogEntry.cs" />
     <Compile Include="Lesson7\InheritanceComposition\LogSource.cs" />
     <Compile Include="Lesson7\InheritanceComposition\LogSource_2.cs" />
@@ -126,6 +126,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Lesson7\InheritanceComposition\LogSource.cd" />
+    <None Include="Lesson7\InheritanceComposition\LogSource_2.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
