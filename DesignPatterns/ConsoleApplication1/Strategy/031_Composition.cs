@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Composite.Graphics;
+using Composite.Graphics1;
 
 namespace ConsoleApplication1.Strategy
 {

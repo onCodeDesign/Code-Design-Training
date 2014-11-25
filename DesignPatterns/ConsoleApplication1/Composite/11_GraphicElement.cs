@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Composite.Graphics
+namespace Composite.Graphics2
 {
     public interface IGraphicElement
     {
@@ -9,9 +9,13 @@ namespace Composite.Graphics
 
         int Order { get; set; }
 
+        IGraphicElement Parent { get; set; }
+    }
+
+    interface IGraphicElementContainer : IGraphicElement
+    {
         void Add(IGraphicElement childElement);
         void Remove(IGraphicElement element);
         IEnumerable<IGraphicElement> GetChildElements();
-        IGraphicElement Parent { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using AbstractFactory;
-using Composite.Graphics;
+using Composite.Graphics1;
 using ConsoleApplication1.ChainOfResponsibility;
 using ConsoleApplication1.Strategy;
 using Decorator;

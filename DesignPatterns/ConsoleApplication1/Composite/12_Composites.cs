@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Composite.Graphics
+namespace Composite.Graphics2
 {
-    public class Picture : IGraphicElement, IEnumerable<IGraphicElement>
+    public class Picture : IGraphicElementContainer, IEnumerable<IGraphicElement>
     {
         private readonly LinkedList<IGraphicElement> children = new LinkedList<IGraphicElement>();
 
@@ -13,7 +13,7 @@ namespace Composite.Graphics
             string pci = string.Format("Picture {0} containing:", Name);
             pci.Display(leftMargin);
 
-            foreach (var graphicElement in children)//.OrderBy(e => e.Name))
+            foreach (var graphicElement in children) //.OrderBy(e => e.Name))
             {
                 graphicElement.Draw(leftMargin + 1);
             }
@@ -41,7 +41,9 @@ namespace Composite.Graphics
 
         public IGraphicElement Parent { get; set; }
 
+
         #region IEnumerable
+        // This is implemented only to allow a array initialization in the client code
 
         public IEnumerator<IGraphicElement> GetEnumerator()
         {
@@ -54,8 +56,8 @@ namespace Composite.Graphics
         }
 
         #endregion
-    }
 
+    }
 
     public abstract class CompositeElement : IGraphicElement, IEnumerable<IGraphicElement>
     {
@@ -103,10 +105,9 @@ namespace Composite.Graphics
         }
 
         #endregion
-
     }
 
-    internal class Group : CompositeElement
+    class Group : CompositeElement
     {
         public Group()
         {

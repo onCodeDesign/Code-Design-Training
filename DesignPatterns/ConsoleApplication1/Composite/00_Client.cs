@@ -1,8 +1,18 @@
-﻿namespace Composite.Graphics
+﻿using System;
+using Composite.Graphics2;
+
+namespace Composite.Graphics1
 {
     public static class CompositeClient
     {
         public static void Demo()
+        {
+            Demo1();
+
+            Demo2();
+        }
+
+        private static IGraphicElement[] Demo1()
         {
             var drawing = new IGraphicElement[]
             {
@@ -30,9 +40,25 @@
             };
 
             drawing.Draw();
+            return drawing;
+        }
 
-            //var rootGroup = new Group(drawing);
-            //rootGroup.Draw();
+        private static void Demo2()
+        {
+            Console.WriteLine("Build a drawing ...");
+            var line = new Line("A first line");
+            
+            //var lineInThePicture
+            var picture = new Picture();
+
+
+            Console.WriteLine("Edit the drawing ...");
+
+        }
+
+        private static IGraphicElementContainer BuildDrawing()
+        {
+            throw new NotImplementedException();
         }
     }
 }

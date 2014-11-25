@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Composite.Graphics1
+namespace Composite.Graphics2
 {
     internal static class DisplayExtension
     {
