@@ -15,6 +15,7 @@ namespace LessonsSamples
     {
         public string Description { get; set; }
         public Customer Customer { get; set; }
+        public decimal ApprovedAmmount { get; set; }
         public DateTime OrderDate { get; set; }
     }
 

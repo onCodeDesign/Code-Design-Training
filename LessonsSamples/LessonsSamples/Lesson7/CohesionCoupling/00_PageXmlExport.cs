@@ -14,13 +14,13 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
         private const string exportFolder = "c:\temp";
 
         public bool ExportCustomerPage(
-            string format,
+            string fileNameFormat,
             bool overwrite,
             string customerName,
             int maxSalesOrders,
             bool addCustomerDetails)
         {
-            string fileName = string.Format(format, "CustomerPage", customerName, DateTime.Now);
+            string fileName = string.Format(fileNameFormat, "CustomerPage", customerName, DateTime.Now);
             string filePath = Path.Combine(exportFolder, fileName);
 
             if (!overwrite && File.Exists(filePath))
@@ -134,7 +134,7 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             return true;
         }
 
-        public bool ExportOrders(string fileNameFormat, bool overwrite, int maxSalesOrders, string customerName)
+        public bool ExportOrders(string fileNameFormat, bool overwrite, string customerName)
         {
             string fileName = string.Format(fileNameFormat, "CustomerOrdersPage", customerName, DateTime.Now);
             string filePath = Path.Combine(exportFolder, fileName);
@@ -148,8 +148,8 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             {
                 var orders = repository.GetEntities<Order>()
                                        .Where(o => o.Customer.CompanyName == content.Customer.Name)
-                                       .OrderBy(o => o.OrderDate)
-                                       .Take(maxSalesOrders);
+                                       .OrderBy(o => o.ApprovedAmmount)
+                                       .ThenBy(o => o.OrderDate);
 
                 //enrich content with orders
             }
@@ -201,12 +201,6 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             }
         }
 
-        private Dictionary<string, IEnumerable<Order>> GroupOrdersByCustomer(IEnumerable<Order> orders)
-        {
-            // group orders by customer name and return them in a dictionary, ordered by OrderDate
-            throw new NotImplementedException();
-        }
-
         public bool ExportPagesFromOrders(string fileNameFormat,
             bool overwrite,
             IEnumerable<Order> orders,
@@ -230,6 +224,12 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
                 }
             }
             return true;
+        }
+
+        private Dictionary<string, IEnumerable<Order>> GroupOrdersByCustomer(IEnumerable<Order> orders)
+        {
+            // group orders by customer name and return them in a dictionary, ordered by OrderDate
+            throw new NotImplementedException();
         }
     }
 }

@@ -116,8 +116,8 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             {
                 var orders = repository.GetEntities<Order>()
                                        .Where(o => o.Customer.CompanyName == content.Customer.Name)
-                                       .OrderBy(o => o.OrderDate)
-                                       .Take(maxSalesOrders);
+                                       .OrderBy(o => o.ApprovedAmmount)
+                                       .ThenBy(o => o.OrderDate);
 
                 //enrich content with orders
             }

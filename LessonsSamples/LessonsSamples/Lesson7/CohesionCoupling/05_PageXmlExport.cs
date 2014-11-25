@@ -85,7 +85,6 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
         }
 
         public IEnumerable<PageXml> GetPagesFromOrders(IEnumerable<Order> orders)
-
         {
             Dictionary<string, IEnumerable<Order>> customerOrders = GroupOrdersByCustomer(orders);
             foreach (var customerName in customerOrders.Keys)

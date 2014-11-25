@@ -15,7 +15,7 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
         private readonly string fileNameFormat; //used in 3/5 methods
         private readonly bool overwrite; //used in 3/5 methods
 
-        private readonly int maxSalesOrders; // used in 4/5 methods
+        private readonly int maxSalesOrders; // used in 3/5 methods
         private readonly bool addCustomerDetails; // used in 2/5 methods
 
         private readonly ICrmService crmService; // used in 3/5 methods
@@ -160,8 +160,8 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             {
                 var orders = repository.GetEntities<Order>()
                                        .Where(o => o.Customer.CompanyName == content.Customer.Name)
-                                       .OrderBy(o => o.OrderDate)
-                                       .Take(maxSalesOrders);
+                                       .OrderBy(o => o.ApprovedAmmount)
+                                       .ThenBy(o => o.OrderDate);
 
                 //enrich content with orders
             }
