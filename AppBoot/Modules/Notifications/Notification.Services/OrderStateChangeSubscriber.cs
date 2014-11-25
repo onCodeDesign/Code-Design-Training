@@ -1,7 +1,7 @@
 ﻿using System;
 using Contracts.Notifications;
 using Contracts.Sales;
-using Seido.AppBoot;
+using iQuarc.AppBoot;
 
 namespace Notifications
 {

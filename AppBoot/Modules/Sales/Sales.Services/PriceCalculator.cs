@@ -1,6 +1,6 @@
 ﻿using Contracts.Sales;
+using iQuarc.AppBoot;
 using Sales.DataModel;
-using Seido.AppBoot;
 
 namespace Sales
 {

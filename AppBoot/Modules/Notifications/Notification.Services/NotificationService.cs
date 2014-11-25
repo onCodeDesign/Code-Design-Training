@@ -1,6 +1,6 @@
 ﻿using Contracts.Notifications;
+using iQuarc.AppBoot;
 using Microsoft.Practices.ServiceLocation;
-using Seido.AppBoot;
 
 namespace Notifications
 {

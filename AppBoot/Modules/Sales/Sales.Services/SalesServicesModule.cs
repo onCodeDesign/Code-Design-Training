@@ -1,5 +1,5 @@
 ﻿using Contracts.Notifications;
-using Seido.AppBoot;
+using iQuarc.AppBoot;
 
 namespace Sales
 {
