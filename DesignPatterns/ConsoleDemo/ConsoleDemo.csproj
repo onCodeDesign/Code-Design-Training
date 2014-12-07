@@ -52,9 +52,9 @@
     <Compile Include="ChainOfResponsibility\023_FileManager2.cs" />
     <Compile Include="ChainOfResponsibility\PurchaseOrder.cs" />
     <Compile Include="ChainOfResponsibility\021_RequestHandler.cs" />
-    <Compile Include="Composite\10_Client - Copy.cs" />
-    <Compile Include="Composite\12_Composites.cs" />
-    <Compile Include="Composite\13_Leafs.cs" />
+    <Compile Include="Composite\10_Client.cs" />
+    <Compile Include="Composite\13_Composites.cs" />
+    <Compile Include="Composite\12_Leafs.cs" />
     <Compile Include="Composite\02_Leafs.cs" />
     <Compile Include="Composite\01_IGraphicElement.cs" />
     <Compile Include="Composite\03_Composites.cs" />

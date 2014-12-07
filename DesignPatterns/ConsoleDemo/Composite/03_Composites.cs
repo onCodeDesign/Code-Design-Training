@@ -2,18 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ConsoleDemo.Composite.Graphics1
+namespace ConsoleDemo.Composite.Transparency
 {
     public class Picture : IGraphicElement, IEnumerable<IGraphicElement>
     {
         private readonly LinkedList<IGraphicElement> children = new LinkedList<IGraphicElement>();
+
+        public Picture()
+        {
+        }
+
+        public Picture(string name)
+        {
+            Name = name;
+        }
 
         public void Draw(int leftMargin)
         {
             string pci = string.Format("Picture {0} containing:", Name);
             pci.Display(leftMargin);
 
-            foreach (var graphicElement in children)//.OrderBy(e => e.Name))
+            foreach (var graphicElement in children) //.OrderBy(e => e.Name))
             {
                 graphicElement.Draw(leftMargin + 1);
             }
@@ -62,6 +71,11 @@ namespace ConsoleDemo.Composite.Graphics1
         private readonly LinkedList<IGraphicElement> children = new LinkedList<IGraphicElement>();
         private int lastOrder;
 
+        protected CompositeElement()
+        {
+            Name = string.Empty;
+        }
+
         public abstract void Draw(int leftMargin);
 
         public string Name { get; set; }
@@ -103,10 +117,9 @@ namespace ConsoleDemo.Composite.Graphics1
         }
 
         #endregion
-
     }
 
-    internal class Group : CompositeElement
+    class Group : CompositeElement
     {
         public Group()
         {
@@ -128,6 +141,18 @@ namespace ConsoleDemo.Composite.Graphics1
             foreach (var element in children)
             {
                 element.Draw(leftMargin + 2);
+            }
+        }
+    }
+
+    class Drawing : CompositeElement
+    {
+        public override void Draw(int leftMargin)
+        {
+            var children = GetChildElements();
+            foreach (var graphicElement in children)
+            {
+                graphicElement.Draw(leftMargin);
             }
         }
     }

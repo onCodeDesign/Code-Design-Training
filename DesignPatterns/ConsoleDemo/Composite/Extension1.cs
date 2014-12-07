@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ConsoleDemo.Composite.Graphics2
+namespace ConsoleDemo.Composite.Safe
 {
     internal static class DisplayExtension
     {

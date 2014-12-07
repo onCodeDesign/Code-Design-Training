@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConsoleDemo.Composite.Transparency
+namespace ConsoleDemo.Composite.Safe
 {
     public static class CompositeClient
     {
@@ -32,9 +32,14 @@ namespace ConsoleDemo.Composite.Transparency
             {
                 if (element.Name.Contains("great"))
                 {
-                    element.Add(text);
+                    IGraphicElementContainer container = element as IGraphicElementContainer;
+                    if (container != null)
+                    {
+                        container.Add(text);
+                    }
                 }
             }
+
 
             Console.WriteLine("\n-----------The drawing after edit ---------");
             drawing.Draw();

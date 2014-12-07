@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ConsoleDemo.Composite.Graphics2
+namespace ConsoleDemo.Composite.Safe
 {
     public interface IGraphicElement
     {
@@ -12,7 +12,7 @@ namespace ConsoleDemo.Composite.Graphics2
         IGraphicElement Parent { get; set; }
     }
 
-    interface IGraphicElementContainer : IGraphicElement
+    public interface IGraphicElementContainer : IGraphicElement
     {
         void Add(IGraphicElement childElement);
         void Remove(IGraphicElement element);

@@ -1,26 +1,31 @@
 ﻿using System;
-using ConsoleDemo.Composite.Graphics1;
+using ConsoleDemo.AbstractFactory;
+using ConsoleDemo.ChainOfResponsibility;
+using ConsoleDemo.Decorator;
 using ConsoleDemo.Strategy;
 
-public static class Program
+namespace ConsoleDemo
 {
-    public static void Main()
+    public static class Program
     {
-        //AbstractFactory.ClientApp.RunAbstractFactoryDemo();
+        public static void Main()
+        {
+            ClientApp.RunAbstractFactoryDemo();
 
-        //WidgetsClientApp.Demo();
-        
-        //DecoratorClient.Run();
+            //WidgetsClientApp.Demo();
 
-        //CompositeClient.Demo();
+            //DecoratorClient.Run();
 
-        StrategyClient.RobotsDemo();
+            //Composite.Transparency.CompositeClient.Demo();
+            //Composite.Safe.CompositeClient.Demo();
 
-        //ChainOfResponsibilityClient.PurchaseOrderApproverDemo();
+            //StrategyClient.RobotsDemo();
+
+            //ChainOfResponsibilityClient.PurchaseOrderApproverDemo();
 
 
-
-        // Wait for user input
-        Console.ReadKey();
+            // Wait for user input
+            Console.ReadKey();
+        }
     }
 }

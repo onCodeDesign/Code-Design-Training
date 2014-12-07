@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
-namespace ConsoleDemo.Composite.Graphics1
+namespace ConsoleDemo.Composite.Transparency
 {
     public class Line : IGraphicElement
     {
@@ -20,12 +21,12 @@ namespace ConsoleDemo.Composite.Graphics1
 
         public void Add(IGraphicElement childElement)
         {
-            throw new NotSupportedException("You cannot add a child element to a Line");
+            Debug.Fail("You cannot add a child element to a Line");
         }
 
         public void Remove(IGraphicElement element)
         {
-            throw new NotSupportedException("A Line does not have children to remove from");
+            Debug.Fail("A Line does not have children to remove from") ;
         }
 
         public IEnumerable<IGraphicElement> GetChildElements()
@@ -40,6 +41,11 @@ namespace ConsoleDemo.Composite.Graphics1
     public abstract class PrimitiveGraphic : IGraphicElement
     {
         public abstract void Draw(int leftMargin);
+
+        protected PrimitiveGraphic()
+        {
+            Name = string.Empty;
+        }
 
         public string Name { get; set; }
         public int Order { get; set; }
@@ -72,23 +78,42 @@ namespace ConsoleDemo.Composite.Graphics1
 
     public sealed class GraphicText : PrimitiveGraphic
     {
-        public GraphicText(string text, string name)
-        {
-            Text = text;
-            Name = name;
-        }
+        private readonly ConsoleColor backColor;
 
         public GraphicText(string text)
             : this(text, text)
         {
         }
 
+        public GraphicText(string text, ConsoleColor backColor)
+            : this(text, text, backColor)
+        {
+        }
+
+        public GraphicText(string text, string name)
+            : this(text, name, ConsoleColor.Black)
+        {
+        }
+
+        public GraphicText(string text, string name, ConsoleColor backColor)
+        {
+            Text = text;
+            Name = name;
+            this.backColor = backColor;
+        }
+
         public string Text { get; set; }
 
         public override void Draw(int leftMargin)
         {
-            string formatedText = string.Format("FormatedText: '{0}", Text);
+            string formatedText = string.Format("FormatedText: {0}", Text);
+
+            var color = Console.BackgroundColor;
+            Console.BackgroundColor = backColor;
+
             formatedText.Display(leftMargin);
+
+            Console.BackgroundColor = color;
         }
     }
 }

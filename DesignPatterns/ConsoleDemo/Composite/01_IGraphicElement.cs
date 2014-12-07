@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ConsoleDemo.Composite.Graphics1
+namespace ConsoleDemo.Composite.Transparency
 {
     public interface IGraphicElement
     {

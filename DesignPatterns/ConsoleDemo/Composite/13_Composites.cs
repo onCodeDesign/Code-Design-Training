@@ -2,11 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ConsoleDemo.Composite.Graphics2
+namespace ConsoleDemo.Composite.Safe
 {
     public class Picture : IGraphicElementContainer, IEnumerable<IGraphicElement>
     {
         private readonly LinkedList<IGraphicElement> children = new LinkedList<IGraphicElement>();
+
+        public Picture()
+            : this(string.Empty)
+        {
+        }
+
+        public Picture(string name)
+        {
+            Name = name;
+        }
 
         public void Draw(int leftMargin)
         {
@@ -43,6 +53,7 @@ namespace ConsoleDemo.Composite.Graphics2
 
 
         #region IEnumerable
+
         // This is implemented only to allow a array initialization in the client code
 
         public IEnumerator<IGraphicElement> GetEnumerator()
@@ -63,6 +74,11 @@ namespace ConsoleDemo.Composite.Graphics2
     {
         private readonly LinkedList<IGraphicElement> children = new LinkedList<IGraphicElement>();
         private int lastOrder;
+
+        protected CompositeElement()
+        {
+            Name = string.Empty;
+        }
 
         public abstract void Draw(int leftMargin);
 
@@ -129,6 +145,22 @@ namespace ConsoleDemo.Composite.Graphics2
             foreach (var element in children)
             {
                 element.Draw(leftMargin + 2);
+            }
+        }
+    }
+
+    class Drawing : CompositeElement
+    {
+        public Drawing()
+        {
+        }
+
+        public override void Draw(int leftMargin)
+        {
+            var children = GetChildElements();
+            foreach (var graphicElement in children)
+            {
+                graphicElement.Draw(leftMargin);
             }
         }
     }
