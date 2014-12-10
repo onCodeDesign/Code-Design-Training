@@ -122,6 +122,7 @@
     <Compile Include="Lesson7\ErrorHandling\DeviceController.cs" />
     <Compile Include="Lesson7\ErrorHandling\CodeSnippet.cs" />
     <Compile Include="Lesson7\InheritanceComposition\Account.cs" />
+    <Compile Include="Lesson7\InheritanceComposition\AccountClientCode.cs" />
     <Compile Include="Lesson7\InheritanceComposition\ILogMessageParser.cs" />
     <Compile Include="Lesson7\InheritanceComposition\LogEntry.cs" />
     <Compile Include="Lesson7\InheritanceComposition\LogSource.cs" />

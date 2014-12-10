@@ -1,34 +1,15 @@
-﻿using System.Runtime.InteropServices.WindowsRuntime;
+﻿using System;
 
 namespace LessonsSamples.Lesson7.InheritanceComposition
 {
-    static class AccountClientCode
-    {
-        public static decimal CalculateTotalMonthlyInterest(Account[] accounts)
-        {
-            decimal ammount = 0;
-            for (int i = 0; i < accounts.Length; i++)
-            {
-                decimal interest = accounts[i].MonthlyInterest();
-
-                if (accounts[i] is AutoLoanAccount)
-                    interest = -1*interest;
-
-                ammount += interest;
-            }
-
-            return ammount;
-        }
-    }
-
-
     class Account
     {
         private decimal ammount;
         private decimal interestRate;
 
         protected decimal CalculateLastMonthTaxes()
-        {   // ...
+        {
+            // ...
             return 100;
         }
 
@@ -55,27 +36,33 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
         {
             // ... 
             decimal taxes = CalculateLastMonthTaxes();
+            decimal deposits = CalculateYearlyDeposits();
+            // ... 
 
-            decimal lastMontProfit = CalculateLastMonthProfit();
-
-            return taxes - lastMontProfit + MonthlyInterest();
+            return Ammount - deposits - taxes + MonthlyInterest();
         }
 
-        private decimal CalculateLastMonthProfit()
+        private decimal CalculateYearlyDeposits()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 
     class CheckingAccount : Account
     {
-        public decimal InvestmentBenefits()
+        public decimal TransactionsCosts()
         {
+            // ... 
             decimal lastMonthTaxes = CalculateLastMonthTaxes();
-            
+            decimal lastMonthCommissions = CalculateLastMonthCommision();
             // ... 
 
-            return 10;
+            return lastMonthCommissions + lastMonthTaxes;
+        }
+
+        private decimal CalculateLastMonthCommision()
+        {
+            throw new NotImplementedException();
         }
     }
 
@@ -83,9 +70,22 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
     {
         public override void MonthlyRenewal()
         {
-            decimal monthlyTaxes = CalculateLastMonthTaxes(); 
+            base.MonthlyRenewal();
 
-            Ammount = Ammount - MonthlyInterest() - monthlyTaxes;
+            decimal monthlyTaxes = CalculateLastMonthTaxes();
+            decimal monthlyPayment = MonthlyPayments();
+
+            Ammount = Ammount + 2*monthlyTaxes - monthlyPayment;
+        }
+
+        private decimal MonthlyPayments()
+        {
+            throw new NotImplementedException();
+        }
+
+        public decimal TotalPayments()
+        {
+            throw new NotImplementedException();
         }
     }
 }
