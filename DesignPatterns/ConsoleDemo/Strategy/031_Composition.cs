@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace ConsoleDemo.Strategy
 {
@@ -6,50 +7,53 @@ namespace ConsoleDemo.Strategy
     {
         public void DoStuff()
         {
-            Composition quick = new Composition(new SimpleCompositor());
+            PageView quick = new PageView(new InlineStrategy());
 
-            Composition slick = new Composition(new TeXCompositor());
+            PageView slick = new PageView(new TightStrategy());
 
-            Composition iconic = new Composition(new TabularComposition());
+            PageView iconic = new PageView(new CenterStrategy());
         }
     }
 
 
     /// <summary>
-    ///     The Composition class maintains a collection of Component instances, which
+    ///     The PageView class maintains a collection of Component instances, which
     ///     represent text and graphical elements in a document.
-    ///     A composition arranges component objects into lines using an instance of a
-    ///     Compositor subclass, which encapsulates a linebreaking strategy.
+    ///     When size changes, it reformates the content by arranging its components into lines 
+    ///     using a TextWrappingStrategy, which encapsulates a the logic of breaking the compoenent on rows
+    ///     and wrapping the text around the pictures.
     /// 
     ///     Each component has anassociated natural size, stretchability, and shrinkability.
     /// 
     ///     The stretchability defines how much the component can grow beyond its natural size; 
     ///     shrinkability is how much  it can shrink. 
-    ///  
-    ///     The composition passes these values to a compositor, which uses them to determine 
-    ///     the best location for line breaks.
     /// </summary>
-    public class Composition
+    public class PageView
     {
-        private List<Component> components;
+        private readonly ITextWrappingStrategy wrappingStrategy;
+        
+        private IEnumerable<Component> componentsStream;
+        private PageRow rows;
 
-        private readonly ICompositor compositor;
-
-        public Composition(ICompositor compositor)
+        public PageView(ITextWrappingStrategy wrappingStrategy)
         {
-            this.compositor = compositor;
+            this.wrappingStrategy = wrappingStrategy;
         }
 
-        public void Repair(Configuration configuration, int count)
+        public void Format()
         {
             // prepare the arrays with the desired component sizes 
             // ... 
 
             // determine where the breaks are: 
-            LineBreaks lineBreaks = compositor.Compose(configuration, components);
+            rows = wrappingStrategy.Format(componentsStream);
 
-            // lay out components according to line breaks 
-            // ... 
+            Draw();
+        }
+
+        private void Draw()
+        {
+            // layout rows
         }
     }
 
@@ -60,4 +64,18 @@ namespace ConsoleDemo.Strategy
         public int Stretchability { get; set; }
         public int Shrinkability { get; set; }
     }
+
+    public class Text : Component
+    {
+        public string Value { get; set; }
+        public Font Font { get; set; }
+    }
+
+    public class Picture : Component
+    {
+        public Image Image { get; set; }
+    }
+
+    public class Space : Component
+    { }
 }

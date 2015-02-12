@@ -55,6 +55,13 @@ namespace ConsoleDemo.Strategy
             Console.WriteLine(this.name + ": Based on current position " +
                                         "the behavior decides the next Move:"); 
             int command = behaviour.Move();
+
+            ExecuteCommand(command);
+        }
+
+        private void ExecuteCommand(int command)
+        {
+            throw new NotImplementedException();
         }
 
         public string Name

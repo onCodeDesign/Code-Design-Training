@@ -33,7 +33,7 @@ namespace ConsoleDemo.Strategy
         }
     }
 
-    // the client does not need to know about the behaviors. It can directly use the AgresiveRobot
+    // the client does not need to know about the behaviors. It can directly use the AgressiveRobot
     public class AggressiveRobot : GenericRobot<AgressiveBehaviour>
     {
         public AggressiveRobot(string name)

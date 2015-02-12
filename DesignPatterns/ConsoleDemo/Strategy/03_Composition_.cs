@@ -1,68 +1,87 @@
+using System.Collections.Generic;
+
 namespace ConsoleDemo.Strategy
 {
     public class Client_
     {
         public void DoStuff()
         {
-            Composition_ quick = new Composition_(BreakingStrategy.SimpleStrategy);
+            PageView_ inline = new PageView_(TextWrapping.Inline);
 
-            Composition_ slick = new Composition_(BreakingStrategy.TeXStrategy);
+            PageView_ slick = new PageView_(TextWrapping.Tight);
 
-            Composition_ iconic = new Composition_(BreakingStrategy.TabularStrategy);
+            PageView_ iconic = new PageView_(TextWrapping.Center);
         }
     }
 
-    public class Composition_
+    public class PageView_
     {
-        private BreakingStrategy breakingStrategy;
+        private TextWrapping textWrapping;
 
-        public Composition_(BreakingStrategy breakingStrategy)
+        private IEnumerable<Component> componentsStream;
+        private PageRow rows; 
+
+        public PageView_(TextWrapping textWrapping)
         {
-            this.breakingStrategy = breakingStrategy;
-            throw new System.NotImplementedException();
+            this.textWrapping = textWrapping;
         }
 
-        public void Repair(Configuration configuration, int count)
+        public void Format()
         {
             // prepare the arrays with the desired component sizes 
             // ... 
 
-            // determine where the breaks are: 
-            LineBreaks breaks;
-            switch (breakingStrategy)
+            // rebuild the rows filed
+            switch (textWrapping)
             {
-                case BreakingStrategy.SimpleStrategy:
-                    breaks = ComposeWithSimpleCompositor();
+                case TextWrapping.Inline:
+                    rows = InlineWrapping();
                     break;
-                case BreakingStrategy.TeXStrategy:
-                    ComposeWithTeXCompositor();
+                case TextWrapping.Tight:
+                    rows = TightWrapping();
+                    break;
+                case TextWrapping.Center:
+                    rows = CenterWrapping();
                     break;
                     // ... 
             }
-            // merge results with existing composition, if necessary     
+
+            Draw();
         }
 
-        private LineBreaks ComposeWithSimpleCompositor()
+        public void Draw()
         {
-            return new LineBreaks();
+            // layout rows
+        }
+
+        private PageRow InlineWrapping()
+        {
+            return new PageRow();
             // ....
         }
 
-        private LineBreaks ComposeWithTeXCompositor()
+        private PageRow CenterWrapping()
         {
-            return new LineBreaks();
+            return new PageRow();
+            // ....
+        }
+
+        private PageRow TightWrapping()
+        {
+            return new PageRow();
             // .....
         }
     }
 
-    public class LineBreaks
+    public class PageRow
     {
+        public Component[] Components { get; set; }
     }
 
-    public enum BreakingStrategy
+    public enum TextWrapping
     {
-        SimpleStrategy,
-        TeXStrategy,
-        TabularStrategy
+        Inline,
+        Tight,
+        Center
     }
 }

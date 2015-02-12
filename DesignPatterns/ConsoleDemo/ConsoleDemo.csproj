@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -71,7 +72,7 @@
     <Compile Include="Strategy\03_Composition_.cs" />
     <Compile Include="Strategy\Coordonates.cs" />
     <Compile Include="Strategy\04_GenericRobot.cs" />
-    <Compile Include="Strategy\ICompositor.cs" />
+    <Compile Include="Strategy\ITextWrappingStrategy.cs" />
     <Compile Include="Strategy\01_Robots.cs" />
     <Compile Include="Strategy\02_Robot_.cs" />
     <Compile Include="Strategy\_RobotsClient.cs" />
