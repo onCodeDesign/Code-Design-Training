@@ -52,6 +52,8 @@ namespace ConsoleDemo.Composite.Transparency
 
         #region IEnumerable
 
+        // This is implemented only to allow a array initialization in the client code
+        
         public IEnumerator<IGraphicElement> GetEnumerator()
         {
             return GetChildElements().GetEnumerator();

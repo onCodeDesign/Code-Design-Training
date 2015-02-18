@@ -8,10 +8,10 @@ namespace ConsoleDemo.Composite.Transparency
         string Name { get; set; }
 
         int Order { get; set; }
+        IGraphicElement Parent { get; set; }
 
         void Add(IGraphicElement childElement);
         void Remove(IGraphicElement element);
         IEnumerable<IGraphicElement> GetChildElements();
-        IGraphicElement Parent { get; set; }
     }
 }

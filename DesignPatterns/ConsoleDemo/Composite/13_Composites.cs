@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ConsoleDemo.Composite.Safe
+namespace ConsoleDemo.Composite.Safety
 {
     public class Picture : IGraphicElementContainer, IEnumerable<IGraphicElement>
     {
@@ -67,7 +67,6 @@ namespace ConsoleDemo.Composite.Safe
         }
 
         #endregion
-
     }
 
     public abstract class CompositeElement : IGraphicElement, IEnumerable<IGraphicElement>

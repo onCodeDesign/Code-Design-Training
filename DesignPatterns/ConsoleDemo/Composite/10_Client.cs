@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConsoleDemo.Composite.Safe
+namespace ConsoleDemo.Composite.Safety
 {
     public static class CompositeClient
     {

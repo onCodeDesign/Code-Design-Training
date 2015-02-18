@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ConsoleDemo.Composite.Safe
+namespace ConsoleDemo.Composite.Safety
 {
     public interface IGraphicElement
     {
@@ -8,7 +8,6 @@ namespace ConsoleDemo.Composite.Safe
         string Name { get; set; }
 
         int Order { get; set; }
-
         IGraphicElement Parent { get; set; }
     }
 

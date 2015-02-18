@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
 
-namespace ConsoleDemo.Composite.Safe
+namespace ConsoleDemo.Composite.Safety
 {
-    internal static class DisplayExtension
+    static class DisplayExtension
     {
         public static void Display(this string text, int margin)
         {
@@ -11,7 +10,7 @@ namespace ConsoleDemo.Composite.Safe
         }
     }
 
-    internal static class GraphicElementExtensions
+    static class GraphicElementExtensions
     {
         public static void Draw(this IGraphicElement graphic)
         {
