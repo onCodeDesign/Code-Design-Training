@@ -8,8 +8,8 @@ namespace DataAccess.Exceptions
     [Serializable]
     public class ConcurrencyRepositoryViolationException : RepositoryViolationException
     {
-        private const string RepositoryEntityKey = "RepositoryEntity";
-        public IAuditable RepositoryEntity { get; set; }
+        private const string RepositoryEntityKey = "Entity";
+        public object Entity { get; set; }
 
         public ConcurrencyRepositoryViolationException()
         {
@@ -21,31 +21,32 @@ namespace DataAccess.Exceptions
         }
 
         public ConcurrencyRepositoryViolationException(UpdateException exception)
-            : base(exception)
+            : this(string.Empty, exception)
         {
-            var auditable = exception.StateEntries.FirstOrDefault(e => e.Entity is IAuditable);
-            if (auditable != null)
-            {
-                this.RepositoryEntity = auditable.Entity as IAuditable;
-            }
         }
 
-        public ConcurrencyRepositoryViolationException(string message, Exception exception)
+        public ConcurrencyRepositoryViolationException(string message, UpdateException exception)
             : base(message, exception)
         {
+            if (exception.StateEntries != null)
+            {
+                var entry = exception.StateEntries.FirstOrDefault();
+                if (entry != null)
+                    this.Entity = entry.Entity;
+            }
         }
 
 
         protected ConcurrencyRepositoryViolationException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
-            this.RepositoryEntity = (IAuditable)info.GetValue(RepositoryEntityKey, typeof(IAuditable));
+            this.Entity = info.GetValue(RepositoryEntityKey, typeof (object));
         }
 
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             base.GetObjectData(info, context);
-            info.AddValue(RepositoryEntityKey, this.RepositoryEntity, typeof(string));
+            info.AddValue(RepositoryEntityKey, this.Entity, typeof (string));
         }
     }
 }
