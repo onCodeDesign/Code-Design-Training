@@ -1,7 +1,7 @@
 Code Design Training Code Samples
 ==============================
 
-Code samples used in the [Code Design Training](https://florincoros.wordpress.com/training/code-design-training) by [Florin Coros](blog.iquarc.com/florin).
+Code samples used in the [Code Design Training](https://florincoros.wordpress.com/training/code-design-training) by [Florin Coros](http://blog.iquarc.com/florin).
 
 Training home page: https://florincoros.wordpress.com/training/code-design-training
 
