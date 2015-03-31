@@ -168,9 +168,10 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             return true;
         }
 
-        public IEnumerable<PageXml> GetPagesFromOrders( IEnumerable<Order> orders,
-                                                        ICrmService crmService, 
-                                                        ILocationService locationService)
+        public IEnumerable<PageXml> GetPagesFromOrders( 
+			IEnumerable<Order> orders,
+			ICrmService crmService, 
+            ILocationService locationService)
         {
             Dictionary<string, IEnumerable<Order>> customerOrders = GroupOrdersByCustomer(orders);
             foreach (var customerName in customerOrders.Keys)
@@ -206,15 +207,17 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             }
         }
 
-        private Dictionary<string, IEnumerable<Order>> GroupOrdersByCustomer(IEnumerable<Order> orders)
+        private Dictionary<string, IEnumerable<Order>> GroupOrdersByCustomer(
+			IEnumerable<Order> orders)
         {
             // group orders by customer name and return them in a dictionary, ordered by OrderDate
             throw new NotImplementedException();
         }
 
-        public bool ExportPagesFromOrders(  IEnumerable<Order> orders, 
-                                            ICrmService crmService, 
-                                            ILocationService locationService)
+        public bool ExportPagesFromOrders(
+			IEnumerable<Order> orders, 
+            ICrmService crmService, 
+            ILocationService locationService)
         {
             IEnumerable<PageXml> pages = GetPagesFromOrders(orders, crmService, locationService);
             foreach (var pageXml in pages)

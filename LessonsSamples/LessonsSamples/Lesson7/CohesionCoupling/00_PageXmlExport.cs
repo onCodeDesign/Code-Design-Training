@@ -134,7 +134,10 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             return true;
         }
 
-        public bool ExportOrders(string fileNameFormat, bool overwrite, string customerName)
+        public bool ExportOrders(
+			string fileNameFormat, 
+			bool overwrite, 
+			string customerName)
         {
             string fileName = string.Format(fileNameFormat, "CustomerOrdersPage", customerName, DateTime.Now);
             string filePath = Path.Combine(exportFolder, fileName);
@@ -162,7 +165,8 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             return true;
         }
 
-        public IEnumerable<PageXml> GetPagesFromOrders(IEnumerable<Order> orders,
+        public IEnumerable<PageXml> GetPagesFromOrders(
+			IEnumerable<Order> orders,
             int maxSalesOrders,
             ICrmService crmService,
             ILocationService locationService)
