@@ -12,7 +12,7 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
         private readonly IPageFileWriter fileWriter;
         private readonly IExportDataProvider_4 dataProvider;
 
-        private readonly int maxSalesOrders; // used in 4/5 methods
+        private readonly int maxSalesOrders; // used in 3/5 methods
         private readonly bool addCustomerDetails; // used in 2/5 methods
 
         public PageXmlExport_4(
@@ -173,11 +173,5 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             }
             return true;
         }
-    }
-
-    public interface IExportDataProvider_4
-    {
-        CustomerInfo GetCustomerInfo(string name);
-        Coordinates GetCoordinates(string city, string street, string number);
     }
 }

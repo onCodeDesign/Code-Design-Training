@@ -131,10 +131,4 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             return true;
         }
     }
-
-    public interface IExportDataProvider_5
-    {
-        IEnumerable<CustomerData> GetCustomerOrders(string customerName);
-        CustomerInfo GetCustomerInfo(string name);
-    }
 }
