@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Reflection;
+using Contracts.Location;
 using iQuarc.AppBoot;
+using Microsoft.Practices.ServiceLocation;
 
 namespace ConsoleApplication
 {
@@ -12,6 +14,9 @@ namespace ConsoleApplication
             var assemblies = GetApplicationAssemblies();
 
             bootstrapper.Run();
+
+	        ILocationService service = ServiceLocator.Current.GetInstance<ILocationService>();
+	        service.GetCoordinates("some city", "street name", "house number");
         }
 
         private static Assembly[] GetApplicationAssemblies()

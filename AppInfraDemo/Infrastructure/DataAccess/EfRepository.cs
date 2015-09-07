@@ -25,7 +25,7 @@ namespace DataAccess
             this.globalInterceptors = interceptorsResolver.GetGlobalInterceptors();
         }
 
-        private static readonly IRepositoryExceptionHandler exceptionHandlers = new RepositoryExceptionHandler();
+        private static readonly IExceptionHandler exceptionHandlers = new ExceptionHandler();
 
         public IQueryable<T> GetEntities<T>() where T : class
         {

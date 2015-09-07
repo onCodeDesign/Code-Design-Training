@@ -64,22 +64,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuditableInterceptor.cs" />
     <Compile Include="CollectionExtensions.cs" />
     <Compile Include="EfRepository.cs" />
+    <Compile Include="EfRepositoryExceptionHandler\ExceptionHandler.cs" />
     <Compile Include="EntityEntry.cs" />
     <Compile Include="EntityInterceptor.cs" />
     <Compile Include="Exceptions\ConcurrencyRepositoryViolationException.cs" />
-    <Compile Include="EfRepositoryExceptionHandler\RepositoryConcurrencyExceptionHandler.cs" />
-    <Compile Include="EfRepositoryExceptionHandler\RepositoryDbEntityValidationExceptionHandler.cs" />
-    <Compile Include="Exceptions\RepositoryDefaultExceptionHandler.cs" />
+    <Compile Include="EfRepositoryExceptionHandler\ConcurrencyExceptionHandler.cs" />
+    <Compile Include="EfRepositoryExceptionHandler\DbEntityValidationExceptionHandler.cs" />
+    <Compile Include="EfRepositoryExceptionHandler\DefaultExceptionHandler.cs" />
+    <Compile Include="Exceptions\DataValidationException.cs" />
     <Compile Include="Exceptions\RepositoryUpdateException.cs" />
-    <Compile Include="EfRepositoryExceptionHandler\RepositoryUpdateExceptionHandler.cs" />
+    <Compile Include="EfRepositoryExceptionHandler\UpdateExceptionHandler.cs" />
+    <Compile Include="GlobalEntityInterceptor.cs" />
     <Compile Include="IAuditable.cs" />
-    <Compile Include="EfRepositoryExceptionHandler\RepositorySqlExceptionHandler.cs" />
+    <Compile Include="EfRepositoryExceptionHandler\SqlExceptionHandler.cs" />
     <Compile Include="Exceptions\DateTimeRangeRepositoryViolationException.cs" />
     <Compile Include="Exceptions\DeadlockVictimRepositoryViolationException.cs" />
     <Compile Include="Exceptions\DeleteConstraintRepositoryViolationException.cs" />
-    <Compile Include="EfRepositoryExceptionHandler\IRepositoryExceptionHandler.cs" />
+    <Compile Include="EfRepositoryExceptionHandler\IExceptionHandler.cs" />
     <Compile Include="Exceptions\RepositoryViolationException.cs" />
     <Compile Include="Exceptions\UniqueConstraintRepositoryViolationException.cs" />
     <Compile Include="IEntityEntryFacade.cs" />

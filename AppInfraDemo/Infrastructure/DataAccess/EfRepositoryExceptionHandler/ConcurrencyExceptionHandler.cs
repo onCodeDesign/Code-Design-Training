@@ -5,11 +5,11 @@ using iQuarc.SystemEx;
 
 namespace DataAccess.EfRepositoryExceptionHandler
 {
-    class RepositoryConcurrencyExceptionHandler : IRepositoryExceptionHandler
+    class ConcurrencyExceptionHandler : IExceptionHandler
     {
-        private readonly IRepositoryExceptionHandler successor;
+        private readonly IExceptionHandler successor;
 
-        public RepositoryConcurrencyExceptionHandler(IRepositoryExceptionHandler successor)
+        public ConcurrencyExceptionHandler(IExceptionHandler successor)
         {
             this.successor = successor;
         }
