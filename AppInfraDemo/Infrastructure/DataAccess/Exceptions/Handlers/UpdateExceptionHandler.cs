@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Data.Entity.Core;
-using DataAccess.Exceptions;
 using iQuarc.SystemEx;
 
-namespace DataAccess.EfRepositoryExceptionHandler
+namespace DataAccess.Exceptions.Handlers
 {
     class UpdateExceptionHandler : IExceptionHandler
     {

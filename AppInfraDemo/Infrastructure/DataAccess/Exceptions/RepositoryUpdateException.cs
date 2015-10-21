@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace DataAccess.Exceptions
 {
     [Serializable]
-    public class RepositoryUpdateException : RepositoryViolationException
+    public class RepositoryUpdateException : RepositoryException
     {
         public RepositoryUpdateException()
         {

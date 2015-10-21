@@ -6,26 +6,26 @@ using System.Runtime.Serialization;
 namespace DataAccess.Exceptions
 {
     [Serializable]
-    public class ConcurrencyRepositoryViolationException : RepositoryViolationException
+    public class ConcurrencyRepositoryException : RepositoryException
     {
         private const string RepositoryEntityKey = "Entity";
         public object Entity { get; set; }
 
-        public ConcurrencyRepositoryViolationException()
+        public ConcurrencyRepositoryException()
         {
         }
 
-        public ConcurrencyRepositoryViolationException(string errorMessage)
+        public ConcurrencyRepositoryException(string errorMessage)
             : base(errorMessage)
         {
         }
 
-        public ConcurrencyRepositoryViolationException(UpdateException exception)
+        public ConcurrencyRepositoryException(UpdateException exception)
             : this(string.Empty, exception)
         {
         }
 
-        public ConcurrencyRepositoryViolationException(string message, UpdateException exception)
+        public ConcurrencyRepositoryException(string message, UpdateException exception)
             : base(message, exception)
         {
             if (exception.StateEntries != null)
@@ -37,7 +37,7 @@ namespace DataAccess.Exceptions
         }
 
 
-        protected ConcurrencyRepositoryViolationException(SerializationInfo info, StreamingContext context)
+        protected ConcurrencyRepositoryException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
             this.Entity = info.GetValue(RepositoryEntityKey, typeof (object));

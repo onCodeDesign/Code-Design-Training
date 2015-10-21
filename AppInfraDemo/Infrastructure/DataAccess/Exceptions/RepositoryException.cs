@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace DataAccess.Exceptions
 {
-    public class RepositoryViolationException : Exception
+    public class RepositoryException : Exception
     {
         private const string ErrorMessageKey = "ErrorMessage";
         private readonly string errorMessage;
@@ -13,29 +13,29 @@ namespace DataAccess.Exceptions
             get { return this.errorMessage; }
         }
 
-        public RepositoryViolationException()
+        public RepositoryException()
             : this(string.Empty)
         {
         }
 
-        public RepositoryViolationException(string errorMessage)
+        public RepositoryException(string errorMessage)
             : base(errorMessage)
         {
             this.errorMessage = errorMessage;
         }
 
-        public RepositoryViolationException(Exception exception)
+        public RepositoryException(Exception exception)
             : base(exception.Message, exception)
         {
             this.errorMessage = exception.Message;
         }
 
-        public RepositoryViolationException(string message, Exception innerException)
+        public RepositoryException(string message, Exception innerException)
             : base(message, innerException)
         {
         }
 
-        protected RepositoryViolationException(SerializationInfo info, StreamingContext context)
+        protected RepositoryException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
             this.errorMessage = info.GetString(ErrorMessageKey);
