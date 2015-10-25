@@ -21,7 +21,10 @@ namespace LessonsSamples
 
     public class Address
     {
-        public string Streat { get; set; }
+	    public int CountryID;
+	    public string Street { get; set; }
         public string Number { get; set; }
+	    public string PostCode { get; set; }
+	    public string City { get; set; }
     }
 }

@@ -129,6 +129,11 @@
     <Compile Include="Lesson7\InheritanceComposition\LogEntry.cs" />
     <Compile Include="Lesson7\InheritanceComposition\LogSource.cs" />
     <Compile Include="Lesson7\InheritanceComposition\LogSource_2.cs" />
+    <Compile Include="Lesson8\Validation\AddressValidationRules.cs" />
+    <Compile Include="Lesson8\Validation\Country.cs" />
+    <Compile Include="Lesson8\Validation\EntityValidationRulesRegistrator.cs" />
+    <Compile Include="Lesson8\Validation\IValidationRulesSet.cs" />
+    <Compile Include="Lesson8\Validation\ValidationMessages.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
