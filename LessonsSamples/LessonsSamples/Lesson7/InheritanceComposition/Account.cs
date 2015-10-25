@@ -70,18 +70,23 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
     {
         public override void MonthlyRenewal()
         {
-            base.MonthlyRenewal();
+            decimal taxes = CalculateLastMonthTaxes();
+	        decimal interest = MonthlyInterest();
+			decimal deposits = MonthlyDepozits();
+	        decimal withdrawals = MontlyWithdrawals();
 
-            decimal monthlyTaxes = CalculateLastMonthTaxes();
-            decimal monthlyPayment = MonthlyPayments();
-
-            Ammount = Ammount + 2*monthlyTaxes - monthlyPayment;
+	        Ammount = Ammount - interest + deposits - withdrawals - taxes;
         }
 
-        private decimal MonthlyPayments()
+        private decimal MonthlyDepozits()
         {
             throw new NotImplementedException();
         }
+
+	    private decimal MontlyWithdrawals()
+	    {
+		    throw new NotImplementedException();
+	    }
 
         public decimal TotalPayments()
         {
