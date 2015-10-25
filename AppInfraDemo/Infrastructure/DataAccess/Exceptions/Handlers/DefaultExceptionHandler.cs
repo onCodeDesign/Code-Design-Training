@@ -1,13 +1,12 @@
 ﻿using System;
-using DataAccess.EfRepositoryExceptionHandler;
 
-namespace DataAccess.Exceptions
+namespace DataAccess.Exceptions.Handlers
 {
     class DefaultExceptionHandler : IExceptionHandler
     {
         public void Handle(Exception exception)
         {
-            throw new RepositoryViolationException(exception);
+            throw new RepositoryException(exception);
         }
     }
 }

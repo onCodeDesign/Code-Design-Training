@@ -6,205 +6,204 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Transactions;
 using DataAccess.DbContexts;
-using DataAccess.EfRepositoryExceptionHandler;
-using DataAccess.Exceptions;
+using DataAccess.Exceptions.Handlers;
 using iQuarc.AppBoot;
 
 namespace DataAccess
 {
-    [Service(typeof (IRepository))]
-    class EfRepository : IRepository, IDisposable
-    {
-        private readonly IInterceptorsResolver interceptorsResolver;
-        private DbContext context;
-        private readonly IEnumerable<IEntityInterceptor> globalInterceptors;
+	[Service(typeof (IRepository))]
+	internal class EfRepository : IRepository, IDisposable
+	{
+		private readonly IInterceptorsResolver interceptorsResolver;
+		private DbContext context;
+		private readonly IEnumerable<IEntityInterceptor> globalInterceptors;
 
-        public EfRepository(IInterceptorsResolver interceptorsResolver)
-        {
-            this.interceptorsResolver = interceptorsResolver;
-            this.globalInterceptors = interceptorsResolver.GetGlobalInterceptors();
-        }
+		public EfRepository(IInterceptorsResolver interceptorsResolver)
+		{
+			this.interceptorsResolver = interceptorsResolver;
+			this.globalInterceptors = interceptorsResolver.GetGlobalInterceptors();
+		}
 
-        private static readonly IExceptionHandler exceptionHandlers = new ExceptionHandler();
+		private static readonly IExceptionHandler exceptionHandlers = new ExceptionHandler();
 
-        public IQueryable<T> GetEntities<T>() where T : class
-        {
-            return Context.Set<T>().AsNoTracking();
-        }
+		public IQueryable<T> GetEntities<T>() where T : class
+		{
+			return Context.Set<T>().AsNoTracking();
+		}
 
-        public IUnitOfWork CreateUnitOfWork()
-        {
-            return new EfUnitOfWork(interceptorsResolver);
-        }
+		public IUnitOfWork CreateUnitOfWork()
+		{
+			return new EfUnitOfWork(interceptorsResolver);
+		}
 
-        public void Dispose()
-        {
-            if (context != null)
-                context.Dispose();
-        }
+		public void Dispose()
+		{
+			if (context != null)
+				context.Dispose();
+		}
 
-        private DbContext Context
-        {
-            get
-            {
-                if (context == null)
-                    context = CreateContext();
-                return context;
-            }
-        }
+		private DbContext Context
+		{
+			get
+			{
+				if (context == null)
+					context = CreateContext();
+				return context;
+			}
+		}
 
-        private SalesEntities CreateContext()
-        {
-            SalesEntities salesEntities = new SalesEntities();
-            ObjectContext objectContext = ((IObjectContextAdapter) salesEntities).ObjectContext;
-            objectContext.ObjectMaterialized += OnEntityLoaded;
+		private SalesEntities CreateContext()
+		{
+			SalesEntities salesEntities = new SalesEntities();
+			ObjectContext objectContext = ((IObjectContextAdapter) salesEntities).ObjectContext;
+			objectContext.ObjectMaterialized += OnEntityLoaded;
 
-            return salesEntities;
-        }
+			return salesEntities;
+		}
 
-        private void OnEntityLoaded(object sender, ObjectMaterializedEventArgs e)
-        {
-            InterceptLoad(globalInterceptors, e.Entity);
+		private void OnEntityLoaded(object sender, ObjectMaterializedEventArgs e)
+		{
+			InterceptLoad(globalInterceptors, e.Entity);
 
-            Type entityType = ObjectContext.GetObjectType(e.Entity.GetType());
-            IEnumerable<IEntityInterceptor> entityInterceptors = interceptorsResolver.GetEntityInterceptors(entityType);
-            InterceptLoad(entityInterceptors, e.Entity);
-        }
+			Type entityType = ObjectContext.GetObjectType(e.Entity.GetType());
+			IEnumerable<IEntityInterceptor> entityInterceptors = interceptorsResolver.GetEntityInterceptors(entityType);
+			InterceptLoad(entityInterceptors, e.Entity);
+		}
 
-        private void InterceptLoad(IEnumerable<IEntityInterceptor> interceptors, object entity)
-        {
-            foreach (var interceptor in interceptors)
-            {
-                DbEntityEntry dbEntry = Context.Entry(entity);
-                EntityEntry entry = new EntityEntry(dbEntry);
-                interceptor.OnLoad(entry, this);
-            }
-        }
+		private void InterceptLoad(IEnumerable<IEntityInterceptor> interceptors, object entity)
+		{
+			foreach (var interceptor in interceptors)
+			{
+				DbEntityEntry dbEntry = Context.Entry(entity);
+				EntityEntry entry = new EntityEntry(dbEntry);
+				interceptor.OnLoad(entry, this);
+			}
+		}
 
-        private static void Handle(Exception exception)
-        {
-            exceptionHandlers.Handle(exception);
-        }
+		private static void Handle(Exception exception)
+		{
+			exceptionHandlers.Handle(exception);
+		}
 
-        private sealed class EfUnitOfWork : IUnitOfWork
-        {
-            private DbContext context;
-            private TransactionScope transactionScope;
+		private sealed class EfUnitOfWork : IUnitOfWork
+		{
+			private DbContext context;
+			private TransactionScope transactionScope;
 
-            private readonly IInterceptorsResolver interceptorsResolver;
-            private IEnumerable<IEntityInterceptor> globalInterceptors;
+			private readonly IInterceptorsResolver interceptorsResolver;
+			private readonly IEnumerable<IEntityInterceptor> globalInterceptors;
 
-            public EfUnitOfWork(IInterceptorsResolver interceptorsResolver)
-            {
-                this.interceptorsResolver = interceptorsResolver;
-                this.globalInterceptors = interceptorsResolver.GetGlobalInterceptors();
-            }
+			public EfUnitOfWork(IInterceptorsResolver interceptorsResolver)
+			{
+				this.interceptorsResolver = interceptorsResolver;
+				this.globalInterceptors = interceptorsResolver.GetGlobalInterceptors();
+			}
 
 
-            public IQueryable<T> GetEntities<T>() where T : class
-            {
-                return Context.Set<T>();
-            }
+			public IQueryable<T> GetEntities<T>() where T : class
+			{
+				return Context.Set<T>();
+			}
 
-            public IUnitOfWork CreateUnitOfWork()
-            {
-                return this;
-            }
+			public IUnitOfWork CreateUnitOfWork()
+			{
+				return this;
+			}
 
-            public void SaveChanges()
-            {
-                try
-                {
-                    InterceptSave(new List<object>());
+			public void SaveChanges()
+			{
+				try
+				{
+					InterceptSave(new List<object>());
 
-                    context.SaveChanges();
+					context.SaveChanges();
 
-                    if (transactionScope != null)
-                        transactionScope.Complete();
-                }
-                catch (Exception e)
-                {
-                    Handle(e);
-                }
-            }
+					if (transactionScope != null)
+						transactionScope.Complete();
+				}
+				catch (Exception e)
+				{
+					Handle(e);
+				}
+			}
 
-            private void InterceptSave(List<object> interceptedEntities)
-            {
-                IEnumerable<object> modifiedEntities = GetInterceptorModifiedEntities(context).Select(e => e.Entity).ToList();
+			private void InterceptSave(List<object> interceptedEntities)
+			{
+				IEnumerable<object> modifiedEntities = GetInterceptorModifiedEntities(context).Select(e => e.Entity).ToList();
 
-                if (modifiedEntities.All(interceptedEntities.Contains))
-                    return;
+				if (modifiedEntities.All(interceptedEntities.Contains))
+					return;
 
-                foreach (object entity in modifiedEntities.Where(e => !interceptedEntities.Contains(e)))
-                {
-                    InterceptSave(this.globalInterceptors, entity);
+				foreach (object entity in modifiedEntities.Where(e => !interceptedEntities.Contains(e)))
+				{
+					InterceptSave(this.globalInterceptors, entity);
 
-                    Type entityType = ObjectContext.GetObjectType(entity.GetType());
-                    IEnumerable<IEntityInterceptor> interceptors = interceptorsResolver.GetEntityInterceptors(entityType);
+					Type entityType = ObjectContext.GetObjectType(entity.GetType());
+					IEnumerable<IEntityInterceptor> interceptors = interceptorsResolver.GetEntityInterceptors(entityType);
 
-                    this.InterceptSave(interceptors, entity);
-                    interceptedEntities.AddIfNotExists(entity);
-                }
+					this.InterceptSave(interceptors, entity);
+					interceptedEntities.AddIfNotExists(entity);
+				}
 
-                InterceptSave(interceptedEntities);
-            }
+				InterceptSave(interceptedEntities);
+			}
 
-            private void InterceptSave(IEnumerable<IEntityInterceptor> interceptors, object entity)
-            {
-                foreach (var interceptor in interceptors)
-                {
-                    DbEntityEntry dbEntry = Context.Entry(entity);
-                    EntityEntry entry = new EntityEntry(dbEntry);
+			private void InterceptSave(IEnumerable<IEntityInterceptor> interceptors, object entity)
+			{
+				foreach (var interceptor in interceptors)
+				{
+					DbEntityEntry dbEntry = Context.Entry(entity);
+					EntityEntry entry = new EntityEntry(dbEntry);
 
-                    interceptor.OnSave(entry, this);
-                }
-            }
+					interceptor.OnSave(entry, this);
+				}
+			}
 
-            private static IEnumerable<DbEntityEntry> GetInterceptorModifiedEntities(DbContext context)
-            {
-                context.ChangeTracker.DetectChanges();
-                var modifiedEntities = context.ChangeTracker.Entries()
-                                              .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified);
+			private static IEnumerable<DbEntityEntry> GetInterceptorModifiedEntities(DbContext context)
+			{
+				context.ChangeTracker.DetectChanges();
+				var modifiedEntities = context.ChangeTracker.Entries()
+					.Where(e => e.State == EntityState.Added || e.State == EntityState.Modified);
 
-                return modifiedEntities;
-            }
+				return modifiedEntities;
+			}
 
-            public void Add<T>(T entity) where T : class
-            {
-                Context.Set<T>().Add(entity);
-            }
+			public void Add<T>(T entity) where T : class
+			{
+				Context.Set<T>().Add(entity);
+			}
 
-            public void Delete<T>(T entity) where T : class
-            {
-                Context.Set<T>().Remove(entity);
-            }
+			public void Delete<T>(T entity) where T : class
+			{
+				Context.Set<T>().Remove(entity);
+			}
 
-            public void BeginTransactionScope(SimplifiedIsolationLevel isolationLevel)
-            {
-                if (transactionScope != null)
-                    throw new InvalidOperationException("Cannot begin another transaction scope");
+			public void BeginTransactionScope(SimplifiedIsolationLevel isolationLevel)
+			{
+				if (transactionScope != null)
+					throw new InvalidOperationException("Cannot begin another transaction scope");
 
-                transactionScope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions {IsolationLevel = (IsolationLevel) isolationLevel});
-            }
+				transactionScope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions {IsolationLevel = (IsolationLevel) isolationLevel});
+			}
 
-            public void Dispose()
-            {
-                if (transactionScope != null)
-                    transactionScope.Dispose();
+			public void Dispose()
+			{
+				if (transactionScope != null)
+					transactionScope.Dispose();
 
-                if (context != null)
-                    context.Dispose();
-            }
+				if (context != null)
+					context.Dispose();
+			}
 
-            private DbContext Context
-            {
-                get
-                {
-                    if (context == null)
-                        context = new SalesEntities();
-                    return context;
-                }
-            }
-        }
-    }
+			private DbContext Context
+			{
+				get
+				{
+					if (context == null)
+						context = new SalesEntities();
+					return context;
+				}
+			}
+		}
+	}
 }

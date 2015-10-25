@@ -38,8 +38,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="iQuarc.AppBoot">
-      <HintPath>..\..\packages\iQuarc.AppBoot.1.0.0.0\lib\net45\iQuarc.AppBoot.dll</HintPath>
+    <Reference Include="iQuarc.AppBoot, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\iQuarc.AppBoot.2.0.2\lib\net45\iQuarc.AppBoot.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="iQuarc.SystemEx">
       <HintPath>..\..\packages\iQuarc.SystemEx.1.0.0.0\lib\net40\iQuarc.SystemEx.dll</HintPath>
@@ -67,25 +68,27 @@
     <Compile Include="AuditableInterceptor.cs" />
     <Compile Include="CollectionExtensions.cs" />
     <Compile Include="EfRepository.cs" />
-    <Compile Include="EfRepositoryExceptionHandler\ExceptionHandler.cs" />
+    <Compile Include="Exceptions\DataValidationResult.cs" />
+    <Compile Include="Exceptions\Handlers\ExceptionHandler.cs" />
     <Compile Include="EntityEntry.cs" />
     <Compile Include="EntityInterceptor.cs" />
-    <Compile Include="Exceptions\ConcurrencyRepositoryViolationException.cs" />
-    <Compile Include="EfRepositoryExceptionHandler\ConcurrencyExceptionHandler.cs" />
-    <Compile Include="EfRepositoryExceptionHandler\DbEntityValidationExceptionHandler.cs" />
-    <Compile Include="EfRepositoryExceptionHandler\DefaultExceptionHandler.cs" />
+    <Compile Include="Exceptions\ConcurrencyRepositoryException.cs" />
+    <Compile Include="Exceptions\Handlers\ConcurrencyExceptionHandler.cs" />
+    <Compile Include="Exceptions\Handlers\DbEntityValidationExceptionHandler.cs" />
+    <Compile Include="Exceptions\Handlers\DefaultExceptionHandler.cs" />
     <Compile Include="Exceptions\DataValidationException.cs" />
     <Compile Include="Exceptions\RepositoryUpdateException.cs" />
-    <Compile Include="EfRepositoryExceptionHandler\UpdateExceptionHandler.cs" />
+    <Compile Include="Exceptions\Handlers\UpdateExceptionHandler.cs" />
+    <Compile Include="Exceptions\ValidationError.cs" />
     <Compile Include="GlobalEntityInterceptor.cs" />
     <Compile Include="IAuditable.cs" />
-    <Compile Include="EfRepositoryExceptionHandler\SqlExceptionHandler.cs" />
-    <Compile Include="Exceptions\DateTimeRangeRepositoryViolationException.cs" />
-    <Compile Include="Exceptions\DeadlockVictimRepositoryViolationException.cs" />
-    <Compile Include="Exceptions\DeleteConstraintRepositoryViolationException.cs" />
-    <Compile Include="EfRepositoryExceptionHandler\IExceptionHandler.cs" />
-    <Compile Include="Exceptions\RepositoryViolationException.cs" />
-    <Compile Include="Exceptions\UniqueConstraintRepositoryViolationException.cs" />
+    <Compile Include="Exceptions\Handlers\SqlExceptionHandler.cs" />
+    <Compile Include="Exceptions\DateTimeRangeRepositoryException.cs" />
+    <Compile Include="Exceptions\DeadlockVictimRepositoryException.cs" />
+    <Compile Include="Exceptions\DeleteConstraintRepositoryException.cs" />
+    <Compile Include="Exceptions\Handlers\IExceptionHandler.cs" />
+    <Compile Include="Exceptions\RepositoryException.cs" />
+    <Compile Include="Exceptions\UniqueConstraintRepositoryException.cs" />
     <Compile Include="IEntityEntryFacade.cs" />
     <Compile Include="IEntityInterceptor.cs" />
     <Compile Include="InterceptorsResolver.cs" />
@@ -101,7 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram.cd" />
+    <None Include="RepositoryDiagram.cd" />
+    <None Include="Exceptions\RepositoryException.cd" />
     <None Include="packages.config" />
     <None Include="DbContexts\SalesEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -116,6 +120,9 @@
       <Project>{1213c2ed-777a-4105-b946-765fe62029d4}</Project>
       <Name>Sales.DataModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EfRepositoryExceptionHandler\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

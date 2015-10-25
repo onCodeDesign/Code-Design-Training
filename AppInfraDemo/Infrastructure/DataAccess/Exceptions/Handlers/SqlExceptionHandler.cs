@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Data.SqlClient;
-using DataAccess.Exceptions;
 using iQuarc.SystemEx;
 
-namespace DataAccess.EfRepositoryExceptionHandler
+namespace DataAccess.Exceptions.Handlers
 {
     class SqlExceptionHandler : IExceptionHandler
     {
@@ -22,16 +21,16 @@ namespace DataAccess.EfRepositoryExceptionHandler
                 switch (sqlException.Number)
                 {
                     case 242:
-                        throw new DateTimeRangeRepositoryViolationException(sqlException);
+                        throw new DateTimeRangeRepositoryException(sqlException);
                     case 547:
-                        throw new DeleteConstraintRepositoryViolationException(sqlException);
+                        throw new DeleteConstraintRepositoryException(sqlException);
                     case 1205:
-                        throw new DeadlockVictimRepositoryViolationException(sqlException);
+                        throw new DeadlockVictimRepositoryException(sqlException);
                     case 2601:
                     case 2627:
-                        throw new UniqueConstraintRepositoryViolationException(sqlException);
+                        throw new UniqueConstraintRepositoryException(sqlException);
                     default:
-                        throw new RepositoryViolationException(sqlException);
+                        throw new RepositoryException(sqlException);
                 }
             }
 

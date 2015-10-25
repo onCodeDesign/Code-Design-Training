@@ -2,6 +2,7 @@
 using System.Reflection;
 using Contracts.Location;
 using iQuarc.AppBoot;
+using iQuarc.AppBoot.Unity;
 using Microsoft.Practices.ServiceLocation;
 
 namespace ConsoleApplication
@@ -10,7 +11,9 @@ namespace ConsoleApplication
     {
         private static void Main(string[] args)
         {
-            UnityBootstrapper bootstrapper = new UnityBootstrapper(new Assembly[] {});
+            Bootstrapper bootstrapper = new Bootstrapper(new Assembly[] {});
+	        bootstrapper.ConfigureWithUnity();
+
             var assemblies = GetApplicationAssemblies();
 
             bootstrapper.Run();

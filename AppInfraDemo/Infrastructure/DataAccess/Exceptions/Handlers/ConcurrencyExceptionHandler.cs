@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Data.Entity.Core;
-using DataAccess.Exceptions;
 using iQuarc.SystemEx;
 
-namespace DataAccess.EfRepositoryExceptionHandler
+namespace DataAccess.Exceptions.Handlers
 {
     class ConcurrencyExceptionHandler : IExceptionHandler
     {
@@ -19,7 +18,7 @@ namespace DataAccess.EfRepositoryExceptionHandler
             var concurrencyException = exception.FirstInner<OptimisticConcurrencyException>();
             if (concurrencyException != null)
             {
-                throw new ConcurrencyRepositoryViolationException(concurrencyException);
+                throw new ConcurrencyRepositoryException(concurrencyException);
             }
 
             successor.Handle(exception);

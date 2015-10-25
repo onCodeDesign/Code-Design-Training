@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
-using System.Globalization;
-using System.Text;
-using DataAccess.Exceptions;
 using iQuarc.SystemEx;
 
-namespace DataAccess.EfRepositoryExceptionHandler
+namespace DataAccess.Exceptions.Handlers
 {
     class DbEntityValidationExceptionHandler : IExceptionHandler
     {
@@ -46,7 +43,5 @@ namespace DataAccess.EfRepositoryExceptionHandler
                 yield return new ValidationError(dbValidationError.PropertyName, dbValidationError.ErrorMessage);
             }
         }
-
-        public IExceptionHandler Successor { get; private set; }
     }
 }

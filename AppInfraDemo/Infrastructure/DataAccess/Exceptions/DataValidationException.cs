@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace DataAccess.Exceptions
 {
     [Serializable]
-    public class DataValidationException : RepositoryViolationException
+    public class DataValidationException : RepositoryException
     {
         private const string ErrorsKey = "ErrorsKey";
         private readonly DataValidationResult[] errors = new DataValidationResult[0];
@@ -53,37 +53,5 @@ namespace DataAccess.Exceptions
         {
             get { return errors; }
         }
-    }
-
-    [Serializable]
-    public class DataValidationResult
-    {
-        private readonly List<ValidationError> errors;
-
-        public DataValidationResult(IEntityEntryFacade entry, IEnumerable<ValidationError> errors)
-        {
-            Entry = entry;
-            this.errors = errors.ToList();
-        }
-
-        public IEntityEntryFacade Entry { get; private set; }
-
-        public IEnumerable<ValidationError> Errors
-        {
-            get { return errors; }
-        }
-    }
-
-    [Serializable]
-    public class ValidationError
-    {
-        public ValidationError(string propertyName, string errorMessage)
-        {
-            PropertyName = propertyName;
-            ErrorMessage = errorMessage;
-        }
-
-        public string PropertyName { get; private set; }
-        public string ErrorMessage { get; private set; }
     }
 }

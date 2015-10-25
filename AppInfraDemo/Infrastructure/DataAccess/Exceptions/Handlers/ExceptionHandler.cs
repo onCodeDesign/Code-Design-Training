@@ -1,7 +1,6 @@
 ﻿using System;
-using DataAccess.Exceptions;
 
-namespace DataAccess.EfRepositoryExceptionHandler
+namespace DataAccess.Exceptions.Handlers
 {
     class ExceptionHandler : IExceptionHandler
     {
