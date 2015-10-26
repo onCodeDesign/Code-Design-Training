@@ -17,7 +17,7 @@ namespace ConsoleDemo
             //DecoratorClient.Run();
 
             //Composite.Transparency.CompositeClient.Demo();
-            //Composite.Safe.CompositeClient.Demo();
+            //Composite.Safety.CompositeClient.Demo();
 
             //StrategyClient.RobotsDemo();
 

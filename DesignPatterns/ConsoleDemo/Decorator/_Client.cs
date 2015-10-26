@@ -13,10 +13,10 @@ namespace ConsoleDemo.Decorator
             scrollWindow.Draw();
 
 
-            Console.WriteLine();
-            Console.WriteLine();
-            ScrollBarWindow scrollBarWindow = new ScrollBarWindow(simpleWindow);
-            scrollBarWindow.Draw();
-        }
+			Console.WriteLine();
+			Console.WriteLine();
+			ScrollBarWindow scrollBarWindow = new ScrollBarWindow(simpleWindow);
+			scrollBarWindow.Draw();
+		}
     }
 }

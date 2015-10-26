@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace ConsoleDemo.Composite.Transparency
         private readonly LinkedList<IGraphicElement> children = new LinkedList<IGraphicElement>();
 
         public Picture()
+			: this(string.Empty)
         {
         }
 
