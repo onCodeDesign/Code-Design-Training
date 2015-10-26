@@ -22,10 +22,10 @@
                         Resources.CacheMetadata(metadata, createFileRequest.EntityType);
                     }
                     else
-                        return ErrorCodes.CannotOverwrite;
+                        return ResultCodes.CannotOverwrite;
                 }
                 else
-                    return ErrorCodes.FileExists;
+                    return ResultCodes.FileExists;
             }
             else
             {
@@ -34,7 +34,7 @@
                 {
                     FileMetadata requestMetadata = BuildMetadata(createFileRequest.Metadata);
                     if (cachedMetadata != requestMetadata)
-                        return ErrorCodes.DifferentMetadata;
+                        return ResultCodes.DifferentMetadata;
 
                     CreateNewFile(createFileRequest, cachedMetadata);
                 }
@@ -47,7 +47,7 @@
                 }
             }
 
-            return ErrorCodes.Success;
+            return ResultCodes.Success;
         }
 
 
@@ -86,7 +86,7 @@
         }
     }
 
-    public static class ErrorCodes
+    public static class ResultCodes
     {
         public static readonly int Success = 0;
         public static readonly int FileExists = 2;

@@ -11,7 +11,7 @@ namespace ConsoleDemo.ChainOfResponsibility
 
         protected override int HandleInternal(Request request)
         {
-            return ErrorCodes.FileExists;
+            return ResultCodes.FileExists;
         }
     }
 
@@ -29,7 +29,7 @@ namespace ConsoleDemo.ChainOfResponsibility
         {
             // ... real implementation here ...
 
-            return ErrorCodes.Success;
+            return ResultCodes.Success;
         }
     }
 
@@ -51,7 +51,7 @@ namespace ConsoleDemo.ChainOfResponsibility
 
             Resources.CacheMetadata(metadata, request.EntityType);
 
-            return ErrorCodes.Success;
+            return ResultCodes.Success;
         }
 
         private bool ExistsFilesOfSameType(int entityType, string fileName)
@@ -81,7 +81,7 @@ namespace ConsoleDemo.ChainOfResponsibility
 
         protected override int HandleInternal(Request request)
         {
-            return ErrorCodes.CannotOverwrite;
+            return ResultCodes.CannotOverwrite;
         }
     }
 
@@ -100,7 +100,7 @@ namespace ConsoleDemo.ChainOfResponsibility
             {
                 FileMetadata requestMetadata = BuildMetadata(request.Metadata);
                 if (cachedMetadata != requestMetadata)
-                    return ErrorCodes.DifferentMetadata;
+                    return ResultCodes.DifferentMetadata;
 
                 CreateNewFile(request, cachedMetadata);
             }
@@ -112,7 +112,7 @@ namespace ConsoleDemo.ChainOfResponsibility
                 Resources.CacheMetadata(metadata, request.EntityType);
             }
 
-            return ErrorCodes.Success;
+            return ResultCodes.Success;
         }
 
         private void CreateNewFile(Request request, FileMetadata cachedMetadata)
