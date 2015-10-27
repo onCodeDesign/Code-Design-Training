@@ -1,36 +1,29 @@
-﻿using System;
-using System.Reflection;
-using Contracts.Location;
+﻿using System.Reflection;
 using iQuarc.AppBoot;
 using iQuarc.AppBoot.Unity;
-using Microsoft.Practices.ServiceLocation;
 
 namespace ConsoleApplication
 {
-    internal class Program
-    {
-        private static void Main(string[] args)
-        {
-            Bootstrapper bootstrapper = new Bootstrapper(new Assembly[] {});
-	        bootstrapper.ConfigureWithUnity();
+	internal class Program
+	{
+		private static void Main(string[] args)
+		{
+			var assemblies = GetApplicationAssemblies();
+			Bootstrapper bootstrapper = new Bootstrapper(assemblies);
+			bootstrapper.ConfigureWithUnity();
 
-            var assemblies = GetApplicationAssemblies();
+			bootstrapper.Run();
+		}
 
-            bootstrapper.Run();
+		private static Assembly[] GetApplicationAssemblies()
+		{
+			//var assemblies = new[]
+			//{
+			//    typeof(Program).Assembly,
+			//    Assembly.Load("")
+			//}
 
-	        ILocationService service = ServiceLocator.Current.GetInstance<ILocationService>();
-	        service.GetCoordinates("some city", "street name", "house number");
-        }
-
-        private static Assembly[] GetApplicationAssemblies()
-        {
-            //var assemblies = new[]
-            //{
-            //    typeof(Program).Assembly,
-            //    Assembly.Load("")
-            //}
-
-            throw new NotImplementedException();
-        }
-    }
+			return new Assembly[] {};
+		}
+	}
 }
