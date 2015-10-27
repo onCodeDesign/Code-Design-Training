@@ -69,10 +69,6 @@
     <Compile Include="SalesServicesModule.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Infrastructure\Common\Common.csproj">
-      <Project>{3d082ae2-d187-4c65-89f5-6224ee4a4aeb}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Contracts\Contracts.csproj">
       <Project>{7047438D-82DC-4868-ACAE-EE3DF665337D}</Project>
       <Name>Contracts</Name>

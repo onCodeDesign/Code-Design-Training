@@ -1,6 +1,6 @@
 namespace Contracts.Sales
 {
-    public class SalesOrder
+    public class SalesOrderResult
     {
         public int OrderId { get; set; }
         public OrderResultState State { get; set; }

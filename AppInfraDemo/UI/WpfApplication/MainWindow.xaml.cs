@@ -1,6 +1,4 @@
 ﻿using System.Windows;
-using Contracts.Location;
-using Microsoft.Practices.ServiceLocation;
 
 namespace WpfApplication
 {
@@ -12,9 +10,6 @@ namespace WpfApplication
 		public MainWindow()
 		{
 			InitializeComponent();
-
-			ILocationService service = ServiceLocator.Current.GetInstance<ILocationService>();
-			service.GetCoordinates("some city", "street name", "house number");
 		}
 	}
 }

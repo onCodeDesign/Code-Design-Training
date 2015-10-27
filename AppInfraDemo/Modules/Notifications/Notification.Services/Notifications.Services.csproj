@@ -68,10 +68,6 @@
       <Project>{7047438D-82DC-4868-ACAE-EE3DF665337D}</Project>
       <Name>Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\DataModel\DataModel.csproj">
-      <Project>{32A8C22C-EE17-4443-BC4E-DD2A0C5C7C7D}</Project>
-      <Name>DataModel</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

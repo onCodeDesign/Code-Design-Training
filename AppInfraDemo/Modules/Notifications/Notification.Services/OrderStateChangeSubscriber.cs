@@ -5,10 +5,10 @@ using iQuarc.AppBoot;
 
 namespace Notifications
 {
-    [Service("Order Default Subscriber", typeof (IStateChangeSubscriber<SalesOrder>))]
-    class OrderStateChangeSubscriber : IStateChangeSubscriber<SalesOrder>
+    [Service("Order Default Subscriber", typeof (IStateChangeSubscriber<SalesOrderResult>))]
+    class OrderStateChangeSubscriber : IStateChangeSubscriber<SalesOrderResult>
     {
-        public void NewItem(SalesOrder item)
+        public void NewItem(SalesOrderResult item)
         {
             //TODO: We've got new order!!!
         }
