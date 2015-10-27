@@ -23,11 +23,11 @@ namespace Sales
         }
 
 
-        public SalesOrder PlaceOrder(string customerName, OrderRequest request)
+        public SalesOrderResult PlaceOrder(string customerName, OrderRequest request)
         {
             Customer c = GetCustomer(customerName);
             if (c == null)
-                return new SalesOrder {State = OrderResultState.Invalid, Message = "Customer not found"};
+                return new SalesOrderResult {State = OrderResultState.Invalid, Message = "Customer not found"};
 
             bool isValid = ValidateOrderRequest(c, request);
 
@@ -50,11 +50,11 @@ namespace Sales
 
                     uof.SaveChanges();
                 
-                    return new SalesOrder { State = OrderResultState.Placed, OrderId = order.SalesOrderID };
+                    return new SalesOrderResult { State = OrderResultState.Placed, OrderId = order.SalesOrderID };
                 }
             }
 
-            return new SalesOrder {State = OrderResultState.Invalid};
+            return new SalesOrderResult {State = OrderResultState.Invalid};
         }
 
         private void AddRequestToOrder(OrderRequest request, SalesOrderHeader order)
@@ -109,6 +109,7 @@ namespace Sales
         {
             var requestsByProductCode = request.Products
                         .Where(o => o.Product.ProductId == null && o.Product.Code != null);
+
             List<string> requiredCodes = requestsByProductCode.Select(p => p.Product.Code).ToList();
             var productsByCode = repository.GetEntities<Product>().Where(p => requiredCodes.Contains(p.ProductNumber));
            
