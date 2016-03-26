@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LessonsSamples</RootNamespace>
     <AssemblyName>LessonsSamples</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -95,6 +96,7 @@
     <Compile Include="Lesson6\Expenses\ExpensesService.cs" />
     <Compile Include="Lesson6\Expenses\IExpensesService.cs" />
     <Compile Include="Lesson6\IMovieProvider.cs" />
+    <Compile Include="Lesson6\Logger\Logger.cs" />
     <Compile Include="Lesson6\MovieLister_DI.cs" />
     <Compile Include="Lesson6\MovieListerFactory.cs" />
     <Compile Include="Lesson6\MovieLister_InterafaceInj.cs" />
