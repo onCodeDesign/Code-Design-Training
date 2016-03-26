@@ -37,7 +37,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication", "UI\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Infrastructure\Common\Common.csproj", "{3D082AE2-D187-4C65-89F5-6224EE4A4AEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.DataAccess", "Sales.DataAccess\Sales.DataAccess.csproj", "{3CD21221-4782-4D17-A0C9-ECE1B15D4469}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.DataAccess", "Modules\Sales\Sales.DataAccess\Sales.DataAccess.csproj", "{3CD21221-4782-4D17-A0C9-ECE1B15D4469}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
