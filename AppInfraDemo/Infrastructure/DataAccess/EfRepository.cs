@@ -5,7 +5,6 @@ using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Transactions;
-using DataAccess.DbContexts;
 using DataAccess.Exceptions.Handlers;
 using iQuarc.AppBoot;
 
@@ -14,12 +13,14 @@ namespace DataAccess
 	[Service(typeof (IRepository))]
 	internal class EfRepository : IRepository, IDisposable
 	{
+		private readonly IDbContextFactory contextFactory;
 		private readonly IInterceptorsResolver interceptorsResolver;
 		private DbContext context;
 		private readonly IEnumerable<IEntityInterceptor> globalInterceptors;
 
-		public EfRepository(IInterceptorsResolver interceptorsResolver)
+		public EfRepository(IDbContextFactory contextFactory, IInterceptorsResolver interceptorsResolver)
 		{
+			this.contextFactory = contextFactory;
 			this.interceptorsResolver = interceptorsResolver;
 			this.globalInterceptors = interceptorsResolver.GetGlobalInterceptors();
 		}
@@ -33,7 +34,7 @@ namespace DataAccess
 
 		public IUnitOfWork CreateUnitOfWork()
 		{
-			return new EfUnitOfWork(interceptorsResolver);
+			return new EfUnitOfWork(contextFactory, interceptorsResolver);
 		}
 
 		public void Dispose()
@@ -47,19 +48,11 @@ namespace DataAccess
 			get
 			{
 				if (context == null)
-					context = CreateContext();
+					context = contextFactory.CreateContext();
 				return context;
 			}
 		}
 
-		private SalesEntities CreateContext()
-		{
-			SalesEntities salesEntities = new SalesEntities();
-			ObjectContext objectContext = ((IObjectContextAdapter) salesEntities).ObjectContext;
-			objectContext.ObjectMaterialized += OnEntityLoaded;
-
-			return salesEntities;
-		}
 
 		private void OnEntityLoaded(object sender, ObjectMaterializedEventArgs e)
 		{
@@ -90,11 +83,13 @@ namespace DataAccess
 			private DbContext context;
 			private TransactionScope transactionScope;
 
+			private readonly IDbContextFactory contextFactory;
 			private readonly IInterceptorsResolver interceptorsResolver;
 			private readonly IEnumerable<IEntityInterceptor> globalInterceptors;
 
-			public EfUnitOfWork(IInterceptorsResolver interceptorsResolver)
+			public EfUnitOfWork(IDbContextFactory contextFactory, IInterceptorsResolver interceptorsResolver)
 			{
+				this.contextFactory = contextFactory;
 				this.interceptorsResolver = interceptorsResolver;
 				this.globalInterceptors = interceptorsResolver.GetGlobalInterceptors();
 			}
@@ -200,7 +195,7 @@ namespace DataAccess
 				get
 				{
 					if (context == null)
-						context = new SalesEntities();
+						context = contextFactory.CreateContext();
 					return context;
 				}
 			}

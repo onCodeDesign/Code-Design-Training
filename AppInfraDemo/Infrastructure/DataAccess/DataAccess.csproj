@@ -91,17 +91,13 @@
     <Compile Include="Exceptions\Handlers\IExceptionHandler.cs" />
     <Compile Include="Exceptions\RepositoryException.cs" />
     <Compile Include="Exceptions\UniqueConstraintRepositoryException.cs" />
+    <Compile Include="IDbContextFactory.cs" />
     <Compile Include="IEntityEntryFacade.cs" />
     <Compile Include="IEntityInterceptor.cs" />
     <Compile Include="InterceptorsResolver.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DbContexts\SalesEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SalesEntities.Context.tt</DependentUpon>
-    </Compile>
     <Compile Include="SimplifiedIsolationLevel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -109,19 +105,9 @@
     <None Include="RepositoryDiagram.cd" />
     <None Include="Exceptions\RepositoryException.cd" />
     <None Include="packages.config" />
-    <None Include="DbContexts\SalesEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SalesEntities.Context.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Modules\Sales\Sales.DataModel\Sales.DataModel.csproj">
-      <Project>{1213c2ed-777a-4105-b946-765fe62029d4}</Project>
-      <Name>Sales.DataModel</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -133,4 +119,3 @@
   </Target>
   -->
 </Project>
-
