@@ -1,6 +1,8 @@
-﻿using Contracts.Notifications;
+﻿using System.Data;
+using Contracts.Notifications;
 using iQuarc.AppBoot;
 using Microsoft.Practices.ServiceLocation;
+using UiContracts;
 
 namespace Notifications
 {
@@ -8,13 +10,15 @@ namespace Notifications
     public class NotificationService : INotificationService
     {
         private readonly IServiceLocator serviceLocator;
+	    private readonly IStatusBar statusBar;
 
-        public NotificationService(IServiceLocator serviceLocator)
-        {
-            this.serviceLocator = serviceLocator;
-        }
+	    public NotificationService(IServiceLocator serviceLocator, IStatusBar statusBar)
+	    {
+		    this.serviceLocator = serviceLocator;
+		    this.statusBar = statusBar;
+	    }
 
-        public void NotifyNew<T>(T item)
+	    public void NotifyNew<T>(T item)
         {
             var subscribers = serviceLocator.GetAllInstances<IStateChangeSubscriber<T>>();
             foreach (var subscriber in subscribers)
@@ -40,7 +44,7 @@ namespace Notifications
 
         public void NotifyAlive<T>(T item)
         {
-            throw new System.NotImplementedException();
+            statusBar.WriteNewMessage($"Is alive: {item}");
         }
     }
 }

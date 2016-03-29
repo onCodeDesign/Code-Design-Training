@@ -80,11 +80,11 @@ namespace Sales
 
         private SalesOrderHeader GetOrder(OrderRequest request, int customerId)
         {
-            //var dbOrder = repository.GetEntities<SalesOrderHeader>()
-            //                      .FirstOrDefault(o => o.Customer.CustomerID == customerId &&
-            //                                           o.OrderDate.Month == DateTime.Now.Date.Month);
+			var dbOrder = repository.GetEntities<SalesOrderHeader>()
+								  .FirstOrDefault(o => o.Customer.CustomerID == customerId &&
+													   o.OrderDate.Month == DateTime.Now.Date.Month);
 
-            throw new NotImplementedException();
+			throw new NotImplementedException();
         }
 
 

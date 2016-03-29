@@ -1,4 +1,5 @@
-﻿using Contracts.Notifications;
+﻿using System;
+using Contracts.Notifications;
 using iQuarc.AppBoot;
 
 namespace Sales
@@ -20,7 +21,7 @@ namespace Sales
 
         public void Initialize()
         {
-            notificationService.NotifyAlive(Name);
+			notificationService.NotifyAlive(Name);
         }
     }
 }
