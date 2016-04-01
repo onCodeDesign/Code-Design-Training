@@ -68,16 +68,16 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatusBar.cs" />
+    <Compile Include="OnModuleIsAliveConsole.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Infrastructure\UiContracts\UiContracts.csproj">
-      <Project>{cee88a4d-e517-40a5-bf5d-feec4fb4096d}</Project>
-      <Name>UiContracts</Name>
+    <ProjectReference Include="..\..\Modules\Contracts\Contracts.csproj">
+      <Project>{7047438D-82DC-4868-ACAE-EE3DF665337D}</Project>
+      <Name>Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -89,4 +89,3 @@
   </Target>
   -->
 </Project>
-

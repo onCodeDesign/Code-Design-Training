@@ -64,10 +64,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Infrastructure\UiContracts\UiContracts.csproj">
-      <Project>{cee88a4d-e517-40a5-bf5d-feec4fb4096d}</Project>
-      <Name>UiContracts</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Contracts\Contracts.csproj">
       <Project>{7047438D-82DC-4868-ACAE-EE3DF665337D}</Project>
       <Name>Contracts</Name>
@@ -86,4 +82,3 @@
   </Target>
   -->
 </Project>
-

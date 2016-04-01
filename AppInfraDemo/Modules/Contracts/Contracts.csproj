@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="Crm\ICrmService.cs" />
     <Compile Include="Location\ILocationService.cs" />
+    <Compile Include="Notifications\IAmAliveSubscriber.cs" />
     <Compile Include="Notifications\INotificationService.cs" />
     <Compile Include="Notifications\IStateChangeSubscriber.cs" />
     <Compile Include="Notifications\Status.cs" />
