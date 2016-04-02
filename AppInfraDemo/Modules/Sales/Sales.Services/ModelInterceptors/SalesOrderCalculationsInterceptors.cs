@@ -1,16 +1,14 @@
-﻿using DataAccess;
-using iQuarc.AppBoot;
+﻿using iQuarc.AppBoot;
+using iQuarc.DataAccess;
 using Sales.DataModel;
 
 namespace Sales.ModelInterceptors
 {
     [Service("SalesOrderCalculationsInterceptors", typeof(IEntityInterceptor<SalesOrderHeader>))]
-    class SalesOrderCalculationsInterceptors : EntityInterceptor<SalesOrderHeader>
+    class SalesOrderCalculationsInterceptors : IEntityInterceptor<SalesOrderHeader>
     {
-        public override void OnSave(IEntityEntryFacade<SalesOrderHeader> entry, IRepository repository)
+        public void OnSave(IEntityEntry<SalesOrderHeader> entry, IRepository repository)
         {
-            base.OnSave(entry, repository);
-
             if (IsAddedOrModified(entry))
             {
                 var order = entry.Entity;
@@ -22,9 +20,37 @@ namespace Sales.ModelInterceptors
             }
         }
 
-        private static bool IsAddedOrModified(IEntityEntryFacade<SalesOrderHeader> entry)
+        private static bool IsAddedOrModified(IEntityEntry<SalesOrderHeader> entry)
         {
-            return entry.State.HasFlag(EntityEntryStates.Added) || entry.State.HasFlag(EntityEntryStates.Modified);
+            return entry.State.HasFlag(EntityEntryState.Added) || entry.State.HasFlag(EntityEntryState.Modified);
         }
+
+
+
+
+	    public void OnLoad(IEntityEntry entry, IRepository repository)
+	    {
+		    throw new System.NotImplementedException();
+	    }
+
+	    public void OnSave(IEntityEntry entry, IRepository repository)
+	    {
+		    throw new System.NotImplementedException();
+	    }
+
+	    public void OnDelete(IEntityEntry entry, IRepository repository)
+	    {
+		    throw new System.NotImplementedException();
+	    }
+
+	    public void OnLoad(IEntityEntry<SalesOrderHeader> entry, IRepository repository)
+	    {
+		    throw new System.NotImplementedException();
+	    }
+
+	    public void OnDelete(IEntityEntry<SalesOrderHeader> entry, IRepository repository)
+	    {
+		    throw new System.NotImplementedException();
+	    }
     }
 }

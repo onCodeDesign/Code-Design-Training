@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Contracts.Sales;
-using DataAccess;
 using iQuarc.AppBoot;
+using iQuarc.DataAccess;
 using Sales.DataModel;
 
 namespace Sales
