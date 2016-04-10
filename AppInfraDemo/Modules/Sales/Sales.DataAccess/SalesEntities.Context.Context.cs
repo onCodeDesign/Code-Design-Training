@@ -7,15 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Sales.DataModel;
-
-namespace DataAccess.DbContexts
+namespace Sales.DataAccess
 {
-    using System;
+    using Sales.DataModel;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    internal partial class SalesEntities : DbContext
+    public class SalesEntities : DbContext
     {
         public SalesEntities()
             : base("name=SalesEntities")

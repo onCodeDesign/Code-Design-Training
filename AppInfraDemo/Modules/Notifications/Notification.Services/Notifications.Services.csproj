@@ -9,15 +9,16 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Notifications</RootNamespace>
     <AssemblyName>Notifications.Services</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -31,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="iQuarc.AppBoot, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\iQuarc.AppBoot.2.0.2\lib\net45\iQuarc.AppBoot.dll</HintPath>
+    <Reference Include="iQuarc.AppBoot, Version=2.0.3.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\iQuarc.AppBoot.2.0.3-disposables002\lib\net45\iQuarc.AppBoot.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="iQuarc.SystemEx">
@@ -81,4 +82,3 @@
   </Target>
   -->
 </Project>
-
