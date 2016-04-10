@@ -78,6 +78,4 @@ namespace ConsoleDemo.Decorator
             Console.Write(" with vertical scroll bar");
         }
     }
-
-    
 }

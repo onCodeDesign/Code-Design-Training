@@ -69,7 +69,7 @@ namespace ConsoleDemo.Composite.Safety
         #endregion
     }
 
-    public abstract class CompositeElement : IGraphicElement, IEnumerable<IGraphicElement>
+    public abstract class CompositeElement : IGraphicElementContainer, IEnumerable<IGraphicElement>
     {
         private readonly LinkedList<IGraphicElement> children = new LinkedList<IGraphicElement>();
         private int lastOrder;

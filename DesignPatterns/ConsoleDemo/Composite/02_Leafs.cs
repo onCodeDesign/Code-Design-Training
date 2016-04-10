@@ -21,12 +21,14 @@ namespace ConsoleDemo.Composite.Transparency
 
         public void Add(IGraphicElement childElement)
         {
+			// this is a good compromise. Tolerant to errors in release, but strict in debug. 
             Debug.Fail("You cannot add a child element to a Line");
         }
 
         public void Remove(IGraphicElement element)
         {
-            Debug.Fail("A Line does not have children to remove from") ;
+			// this is a good compromise. Tolerant to errors in release, but strict in debug. 
+			Debug.Fail("A Line does not have children to remove from") ;
         }
 
         public IEnumerable<IGraphicElement> GetChildElements()
@@ -52,12 +54,14 @@ namespace ConsoleDemo.Composite.Transparency
 
         public void Add(IGraphicElement childElement)
         {
-            throw new NotSupportedException(string.Format("You cannot add a child element to a {0}", GetType().Name));
+			// might be too strict implementation
+            throw new NotSupportedException($"You cannot add a child element to a {GetType().Name}");
         }
 
         public void Remove(IGraphicElement element)
         {
-            throw new NotSupportedException(string.Format("A {0} does not have children to remove from", GetType().Name));
+			// might be too strict implementation
+			throw new NotSupportedException($"A {GetType().Name} does not have children to remove from");
         }
 
         public IEnumerable<IGraphicElement> GetChildElements()

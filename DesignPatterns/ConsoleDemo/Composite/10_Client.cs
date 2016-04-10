@@ -28,24 +28,36 @@ namespace ConsoleDemo.Composite.Safety
 
             GraphicText text = new GraphicText("This is a nice graphic", ConsoleColor.DarkBlue);
 
-            foreach (IGraphicElement element in drawing.GetChildElements())
-            {
-                if (element.Name.Contains("great"))
-                {
-                    IGraphicElementContainer container = element as IGraphicElementContainer;
-                    if (container != null)
-                    {
-                        container.Add(text);
-                    }
-                }
-            }
+            AddElementWhenNameContains("great", text, drawing);
 
 
             Console.WriteLine("\n-----------The drawing after edit ---------");
             drawing.Draw();
         }
 
-        private static Drawing BuildDrawing()
+	    private static void AddElementWhenNameContains(string content, GraphicText text, IGraphicElement parent)
+	    {
+		    IGraphicElementContainer parentContainer = parent as IGraphicElementContainer;
+		    if (parentContainer != null)
+		    {
+			    foreach (IGraphicElement element in parentContainer.GetChildElements())
+			    {
+				    if (element.Name.Contains(content))
+				    {
+					    IGraphicElementContainer elementContainer = element as IGraphicElementContainer;
+					    if (elementContainer != null)
+					    {
+						    elementContainer.Add(text);
+
+						    foreach (var child in elementContainer.GetChildElements())
+							    AddElementWhenNameContains(content, text, child);
+					    }
+				    }
+			    }
+		    }
+	    }
+
+	    private static Drawing BuildDrawing()
         {
             var drawing = new Drawing
             {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataAccess.Exceptions
+namespace DataAccess
 {
     public interface IAuditable
     {
