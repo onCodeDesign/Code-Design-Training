@@ -32,3 +32,20 @@ Suposing we would have `IConsole` indentical w/ the public interface of `Console
 Write some unit tests for the `OrdersConsoleApplication.ShowAllOrders()` function
 
 
+## 3. Notification Service
+
+## 3.1 Module notification
+
+Add a Notifications IModule and notify when it is alive.
+
+As a model for this look on how SaleServicesModule is implementated on how its *I'm Alive* notification is shown in the ConsoleApplication. 
+Implement the same for a Notifications Module
+
+
+## 3.2. OrderStateChangeSubscriber that writes in a text file
+  
+ Write a subsriber that writes in a test file when a new SalesOrder is created, deleted or changed
+
+## 3.3. OrderStateChangeSubscriber for the UI
+ 
+ Write a subscriber that shows on the UI when a new SalesOrder is created, deleted or changed

@@ -127,14 +127,14 @@ namespace Sales
 
             List<string> requiredCodes = requestsByProductCode.Select(p => p.Product.Code).ToList();
             var productsByCode = repository.GetEntities<Product>().Where(p => requiredCodes.Contains(p.ProductNumber));
-           
-            //TODO enrich each product from requiredByCode with the products from DB. If there are codes for which there are no products return false
 
-            // validate that required by Id is correct
+			//TODO enrich each product from requestsByProductCode with the products from DB. If there are codes for which there are no products return false
 
-            // Validate that required both by Id and Code are consistent
+			// validate that required by Id is correct
 
-            return true;
+			// Validate that required both by Id and Code are consistent
+
+			return true;
         }
     }
 }

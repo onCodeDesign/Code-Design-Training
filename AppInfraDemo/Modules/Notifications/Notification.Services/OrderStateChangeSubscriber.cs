@@ -13,12 +13,12 @@ namespace Notifications
             //TODO: We've got new order!!!
         }
 
-        public void NotifyDeleted<T>(T item)
+        public void NotifyDeleted(SalesOrderResult item)
         {
             throw new NotImplementedException();
         }
 
-        public void NotifyChanged<T>(T item)
+        public void NotifyChanged(SalesOrderResult item)
         {
             throw new NotImplementedException();
         }
