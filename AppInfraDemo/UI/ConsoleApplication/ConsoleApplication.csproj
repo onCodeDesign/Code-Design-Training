@@ -34,12 +34,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="iQuarc.AppBoot, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\iQuarc.AppBoot.2.0.2\lib\net45\iQuarc.AppBoot.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="iQuarc.AppBoot.Unity, Version=2.0.3.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\iQuarc.AppBoot.Unity.2.0.3-disposables002\lib\net45\iQuarc.AppBoot.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="iQuarc.DataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\iQuarc.DataAccess.1.0.0\lib\net45\iQuarc.DataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="iQuarc.DataAccess.AppBoot, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\iQuarc.DataAccess.AppBoot.1.0.0\lib\net45\iQuarc.DataAccess.AppBoot.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="iQuarc.SystemEx, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -63,12 +79,18 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConsole.cs" />
+    <Compile Include="IConsole.cs" />
+    <Compile Include="OrdersConsoleApplication.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OnModuleIsAliveConsole.cs" />
+    <Content Include="AdventureWorksTestQueries\SalesPersons.sql" />
+    <Content Include="AdventureWorksTestQueries\SalesOrdersHeader.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

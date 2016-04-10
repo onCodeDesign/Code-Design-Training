@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using iQuarc.AppBoot;
 using iQuarc.AppBoot.Unity;
+using iQuarc.DataAccess.AppBoot;
 using Microsoft.Practices.ServiceLocation;
 
 namespace ConsoleApplication
@@ -13,17 +14,27 @@ namespace ConsoleApplication
 	{
 		private static void Main(string[] args)
 		{
+			IServiceLocator serviceLocator = Bootstrapp();
+
+			OrdersConsoleApplication app = serviceLocator.GetInstance<OrdersConsoleApplication>();
+			app.ShowAllOrders();
+
+			Console.WriteLine();
+			Console.WriteLine("Press any key to close the application...");
+			Console.ReadKey();
+		}
+
+		private static IServiceLocator Bootstrapp()
+		{
 			var assemblies = GetApplicationAssemblies().ToArray();
 			Bootstrapper bootstrapper = new Bootstrapper(assemblies);
 			bootstrapper.ConfigureWithUnity();
 			bootstrapper.AddRegistrationBehavior(new ServiceRegistrationBehavior());
+			bootstrapper.AddRegistrationBehavior(DataAccessConfigurations.DefaultRegistrationConventions);
 
 			bootstrapper.Run();
 
-
-			Console.WriteLine();
-			Console.WriteLine("Press any key to close the applciation...");
-			Console.ReadKey();
+			return bootstrapper.ServiceLocator;
 		}
 
 		private static IEnumerable<Assembly> GetApplicationAssemblies()
