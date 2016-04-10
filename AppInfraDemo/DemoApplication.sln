@@ -44,6 +44,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Infrastructure\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.DataAccess", "Modules\Sales\Sales.DataAccess\Sales.DataAccess.csproj", "{3CD21221-4782-4D17-A0C9-ECE1B15D4469}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Exercises", ".Exercises", "{4507AF0F-9E80-41D8-95ED-1FDB5CC18413}"
+	ProjectSection(SolutionItems) = preProject
+		.Exercises\readme.md = .Exercises\readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

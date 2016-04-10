@@ -11,12 +11,12 @@ namespace Notifications
             //TODO: write to monitoring dashboard
         }
 
-        public void NotifyDeleted<T1>(T1 item)
+        public void NotifyDeleted(T item)
         {
             //TODO: write to monitoring dashboard
         }
 
-        public void NotifyChanged<T1>(T1 item)
+        public void NotifyChanged(T item)
         {
             //TODO: write to monitoring dashboard
         }

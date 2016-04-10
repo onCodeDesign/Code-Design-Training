@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Contracts.Sales;
-using DataAccess;
 using iQuarc.AppBoot;
+using iQuarc.DataAccess;
 using Sales.DataModel;
 
 namespace Sales
@@ -23,7 +23,22 @@ namespace Sales
         }
 
 
-        public SalesOrderResult PlaceOrder(string customerName, OrderRequest request)
+	    public SalesOrderInfo[] GetOrdersInfo(string customerName)
+	    {
+		    var orders = repository.GetEntities<SalesOrderHeader>()
+			    .Where(soh => soh.Customer.Person.LastName == customerName)
+			    .Select(soh => new SalesOrderInfo
+			    {
+					CustomerName = customerName,
+					Number = soh.SalesOrderNumber,
+					//SalesPersonName = soh.SalesPerson. // see exercise: **OrderingService.Ex1**
+					DueDate = soh.DueDate,
+					TotalDue = soh.TotalDue
+			    });
+		    return orders.ToArray();
+	    }
+
+	    public SalesOrderResult PlaceOrder(string customerName, OrderRequest request)
         {
             Customer c = GetCustomer(customerName);
             if (c == null)
@@ -57,7 +72,7 @@ namespace Sales
             return new SalesOrderResult {State = OrderResultState.Invalid};
         }
 
-        private void AddRequestToOrder(OrderRequest request, SalesOrderHeader order)
+	    private void AddRequestToOrder(OrderRequest request, SalesOrderHeader order)
         {
             foreach (var requestedProduct in request.Products)
             {
@@ -112,14 +127,14 @@ namespace Sales
 
             List<string> requiredCodes = requestsByProductCode.Select(p => p.Product.Code).ToList();
             var productsByCode = repository.GetEntities<Product>().Where(p => requiredCodes.Contains(p.ProductNumber));
-           
-            //TODO enrich each product from requiredByCode with the products from DB. If there are codes for which there are no products return false
 
-            // validate that required by Id is correct
+			//TODO enrich each product from requestsByProductCode with the products from DB. If there are codes for which there are no products return false
 
-            // Validate that required both by Id and Code are consistent
+			// validate that required by Id is correct
 
-            return true;
+			// Validate that required both by Id and Code are consistent
+
+			return true;
         }
     }
 }
