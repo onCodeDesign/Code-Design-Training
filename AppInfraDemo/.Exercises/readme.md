@@ -41,11 +41,18 @@ Add a Notifications IModule and notify when it is alive.
 As a model for this look on how SaleServicesModule is implementated on how its *I'm Alive* notification is shown in the ConsoleApplication. 
 Implement the same for a Notifications Module
 
+## 3.2. Create a composite for `NotificationService.NotifyAlive()`
 
-## 3.2. OrderStateChangeSubscriber that writes in a text file
+Current implementation of `NotifyAlive()` first tryies to get the unlabeled `IAmAliveSubscriber<T>` implementation and then it get all labeled implementaion.
+	This try/cath is ugly and could be avoided w/ a composite IAmAliveSubscriber which get all labele IAmAliveSubscriber and forwards the call to them
+	
+	**Solution** see branch ex/NotificationServiceComposite
+
+
+## 3.3. OrderStateChangeSubscriber that writes in a text file
   
  Write a subsriber that writes in a test file when a new SalesOrder is created, deleted or changed
 
-## 3.3. OrderStateChangeSubscriber for the UI
+## 3.4. OrderStateChangeSubscriber for the UI
  
  Write a subscriber that shows on the UI when a new SalesOrder is created, deleted or changed
