@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{02E0C5E1-5F9D-482A-AF46-7097C48A2C98}"
 EndProject
@@ -28,13 +28,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.DataModel", "Modules\Sales\Sales.DataModel\Sales.DataModel.csproj", "{1213C2ED-777A-4105-B946-765FE62029D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Export.DataModel", "Modules\Export\Export.DataModel\Export.DataModel.csproj", "{2DE10D6E-3095-4E72-BE64-3F0F9FF552F5}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C345F7B2-32BE-48E5-A276-02EE30A5133A}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{3F680E2A-9E56-44A3-B745-5854414AB695}"
 EndProject
