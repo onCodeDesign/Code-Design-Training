@@ -2,7 +2,7 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
 {
 	public interface IPageFileWriter
 	{
-		bool WriteFile(PageXml page, string fileType);
+		bool WriteFile(PageXml page, string fileType); // fileType=="CustomerPage"
 	}
 
 	public static class PageFileWriterExtensions

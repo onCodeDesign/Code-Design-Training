@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -39,14 +41,14 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
                   .Returns(serviceStub);
 
 
-            logTrace(string.Format("ThreadId:{0} | Test1: IsOdd_ServiceReturns5_True: locator setup finished", Thread.CurrentThread.ManagedThreadId));
+            logTrace($"ThreadId:{Thread.CurrentThread.ManagedThreadId} | Test: {GetMethodName()}: locator setup finished");
 
             Thread.Sleep(sleep);
 
             var target = new UnderTest();
             bool result = target.IsOdd();
 
-            logTrace(string.Format("ThreadId:{0} | Test1: IsOdd_ServiceReturns5_True: act finished; Result={1}", Thread.CurrentThread.ManagedThreadId, result));
+            logTrace($"ThreadId:{Thread.CurrentThread.ManagedThreadId} | Test: {GetMethodName()}: act finished; Result={result}");
 
             Assert.IsTrue(result);
         }
@@ -58,14 +60,14 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
             slStub.Setup(sl => sl.GetInstance<IService>())
                   .Returns(serviceStub);
 
-            log(string.Format("ThreadId:{0} | Test2: IsOdd_ServiceReturns4_False: locator setup finished", Thread.CurrentThread.ManagedThreadId));
+            log($"ThreadId:{Thread.CurrentThread.ManagedThreadId} | Test: {GetMethodName()}: locator setup finished");
 
             Thread.Sleep(sleep);
 
             var target = new UnderTest();
             bool result = target.IsOdd();
 
-            log(string.Format("ThreadId:{0} | Test2: IsOdd_ServiceReturns4_False: act finished; Result={1}", Thread.CurrentThread.ManagedThreadId, result));
+            log($"ThreadId:{Thread.CurrentThread.ManagedThreadId} | Test: {GetMethodName()}: act finished; Result={result}");
 
             Assert.IsFalse(result);
         }
@@ -88,5 +90,14 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
         {
             IsOdd_ServiceReturns4_False(0, s => { });
         }
-    }
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public string GetMethodName()
+		{
+			StackTrace st = new StackTrace();
+			StackFrame sf = st.GetFrame(1);
+
+			return sf.GetMethod().Name;
+		}
+	}
 }

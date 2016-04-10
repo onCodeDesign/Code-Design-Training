@@ -46,5 +46,7 @@ namespace DataAccess.DbContexts
         public virtual DbSet<SpecialOffer> SpecialOffers { get; set; }
         public virtual DbSet<SpecialOfferProduct> SpecialOfferProducts { get; set; }
         public virtual DbSet<Store> Stores { get; set; }
+        public virtual DbSet<Person> People { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     }
 }

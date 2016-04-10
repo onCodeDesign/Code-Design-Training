@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="DataAccess.Exceptions.ConcurrencyRepositoryException" Collapsed="true">
+    <Position X="5" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Exceptions\ConcurrencyRepositoryException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccess.Exceptions.DataValidationException" Collapsed="true">
+    <Position X="5" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAEAAAAgAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\DataValidationException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccess.Exceptions.DateTimeRangeRepositoryException" Collapsed="true">
+    <Position X="5" Y="5.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\DateTimeRangeRepositoryException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccess.Exceptions.DeadlockVictimRepositoryException" Collapsed="true">
+    <Position X="5" Y="7.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\DeadlockVictimRepositoryException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccess.Exceptions.DeleteConstraintRepositoryException" Collapsed="true">
+    <Position X="5" Y="6.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\DeleteConstraintRepositoryException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccess.Exceptions.RepositoryException" Collapsed="true">
+    <Position X="6.75" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAEAABAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\RepositoryException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccess.Exceptions.RepositoryUpdateException" Collapsed="true">
+    <Position X="5" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\RepositoryUpdateException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccess.Exceptions.UniqueConstraintRepositoryException" Collapsed="true">
+    <Position X="5" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\UniqueConstraintRepositoryException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccess.Exceptions.Handlers.ConcurrencyExceptionHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAEAAAAAAAA=</HashCode>
+      <FileName>Exceptions\Handlers\ConcurrencyExceptionHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataAccess.Exceptions.Handlers.DbEntityValidationExceptionHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2" Y="4.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAIAAAEAAAgAAAA=</HashCode>
+      <FileName>Exceptions\Handlers\DbEntityValidationExceptionHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataAccess.Exceptions.Handlers.DefaultExceptionHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\Handlers\DefaultExceptionHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataAccess.Exceptions.Handlers.SqlExceptionHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAEAAAAAAAA=</HashCode>
+      <FileName>Exceptions\Handlers\SqlExceptionHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataAccess.Exceptions.Handlers.UpdateExceptionHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAEAAAAAAAA=</HashCode>
+      <FileName>Exceptions\Handlers\UpdateExceptionHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="DataAccess.Exceptions.Handlers.IExceptionHandler">
+    <Position X="2" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\Handlers\IExceptionHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
