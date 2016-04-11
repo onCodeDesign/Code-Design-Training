@@ -108,6 +108,7 @@
     <Compile Include="Lesson6\Expenses\ExpensesService.cs" />
     <Compile Include="Lesson6\Expenses\IExpensesService.cs" />
     <Compile Include="Lesson6\IMovieProvider.cs" />
+    <Compile Include="Lesson6\Logger\LogEntry.cs" />
     <Compile Include="Lesson6\Logger\Logger.cs" />
     <Compile Include="Lesson6\MovieLister_DI.cs" />
     <Compile Include="Lesson6\MovieListerFactory.cs" />
@@ -154,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Lesson6\DI-Unity\_Exercises.md" />
     <None Include="Lesson7\InheritanceComposition\LogSource.cd" />
     <None Include="Lesson7\InheritanceComposition\LogSource_2.cd" />
     <None Include="packages.config" />
@@ -171,4 +173,3 @@
   </Target>
   -->
 </Project>
-

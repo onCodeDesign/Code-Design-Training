@@ -4,7 +4,6 @@ namespace LessonsSamples.Lesson6.DI_Unity
 {
 	public class MovieConsoleApplication
 	{
-		string session = Guid.NewGuid().ToString();
 		private readonly IMovieConsoleCreator movieCreator;
 		private readonly IMovieTransformer movieTransformer;
 
@@ -40,7 +39,8 @@ namespace LessonsSamples.Lesson6.DI_Unity
 
 			Console.WriteLine("1. Create movies");
 			Console.WriteLine("2. Translate movies");
-			Console.WriteLine("3. Query movies");
+			Console.WriteLine("3. List movies");
+			Console.WriteLine("4. Find movie");
 			Console.WriteLine();
 			Console.WriteLine("0. Quit");
 		}
