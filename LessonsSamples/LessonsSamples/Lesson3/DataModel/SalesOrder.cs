@@ -39,6 +39,20 @@ namespace LessonsSamples.Lesson3.DataModel
             return true;
         }
 
+	    public decimal TaxAmount
+	    {
+		    get
+		    {
+				if (IsTerritoryWithTaxes(SalesTerritory) && TaxAmt < 0)
+				{
+					TaxAmt = CalculateDefaultTaxes();
+				}
+			    return TaxAmt;
+		    }
+		    set { TaxAmt = value; }
+			
+	    }
+
         private decimal CalculateDefaultTaxes()
         {
             throw new NotImplementedException();
