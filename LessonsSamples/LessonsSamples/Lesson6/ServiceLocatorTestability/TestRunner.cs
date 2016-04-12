@@ -13,8 +13,8 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
         {
             UnitTest.AssemblyInit(null);
 
-            Thread t1 = new Thread(() => RunTest(new UnitTest(), tc => tc.IsOdd_ServiceReturns5_True(1200, Console.WriteLine)));
-            Thread t2 = new Thread(() => RunTest(new UnitTest(), tc => tc.IsOdd_ServiceReturns4_False(1, Console.WriteLine)));
+            Thread t1 = new Thread(() => RunTest(t => t.IsOdd_ServiceReturns5_True(1200, Console.WriteLine)));
+            Thread t2 = new Thread(() => RunTest(t => t.IsOdd_ServiceReturns4_False(1, Console.WriteLine)));
 
             t1.Start();
 			Thread.Sleep(200);
@@ -25,9 +25,10 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
 	        t1.Join();
         }
 
-        private static void RunTest(UnitTest testClass, Action<UnitTest> test)
+        private static void RunTest(Action<UnitTest> test)
         {
-            testClass.TestInitialize();
+	        UnitTest testClass = new UnitTest();
+	        testClass.TestInitialize();
 
 	        try
 	        {
