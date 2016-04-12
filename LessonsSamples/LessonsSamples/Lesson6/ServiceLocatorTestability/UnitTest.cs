@@ -35,9 +35,9 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
 
         public void IsOdd_ServiceReturns5_True(int sleep, Action<string> logTrace)
         {
-            IService serviceStub = GetServiceStubWhichReturns(5);
+            INumberGeneratorService serviceStub = GetServiceStubWhichReturns(5);
 
-            slStub.Setup(sl => sl.GetInstance<IService>())
+            slStub.Setup(sl => sl.GetInstance<INumberGeneratorService>())
                   .Returns(serviceStub);
 
 
@@ -55,9 +55,9 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
 
         public void IsOdd_ServiceReturns4_False(int sleep, Action<string> log)
         {
-            IService serviceStub = GetServiceStubWhichReturns(4);
+            INumberGeneratorService serviceStub = GetServiceStubWhichReturns(4);
 
-            slStub.Setup(sl => sl.GetInstance<IService>())
+            slStub.Setup(sl => sl.GetInstance<INumberGeneratorService>())
                   .Returns(serviceStub);
 
             log($"ThreadId:{Thread.CurrentThread.ManagedThreadId} | Test: {GetMethodName()}: locator setup finished");
@@ -72,10 +72,10 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
             Assert.IsFalse(result);
         }
 
-        private static IService GetServiceStubWhichReturns(int result)
+        private static INumberGeneratorService GetServiceStubWhichReturns(int result)
         {
-            Mock<IService> stub = new Mock<IService>();
-            stub.Setup(m => m.Foo()).Returns(result);
+            Mock<INumberGeneratorService> stub = new Mock<INumberGeneratorService>();
+            stub.Setup(m => m.GenerateNumber()).Returns(result);
             return stub.Object;
         }
 

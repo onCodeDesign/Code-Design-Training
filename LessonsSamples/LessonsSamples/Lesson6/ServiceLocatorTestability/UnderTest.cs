@@ -6,8 +6,8 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
     {
         public bool IsOdd()
         {
-            IService service = ServiceLocator.Current.GetInstance<IService>();
-            int number = service.Foo();
+			var service = ServiceLocator.Current.GetInstance<INumberGeneratorService>();
+            int number = service.GenerateNumber();
             return number%2 == 1;
         }
     }
