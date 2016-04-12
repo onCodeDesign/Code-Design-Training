@@ -2,7 +2,7 @@
 {
     interface IExpensesService
     {
-        void Approve(ExpenseData expense);
-        void Process(ExpenseData expense);
+	    void Process(ExpenseData expense);
+	    void Approve(ExpenseData expense);
     }
 }

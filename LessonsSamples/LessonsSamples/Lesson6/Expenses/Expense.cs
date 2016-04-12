@@ -24,7 +24,7 @@ namespace LessonsSamples.Lesson6
             }
 
 
-            return expense.GetInternalExpenses(); // this may be more complex
+            return expense.GetExpenses(); // this may be more complex
         }
 
         private bool IsMarketingExpense(MoneySpendingsData spending)
@@ -50,7 +50,7 @@ namespace LessonsSamples.Lesson6
             
         }
 
-        public ExpenseData GetInternalExpenses()
+        public ExpenseData GetExpenses()
         {
             return new ExpenseData();
         }

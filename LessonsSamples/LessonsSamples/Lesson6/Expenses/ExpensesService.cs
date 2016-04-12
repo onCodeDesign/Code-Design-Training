@@ -13,23 +13,24 @@ namespace LessonsSamples.Lesson6
             this.steps = steps;
         }
 
-        public void Process(ExpenseData expense)
-        {
-            using (ProcessContext contex = new ProcessContext())
-            {
-                foreach (var processStep in steps)
-                {
-                    bool shouldContinue = processStep.Process(expense, contex);
-                    if (!shouldContinue)
-                    {
-                        HandlePartialResult(contex);
-                    }
-                }
-            }
-            HandleCompleteResult(expense);
-        }
+	    public void Process(ExpenseData expense)
+	    {
+		    using (ProcessContext contex = new ProcessContext())
+		    {
+			    foreach (var processStep in steps)
+			    {
+				    bool shouldContinue = processStep.Process(expense, contex);
+				    if (!shouldContinue)
+				    {
+					    HandlePartialResult(contex);
+				    }
+			    }
 
-        private void HandleCompleteResult(ExpenseData expense)
+			    HandleCompleteResult(contex, expense);
+		    }
+	    }
+
+	    private void HandleCompleteResult(ProcessContext contex, ExpenseData expense)
         {
         }
 
