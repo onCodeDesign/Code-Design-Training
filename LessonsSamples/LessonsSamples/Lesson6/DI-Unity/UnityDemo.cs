@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.Unity;
+﻿using Microsoft.Practices.ServiceLocation;
+using Microsoft.Practices.Unity;
 
 namespace LessonsSamples.Lesson6.DI_Unity
 {
@@ -10,13 +11,23 @@ namespace LessonsSamples.Lesson6.DI_Unity
 
 			container.RegisterType<IMovieConsoleCreator, MovieConsoleCreator>();
 			container.RegisterType<IMovieTransformer, MovieTransformer>();
+			container.RegisterType<ITextStorage, FileStorage>(new PerResolveLifetimeManager());
+			container.RegisterType<IMenu, Menu>();
+			container.RegisterType<IConsoleCommand, CreateMoviesCommand>("Create Commands");
+			container.RegisterType<ICreateMoviesCommand, CreateMoviesCommand>();
+			container.RegisterType<IConsoleCommand, TransformMoviesCommand>("Transform Movies");
 
-			// Demo the difference between PerResolveLivetimeManager and TransientLifetimeManager
-			container.RegisterType<ITextStorage, FileStorage>(new PerResolveLifetimeManager()); 
+			IServiceLocator serviceLoc = new UnityServiceLocator(container);
+			ServiceLocator.SetLocatorProvider(() => serviceLoc);
 
 
-			var app = container.Resolve<MovieConsoleApplication>();
+			var app = ServiceLocator.Current.GetInstance<MovieConsoleApplication>();
 			app.Run();
+
+
 		}
 	}
+
+
+	
 }

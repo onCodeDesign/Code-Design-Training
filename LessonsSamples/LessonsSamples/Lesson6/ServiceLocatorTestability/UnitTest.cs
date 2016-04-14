@@ -24,7 +24,7 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
         {
             slStub = new Mock<IServiceLocator>();
             //ServiceLocator.SetLocatorProvider(() => slStub.Object);
-            ServiceLocatorDoubleStorage.SetInstance(slStub.Object);
+			ServiceLocatorDoubleStorage.SetInstance(slStub.Object);
         }
 
         [TestCleanup]

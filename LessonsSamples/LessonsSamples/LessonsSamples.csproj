@@ -96,8 +96,10 @@
     <Compile Include="Lesson6\DI-Unity\IMovieConsoleCreator.cs" />
     <Compile Include="Lesson6\DI-Unity\IMovieTransformer.cs" />
     <Compile Include="Lesson6\DI-Unity\ITextStorage.cs" />
+    <Compile Include="Lesson6\DI-Unity\Menu.cs" />
     <Compile Include="Lesson6\DI-Unity\MovieConsoleApplication.cs" />
     <Compile Include="Lesson6\DI-Unity\MovieTransformer.cs" />
+    <Compile Include="Lesson6\DI-Unity\TransformMoviesCommand.cs" />
     <Compile Include="Lesson6\DI-Unity\UnityDemo.cs" />
     <Compile Include="Lesson6\DI_AndDisposable\Model.cs" />
     <Compile Include="Lesson6\DI_AndDisposable\Repository.cs" />
