@@ -64,7 +64,8 @@ namespace LessonsSamples.Lesson6.DI_AndDisposable
             using (IUnitOfWork uof = repository.CreateUnitOfWork())
             {
                 var orders = GetHighValueOrders(uof)
-                    .Where(o => o.Year == year && o.Status == Status.PreCalculated);
+                    .Where(o => o.Year == year && o.Status == Status.PreCalculated)
+					.ToArray();
 
                 foreach (var order in orders.Where(IsHighRisk))
                 {

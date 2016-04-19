@@ -144,6 +144,7 @@
     <Compile Include="Lesson7\InheritanceComposition\LogEntry.cs" />
     <Compile Include="Lesson7\InheritanceComposition\LogSource.cs" />
     <Compile Include="Lesson7\InheritanceComposition\LogSource_2.cs" />
+    <Compile Include="Lesson7\InheritanceComposition\Month.cs" />
     <Compile Include="Lesson8\Validation\AddressValidationRules.cs" />
     <Compile Include="Lesson8\Validation\Country.cs" />
     <Compile Include="Lesson8\Validation\EntityValidationRulesRegistrator.cs" />
