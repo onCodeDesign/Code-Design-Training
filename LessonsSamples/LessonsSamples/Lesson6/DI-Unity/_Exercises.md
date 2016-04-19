@@ -11,3 +11,9 @@
 	All the commands could implement an `ICommand` interface (you could use the interface from `System.Windows.Input`)
 
 	The console app should discover all available commands, build the menu with them and then execute them based on the user input
+
+## 5. Implement a composite command
+	
+	The composite command should aggregate all the discover commands, in execution and presentation
+
+## 6. Replace DI w/ AppBoot
