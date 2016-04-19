@@ -21,7 +21,7 @@ namespace ConsoleApplication
 
 			SalesOrderInfo[] orders = orderingService.GetOrdersInfo(customerName);
 
-			console.WriteLine($"Orders for customer {customerName}: ");
+			console.WriteLine($"Orders for customer {customerName}: "); //Test data: Abel | Smith | Adams
 			foreach (SalesOrderInfo salesOrderInfo in orders)
 			{
 				console.WriteEntity(salesOrderInfo);
