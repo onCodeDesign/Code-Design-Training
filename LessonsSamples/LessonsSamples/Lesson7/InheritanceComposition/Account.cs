@@ -7,8 +7,8 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
         private decimal ammount;
         private decimal interestRate;
 
-        protected decimal CalculateLastMonthTaxes()
-        {
+        protected decimal CalculateTaxesForMoth(Month month)
+		{
             // ...
             return 100;
         }
@@ -26,17 +26,26 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 
         public virtual void MonthlyRenewal()
         {
-            ammount = ammount + MonthlyInterest() - CalculateLastMonthTaxes();
+			decimal interest = MonthlyInterest();
+	        decimal taxes = CalculateTaxesForMoth(CurrentMonth);
+
+	        ammount = ammount + interest - taxes;
         }
+
+	    public Month CurrentMonth { get; set; }
     }
 
-    class SavingsAccount : Account
+	class SavingsAccount : Account
     {
         public decimal YearlyProfit()
         {
-            // ... 
-            decimal taxes = CalculateLastMonthTaxes();
-            decimal deposits = CalculateYearlyDeposits();
+			// ... 
+	        decimal taxes = 0;
+			Month moth = new Month();
+			// for each month
+				taxes += CalculateTaxesForMoth(moth);
+
+	        decimal deposits = CalculateYearlyDeposits();
             // ... 
 
             return Ammount - deposits - taxes + MonthlyInterest();
@@ -52,9 +61,10 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
     {
         public decimal TransactionsCosts()
         {
-            // ... 
-            decimal lastMonthTaxes = CalculateLastMonthTaxes();
-            decimal lastMonthCommissions = CalculateLastMonthCommision();
+			// ... 
+			Month lastMonth = new Month();
+			var lastMonthTaxes = CalculateTaxesForMoth(lastMonth);
+			decimal lastMonthCommissions = CalculateLastMonthCommision();
             // ... 
 
             return lastMonthCommissions + lastMonthTaxes;
@@ -70,23 +80,11 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
     {
         public override void MonthlyRenewal()
         {
-            decimal taxes = CalculateLastMonthTaxes();
 	        decimal interest = MonthlyInterest();
-			decimal deposits = MonthlyDepozits();
-	        decimal withdrawals = MontlyWithdrawals();
+	        decimal taxes = CalculateTaxesForMoth(CurrentMonth);
 
-	        Ammount = Ammount - interest + deposits - withdrawals - taxes;
+	        Ammount = Ammount - interest - taxes;
         }
-
-        private decimal MonthlyDepozits()
-        {
-            throw new NotImplementedException();
-        }
-
-	    private decimal MontlyWithdrawals()
-	    {
-		    throw new NotImplementedException();
-	    }
 
         public decimal TotalPayments()
         {
