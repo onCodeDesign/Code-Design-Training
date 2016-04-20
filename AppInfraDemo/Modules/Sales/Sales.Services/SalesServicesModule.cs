@@ -21,8 +21,7 @@ namespace Sales
 
         public void Initialize()
         {
-	        IModule m = this;
-			notificationService.NotifyAlive(m);
+	        notificationService.NotifyAlive((IModule) this);
         }
     }
 }
