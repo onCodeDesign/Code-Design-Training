@@ -52,12 +52,16 @@ namespace Sales
                 {
                     SalesOrderHeader order
                         = uof.GetEntities<SalesOrderHeader>()
-                                                .FirstOrDefault(o => o.CustomerID == c.CustomerID &&
-                                                                     o.OrderDate.Month == DateTime.Now.Month);
+                             .FirstOrDefault(o => o.CustomerID == c.CustomerID &&
+                             o.OrderDate.Month == DateTime.Now.Month);
 
                     if (order == null)
                     {
-                        order = new SalesOrderHeader {Customer = c};
+                        order = new SalesOrderHeader
+						{
+							Customer = c,
+							OrderDate = DateTime.Now.Date
+						};
                         uof.Add(order);
                     }
 
