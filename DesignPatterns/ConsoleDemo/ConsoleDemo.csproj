@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="AbstractFactory\AbstractFactory.cs" />
     <Compile Include="AbstractFactory\AnimalWorld.cs" />
+    <Compile Include="AbstractFactory\WidgetsClientApp.cs" />
     <Compile Include="AbstractFactory\ScrollBar.cs" />
     <Compile Include="AbstractFactory\Window.cs" />
     <Compile Include="AbstractFactory\WidgetFactory.cs" />

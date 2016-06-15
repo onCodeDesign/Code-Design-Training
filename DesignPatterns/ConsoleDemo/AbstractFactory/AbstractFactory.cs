@@ -6,16 +6,16 @@ namespace ConsoleDemo.AbstractFactory
     ///     ClientApp startup class for Real-World
     ///     Abstract Factory Design Pattern.
     /// </summary>
-    class ClientApp
+    class AnimalWorldDemo
     {
         /// <summary>
         ///     Entry point into console application.
         /// </summary>
-        public static void RunAbstractFactoryDemo()
+        public static void Run()
         {
-            // Create and run the African animal world
-            ContinentFactory africa = new AfricaFactory();
-            AnimalWorld world = new AnimalWorld(africa);
+			// Create and run the African animal world
+			ContinentFactory africa = new AfricaFactory();
+			AnimalWorld world = new AnimalWorld(africa);
 
 			Console.Write("In Africa: ");
 			 world.RunFoodChain();

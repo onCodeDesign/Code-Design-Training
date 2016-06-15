@@ -3,33 +3,22 @@ using System.Collections.Generic;
 
 namespace ConsoleDemo.AbstractFactory
 {
-    public class WidgetsClientApp
+	public class WidgetsDemo
     {
-        public static void Demo()
+        public static void Run()
         {
             Console.WriteLine("Playing with Windows UI");
             IWidgetFactory winFactory = new WinWidgetFactory();
-            PlayWith(winFactory);
+            var winApp = new WidgetsClientApp(winFactory);
+			winApp.Run();
 
             Console.WriteLine();
             Console.WriteLine("Playing with Mac UI");
             IWidgetFactory macFactory = new MacWidgetFactory();
-            PlayWith(macFactory);
-        }
-
-        private static void PlayWith(IWidgetFactory factory)
-        {
-            IWindow window = factory.CreateWidget<IWindow>();
-            IScrollBar scrollBar = factory.CreateWidget<IScrollBar>();
-
-            window.SetScrollbars(scrollBar, scrollBar);
-            window.Open();
-            window.VerticalScrollBar.ScrollDown(10);
-
-            window.Close();
+            var macApp = new WidgetsClientApp(macFactory);
+			macApp.Run();
         }
     }
-
 
     interface IWindow
     {
@@ -47,7 +36,7 @@ namespace ConsoleDemo.AbstractFactory
         void ScrollDown(int points);
     }
 
-    interface IWidgetFactory
+	public interface IWidgetFactory
     {
         T CreateWidget<T>();
     }
