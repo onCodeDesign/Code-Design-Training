@@ -21,7 +21,7 @@ namespace ConsoleDemo.Strategy
 	///     using a TextWrappingStrategy, which encapsulates a the logic of breaking the compoenent on rows
 	///     and wrapping the text around the pictures.
 	/// 
-	///     Each component has anassociated natural size, stretchability, and shrinkability.
+	///     Each component has an associated natural size, stretchability, and shrinkability.
 	/// 
 	///     The stretchability defines how much the component can grow beyond its natural size; 
 	///     shrinkability is how much  it can shrink. 

@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="AbstractFactory\AbstractFactory.cs" />
     <Compile Include="AbstractFactory\AnimalWorld.cs" />
+    <Compile Include="AbstractFactory\WidgetsClientApp.cs" />
     <Compile Include="AbstractFactory\ScrollBar.cs" />
     <Compile Include="AbstractFactory\Window.cs" />
     <Compile Include="AbstractFactory\WidgetFactory.cs" />
@@ -80,6 +81,26 @@
     <Compile Include="Strategy\01_Robots.cs" />
     <Compile Include="Strategy\02_Robot_.cs" />
     <Compile Include="Strategy\_RobotsClient.cs" />
+    <Compile Include="Visitor\03_VisitableItem.cs" />
+    <Compile Include="Visitor\00_Items.cs" />
+    <Compile Include="Visitor\03_Client.cs" />
+    <Compile Include="Visitor\02_Client.cs" />
+    <Compile Include="Visitor\01_Client.cs" />
+    <Compile Include="Visitor\00_Client.cs" />
+    <Compile Include="Visitor\03_xDemoData.cs" />
+    <Compile Include="Visitor\IUnitOfWork.cs" />
+    <Compile Include="Visitor\IVisitable.cs" />
+    <Compile Include="Visitor\IVisitor.cs" />
+    <Compile Include="Visitor\OrderLine.cs" />
+    <Compile Include="Visitor\Product.cs" />
+    <Compile Include="Visitor\02_RequestItem.cs" />
+    <Compile Include="Visitor\01_RequestItem.cs" />
+    <Compile Include="Visitor\PurchaseOrderRequestApprover.cs" />
+    <Compile Include="Visitor\ReportVisitor.cs" />
+    <Compile Include="Visitor\RequestsRepositoryVisitor.cs" />
+    <Compile Include="Visitor\SalesOrderRequestApprover.cs" />
+    <Compile Include="Visitor\UofFacotry.cs" />
+    <Compile Include="Visitor\VisitorDemo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -3,6 +3,7 @@ using ConsoleDemo.AbstractFactory;
 using ConsoleDemo.ChainOfResponsibility;
 using ConsoleDemo.Decorator;
 using ConsoleDemo.Strategy;
+using ConsoleDemo.Visitor.v3;
 
 namespace ConsoleDemo
 {
@@ -10,9 +11,8 @@ namespace ConsoleDemo
     {
         public static void Main()
         {
-            ClientApp.RunAbstractFactoryDemo();
-
-            //WidgetsClientApp.Demo();
+            AnimalWorldDemo.Run();
+            //WidgetsDemo.Run();
 
             //DecoratorClient.Run();
 
@@ -24,8 +24,11 @@ namespace ConsoleDemo
             //ChainOfResponsibilityClient.PurchaseOrderApproverDemo();
 
 
+			//VisitorDemo3.Run();
+
+
             // Wait for user input
-            Console.ReadKey();
+            Console.ReadLine();
         }
     }
 }
