@@ -4,6 +4,7 @@ using System.Diagnostics;
 
 namespace ConsoleDemo.Composite.Transparency
 {
+	[DebuggerDisplay("{Name}")]
     public class Line : IGraphicElement
     {
         public Line(string name)
@@ -72,7 +73,8 @@ namespace ConsoleDemo.Composite.Transparency
         public IGraphicElement Parent { get; set; }
     }
 
-    public sealed class Rectangle : PrimitiveGraphic
+	[DebuggerDisplay("{Name}")]
+	public sealed class Rectangle : PrimitiveGraphic
     {
         public override void Draw(int leftMargin)
         {
@@ -80,7 +82,8 @@ namespace ConsoleDemo.Composite.Transparency
         }
     }
 
-    public sealed class GraphicText : PrimitiveGraphic
+	[DebuggerDisplay("{Name}")]
+	public sealed class GraphicText : PrimitiveGraphic
     {
         private readonly ConsoleColor backColor;
 

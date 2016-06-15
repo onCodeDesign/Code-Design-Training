@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace ConsoleDemo.Composite.Transparency
 {
-    public class Picture : IGraphicElement, IEnumerable<IGraphicElement>
+	[DebuggerDisplay("{Name}")]
+	public class Picture : IGraphicElement, IEnumerable<IGraphicElement>
     {
         private readonly LinkedList<IGraphicElement> children = new LinkedList<IGraphicElement>();
 
@@ -123,7 +125,8 @@ namespace ConsoleDemo.Composite.Transparency
         #endregion
     }
 
-    class Group : CompositeElement
+	[DebuggerDisplay("{Name}")]
+	class Group : CompositeElement
     {
         public Group()
         {
@@ -149,7 +152,8 @@ namespace ConsoleDemo.Composite.Transparency
         }
     }
 
-    class Drawing : CompositeElement
+	[DebuggerDisplay("{Name}")]
+	class Drawing : CompositeElement
     {
         public override void Draw(int leftMargin)
         {

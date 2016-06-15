@@ -11,8 +11,8 @@ namespace ConsoleDemo
     {
         public static void Main()
         {
-            //AnimalWorldDemo.Run();
-            WidgetsDemo.Run();
+            AnimalWorldDemo.Run();
+            //WidgetsDemo.Run();
 
             //DecoratorClient.Run();
 
@@ -28,7 +28,7 @@ namespace ConsoleDemo
 
 
             // Wait for user input
-            Console.ReadKey();
+            Console.ReadLine();
         }
     }
 }

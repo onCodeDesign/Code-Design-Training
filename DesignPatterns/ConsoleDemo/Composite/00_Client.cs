@@ -34,16 +34,13 @@ namespace ConsoleDemo.Composite.Transparency
 			drawing.Draw();
 		}
 
-		private static void AddElementWhenNameContains(string content, GraphicText text, IGraphicElement drawing)
+		private static void AddElementWhenNameContains(string content, GraphicText text, IGraphicElement graphicElement)
 		{
-			foreach (IGraphicElement element in drawing.GetChildElements())
-			{
-				if (element.Name.Contains(content))
-					element.Add(text);
+			if (graphicElement.Name.Contains(content))
+				graphicElement.Add(text);
 
-				foreach (var child in element.GetChildElements())
-					AddElementWhenNameContains(content, text, child);
-			}
+			foreach (IGraphicElement childElement in graphicElement.GetChildElements())
+				AddElementWhenNameContains(content, text, childElement);
 		}
 
 		private static Drawing BuildDrawing()
@@ -54,8 +51,9 @@ namespace ConsoleDemo.Composite.Transparency
 				new Line("First Line"),
 				new Picture("great view")
 				{
-					new GraphicText("A text over my great picture"),
-					new Line("A line over my picture"),
+					new Picture("An empty picture in a great view"),
+					new GraphicText("A text over my great view"),
+					new Line("A line over my great view"),
 					new Group
 					{
 						new Picture
