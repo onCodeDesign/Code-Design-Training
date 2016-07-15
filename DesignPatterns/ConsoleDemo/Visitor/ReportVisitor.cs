@@ -12,21 +12,21 @@ namespace ConsoleDemo.Visitor.v3
 			Console.WriteLine(report);
 		}
 
-		public void VisitCustomerRequest(NewCustomerRequest customerRequest)
+		public void VisitCustomerCommand(NewCustomerCommand customerCommand)
 		{
-			report.AppendLine($"New customer request: {customerRequest.Name} in business: {customerRequest.BusinessDomain}");
+			report.AppendLine($"New customer request: {customerCommand.Name} in business: {customerCommand.BusinessDomain}");
 		}
 
-		public void VisitSalesOrderRequest(NewSalesOrderRequest salesOrderRequest)
+		public void VisitSalesOrderCommand(NewSalesOrderCommand salesOrderCommand)
 		{
 			report.AppendLine("Sales order request: ");
-			foreach (var line in salesOrderRequest.OrderLines)
+			foreach (var line in salesOrderCommand.OrderLines)
 			{
 				report.AppendLine($"\t Product={line.Product} Quantity={line.Quantity}");
 			}
 		}
 
-		public void VisitPurchaseOrderRequest(NewPurchaseOrderRequest purchaseOrder)
+		public void VisitPurchaseOrderCommand(NewPurchaseOrderCommand purchaseOrder)
 		{
 			report.AppendLine($"Purchase order request: Product={purchaseOrder.Product} Quatity={purchaseOrder.Quantity}");
 		}

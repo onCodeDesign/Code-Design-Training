@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace ConsoleDemo.Visitor.v1
 {
 
-	class NewPurchaseOrderRequest
+	class NewPurchaseOrderCommand
 	{
-		public NewPurchaseOrderRequest(Product product)
+		public NewPurchaseOrderCommand(Product product)
 		{
 			Product = product;
 		}
@@ -16,7 +16,7 @@ namespace ConsoleDemo.Visitor.v1
 		public int Quantity { get; }
 	}
 
-	class NewSalesOrderRequest
+	class NewSalesOrderCommand
 	{
 		public IEnumerable<OrderLine> OrderLines { get; }
 
@@ -25,7 +25,7 @@ namespace ConsoleDemo.Visitor.v1
 		public DateTime Date { get; set; }
 	}
 
-	class NewCustomerRequest
+	class NewCustomerCommand
 	{
 		public string Name { get; set; }
 

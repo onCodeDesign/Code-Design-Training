@@ -2,11 +2,11 @@
 
 namespace ConsoleDemo.Visitor.v3
 {
-	public class Client3
+	public class CommandsManager
 	{
 		private readonly List<IVisitable> items = new List<IVisitable>();
 
-		public Client3()
+		public CommandsManager()
 		{
 			this.items.AddRange(DemoData.GetItems());
 		}
@@ -38,9 +38,9 @@ namespace ConsoleDemo.Visitor.v3
 		{
 			return new IVisitor[]
 			{
-				new NewCustomerRequestApprover(),
-				new PurchaseOrderRequestApprover(),
-				new SalesOrderRequestApprover()
+				new NewCustomerCommandApprover(),
+				new PurchaseOrderCommandApprover(),
+				new SalesOrderCommandApprover()
 			};
 		}
 	}

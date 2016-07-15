@@ -8,14 +8,14 @@ namespace ConsoleDemo.Visitor.v3
 		{
 			return new IVisitable[]
 			{
-				new NewPurchaseOrderRequest(new Product {Name = "iPhone"}, 5),
-				new NewPurchaseOrderRequest(new Product {Name = "MacBookPro"}, 7),
-				new NewPurchaseOrderRequest(new Product {Name = "MacBookAir"}, 1),
+				new NewPurchaseOrderCommand(new Product {Name = "iPhone"}, 5),
+				new NewPurchaseOrderCommand(new Product {Name = "MacBookPro"}, 7),
+				new NewPurchaseOrderCommand(new Product {Name = "MacBookAir"}, 1),
 
-				new NewSalesOrderRequest("Apple", DateTime.Today).AddOrderLine("AwesomeApp v2", 2),
-				new NewSalesOrderRequest("Microsoft", DateTime.Today).AddOrderLine("AwesomeApp v1", 1),
+				new NewSalesOrderCommand("Apple", DateTime.Today).AddOrderLine("AwesomeApp v2", 2),
+				new NewSalesOrderCommand("Microsoft", DateTime.Today).AddOrderLine("AwesomeApp v1", 1),
 
-				new NewCustomerRequest("Deep Mind", "Computers")
+				new NewCustomerCommand("Deep Mind", "Computers")
 			};
 		}
 	}

@@ -3,41 +3,40 @@ using System.Collections.Generic;
 
 namespace ConsoleDemo.Visitor.v2
 {
-
-	interface IRequestProcessor
+	interface ICommand
 	{
 		void Approve();
 
 		void PrettyPrint();
 	}
 
-	class NewPurchaseOrderRequest : IRequestProcessor
+	class NewPurchaseOrderCommand : ICommand
 	{
-		public NewPurchaseOrderRequest(Product product)
+		public NewPurchaseOrderCommand(Product product)
 		{
 			Product = product;
 		}
 
 		public void Approve()
 		{
-			// Interact w/ the databse and use external services to process a new purchase order request
+			// Interact w/ the database and use external services to process a new purchase order request
 		}
 
 		public void PrettyPrint()
 		{
-			Console.WriteLine($"Purchase order request: Product={Product} Quatity={Quantity}");
+			Console.WriteLine($"Purchase order request: Product={Product} Quantity={Quantity}");
 		}
 
 		public Product Product { get; }
 
-		public int Quantity { get;  }
+		public int Quantity { get; }
 	}
 
-	class NewSalesOrderRequest : IRequestProcessor
+	class NewSalesOrderCommand : ICommand
 	{
 		public void Approve()
 		{
-			// Interact w/ the databse and use external services to process a new sales order request
+			// Interact w/ the database and use external services to process a new sales order request
 		}
 
 		public void PrettyPrint()
@@ -56,11 +55,11 @@ namespace ConsoleDemo.Visitor.v2
 		public DateTime Date { get; set; }
 	}
 
-	class NewCustomerRequest : IRequestProcessor
+	class NewCustomerCommand : ICommand
 	{
 		public void Approve()
 		{
-			// Interact w/ the databse and use external services to process a new customer
+			// Interact w/ the database and use external services to process a new customer
 		}
 
 		public void PrettyPrint()

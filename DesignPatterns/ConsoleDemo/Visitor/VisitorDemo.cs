@@ -8,7 +8,7 @@ namespace ConsoleDemo.Visitor.v3
 	{
 		public static void Run()
 		{
-			var client = new Client3();
+			var client = new CommandsManager();
 
 			Console.WriteLine();
 			Console.WriteLine("PrettyPrint");

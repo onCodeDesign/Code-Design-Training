@@ -88,17 +88,19 @@
     <Compile Include="Visitor\01_Client.cs" />
     <Compile Include="Visitor\00_Client.cs" />
     <Compile Include="Visitor\03_xDemoData.cs" />
+    <Compile Include="Visitor\ICrmService.cs" />
     <Compile Include="Visitor\IUnitOfWork.cs" />
     <Compile Include="Visitor\IVisitable.cs" />
     <Compile Include="Visitor\IVisitor.cs" />
+    <Compile Include="Visitor\NewCustomerCommandApprover.cs" />
     <Compile Include="Visitor\OrderLine.cs" />
     <Compile Include="Visitor\Product.cs" />
-    <Compile Include="Visitor\02_RequestItem.cs" />
-    <Compile Include="Visitor\01_RequestItem.cs" />
-    <Compile Include="Visitor\PurchaseOrderRequestApprover.cs" />
+    <Compile Include="Visitor\02_Command.cs" />
+    <Compile Include="Visitor\01_Command.cs" />
+    <Compile Include="Visitor\PurchaseOrderCommandApprover.cs" />
     <Compile Include="Visitor\ReportVisitor.cs" />
     <Compile Include="Visitor\RequestsRepositoryVisitor.cs" />
-    <Compile Include="Visitor\SalesOrderRequestApprover.cs" />
+    <Compile Include="Visitor\SalesOrderCommandApprover.cs" />
     <Compile Include="Visitor\UofFacotry.cs" />
     <Compile Include="Visitor\VisitorDemo.cs" />
   </ItemGroup>
