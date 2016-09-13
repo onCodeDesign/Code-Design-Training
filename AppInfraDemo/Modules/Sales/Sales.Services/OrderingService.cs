@@ -31,7 +31,7 @@ namespace Sales
 			    {
 					CustomerName = customerName,
 					Number = soh.SalesOrderNumber,
-					//SalesPersonName = soh.SalesPerson. // see exercise: **OrderingService.Ex1**
+					//SalesPersonName = soh.SalesPerson. // see exercise: 3.2.
 					DueDate = soh.DueDate,
 					TotalDue = soh.TotalDue
 			    });
