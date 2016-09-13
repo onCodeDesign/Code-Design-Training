@@ -161,7 +161,11 @@
     <None Include="Lesson7\InheritanceComposition\LogSource_2.cd" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Lesson6\DI-Unity\_Exercises.html">
+      <DependentUpon>_Exercises.md</DependentUpon>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>

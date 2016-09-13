@@ -20,6 +20,8 @@ namespace LessonsSamples.Lesson6.DI_Unity
 		public void Open()
 		{
 			Console.WriteLine("Insert One Movie on each line.");
+			Console.WriteLine("Press ESC when you are done.");
+            Console.WriteLine();
 			ConsoleKeyInfo c;
 			do
 			{
