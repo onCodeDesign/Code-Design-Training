@@ -32,6 +32,7 @@ namespace LessonsSamples.Lesson6
 
 	    private void HandleCompleteResult(ProcessContext contex, ExpenseData expense)
         {
+            
         }
 
         private void HandlePartialResult(ProcessContext contex)
@@ -43,7 +44,7 @@ namespace LessonsSamples.Lesson6
         }
     }
 
-    // A business object encapsulating having the state of a  running of an expense processing process
+    // A business object encapsulating the state of the running of an expense processing process
     //  It hides the state and gives meaningful functions to access and alter it 
     class ProcessContext : IDisposable
     {

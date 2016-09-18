@@ -40,15 +40,21 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
             slStub.Setup(sl => sl.GetInstance<INumberGeneratorService>())
                   .Returns(serviceStub);
 
+            #region Demo Trace
 
             logTrace($"ThreadId:{Thread.CurrentThread.ManagedThreadId} | Test: {GetMethodName()}: locator setup finished");
-
             Thread.Sleep(sleep);
+
+            #endregion
 
             var target = new UnderTest();
             bool result = target.IsOdd();
 
+            #region Demo Trace
+
             logTrace($"ThreadId:{Thread.CurrentThread.ManagedThreadId} | Test: {GetMethodName()}: act finished; Result={result}");
+
+            #endregion
 
             Assert.IsTrue(result);
         }
@@ -60,14 +66,21 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
             slStub.Setup(sl => sl.GetInstance<INumberGeneratorService>())
                   .Returns(serviceStub);
 
-            log($"ThreadId:{Thread.CurrentThread.ManagedThreadId} | Test: {GetMethodName()}: locator setup finished");
+            #region Demo Trace
 
+            log($"ThreadId:{Thread.CurrentThread.ManagedThreadId} | Test: {GetMethodName()}: locator setup finished");
             Thread.Sleep(sleep);
+
+            #endregion
 
             var target = new UnderTest();
             bool result = target.IsOdd();
 
+            #region Demo Trace
+
             log($"ThreadId:{Thread.CurrentThread.ManagedThreadId} | Test: {GetMethodName()}: act finished; Result={result}");
+
+            #endregion
 
             Assert.IsFalse(result);
         }

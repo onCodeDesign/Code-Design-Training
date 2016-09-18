@@ -94,10 +94,10 @@
     <Compile Include="Lesson5\Rectangle.cs" />
     <Compile Include="Lesson6\DI-Unity\FileStorage.cs" />
     <Compile Include="Lesson6\DI-Unity\IMovieConsoleCreator.cs" />
-    <Compile Include="Lesson6\DI-Unity\IMovieTransformer.cs" />
+    <Compile Include="Lesson6\DI-Unity\IMovieTranslator.cs" />
     <Compile Include="Lesson6\DI-Unity\ITextStorage.cs" />
     <Compile Include="Lesson6\DI-Unity\MovieConsoleApplication.cs" />
-    <Compile Include="Lesson6\DI-Unity\MovieTransformer.cs" />
+    <Compile Include="Lesson6\DI-Unity\MovieTranslator.cs" />
     <Compile Include="Lesson6\DI-Unity\UnityDemo.cs" />
     <Compile Include="Lesson6\DI_AndDisposable\Model.cs" />
     <Compile Include="Lesson6\DI_AndDisposable\Repository.cs" />
@@ -161,7 +161,11 @@
     <None Include="Lesson7\InheritanceComposition\LogSource_2.cd" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Lesson6\DI-Unity\_Exercises.html">
+      <DependentUpon>_Exercises.md</DependentUpon>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
