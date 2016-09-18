@@ -11,22 +11,22 @@ namespace LessonsSamples.Lesson6.Logger
 
 	public	static class Logger
 	{
-		public static void Error(string headline, string message)
+		public static void WriteError(string headline, string message)
 		{
 			ILogSrv log = ServiceLocator.Current.GetInstance<ILogSrv>();
 			log.WriteTrace(new LogEntry(headline, message, Severity.Error));
 		}
-		public static void Warning(string headline, string message)
+		public static void WriteWarning(string headline, string message)
 		{
 			ILogSrv log = ServiceLocator.Current.GetInstance<ILogSrv>();
 			log.WriteTrace(new LogEntry(headline, message, Severity.Warning));
 		}
-		public static void Trace(string functionName, string message)
+		public static void WriteTrace(string functionName, string message)
 		{
 			ILogSrv log = ServiceLocator.Current.GetInstance<ILogSrv>();
 			log.WriteTrace(new LogEntry("Function", functionName,   Severity.Trace));
 		}
-		public static void Debug(string message, object[] variables)
+		public static void WriteDebug(string message, object[] variables)
 		{
 			ILogSrv log = ServiceLocator.Current.GetInstance<ILogSrv>();
 			string debugInfo = GetDebugInfo(variables);
