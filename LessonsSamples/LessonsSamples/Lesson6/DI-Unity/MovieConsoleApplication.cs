@@ -7,7 +7,9 @@ namespace LessonsSamples.Lesson6.DI_Unity
 		private readonly IMovieConsoleCreator movieCreator;
 		private readonly IMovieTranslator movieTranslator;
 
-		public MovieConsoleApplication(IMovieConsoleCreator movieCreator, IMovieTranslator movieTranslator)
+
+
+		public MovieConsoleApplication(IMenuCommand[] menuCommands)
 		{
 			this.movieCreator = movieCreator;
 			this.movieTranslator = movieTranslator;

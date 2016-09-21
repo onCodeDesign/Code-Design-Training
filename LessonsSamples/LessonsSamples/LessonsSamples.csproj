@@ -93,6 +93,7 @@
     <Compile Include="Lesson5\Modem.cs" />
     <Compile Include="Lesson5\Rectangle.cs" />
     <Compile Include="Lesson6\DI-Unity\FileStorage.cs" />
+    <Compile Include="Lesson6\DI-Unity\IMenuCommand.cs" />
     <Compile Include="Lesson6\DI-Unity\IMovieConsoleCreator.cs" />
     <Compile Include="Lesson6\DI-Unity\IMovieTranslator.cs" />
     <Compile Include="Lesson6\DI-Unity\ITextStorage.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Lesson6\DI_AndDisposable\Service12.cs" />
     <Compile Include="Lesson6\Expenses\Expense.cs" />
     <Compile Include="Lesson6\Expenses\ExpensesService.cs" />
+    <Compile Include="Lesson6\Expenses\IExpenseProcessStep.cs" />
     <Compile Include="Lesson6\Expenses\IExpensesService.cs" />
     <Compile Include="Lesson6\IMovieProvider.cs" />
     <Compile Include="Lesson6\Logger\LogEntry.cs" />

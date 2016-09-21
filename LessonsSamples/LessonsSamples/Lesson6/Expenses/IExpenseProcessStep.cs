@@ -1,0 +1,4 @@
+﻿namespace LessonsSamples.Lesson6
+{
+  
+}

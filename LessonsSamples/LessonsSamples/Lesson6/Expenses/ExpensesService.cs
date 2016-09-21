@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using iQuarc.AppBoot;
+using iQuarc.SystemEx.Priority;
 
 namespace LessonsSamples.Lesson6
 {
     class ExpensesService : IExpensesService
     {
-        private readonly IExpenseProcessStep[] steps;
+        private readonly IEnumerable<IExpenseProcessStep> steps;
 
         public ExpensesService(IExpenseProcessStep[] steps)
         {
-            this.steps = steps;
+            this.steps = steps.OrderByPriority();
         }
 
 	    public void Process(ExpenseData expense)
@@ -75,4 +77,25 @@ namespace LessonsSamples.Lesson6
     {
         bool Process(ExpenseData expense, ProcessContext contex);
     }
+
+    [Service("ProcessByExpenseTypeStep", typeof(IExpenseProcessStep))]
+    [Priority(Priorities.High)]
+    class ProcessByExpenseTypeStep : IExpenseProcessStep
+    {
+        public bool Process(ExpenseData expense, ProcessContext contex)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    [Service("ProcessesByAmmountStep", typeof(IExpenseProcessStep))]
+    class ProcessesByAmmountStep : IExpenseProcessStep
+    {
+        public bool Process(ExpenseData expense, ProcessContext contex)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
 }
