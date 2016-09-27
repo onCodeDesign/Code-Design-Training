@@ -14,6 +14,7 @@ namespace ConsoleApplication
 	{
 		private static void Main(string[] args)
 		{
+		    SetupDataDirectory();
 			IServiceLocator serviceLocator = Bootstrapp();
 
 			OrdersConsoleApplication app = serviceLocator.GetInstance<OrdersConsoleApplication>();
@@ -24,7 +25,7 @@ namespace ConsoleApplication
 			Console.ReadKey();
 		}
 
-		private static IServiceLocator Bootstrapp()
+	    private static IServiceLocator Bootstrapp()
 		{
 			var assemblies = GetApplicationAssemblies().ToArray();
 			Bootstrapper bootstrapper = new Bootstrapper(assemblies);
@@ -37,7 +38,7 @@ namespace ConsoleApplication
 			return bootstrapper.ServiceLocator;
 		}
 
-		private static IEnumerable<Assembly> GetApplicationAssemblies()
+	    private static IEnumerable<Assembly> GetApplicationAssemblies()
 		{
 			string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 			yield return Assembly.GetExecutingAssembly();
@@ -60,5 +61,10 @@ namespace ConsoleApplication
 			}
 		}
 
+	    private static void SetupDataDirectory()
+	    {
+	        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+	        AppDomain.CurrentDomain.SetData("DataDirectory", Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\.App_Data")));
+	    }
 	}
 }
