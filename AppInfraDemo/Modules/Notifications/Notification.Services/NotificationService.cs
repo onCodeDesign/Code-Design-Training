@@ -25,22 +25,22 @@ namespace Notifications
             }
         }
 
-	    public void NotifyAlive<T>(T item)
-	    {
-		    try
-		    {
-			    var subscriber = serviceLocator.GetInstance<IAmAliveSubscriber<T>>();
-			    subscriber.AmAlive(item);
-		    }
-		    catch (ActivationException)
-		    {
-		    }
+        public void NotifyAlive<T>(T item)
+        {
+            try
+            {
+                var subscriber = serviceLocator.GetInstance<IAmAliveSubscriber<T>>();
+                subscriber.AmAlive(item);
+            }
+            catch (ActivationException)
+            {
+            }
 
-		    var subscribers = serviceLocator.GetAllInstances<IAmAliveSubscriber<T>>();
-		    subscribers.ForEach(s=>s.AmAlive(item));
-	    }
+            var subscribers = serviceLocator.GetAllInstances<IAmAliveSubscriber<T>>();
+            subscribers.ForEach(s => s.AmAlive(item));
+        }
 
-	    public void NotifyDeleted<T>(T item)
+        public void NotifyDeleted<T>(T item)
         {
             throw new System.NotImplementedException();
         }
