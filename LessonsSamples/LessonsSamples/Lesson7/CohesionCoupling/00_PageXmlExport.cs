@@ -20,7 +20,7 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             int maxSalesOrders,
             bool addCustomerDetails)
         {
-            string fileName = string.Format(fileNameFormat, "CustomerPage", customerName, DateTime.Now);
+            string fileName = string.Format(fileNameFormat, "CustomerPage", customerName, DateTime.Now); // fileNameFormat = "{0}_{1}_{2}.xml"
             string filePath = Path.Combine(exportFolder, fileName);
 
             if (!overwrite && File.Exists(filePath))

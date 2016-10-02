@@ -84,7 +84,7 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             return fileWriter.WriteFile(content);
         }
 
-        public IEnumerable<PageXml> GetPagesFromOrders(IEnumerable<Order> orders)
+        public IEnumerable<PageXml> GetPagesFromOrders(IEnumerable<Order> orders, int takeMax)
         {
             Dictionary<string, IEnumerable<Order>> customerOrders = GroupOrdersByCustomer(orders);
             foreach (var customerName in customerOrders.Keys)
@@ -95,7 +95,8 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
                 //enrich with data from crm
 
                 var recentOrders = customerOrders[customerName]
-                    .OrderBy(o => o.OrderDate);
+                    .OrderBy(o => o.OrderDate)
+                    .Take(takeMax);
                 foreach (var order in recentOrders)
                 {
                     // enrich content with orders
@@ -113,15 +114,9 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             }
         }
 
-        private Dictionary<string, IEnumerable<Order>> GroupOrdersByCustomer(IEnumerable<Order> orders)
+        public bool ExportPagesFromOrders(IEnumerable<Order> orders, int takeMax)
         {
-            // group orders by customer name and return them in a dictionary, ordered by OrderDate
-            throw new NotImplementedException();
-        }
-
-        public bool ExportPagesFromOrders(IEnumerable<Order> orders)
-        {
-            IEnumerable<PageXml> pages = GetPagesFromOrders(orders);
+            IEnumerable<PageXml> pages = GetPagesFromOrders(orders, takeMax);
             foreach (var pageXml in pages)
             {
                 bool wasWritten = fileWriter.WriteFile(pageXml, "OrdersPage");
@@ -129,6 +124,12 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
                     return false;
             }
             return true;
+        }
+
+        private Dictionary<string, IEnumerable<Order>> GroupOrdersByCustomer(IEnumerable<Order> orders)
+        {
+            // group orders by customer name and return them in a dictionary, ordered by OrderDate
+            throw new NotImplementedException();
         }
     }
 }
