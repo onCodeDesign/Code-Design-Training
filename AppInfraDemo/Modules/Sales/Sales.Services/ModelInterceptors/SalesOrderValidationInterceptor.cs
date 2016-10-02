@@ -8,7 +8,7 @@ namespace Sales.ModelInterceptors
     [Service("SalesOrderValidationInterceptor", typeof (IEntityInterceptor<SalesOrderHeader>))]
     class SalesOrderValidationInterceptor : IEntityInterceptor<SalesOrderHeader>
     {
-        public void OnSave(IEntityEntry<SalesOrderHeader> entry, IRepository repository)
+        public void OnSave(IEntityEntry<SalesOrderHeader> entry, IUnitOfWork unitOfWork)
         {
             if (IsAddedOrModified(entry))
             {
@@ -30,32 +30,25 @@ namespace Sales.ModelInterceptors
             return entry.State.HasFlag(EntityEntryState.Added) || entry.State.HasFlag(EntityEntryState.Modified);
         }
 
+        public void OnSave(IEntityEntry entry, IUnitOfWork unitOfWork)
+        {
+            this.OnSave(entry.Convert<SalesOrderHeader>(), unitOfWork);
+        }
 
-
-
-	    public void OnLoad(IEntityEntry entry, IRepository repository)
+        public void OnLoad(IEntityEntry entry, IRepository repository)
 	    {
-		    throw new System.NotImplementedException();
 	    }
 
-	    public void OnSave(IEntityEntry entry, IRepository repository)
+        public void OnLoad(IEntityEntry<SalesOrderHeader> entry, IRepository repository)
 	    {
-		    throw new System.NotImplementedException();
 	    }
 
-	    public void OnDelete(IEntityEntry entry, IRepository repository)
-	    {
-		    throw new System.NotImplementedException();
-	    }
+        public void OnDelete(IEntityEntry entry, IUnitOfWork unitOfWork)
+        {
+        }
 
-	    public void OnLoad(IEntityEntry<SalesOrderHeader> entry, IRepository repository)
-	    {
-		    throw new System.NotImplementedException();
-	    }
-
-	    public void OnDelete(IEntityEntry<SalesOrderHeader> entry, IRepository repository)
-	    {
-		    throw new System.NotImplementedException();
-	    }
+        public void OnDelete(IEntityEntry<SalesOrderHeader> entry, IUnitOfWork unitOfWork)
+        {
+        }
     }
 }

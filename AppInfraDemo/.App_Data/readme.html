@@ -1,0 +1,17 @@
+﻿<h2 id="use-this-folder-when-you-want-to-use-the-adventureworks2012-database-from-the-local-sql-express">Use this folder when you want to use the AdventureWorks2012 database from the local SQL Express.</h2>
+<p>This folder should contain the <code>AdventureWorks2012.mdf</code> which is attached to the local database on application start. To configure this follow these steps:</p>
+<ol>
+<li>Download the <code>AdventureWorks2012.mdf</code> from <a href="https://msftdbprodsamples.codeplex.com/downloads/get/165399">https://msftdbprodsamples.codeplex.com/downloads/get/165399</a> or from <a href="http://example.com">https://1drv.ms/u/s!AttpJoJRCtSQiiG8WJT8t3C4y450</a></li>
+<li>Make sure that your host app sets the |DataDirectory| on the AppDomain
+<ul>
+<li>see <code>AppInfraDemo\UI\ConsoleApplication\Program.SetupDataDirectory()</code></li>
+</ul>
+</li>
+<li>Set the connection string that uses <code>AttachDbFilename</code> setting
+<ul>
+<li>see <code>AppInfraDemo\UI\ConsoleApplication\App.config</code></li>
+<li>ex: <code>data source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\AdventureWorks2012.mdf;initial catalog=AdventureWorks2012;Integrated Security=True;MultipleActiveResultSets=True;App=EntityFramework</code></li>
+<li>make sure that the <code>AdventureWorks2012.mdf</code> file name matches the one in the connection string</li>
+</ul>
+</li>
+</ol>

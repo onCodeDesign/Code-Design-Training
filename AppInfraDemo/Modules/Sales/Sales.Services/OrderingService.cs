@@ -115,13 +115,14 @@ namespace Sales
             var taxes = calculator.CalculateTaxes(order, customer);
             var discount = calculator.CalculateDiscount(order, customer);
 
-            return orderApproval.Approve(new ApproveRequest
+            bool approvalResponse = orderApproval.Approve(new ApproveRequest
             {
                 Customer = customer,
                 Order = order,
                 Taxes = taxes,
                 Discount = discount
             });
+            return approvalResponse;
         }
 
         private bool ValidateProducts(OrderRequest request)
