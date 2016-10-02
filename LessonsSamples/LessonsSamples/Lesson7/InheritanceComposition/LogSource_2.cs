@@ -7,6 +7,7 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
     sealed class LogSource_2
     {
         private readonly ILogMessageParser messageParser;
+        private int messageIndex;
 
         public LogSource_2(ILogMessageParser messageParser)
         {
@@ -37,12 +38,15 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 
         private IEnumerable<string> LoadAllLogEntires()
         {
+            messageIndex = 0;
+            string logMessage = string.Empty;
+
             // This is the algorithm / code we would like to reuse.
             //    it reads the data source with the log traces and splits it in trace messages 
 
             // Any communication /  interaction between this code and the parsers must be explicit into the interface
 
-            throw new NotImplementedException();
+            yield return logMessage;
         }
     }
 
