@@ -168,12 +168,6 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             }
         }
 
-        private Dictionary<string, IEnumerable<Order>> GroupOrdersByCustomer(IEnumerable<Order> orders)
-        {
-            // group orders by customer name and return them in a dictionary, ordered by OrderDate
-            throw new NotImplementedException();
-        }
-
         public bool ExportPagesFromOrders(IEnumerable<Order> orders)
         {
             IEnumerable<PageXml> pages = GetPagesFromOrders(orders);
@@ -184,6 +178,12 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
                     return false;
             }
             return true;
+        }
+
+        private Dictionary<string, IEnumerable<Order>> GroupOrdersByCustomer(IEnumerable<Order> orders)
+        {
+            // group orders by customer name and return them in a dictionary, ordered by OrderDate
+            throw new NotImplementedException();
         }
     }
 }

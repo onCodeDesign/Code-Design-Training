@@ -28,6 +28,7 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
         private IEnumerable<string> LoadLogMessages()
         {
             messageIndex = 0;
+            string logMessage = string.Empty;
 
             // This is the algorithm / code we would like to reuse.
             //    it reads the data source with the log traces and splits it in trace messages 
@@ -35,7 +36,7 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
             // Base class may put here, or in GetAllLogEntries(), some data into some protected fields to make them available to the inheritors
             messageIndex++;
 
-            throw new NotImplementedException();
+            yield return logMessage;
         }
 
         public IEnumerable<LogEntry> GetCriticalLogEntries()
