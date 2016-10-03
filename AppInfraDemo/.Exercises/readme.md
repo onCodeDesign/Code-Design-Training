@@ -12,9 +12,10 @@ Implement the same for a Notifications Module
 #### 1.2. Create a composite for `NotificationService.NotifyAlive()`
 
 Current implementation of `NotifyAlive()` first tries to get the unlabeled `IAmAliveSubscriber<T>` implementation and then it get all labeled implementation.
-	This try/catch is ugly and could be avoided w/ a composite IAmAliveSubscriber which get all label IAmAliveSubscriber and forwards the call to them
+	
+This try/catch is ugly and could be avoided w/ a composite `IAmAliveSubscriber` which gets all labeled `IAmAliveSubscriber` and forwards the call to them
  
- **Solution** see branch ex/NotificationServiceComposite
+ **Solution** see branch `ex/NotificationServiceComposite`
 
 
 #### 1.3. OrderStateChangeSubscriber that writes in a text file
@@ -40,8 +41,8 @@ Make an static caller to it that uses `ServiceLocator` to wrap the `IConsole` in
 
 Supposing we would have `IConsole` identical w/ the public interface of `Console` static class. 
 
-- Why would we abstract the existent static `Console` class through `IConsole`?
-- Why would we make an static caller to it that uses `ServiceLocator` to wrap the `IConsole` instance?
+a) Why would we abstract the existent static `Console` class through `IConsole`?
+b) Why would we make an static caller to it that uses `ServiceLocator` to wrap the `IConsole` instance?
 
 
 ### 2.3. Transform the OrdersConsoleApplication into an IModule
