@@ -1,4 +1,5 @@
 using System;
+using Contracts;
 using iQuarc.AppBoot;
 using iQuarc.SystemEx;
 
