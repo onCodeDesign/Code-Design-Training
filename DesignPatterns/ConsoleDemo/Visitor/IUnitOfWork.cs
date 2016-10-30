@@ -1,6 +1,6 @@
 using System;
 
-namespace ConsoleDemo.Visitor.v3
+namespace ConsoleDemo.Visitor
 {
 	internal interface IUnitOfWork : IDisposable
 	{

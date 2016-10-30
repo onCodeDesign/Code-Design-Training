@@ -1,6 +1,6 @@
-namespace ConsoleDemo.Visitor.v3
+namespace ConsoleDemo.Visitor
 {
-	internal class UofFacotry
+	internal class UofFactory
 	{
 		public static IUnitOfWork CreateUnitOfWork()
 		{

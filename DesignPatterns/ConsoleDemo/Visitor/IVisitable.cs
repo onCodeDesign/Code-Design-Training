@@ -1,4 +1,6 @@
-﻿namespace ConsoleDemo.Visitor.v3
+﻿using ConsoleDemo.Visitor.v3;
+
+namespace ConsoleDemo.Visitor
 {
 	public interface IVisitable
 	{

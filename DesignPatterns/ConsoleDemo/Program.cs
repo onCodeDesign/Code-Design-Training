@@ -11,7 +11,7 @@ namespace ConsoleDemo
     {
         public static void Main()
         {
-            AnimalWorldDemo.Run();
+            //AnimalWorldDemo.Run();
             //WidgetsDemo.Run();
 
             //DecoratorClient.Run();
@@ -24,7 +24,7 @@ namespace ConsoleDemo
             //ChainOfResponsibilityClient.PurchaseOrderApproverDemo();
 
 
-			//VisitorDemo3.Run();
+			VisitorDemo3.Run();
 
 
             // Wait for user input

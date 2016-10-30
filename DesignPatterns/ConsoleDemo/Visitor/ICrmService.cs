@@ -1,4 +1,4 @@
-namespace ConsoleDemo.Visitor.v3
+namespace ConsoleDemo.Visitor
 {
 	internal interface ICrmService
 	{

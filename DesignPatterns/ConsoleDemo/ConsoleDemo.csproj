@@ -81,33 +81,35 @@
     <Compile Include="Strategy\01_Robots.cs" />
     <Compile Include="Strategy\02_Robot_.cs" />
     <Compile Include="Strategy\_RobotsClient.cs" />
-    <Compile Include="Visitor\03_VisitableItem.cs" />
-    <Compile Include="Visitor\00_Items.cs" />
-    <Compile Include="Visitor\03_Client.cs" />
-    <Compile Include="Visitor\02_Client.cs" />
-    <Compile Include="Visitor\01_Client.cs" />
-    <Compile Include="Visitor\00_Client.cs" />
-    <Compile Include="Visitor\03_xDemoData.cs" />
+    <Compile Include="Visitor\v0\Commands.cs" />
+    <Compile Include="Visitor\v3\VisitableItem.cs" />
+    <Compile Include="Visitor\v3\Client.cs" />
+    <Compile Include="Visitor\v2\Client.cs" />
+    <Compile Include="Visitor\v1\Client.cs" />
+    <Compile Include="Visitor\v0\CommandsManager.cs" />
+    <Compile Include="Visitor\v3\DemoData.cs" />
     <Compile Include="Visitor\ICrmService.cs" />
     <Compile Include="Visitor\IUnitOfWork.cs" />
     <Compile Include="Visitor\IVisitable.cs" />
-    <Compile Include="Visitor\IVisitor.cs" />
-    <Compile Include="Visitor\NewCustomerCommandApprover.cs" />
+    <Compile Include="Visitor\v3\IVisitor.cs" />
+    <Compile Include="Visitor\v3\NewCustomerCommandApprover.cs" />
     <Compile Include="Visitor\OrderLine.cs" />
     <Compile Include="Visitor\Product.cs" />
-    <Compile Include="Visitor\02_Command.cs" />
-    <Compile Include="Visitor\01_Command.cs" />
-    <Compile Include="Visitor\PurchaseOrderCommandApprover.cs" />
-    <Compile Include="Visitor\ReportVisitor.cs" />
-    <Compile Include="Visitor\RequestsRepositoryVisitor.cs" />
-    <Compile Include="Visitor\SalesOrderCommandApprover.cs" />
-    <Compile Include="Visitor\UofFacotry.cs" />
-    <Compile Include="Visitor\VisitorDemo.cs" />
+    <Compile Include="Visitor\v2\Command.cs" />
+    <Compile Include="Visitor\v1\Command.cs" />
+    <Compile Include="Visitor\v3\PurchaseOrderCommandApprover.cs" />
+    <Compile Include="Visitor\v3\ReportVisitor.cs" />
+    <Compile Include="Visitor\v3\RequestsRepositoryVisitor.cs" />
+    <Compile Include="Visitor\v3\SalesOrderCommandApprover.cs" />
+    <Compile Include="Visitor\UofFactory.cs" />
+    <Compile Include="Visitor\v3\VisitorDemo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Visitor\v4\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

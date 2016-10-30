@@ -8,7 +8,7 @@ namespace ConsoleDemo.Visitor.v3
 
 		public void SaveChanges()
 		{
-			using (IUnitOfWork uof = UofFacotry.CreateUnitOfWork())
+			using (IUnitOfWork uof = UofFactory.CreateUnitOfWork())
 			{
 				foreach (var entity in toSave)
 				{
