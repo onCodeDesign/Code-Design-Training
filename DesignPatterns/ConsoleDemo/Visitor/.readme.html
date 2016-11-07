@@ -1,0 +1,25 @@
+﻿<h1 id="sample-description">Sample Description</h1>
+<p>This folder contains an evolution of the same sample from v1 to v5 showing from version to version ow same implementation can gradually be improved with the Visitor pattern (v3) towards better implementations of the same pattern</p>
+<p>Versions:</p>
+<ul>
+<li>v0 - just sets the stage</li>
+<li>v1 - each operation is done in the client with <code>if/else if</code></li>
+<li>v2 - each operation is implemented in every element.
+<ul>
+<li>downsides:
+<ul>
+<li>mixture of concerns in same class (element)</li>
+<li>had to add new operations</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>v3 - by the book implementation of the Visitor pattern</li>
+<li>v4 - a better implementation of the Visitor pattern, where the client code links the general visitor and the specific one</li>
+</ul>
+<pre><code> Report report = new Report();
+ IVisitor reportVisitor = new Visitor(report);
+</code></pre>
+<ul>
+<li>v5 - an improvement by making the link between <code>IVisitor</code> and <code>IVisitor&lt;TElement&gt;</code> visible in the interfaces, but making the specific visitor implementations a bit more complex.</li>
+</ul>

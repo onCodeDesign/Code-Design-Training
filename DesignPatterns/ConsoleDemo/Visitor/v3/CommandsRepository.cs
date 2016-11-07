@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace ConsoleDemo.Visitor.v3
 {
-	class RequestsRepositoryVisitor : IVisitor
+	class CommandsRepository : IVisitor
 	{
-		List<object> toSave = new List<object>();
+	    readonly List<object> toSave = new List<object>();
 
 		public void SaveChanges()
 		{
