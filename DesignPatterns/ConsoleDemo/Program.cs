@@ -4,6 +4,8 @@ using ConsoleDemo.ChainOfResponsibility;
 using ConsoleDemo.Decorator;
 using ConsoleDemo.Strategy;
 using ConsoleDemo.Visitor.v3;
+using ConsoleDemo.Visitor.v5;
+using ConsoleDemo.Visitor.v6;
 
 namespace ConsoleDemo
 {
@@ -24,7 +26,8 @@ namespace ConsoleDemo
             //ChainOfResponsibilityClient.PurchaseOrderApproverDemo();
 
 
-			//VisitorDemo3.Run();
+			//VisitorDemo5.Run();
+			//VisitorDemo6.Run();
 
 
             // Wait for user input

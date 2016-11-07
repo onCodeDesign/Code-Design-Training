@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\AppInfraDemo\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -81,31 +84,74 @@
     <Compile Include="Strategy\01_Robots.cs" />
     <Compile Include="Strategy\02_Robot_.cs" />
     <Compile Include="Strategy\_RobotsClient.cs" />
-    <Compile Include="Visitor\03_VisitableItem.cs" />
-    <Compile Include="Visitor\00_Items.cs" />
-    <Compile Include="Visitor\03_Client.cs" />
-    <Compile Include="Visitor\02_Client.cs" />
-    <Compile Include="Visitor\01_Client.cs" />
-    <Compile Include="Visitor\00_Client.cs" />
-    <Compile Include="Visitor\03_xDemoData.cs" />
+    <Compile Include="Visitor\v0\Commands.cs" />
+    <Compile Include="Visitor\v4\Client.cs" />
+    <Compile Include="Visitor\v4\Commands.cs" />
+    <Compile Include="Visitor\v4\CommandsRepository.cs" />
+    <Compile Include="Visitor\v4\DemoData.cs" />
+    <Compile Include="Visitor\v4\IVisitable.cs" />
+    <Compile Include="Visitor\v4\IVisitor.cs" />
+    <Compile Include="Visitor\v4\NewCustomerCommandApprover.cs" />
+    <Compile Include="Visitor\v4\PurchaseOrderCommandApprover.cs" />
+    <Compile Include="Visitor\v4\ReportVisitor.cs" />
+    <Compile Include="Visitor\v4\SalesOrderCommandApprover.cs" />
+    <Compile Include="Visitor\v4\Visitor.cs" />
+    <Compile Include="Visitor\v4\VisitorDemo.cs" />
+    <Compile Include="Visitor\v6\Client.cs" />
+    <Compile Include="Visitor\v6\Commands.cs" />
+    <Compile Include="Visitor\v6\CommandsRepository.cs" />
+    <Compile Include="Visitor\v6\DemoData.cs" />
+    <Compile Include="Visitor\v6\IVisitable.cs" />
+    <Compile Include="Visitor\v6\IVisitor.cs" />
+    <Compile Include="Visitor\v6\NewCustomerCommandApporver.cs" />
+    <Compile Include="Visitor\v6\PurchaseOrderCommandApprover.cs" />
+    <Compile Include="Visitor\v6\ReportVisitor.cs" />
+    <Compile Include="Visitor\v6\SalesOrderCommandApprover.cs" />
+    <Compile Include="Visitor\v6\Visitor.cs" />
+    <Compile Include="Visitor\v6\VisitorDemo.cs" />
+    <Compile Include="Visitor\v5\Commands.cs" />
+    <Compile Include="Visitor\v5\Client.cs" />
+    <Compile Include="Visitor\v5\CommandsRepository.cs" />
+    <Compile Include="Visitor\v5\DemoData.cs" />
+    <Compile Include="Visitor\v5\IVisitable.cs" />
+    <Compile Include="Visitor\v5\IVisitor.cs" />
+    <Compile Include="Visitor\v3\Commands.cs" />
+    <Compile Include="Visitor\v3\Client.cs" />
+    <Compile Include="Visitor\v2\Client.cs" />
+    <Compile Include="Visitor\v1\Client.cs" />
+    <Compile Include="Visitor\v0\CommandsManager.cs" />
+    <Compile Include="Visitor\v3\DemoData.cs" />
+    <Compile Include="Visitor\ICrmService.cs" />
     <Compile Include="Visitor\IUnitOfWork.cs" />
-    <Compile Include="Visitor\IVisitable.cs" />
-    <Compile Include="Visitor\IVisitor.cs" />
+    <Compile Include="Visitor\v3\IVisitable.cs" />
+    <Compile Include="Visitor\v3\IVisitor.cs" />
+    <Compile Include="Visitor\v3\NewCustomerCommandApprover.cs" />
     <Compile Include="Visitor\OrderLine.cs" />
     <Compile Include="Visitor\Product.cs" />
-    <Compile Include="Visitor\02_RequestItem.cs" />
-    <Compile Include="Visitor\01_RequestItem.cs" />
-    <Compile Include="Visitor\PurchaseOrderRequestApprover.cs" />
-    <Compile Include="Visitor\ReportVisitor.cs" />
-    <Compile Include="Visitor\RequestsRepositoryVisitor.cs" />
-    <Compile Include="Visitor\SalesOrderRequestApprover.cs" />
-    <Compile Include="Visitor\UofFacotry.cs" />
-    <Compile Include="Visitor\VisitorDemo.cs" />
+    <Compile Include="Visitor\v2\Command.cs" />
+    <Compile Include="Visitor\v1\Command.cs" />
+    <Compile Include="Visitor\v3\PurchaseOrderCommandApprover.cs" />
+    <Compile Include="Visitor\v3\ReportVisitor.cs" />
+    <Compile Include="Visitor\v3\CommandsRepository.cs" />
+    <Compile Include="Visitor\v3\SalesOrderCommandApprover.cs" />
+    <Compile Include="Visitor\UofFactory.cs" />
+    <Compile Include="Visitor\v3\VisitorDemo.cs" />
+    <Compile Include="Visitor\v5\NewCustomerCommandApporver.cs" />
+    <Compile Include="Visitor\v5\PurchaseOrderCommandApprover.cs" />
+    <Compile Include="Visitor\v5\ReportVisitor.cs" />
+    <Compile Include="Visitor\v5\SalesOrderCommandApprover.cs" />
+    <Compile Include="Visitor\v5\Visitor.cs" />
+    <Compile Include="Visitor\v5\VisitorDemo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Visitor\.readme.md" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Visitor\.readme.html">
+      <DependentUpon>.readme.md</DependentUpon>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
