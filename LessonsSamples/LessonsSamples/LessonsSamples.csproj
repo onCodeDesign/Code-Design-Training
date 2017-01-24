@@ -34,14 +34,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="iQuarc.AppBoot">
       <HintPath>..\packages\iQuarc.AppBoot.1.0.0.0\lib\net45\iQuarc.AppBoot.dll</HintPath>
+    </Reference>
+    <Reference Include="iQuarc.DataAccess, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\iQuarc.DataAccess.1.0.6\lib\net45\iQuarc.DataAccess.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="iQuarc.SystemEx, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -145,6 +151,9 @@
     <Compile Include="Lesson7\InheritanceComposition\LogSource.cs" />
     <Compile Include="Lesson7\InheritanceComposition\LogSource_2.cs" />
     <Compile Include="Lesson7\InheritanceComposition\Month.cs" />
+    <Compile Include="Lesson8\AuditLog\EntityInterceptor.cs" />
+    <Compile Include="Lesson8\AuditLog\IAuditLog.cs" />
+    <Compile Include="Lesson8\AuditLog\PatientAuditLogInterceptor.cs" />
     <Compile Include="Lesson8\Validation\AddressValidationRules.cs" />
     <Compile Include="Lesson8\Validation\Country.cs" />
     <Compile Include="Lesson8\Validation\EntityValidationRulesRegistrator.cs" />
