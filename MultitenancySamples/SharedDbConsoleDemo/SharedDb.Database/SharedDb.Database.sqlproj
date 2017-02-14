@@ -65,5 +65,6 @@
     <Build Include="dbo\Tables\PatientHistory.sql" />
     <Build Include="dbo\Tables\PatientFile.sql" />
     <Build Include="dbo\Tables\Diagnostics.sql" />
+    <Build Include="dbo\Tables\Tenants.sql" />
   </ItemGroup>
 </Project>
