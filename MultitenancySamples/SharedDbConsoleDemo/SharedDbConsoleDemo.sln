@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedDb.ConsoleDemo", "Sha
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SharedDb.Database", "SharedDb.Database\SharedDb.Database.sqlproj", "{53D6CC5B-A3CB-419B-9006-48769DB026BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedDb.DataAccess", "SharedDb.DataAccess\SharedDb.DataAccess.csproj", "{2473DB44-9806-4E2C-872D-3CD0F4EDDBEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{53D6CC5B-A3CB-419B-9006-48769DB026BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53D6CC5B-A3CB-419B-9006-48769DB026BC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{53D6CC5B-A3CB-419B-9006-48769DB026BC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2473DB44-9806-4E2C-872D-3CD0F4EDDBEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2473DB44-9806-4E2C-872D-3CD0F4EDDBEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2473DB44-9806-4E2C-872D-3CD0F4EDDBEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2473DB44-9806-4E2C-872D-3CD0F4EDDBEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
