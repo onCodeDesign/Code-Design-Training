@@ -66,6 +66,6 @@
     <Build Include="dbo\Tables\PatientFile.sql" />
     <Build Include="dbo\Tables\Diagnostics.sql" />
     <Build Include="dbo\Tables\Tenants.sql" />
-    <Build Include="RefactorToMultitenancy.publish.sql" />
+    <None Include="RefactorToMultitenancy.publish.sql" />
   </ItemGroup>
 </Project>
