@@ -76,7 +76,7 @@ SET XACT_ABORT ON;
 
 CREATE TABLE [dbo].[tmp_ms_xx_PatientFile] (
     [ID]           INT           IDENTITY (1, 1) NOT NULL,
-    [TenantID]     INT           NULL,
+    [TenantID]     INT           NOT NULL,
     [PatientID]    INT           NOT NULL,
     [CreationDate] DATETIME2 (7) NOT NULL,
     CONSTRAINT [tmp_ms_xx_constraint_PK_PatientFile1] PRIMARY KEY CLUSTERED ([ID] ASC)
@@ -86,8 +86,8 @@ IF EXISTS (SELECT TOP 1 1
            FROM   [dbo].[PatientFile])
     BEGIN
         SET IDENTITY_INSERT [dbo].[tmp_ms_xx_PatientFile] ON;
-        INSERT INTO [dbo].[tmp_ms_xx_PatientFile] ([ID], [PatientID], [CreationDate])
-        SELECT   [ID],
+        INSERT INTO [dbo].[tmp_ms_xx_PatientFile] ([ID], [TenantID], [PatientID], [CreationDate])
+        SELECT   [ID], 1,				 
                  [PatientID],
                  [CreationDate]
         FROM     [dbo].[PatientFile]
@@ -121,7 +121,7 @@ CREATE TABLE [dbo].[tmp_ms_xx_PatientHistory] (
     [ID]               INT            IDENTITY (1, 1) NOT NULL,
     [PatientFileID]    INT            NOT NULL,
     [DiagnosticID]     INT            NOT NULL,
-    [TenantID]         INT            NULL,
+    [TenantID]         INT            NOT NULL,
     [EntryDescription] NVARCHAR (500) NOT NULL,
     [EntryDate]        DATETIME2 (7)  NOT NULL,
     CONSTRAINT [tmp_ms_xx_constraint_PK_PatientHistory1] PRIMARY KEY CLUSTERED ([ID] ASC)
@@ -131,8 +131,8 @@ IF EXISTS (SELECT TOP 1 1
            FROM   [dbo].[PatientHistory])
     BEGIN
         SET IDENTITY_INSERT [dbo].[tmp_ms_xx_PatientHistory] ON;
-        INSERT INTO [dbo].[tmp_ms_xx_PatientHistory] ([ID], [PatientFileID], [DiagnosticID], [EntryDescription], [EntryDate])
-        SELECT   [ID],
+        INSERT INTO [dbo].[tmp_ms_xx_PatientHistory] ([ID], [TenantID], [PatientFileID], [DiagnosticID], [EntryDescription], [EntryDate])
+        SELECT   [ID], 1,
                  [PatientFileID],
                  [DiagnosticID],
                  [EntryDescription],
@@ -166,7 +166,7 @@ SET XACT_ABORT ON;
 
 CREATE TABLE [dbo].[tmp_ms_xx_Patients] (
     [ID]          INT           IDENTITY (1, 1) NOT NULL,
-    [TenantID]    INT           NULL,
+    [TenantID]    INT          NOT NULL,
     [Name]        NVARCHAR (50) NOT NULL,
     [DateOfBirth] DATETIME2 (7) NOT NULL,
     CONSTRAINT [tmp_ms_xx_constraint_PK_Patients1] PRIMARY KEY CLUSTERED ([ID] ASC)
@@ -176,8 +176,8 @@ IF EXISTS (SELECT TOP 1 1
            FROM   [dbo].[Patients])
     BEGIN
         SET IDENTITY_INSERT [dbo].[tmp_ms_xx_Patients] ON;
-        INSERT INTO [dbo].[tmp_ms_xx_Patients] ([ID], [Name], [DateOfBirth])
-        SELECT   [ID],
+        INSERT INTO [dbo].[tmp_ms_xx_Patients] ([ID], [TenantID], [Name], [DateOfBirth])
+        SELECT   [ID], 1,
                  [Name],
                  [DateOfBirth]
         FROM     [dbo].[Patients]
@@ -217,6 +217,11 @@ GO
 CREATE UNIQUE NONCLUSTERED INDEX [UK_Tenants_Key]
     ON [dbo].[Tenants]([Key] ASC);
 
+GO
+SET IDENTITY_INSERT [dbo].[Tenants] ON  
+INSERT INTO [dbo].[Tenants] ([ID], [Name], [Key])  
+    VALUES (1, 'First Tenanat', 'FirstTenant')
+SET IDENTITY_INSERT [dbo].[Tenants] OFF
 
 GO
 PRINT N'Creating [dbo].[FK_PatientFile_Patients]...';
