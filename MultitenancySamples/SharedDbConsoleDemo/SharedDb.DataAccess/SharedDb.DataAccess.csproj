@@ -63,9 +63,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbContextFactory.cs" />
     <Compile Include="Diagnostic.cs">
       <DependentUpon>Physio.tt</DependentUpon>
     </Compile>
+    <Compile Include="EmptyInterceptorsResolver.cs" />
     <Compile Include="ITenantEntity.cs" />
     <Compile Include="Patient.cs">
       <DependentUpon>Physio.tt</DependentUpon>
@@ -96,6 +98,7 @@
     <Compile Include="Tenant.cs">
       <DependentUpon>Physio.tt</DependentUpon>
     </Compile>
+    <Compile Include="TenantEntities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
