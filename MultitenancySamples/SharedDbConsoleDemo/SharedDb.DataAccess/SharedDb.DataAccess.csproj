@@ -53,6 +53,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,13 +63,65 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Diagnostic.cs">
+      <DependentUpon>Physio.tt</DependentUpon>
+    </Compile>
     <Compile Include="ITenantEntity.cs" />
+    <Compile Include="Patient.cs">
+      <DependentUpon>Physio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientFile.cs">
+      <DependentUpon>Physio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientHistory.cs">
+      <DependentUpon>Physio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Physio.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Physio.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Physio.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Physio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Physio.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Physio.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tenant.cs">
+      <DependentUpon>Physio.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="Physio.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Physio.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Physio.edmx.diagram">
+      <DependentUpon>Physio.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Physio.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Physio.edmx</DependentUpon>
+      <LastGenOutput>Physio.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Physio.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Physio.edmx</DependentUpon>
+      <LastGenOutput>Physio.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

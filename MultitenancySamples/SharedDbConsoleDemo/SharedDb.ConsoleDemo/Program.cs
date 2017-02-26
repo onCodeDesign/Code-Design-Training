@@ -10,6 +10,8 @@ namespace SharedDb.ConsoleDemo
     {
         static void Main(string[] args)
         {
+
+
         }
     }
 }
