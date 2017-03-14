@@ -150,6 +150,11 @@
     <Compile Include="Lesson7\InheritanceComposition\LogEntry.cs" />
     <Compile Include="Lesson7\InheritanceComposition\LogSource.cs" />
     <Compile Include="Lesson7\InheritanceComposition\LogSource_2.cs" />
+    <Compile Include="Lesson8\RowLevelAuth\IRowAuthPoliciesContainer.cs" />
+    <Compile Include="Lesson8\RowLevelAuth\Repository.cs" />
+    <Compile Include="Lesson8\RowLevelAuth\RowAuthPoliciesContainer.cs" />
+    <Compile Include="Lesson8\RowLevelAuth\RowAuthPolicy.cs" />
+    <Compile Include="Lesson8\RowLevelAuth\SomeService.cs" />
     <Compile Include="Lesson7\InheritanceComposition\Month.cs" />
     <Compile Include="Lesson8\AuditLog\EntityInterceptor.cs" />
     <Compile Include="Lesson8\AuditLog\IAuditLog.cs" />
