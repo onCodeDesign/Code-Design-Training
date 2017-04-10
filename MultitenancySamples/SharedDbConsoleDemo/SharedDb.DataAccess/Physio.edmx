@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PhysioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Diagnostics">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Simptoms" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PatientFile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenantID" Type="int" Nullable="false" />
+          <Property Name="PatientID" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PatientHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientFileID" Type="int" Nullable="false" />
+          <Property Name="DiagnosticID" Type="int" Nullable="false" />
+          <Property Name="TenantID" Type="int" Nullable="false" />
+          <Property Name="EntryDescription" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patients">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenantID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateOfBirth" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tenants">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_PatientFile_Patients">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="PatientFile" Type="Self.PatientFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PatientFile">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientFile_Tenants">
+          <End Role="Tenants" Type="Self.Tenants" Multiplicity="1" />
+          <End Role="PatientFile" Type="Self.PatientFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenants">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PatientFile">
+              <PropertyRef Name="TenantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientHistory_Diagnostics">
+          <End Role="Diagnostics" Type="Self.Diagnostics" Multiplicity="1" />
+          <End Role="PatientHistory" Type="Self.PatientHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagnostics">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PatientHistory">
+              <PropertyRef Name="DiagnosticID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientHistory_PatientFile">
+          <End Role="PatientFile" Type="Self.PatientFile" Multiplicity="1" />
+          <End Role="PatientHistory" Type="Self.PatientHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientFile">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PatientHistory">
+              <PropertyRef Name="PatientFileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientHistory_Tenants">
+          <End Role="Tenants" Type="Self.Tenants" Multiplicity="1" />
+          <End Role="PatientHistory" Type="Self.PatientHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenants">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PatientHistory">
+              <PropertyRef Name="TenantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patients_Tenants">
+          <End Role="Tenants" Type="Self.Tenants" Multiplicity="1" />
+          <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenants">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patients">
+              <PropertyRef Name="TenantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PhysioModelStoreContainer">
+          <EntitySet Name="Diagnostics" EntityType="Self.Diagnostics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatientFile" EntityType="Self.PatientFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatientHistory" EntityType="Self.PatientHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tenants" EntityType="Self.Tenants" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_PatientFile_Patients" Association="Self.FK_PatientFile_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="PatientFile" EntitySet="PatientFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientFile_Tenants" Association="Self.FK_PatientFile_Tenants">
+            <End Role="Tenants" EntitySet="Tenants" />
+            <End Role="PatientFile" EntitySet="PatientFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientHistory_Diagnostics" Association="Self.FK_PatientHistory_Diagnostics">
+            <End Role="Diagnostics" EntitySet="Diagnostics" />
+            <End Role="PatientHistory" EntitySet="PatientHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientHistory_PatientFile" Association="Self.FK_PatientHistory_PatientFile">
+            <End Role="PatientFile" EntitySet="PatientFile" />
+            <End Role="PatientHistory" EntitySet="PatientHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientHistory_Tenants" Association="Self.FK_PatientHistory_Tenants">
+            <End Role="Tenants" EntitySet="Tenants" />
+            <End Role="PatientHistory" EntitySet="PatientHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patients_Tenants" Association="Self.FK_Patients_Tenants">
+            <End Role="Tenants" EntitySet="Tenants" />
+            <End Role="Patients" EntitySet="Patients" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PhysioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Diagnostic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Simptoms" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PatientHistories" Relationship="Self.FK_PatientHistory_Diagnostics" FromRole="Diagnostics" ToRole="PatientHistory" />
+        </EntityType>
+        <EntityType Name="PatientFile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenantID" Type="Int32" Nullable="false" />
+          <Property Name="PatientID" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK_PatientFile_Patients" FromRole="PatientFile" ToRole="Patients" />
+          <NavigationProperty Name="Tenant" Relationship="Self.FK_PatientFile_Tenants" FromRole="PatientFile" ToRole="Tenants" />
+          <NavigationProperty Name="PatientHistories" Relationship="Self.FK_PatientHistory_PatientFile" FromRole="PatientFile" ToRole="PatientHistory" />
+        </EntityType>
+        <EntityType Name="PatientHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientFileID" Type="Int32" Nullable="false" />
+          <Property Name="DiagnosticID" Type="Int32" Nullable="false" />
+          <Property Name="TenantID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Diagnostic" Relationship="Self.FK_PatientHistory_Diagnostics" FromRole="PatientHistory" ToRole="Diagnostics" />
+          <NavigationProperty Name="PatientFile" Relationship="Self.FK_PatientHistory_PatientFile" FromRole="PatientHistory" ToRole="PatientFile" />
+          <NavigationProperty Name="Tenant" Relationship="Self.FK_PatientHistory_Tenants" FromRole="PatientHistory" ToRole="Tenants" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenantID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="PatientFiles" Relationship="Self.FK_PatientFile_Patients" FromRole="Patients" ToRole="PatientFile" />
+          <NavigationProperty Name="Tenant" Relationship="Self.FK_Patients_Tenants" FromRole="Patients" ToRole="Tenants" />
+        </EntityType>
+        <EntityType Name="Tenant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PatientFiles" Relationship="Self.FK_PatientFile_Tenants" FromRole="Tenants" ToRole="PatientFile" />
+          <NavigationProperty Name="PatientHistories" Relationship="Self.FK_PatientHistory_Tenants" FromRole="Tenants" ToRole="PatientHistory" />
+          <NavigationProperty Name="Patients" Relationship="Self.FK_Patients_Tenants" FromRole="Tenants" ToRole="Patients" />
+        </EntityType>
+        <Association Name="FK_PatientHistory_Diagnostics">
+          <End Role="Diagnostics" Type="Self.Diagnostic" Multiplicity="1" />
+          <End Role="PatientHistory" Type="Self.PatientHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagnostics">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PatientHistory">
+              <PropertyRef Name="DiagnosticID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientFile_Patients">
+          <End Role="Patients" Type="Self.Patient" Multiplicity="1" />
+          <End Role="PatientFile" Type="Self.PatientFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PatientFile">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientFile_Tenants">
+          <End Role="Tenants" Type="Self.Tenant" Multiplicity="1" />
+          <End Role="PatientFile" Type="Self.PatientFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenants">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PatientFile">
+              <PropertyRef Name="TenantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientHistory_PatientFile">
+          <End Role="PatientFile" Type="Self.PatientFile" Multiplicity="1" />
+          <End Role="PatientHistory" Type="Self.PatientHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientFile">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PatientHistory">
+              <PropertyRef Name="PatientFileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientHistory_Tenants">
+          <End Role="Tenants" Type="Self.Tenant" Multiplicity="1" />
+          <End Role="PatientHistory" Type="Self.PatientHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenants">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PatientHistory">
+              <PropertyRef Name="TenantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patients_Tenants">
+          <End Role="Tenants" Type="Self.Tenant" Multiplicity="1" />
+          <End Role="Patients" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenants">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patients">
+              <PropertyRef Name="TenantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Physio_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Diagnostics" EntityType="Self.Diagnostic" />
+          <EntitySet Name="PatientFiles" EntityType="Self.PatientFile" />
+          <EntitySet Name="PatientHistories" EntityType="Self.PatientHistory" />
+          <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <EntitySet Name="Tenants" EntityType="Self.Tenant" />
+          <AssociationSet Name="FK_PatientHistory_Diagnostics" Association="Self.FK_PatientHistory_Diagnostics">
+            <End Role="Diagnostics" EntitySet="Diagnostics" />
+            <End Role="PatientHistory" EntitySet="PatientHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientFile_Patients" Association="Self.FK_PatientFile_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="PatientFile" EntitySet="PatientFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientFile_Tenants" Association="Self.FK_PatientFile_Tenants">
+            <End Role="Tenants" EntitySet="Tenants" />
+            <End Role="PatientFile" EntitySet="PatientFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientHistory_PatientFile" Association="Self.FK_PatientHistory_PatientFile">
+            <End Role="PatientFile" EntitySet="PatientFiles" />
+            <End Role="PatientHistory" EntitySet="PatientHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientHistory_Tenants" Association="Self.FK_PatientHistory_Tenants">
+            <End Role="Tenants" EntitySet="Tenants" />
+            <End Role="PatientHistory" EntitySet="PatientHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patients_Tenants" Association="Self.FK_Patients_Tenants">
+            <End Role="Tenants" EntitySet="Tenants" />
+            <End Role="Patients" EntitySet="Patients" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PhysioModelStoreContainer" CdmEntityContainer="Physio_Entities">
+          <EntitySetMapping Name="Diagnostics">
+            <EntityTypeMapping TypeName="PhysioModel.Diagnostic">
+              <MappingFragment StoreEntitySet="Diagnostics">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Simptoms" ColumnName="Simptoms" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientFiles">
+            <EntityTypeMapping TypeName="PhysioModel.PatientFile">
+              <MappingFragment StoreEntitySet="PatientFile">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TenantID" ColumnName="TenantID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientHistories">
+            <EntityTypeMapping TypeName="PhysioModel.PatientHistory">
+              <MappingFragment StoreEntitySet="PatientHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PatientFileID" ColumnName="PatientFileID" />
+                <ScalarProperty Name="DiagnosticID" ColumnName="DiagnosticID" />
+                <ScalarProperty Name="TenantID" ColumnName="TenantID" />
+                <ScalarProperty Name="EntryDescription" ColumnName="EntryDescription" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="PhysioModel.Patient">
+              <MappingFragment StoreEntitySet="Patients">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TenantID" ColumnName="TenantID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tenants">
+            <EntityTypeMapping TypeName="PhysioModel.Tenant">
+              <MappingFragment StoreEntitySet="Tenants">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
