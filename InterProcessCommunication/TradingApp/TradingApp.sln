@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleHost", "ConsoleHost\ConsoleHost.csproj", "{F6399F1C-BF06-499B-A9DE-1F28EC35E589}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{13B36249-6775-4B1D-ACE1-E5671AD1FCE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{228B7ADB-37F2-450A-8B46-A0523DED7ED3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6399F1C-BF06-499B-A9DE-1F28EC35E589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6399F1C-BF06-499B-A9DE-1F28EC35E589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6399F1C-BF06-499B-A9DE-1F28EC35E589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6399F1C-BF06-499B-A9DE-1F28EC35E589}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
