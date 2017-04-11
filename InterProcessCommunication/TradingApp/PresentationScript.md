@@ -52,3 +52,11 @@ class QuotationService : IQuotationService
         }
     }
 ```
+
+#### 3. Implement `OrderingService` in `SalesModule`
+
+
+**Points:**
+- Depends on the **contract** of the QuotationService NOT on the implementation
+- No references among the modules. Look at the *Project Dependency Diagram*
+- We need a way to link things at runtime

@@ -43,6 +43,8 @@
     <Compile Include="Quotations.Services\IQuotationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quotations.Services\Quotation.cs" />
+    <Compile Include="Sales.Services\IOrdersService.cs" />
+    <Compile Include="Sales.Services\LimitOrder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
