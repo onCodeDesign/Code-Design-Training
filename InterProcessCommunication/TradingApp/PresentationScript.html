@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Presentation Script</title>
+</head>
+<body>
+
+    <h1 id="presentation-script">Presentation Script</h1>
+<h4 id="preset-vs-solution.it-has">0.	Preset VS solution. It has:</h4>
+<ul>
+<li>Infrastructure &amp; Modules</li>
+<li>Projects for modules and host</li>
+</ul>
+<p><strong>Points:</strong></p>
+<ul>
+<li>No references between Module assemblies</li>
+<li>In Contracts only  interfaces and DTOs. No logic
+<ul>
+<li>these are OperationContracts, DataContracts, FaultContracts</li>
+</ul>
+</li>
+</ul>
+<h4 id="create-code-the-iquotationservice-in-contracts">1.	Create (code) the <code>IQuotationService</code> in <code>Contracts</code></h4>
+<p><strong>Points:</strong></p>
+<ul>
+<li>It�s an <em>System Contract</em> (any subsytem can use it)</li>
+<li>Will be implemented by QuotationModule and used by other modules</li>
+<li>Has to have only DTOs which can be serialized w/ many serializers (prefere array rather than abstract types)</li>
+</ul>
+<h4 id="implement-the-quotationservice-in-quotationmodule">2. Implement the <code>QuotationService</code> in <code>QuotationModule</code></h4>
+<pre><code>class QuotationService : IQuotationService
+    {
+        private readonly Quotation[] array = 
+            {
+                new Quotation {AskPrice = 10.50m, BidPrice = 10.55m, SecurityCode = &quot;ING.S.NYSE&quot;},
+                new Quotation {AskPrice = 12.50m, BidPrice = 12.55m, SecurityCode = &quot;ING.B.NYSE&quot;},
+                new Quotation {AskPrice = 10.70m, BidPrice = 10.75m, SecurityCode = &quot;AAPL.B.NASDAQ&quot;},
+                new Quotation {AskPrice = 11.50m, BidPrice = 11.55m, SecurityCode = &quot;AAPL.S.NASDAQ&quot;},
+                new Quotation {AskPrice = 16.50m, BidPrice = 16.55m, SecurityCode = &quot;MSFT.B.NASDAQ&quot;},
+                new Quotation {AskPrice = 17.50m, BidPrice = 17.55m, SecurityCode = &quot;ING.B.AEX&quot;},
+                new Quotation {AskPrice = 10.51m, BidPrice = 10.59m, SecurityCode = &quot;ING.S.AEX&quot;},
+            };
+        
+        public Quotation[] GetQuotations(string exchange, string instrument, DateTime @from, DateTime to)
+        {
+            var result = array.Where(q =&gt; q.SecurityCode.Contains(exchange));
+
+            if (!string.IsNullOrWhiteSpace(instrument))
+                result = result.Where(q =&gt; q.SecurityCode.Contains(instrument));
+
+            return result.ToArray();
+        }
+
+        public Quotation[] GetQuotations(string securityCode, DateTime @from, DateTime to)
+        {
+            return array.Where(q =&gt; q.SecurityCode == securityCode).ToArray();
+        }
+    }
+</code></pre>
+
+
+</body>
+</html>
