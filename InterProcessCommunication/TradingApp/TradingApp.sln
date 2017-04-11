@@ -23,6 +23,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotations.Services", "Modu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portfolio.Services", "Modules\Portfolio\Portofolio.Services\Portfolio.Services.csproj", "{4110E4B3-FCBC-46E5-9F1C-C7158E08FC3E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Notes", ".Notes", "{60883637-DD2D-488E-A08B-BD60AD86D369}"
+	ProjectSection(SolutionItems) = preProject
+		PresentationScript.md = PresentationScript.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
