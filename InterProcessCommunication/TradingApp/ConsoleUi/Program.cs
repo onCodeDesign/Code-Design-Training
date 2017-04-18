@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using Contracts.Portfolio.Services;
+using iQuarc.AppBoot;
+using iQuarc.AppBoot.Unity;
 using Microsoft.Practices.ServiceLocation;
 
 namespace ConsoleUi
@@ -14,9 +16,43 @@ namespace ConsoleUi
         {
             Welcome();
 
+            Bootstrapp();
+
             DisplayPortfolioValue();
 
             Goodbye();
+        }
+
+        private static IServiceLocator Bootstrapp()
+        {
+            var assemblies = GetApplicationAssemblies().ToArray();
+            Bootstrapper bootstrapper = new Bootstrapper(assemblies);
+            bootstrapper.ConfigureWithUnity();
+            bootstrapper.AddRegistrationBehavior(new ServiceRegistrationBehavior());
+
+            bootstrapper.Run();
+
+            return bootstrapper.ServiceLocator;
+        }
+
+        private static IEnumerable<Assembly> GetApplicationAssemblies()
+        {
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            yield return Assembly.GetExecutingAssembly();
+
+            foreach (string dll in Directory.GetFiles(path, "*.dll"))
+            {
+                string filename = Path.GetFileName(dll);
+                if (filename != null && (filename.StartsWith("Contracts")
+                                         || filename.StartsWith("Portfolio.")
+                                         || filename.StartsWith("Quotations.")
+                                         || filename.StartsWith("Sales.")
+                    ))
+                {
+                    Assembly assembly = Assembly.LoadFile(dll);
+                    yield return assembly;
+                }
+            }
         }
 
         private static void DisplayPortfolioValue()
