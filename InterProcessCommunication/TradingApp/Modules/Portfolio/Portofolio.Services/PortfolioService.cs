@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Contracts.Portfolio.Services;
 using Contracts.Quotations.Services;
+using iQuarc.AppBoot;
 
 namespace Portfolio.Services
 {
+    [Service(typeof(IPortfolioService))]
     public class PortfolioService : IPortfolioService
     {
         private readonly IQuotationService quotationService;

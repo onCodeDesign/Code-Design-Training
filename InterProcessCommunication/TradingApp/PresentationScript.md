@@ -85,3 +85,15 @@ class QuotationService : IQuotationService
 - Setup the names of the assemblies that compose the app and need to be loaded by AppBoot
 - Setup the projects to build in a upper `bin` folder, so they can be loaded in Debug env
 - Decorate all implementations w/ `ServiceAttribute`
+- Run ConsoleUi
+  - Show how Portfolio service is called
+  - Show how OrderingService is called
+
+**Points**
+ - No references between Modules, so we can deploy them on different processes / machines
+ - For now, all are loaded in the same process w/ ConsoleUi
+   - only function calls between them
+   - Already advantages in Dependencies Management, Modularity and constraints for achieving Separtaion of Concerns
+   - The deployment diagram for this would have ONE box: "The App"
+     - Inside I have modularization and SoC, but everythig deploys on one box (an web server)
+     - I may have scalability (if stateless) , availablity and high maintainability. Valid and OK scenario!

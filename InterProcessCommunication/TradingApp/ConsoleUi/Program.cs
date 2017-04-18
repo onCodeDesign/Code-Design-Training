@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Contracts.Portfolio.Services;
+using Contracts.Sales.Services;
 using iQuarc.AppBoot;
 using iQuarc.AppBoot.Unity;
+using iQuarc.SystemEx;
 using Microsoft.Practices.ServiceLocation;
 
 namespace ConsoleUi
@@ -14,13 +16,15 @@ namespace ConsoleUi
     {
         static void Main(string[] args)
         {
-            Welcome();
-
+            ConsoleWelcome();
             Bootstrapp();
 
             DisplayPortfolioValue();
 
-            Goodbye();
+            PlaceLimitOrder();
+
+
+            ConsoleGoodbye();
         }
 
         private static IServiceLocator Bootstrapp()
@@ -60,22 +64,44 @@ namespace ConsoleUi
             IPortfolioService srv = ServiceLocator.Current.GetInstance<IPortfolioService>();
             
             decimal value = srv.GetPortfolioValue();
-            Console.WriteLine($"The portfolio value is: {value:F3}");
+            Console.WriteLine($"The portfolio value is: {value:C2}");
+            ConsoleWriteSeparator();
         }
 
-        private static void Welcome()
+        private static void PlaceLimitOrder()
+        {
+            Console.WriteLine("Placing new buy limit order.");
+            decimal price = ConsoleEx.AskInput<decimal>("Enter the limit price: "); //11.6
+
+            IOrdersService srv = ServiceLocator.Current.GetInstance<IOrdersService>();
+            srv.PlaceBuyLimitOrder("AAPL.S.NASDAQ",price, DateTime.UtcNow.AddDays(-1));
+            Console.WriteLine("Your order request has been sent");
+            Console.WriteLine("Your limit orders are:");
+            var orders = srv.GetLimitOrders();
+            orders.ForEach(ConsoleEx.WriteEntity);
+
+            ConsoleWriteSeparator();
+        }
+
+        private static void ConsoleWelcome()
         {
             Console.WriteLine("This is the UI of this demo app!");
             Console.WriteLine("---------------------------------------");
             Console.WriteLine();
         }
 
-        private static void Goodbye()
+        private static void ConsoleGoodbye()
         {
             Console.WriteLine("");
             Console.WriteLine("---------------------------------------");
             Console.WriteLine("The demo has ended...");
             Console.ReadLine();
+        }
+
+        private static void ConsoleWriteSeparator()
+        {
+            Console.WriteLine();
+            Console.WriteLine("-----------------------------------------------");
         }
     }
 }

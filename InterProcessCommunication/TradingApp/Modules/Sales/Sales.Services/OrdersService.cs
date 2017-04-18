@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Contracts.Quotations.Services;
 using Contracts.Sales.Services;
+using iQuarc.AppBoot;
 
 namespace Sales.Services
 {
-    public class OrdersService : IOrdersService
+    [Service(typeof(IOrdersService))]
+    public class OrderingService : IOrdersService
     {
         private readonly IQuotationService quotationService;
 
         private readonly List<LimitOrder> limitOrders = new List<LimitOrder>();
 
-        public OrdersService(IQuotationService quotationService)
+        public OrderingService(IQuotationService quotationService)
         {
             this.quotationService = quotationService;
         }
