@@ -68,3 +68,14 @@ class QuotationService : IQuotationService
 - Its contract is also part of the `Contracts` assembly because it will be called from the UI, which will be hosted in a different process.
     - the point of this demo is not necessarely the communication between BE and FE, which might be done differently from the communication between BE components. 
     - however in most cases it is done in the same way, therefore it makes sens to add it in contracts.
+
+#### 5. Introduce iQuarc.AppBoot
+
+- Show that at this point the modules and services are not linked
+  - they exist as libraries but no one loads / uses them
+  - have a look on the *Project Dependencies Diagram*
+- Install `iQuarc.AppBoot` for the projects in `\Modules\`
+  - `iQuarc.AppBoot.Unity` is installed **only** in the host (the rest do not need to depend on Unity)
+- The `ConsoleHost` be the process that will host the BE services 
+  - in production this would be an web server (IIS) or a cloud service (Azure CloudService).
+- We add a ConsoleUi for to demo how services are linked and used by the AppBoot.
