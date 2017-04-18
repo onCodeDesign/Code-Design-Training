@@ -13,8 +13,8 @@
 </ul>
 <p><strong>Points:</strong></p>
 <ul>
-<li>No references between Module assemblies</li>
-<li>In Contracts only  interfaces and DTOs. No logic
+<li>In Contracts only  interfaces and DTOs. No logic</li>
+<li>No references between Module assemblies
 <ul>
 <li>these are OperationContracts, DataContracts, FaultContracts</li>
 </ul>
@@ -63,6 +63,17 @@
 <li>Depends on the <strong>contract</strong> of the QuotationService NOT on the implementation</li>
 <li>No references among the modules. Look at the <em>Project Dependency Diagram</em></li>
 <li>We need a way to link things at runtime</li>
+</ul>
+<h4 id="implement-portfolioservice-in-portfoliomodule">4. Implement <code>PortfolioService</code> in <code>PortfolioModule</code></h4>
+<p><strong>Points:</strong></p>
+<ul>
+<li>Depends on the <strong>contract</strong> of the QuotationService NOT on the implementation</li>
+<li>Its contract is also part of the <code>Contracts</code> assembly because it will be called from the UI, which will be hosted in a different process.
+<ul>
+<li>the point of this demo is not necessarely the communication between BE and FE, which might be done differently from the communication between BE components.</li>
+<li>however in most cases it is done in the same way, therefore it makes sens to add it in contracts.</li>
+</ul>
+</li>
 </ul>
 
 
