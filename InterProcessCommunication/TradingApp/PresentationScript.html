@@ -75,6 +75,26 @@
 </ul>
 </li>
 </ul>
+<h4 id="introduce-iquarc.appboot">5. Introduce iQuarc.AppBoot</h4>
+<ul>
+<li>Show that at this point the modules and services are not linked
+<ul>
+<li>they exist as libraries but no one loads / uses them</li>
+<li>have a look on the <em>Project Dependencies Diagram</em></li>
+</ul>
+</li>
+<li>Install <code>iQuarc.AppBoot</code> for the projects in <code>\Modules\</code>
+<ul>
+<li><code>iQuarc.AppBoot.Unity</code> is installed <strong>only</strong> in the host (the rest do not need to depend on Unity)</li>
+</ul>
+</li>
+<li>The <code>ConsoleHost</code> be the process that will host the BE services
+<ul>
+<li>in production this would be an web server (IIS) or a cloud service (Azure CloudService).</li>
+</ul>
+</li>
+<li>We add a ConsoleUi for to demo how services are linked and used by the AppBoot.</li>
+</ul>
 
 
 </body>
