@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
 using Contracts.Quotations.Services;
+using iQuarc.AppBoot;
 
 namespace Quotations.Services
 {
+    [Service(typeof(IQuotationService))]
     internal class QuotationService : IQuotationService
     {
         private readonly Quotation[] array =
