@@ -97,3 +97,23 @@ class QuotationService : IQuotationService
    - The deployment diagram for this would have ONE box: "The App"
      - Inside I have modularization and SoC, but everythig deploys on one box (an web server)
      - I may have scalability (if stateless) , availablity and high maintainability. Valid and OK scenario!
+
+#### 7. Implement the ConsoleHost w/ WebAPI Self Host
+  - `Install-Package Microsoft.AspNet.WebApi.OwinSelfHost`
+  - `Install-Package iQuarc.AppBoot.WebApi`
+  - Startup configures the WebApi and links it w/ AppBoot
+  - QuotationsController is just a wrapper over the `IQuotationService` it publishes
+  - Show how everything works
+    - run the ConsoleHost
+    - use the following from Postman
+      - http://localhost:9000/api/Quotations/GetQuotationsByExchange?exchange=AAPL&instrument=&from=2017-01-01&to=2017-01-01
+      - http://localhost:9000/api/Quotations/GetBySecurity?securityCode=AAPL.B.NASDAQ&from=2017-01-01&to=2017-01-01
+      - http://localhost:9000/api/Quotations/GetBySecurities?securities=AAPL.B.NASDAQ&securities=AAPL.S.NASDAQ&from=2017-01-01&to=2017-01-01
+
+**Points:**
+ - References only to `Contracts` Look at the *Project Dependency Diagram*
+ - ConsoleUi and ConsoleHost load the QuotationServices in their process
+   - They do a dynamic load: the implementation is loaded only if its dll is deployed
+ - The QuotationsController could be generalized to have a generic host for all services it finds (for this demo we write the hosts by hand)
+   - we could mark the implemenations with a `PublicServiceAttribute : ServiceAttribute` to find them
+   - `AppBoot` could be extended to know about the `PublicServiceAttribute` and make the registration based on it too
