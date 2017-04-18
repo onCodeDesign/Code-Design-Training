@@ -123,6 +123,40 @@
 </ul>
 </li>
 </ul>
+<h4 id="implement-the-consolehost-w-webapi-self-host">7. Implement the ConsoleHost w/ WebAPI Self Host</h4>
+<ul>
+<li><code>Install-Package Microsoft.AspNet.WebApi.OwinSelfHost</code></li>
+<li><code>Install-Package iQuarc.AppBoot.WebApi</code></li>
+<li>Startup configures the WebApi and links it w/ AppBoot</li>
+<li>QuotationsController is just a wrapper over the <code>IQuotationService</code> it publishes</li>
+<li>Show how everything works
+<ul>
+<li>run the ConsoleHost</li>
+<li>use the following from Postman
+<ul>
+<li><a href="http://localhost:9000/api/Quotations/GetQuotationsByExchange?exchange=AAPL&amp;instrument=&amp;from=2017-01-01&amp;to=2017-01-01">http://localhost:9000/api/Quotations/GetQuotationsByExchange?exchange=AAPL&amp;instrument=&amp;from=2017-01-01&amp;to=2017-01-01</a></li>
+<li><a href="http://localhost:9000/api/Quotations/GetBySecurity?securityCode=AAPL.B.NASDAQ&amp;from=2017-01-01&amp;to=2017-01-01">http://localhost:9000/api/Quotations/GetBySecurity?securityCode=AAPL.B.NASDAQ&amp;from=2017-01-01&amp;to=2017-01-01</a></li>
+<li><a href="http://localhost:9000/api/Quotations/GetBySecurities?securities=AAPL.B.NASDAQ&amp;securities=AAPL.S.NASDAQ&amp;from=2017-01-01&amp;to=2017-01-01">http://localhost:9000/api/Quotations/GetBySecurities?securities=AAPL.B.NASDAQ&amp;securities=AAPL.S.NASDAQ&amp;from=2017-01-01&amp;to=2017-01-01</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Points:</strong></p>
+<ul>
+<li>References only to <code>Contracts</code> Look at the <em>Project Dependency Diagram</em></li>
+<li>ConsoleUi and ConsoleHost load the QuotationServices in their process
+<ul>
+<li>They do a dynamic load: the implementation is loaded only if its dll is deployed</li>
+</ul>
+</li>
+<li>The QuotationsController could be generalized to have a generic host for all services it finds (for this demo we write the hosts by hand)
+<ul>
+<li>we could mark the implemenations with a <code>PublicServiceAttribute : ServiceAttribute</code> to find them</li>
+<li><code>AppBoot</code> could be extended to know about the <code>PublicServiceAttribute</code> and make the registration based on it too</li>
+</ul>
+</li>
+</ul>
 
 
 </body>

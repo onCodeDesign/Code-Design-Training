@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
 using Microsoft.Owin.Hosting;
 
 namespace ConsoleHost
@@ -11,7 +8,7 @@ namespace ConsoleHost
     {
         static void Main(string[] args)
         {
-            string baseAddress = "http://localhost:9000/";
+            string baseAddress = ConfigurationManager.AppSettings["BaseAddress"];
 
             using (WebApp.Start<Startup>(url: baseAddress))
             {
@@ -25,6 +22,6 @@ namespace ConsoleHost
                 }
                 while (keyInfo.Key != ConsoleKey.Escape);
             }
-        }
+        }        
     }
 }
