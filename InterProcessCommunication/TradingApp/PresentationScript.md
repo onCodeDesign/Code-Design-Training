@@ -79,3 +79,9 @@ class QuotationService : IQuotationService
 - The `ConsoleHost` be the process that will host the BE services 
   - in production this would be an web server (IIS) or a cloud service (Azure CloudService).
 - We add a ConsoleUi for to demo how services are linked and used by the AppBoot.
+
+#### 6. Bootstrapp iQuarc.AppBoot
+
+- Setup the names of the assemblies that compose the app and need to be loaded by AppBoot
+- Setup the projects to build in a upper `bin` folder, so they can be loaded in Debug env
+- Decorate all implementations w/ `ServiceAttribute`
