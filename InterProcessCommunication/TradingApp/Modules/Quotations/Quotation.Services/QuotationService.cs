@@ -31,5 +31,10 @@ namespace Quotations.Services
         {
             return array.Where(q => q.SecurityCode == securityCode).ToArray();
         }
+
+        public Quotation[] GetQuotations(string[] securities, DateTime @from, DateTime to)
+        {
+            return array.Where(q => securities.Contains(q.SecurityCode)).ToArray();
+        }
     }
 }
