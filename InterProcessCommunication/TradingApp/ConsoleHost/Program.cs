@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Configuration;
+using Contracts.Infrastructure;
+using iQuarc.SystemEx;
 using Microsoft.Owin.Hosting;
+using Microsoft.Practices.ServiceLocation;
 
 namespace ConsoleHost
 {
@@ -13,6 +16,7 @@ namespace ConsoleHost
             using (WebApp.Start<Startup>(url: baseAddress))
             {
                 Console.WriteLine($"Server runs at: {baseAddress}");
+                ConsoleWriteRegisteredModules();
                 Console.WriteLine("Press ESC to stop the server\n");
 
                 ConsoleKeyInfo keyInfo;
@@ -22,6 +26,17 @@ namespace ConsoleHost
                 }
                 while (keyInfo.Key != ConsoleKey.Escape);
             }
-        }        
+        }
+
+        private static void ConsoleWriteRegisteredModules()
+        {
+            Console.WriteLine("The following modules are loaded: ");
+
+            IModulesHostContainer container = ServiceLocator.Current.GetInstance<IModulesHostContainer>();
+            var modules = container.GetModules();
+            modules.ForEach(m => Console.WriteLine($"\t{m}"));
+
+            Console.WriteLine();
+        }
     }
 }

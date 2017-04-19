@@ -1,5 +1,5 @@
 Presentation Script
-================
+================ 
 
 
 #### 0.	Preset VS solution. It has:
@@ -7,22 +7,22 @@ Presentation Script
  - Infrastructure & Modules
  - Projects for modules and host
   
-**Points:**
+**Points :**
 -	In Contracts only  interfaces and DTOs. No logic
 -	No references between Module assemblies
     -   these are OperationContracts, DataContracts, FaultContracts
-
+     
 
 #### 1.	Create (code) the `IQuotationService` in `Contracts`
 
 **Points:**
--	It’s an *System Contract* (any subsytem can use it)
+-	It's an *System Contract* (any subsytem can use it)
 -   Will be implemented by QuotationModule and used by other modules
 -   Has to have only DTOs which can be serialized w/ many serializers (prefere array rather than abstract types)
 
 #### 2. Implement the `QuotationService` in `QuotationModule`
 
-```
+```csharp
 class QuotationService : IQuotationService
     {
         private readonly Quotation[] array = 
@@ -98,11 +98,11 @@ class QuotationService : IQuotationService
      - Inside I have modularization and SoC, but everythig deploys on one box (an web server)
      - I may have scalability (if stateless) , availablity and high maintainability. Valid and OK scenario!
 
-#### 7. Implement the ConsoleHost w/ WebAPI Self Host
+#### 7. Implement the ConsoleHost w/ Web API Self Host
   - `Install-Package Microsoft.AspNet.WebApi.OwinSelfHost`
   - `Install-Package iQuarc.AppBoot.WebApi`
   - Startup configures the WebApi and links it w/ AppBoot
-  - QuotationsController is just a wrapper over the `IQuotationService` it publishes
+  - QuotationsController is just a wrapper over the `IQuotationService` it publishes it
   - Show how everything works
     - run the ConsoleHost
     - use the following from Postman
@@ -114,6 +114,9 @@ class QuotationService : IQuotationService
  - References only to `Contracts` Look at the *Project Dependency Diagram*
  - ConsoleUi and ConsoleHost load the QuotationServices in their process
    - They do a dynamic load: the implementation is loaded only if its dll is deployed
+   - This makes ConsoleHost a generic services host, meaning that it may host services from any module it finds
+     - (demo this by deleting a module from bin folder and showing that its services are available or not)
+    
  - The QuotationsController could be generalized to have a generic host for all services it finds (for this demo we write the hosts by hand)
    - we could mark the implemenations with a `PublicServiceAttribute : ServiceAttribute` to find them
    - `AppBoot` could be extended to know about the `PublicServiceAttribute` and make the registration based on it too
