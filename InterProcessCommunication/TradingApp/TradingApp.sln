@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portfolio.Services", "Modul
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Notes", ".Notes", "{60883637-DD2D-488E-A08B-BD60AD86D369}"
 	ProjectSection(SolutionItems) = preProject
-		PresentationScript.md = PresentationScript.md
+		.Notes\PresentationScript.md = .Notes\PresentationScript.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUi", "ConsoleUi\ConsoleUi.csproj", "{44125C18-6947-4193-8D44-C4F3546C0D47}"

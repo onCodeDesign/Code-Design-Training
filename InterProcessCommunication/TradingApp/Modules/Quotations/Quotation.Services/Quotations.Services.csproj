@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuotationService.cs" />
+    <Compile Include="QuotationsModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\_Contracts\Contracts.csproj">
