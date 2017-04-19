@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using ConsoleHost.Filters;
 using iQuarc.AppBoot.WebApi;
 using Owin;
 
@@ -18,6 +19,8 @@ namespace ConsoleHost
             );
 
             AppBootBootstrapper.Run().ConfigureWebApi(config);
+
+            config.Filters.Add(new ConsoleLogFilter());
 
             appBuilder.UseWebApi(config);
         }
