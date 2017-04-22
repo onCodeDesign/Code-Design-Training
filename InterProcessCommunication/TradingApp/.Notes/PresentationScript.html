@@ -12,7 +12,7 @@
 <h4 id="preset-vs-solution.it-has">0.	Preset VS solution. It has:</h4>
 <ul>
 <li>Infrastructure &amp; Modules</li>
-<li>Projects for modules and host</li>
+<li>Projects for modules and hosst</li>
 </ul>
 <p><strong>Points :</strong></p>
 <ul>
@@ -149,9 +149,15 @@
 <ul>
 <li><p>References only to <code>Contracts</code> Look at the <em>Project Dependency Diagram</em></p>
 </li>
-<li><p>ConsoleUi and ConsoleHost load the QuotationServices in their process</p>
+<li><p>ConsoleUi and ConsoleHost load the QuotationServices (and all of the other services) in their process. We have one <strong>fat</strong> process</p>
+</li>
+<li><p>When someone calls the <code>/api/Portfolio/</code> the PortfolioService impl calls (in process) the IQuotationsService</p>
 <ul>
-<li>They do a dynamic load: the implementation is loaded only if its dll is deployed</li>
+<li>same when `/api/Orders/ is called</li>
+</ul>
+</li>
+<li><p>They do a dynamic load: the implementation is loaded only if its <code>dll</code> is deployed</p>
+<ul>
 <li>This makes ConsoleHost a generic services host, meaning that it may host services from any module it finds
 <ul>
 <li>(demo this by deleting a module from bin folder and showing that its services are available or not)</li>
@@ -159,10 +165,12 @@
 </li>
 </ul>
 </li>
-<li><p>The QuotationsController could be generalized to have a generic host for all services it finds (for this demo we write the hosts by hand)</p>
+<li><p>The <code>QuotationsController</code> could be generalized to have a generic host for all services it finds</p>
 <ul>
+<li>for this demo we write the hosts by hand (<code>OrdersController</code>, <code>PortfolioController</code>)</li>
 <li>we could mark the implemenations with a <code>PublicServiceAttribute : ServiceAttribute</code> to find them</li>
 <li><code>AppBoot</code> could be extended to know about the <code>PublicServiceAttribute</code> and make the registration based on it too</li>
+<li></li>
 </ul>
 </li>
 </ul>
