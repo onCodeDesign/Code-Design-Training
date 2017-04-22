@@ -30,6 +30,7 @@ namespace ConsoleHost
             {
                 string filename = Path.GetFileName(dll);
                 if (filename != null && (filename.StartsWith("Contracts")
+                                         || filename.StartsWith("Infra.")
                                          || filename.StartsWith("Portfolio.")
                                          || filename.StartsWith("Quotations.")
                                          || filename.StartsWith("Sales.")
