@@ -126,4 +126,6 @@ class QuotationService : IQuotationService
    - for this demo we write the hosts by hand (`OrdersController`, `PortfolioController`)
    - we could mark the implemenations with a `PublicServiceAttribute : ServiceAttribute` to find them
    - `AppBoot` could be extended to know about the `PublicServiceAttribute` and make the registration based on it too
-   -
+ 
+#### 8. Implement proxies to call the services as REST API
+ - Install `Microsoft.AspNet.WebApi.Client`
