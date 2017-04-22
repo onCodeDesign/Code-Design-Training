@@ -5,7 +5,7 @@ Presentation Script
 #### 0.	Preset VS solution. It has:
 
  - Infrastructure & Modules
- - Projects for modules and host
+ - Projects for modules and hosst
   
 **Points :**
 -	In Contracts only  interfaces and DTOs. No logic
@@ -112,11 +112,18 @@ class QuotationService : IQuotationService
 
 **Points:**
  - References only to `Contracts` Look at the *Project Dependency Diagram*
- - ConsoleUi and ConsoleHost load the QuotationServices in their process
-   - They do a dynamic load: the implementation is loaded only if its dll is deployed
+ 
+ - ConsoleUi and ConsoleHost load the QuotationServices (and all of the other services) in their process. We have one **fat** process
+ 
+ - When someone calls the `/api/Portfolio/` the PortfolioService impl calls (in process) the IQuotationsService
+   - same when `/api/Orders/ is called
+
+ - They do a dynamic load: the implementation is loaded only if its `dll` is deployed
    - This makes ConsoleHost a generic services host, meaning that it may host services from any module it finds
      - (demo this by deleting a module from bin folder and showing that its services are available or not)
     
- - The QuotationsController could be generalized to have a generic host for all services it finds (for this demo we write the hosts by hand)
+ - The `QuotationsController` could be generalized to have a generic host for all services it finds 
+   - for this demo we write the hosts by hand (`OrdersController`, `PortfolioController`)
    - we could mark the implemenations with a `PublicServiceAttribute : ServiceAttribute` to find them
    - `AppBoot` could be extended to know about the `PublicServiceAttribute` and make the registration based on it too
+   -
