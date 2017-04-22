@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Contracts.Infrastructure;
 using Contracts.Portfolio.Services;
 using Contracts.Sales.Services;
 using iQuarc.AppBoot;
@@ -18,6 +19,7 @@ namespace ConsoleUi
         {
             ConsoleWelcome();
             Bootstrapp();
+            ConsoleWriteRegisteredModules();
 
             DisplayPortfolioValue();
 
@@ -48,6 +50,7 @@ namespace ConsoleUi
             {
                 string filename = Path.GetFileName(dll);
                 if (filename != null && (filename.StartsWith("Contracts")
+                                         || filename.StartsWith("Infra.")
                                          || filename.StartsWith("Portfolio.")
                                          || filename.StartsWith("Quotations.")
                                          || filename.StartsWith("Sales.")
@@ -100,6 +103,18 @@ namespace ConsoleUi
 
         private static void ConsoleWriteSeparator()
         {
+            Console.WriteLine();
+            Console.WriteLine("-----------------------------------------------");
+        }
+
+        private static void ConsoleWriteRegisteredModules()
+        {
+            Console.WriteLine("The following modules are loaded: ");
+
+            IModulesHostContainer container = ServiceLocator.Current.GetInstance<IModulesHostContainer>();
+            var modules = container.GetModules();
+            modules.ForEach(m => Console.WriteLine($"\t{m}"));
+
             Console.WriteLine();
             Console.WriteLine("-----------------------------------------------");
         }
