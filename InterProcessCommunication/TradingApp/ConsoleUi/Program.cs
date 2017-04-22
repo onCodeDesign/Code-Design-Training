@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Reflection;
 using Contracts.Infrastructure;
 using Contracts.Portfolio.Services;
@@ -15,18 +16,14 @@ namespace ConsoleUi
 {
     class Program
     {
-        static void Main(string[] args)
+        static void RunDemoApp()
         {
-            ConsoleWelcome();
             Bootstrapp();
             ConsoleWriteRegisteredModules();
 
             DisplayPortfolioValue();
 
             PlaceLimitOrder();
-
-
-            ConsoleGoodbye();
         }
 
         private static IServiceLocator Bootstrapp()
@@ -50,6 +47,7 @@ namespace ConsoleUi
             {
                 string filename = Path.GetFileName(dll);
                 if (filename != null && (filename.StartsWith("Contracts")
+                                         || filename.StartsWith("Proxies.")
                                          || filename.StartsWith("Infra.")
                                          || filename.StartsWith("Portfolio.")
                                          || filename.StartsWith("Quotations.")
@@ -117,6 +115,20 @@ namespace ConsoleUi
 
             Console.WriteLine();
             Console.WriteLine("-----------------------------------------------");
+        }
+
+        static void Main(string[] args)
+        {
+            ConsoleWelcome();
+            try
+            {
+                RunDemoApp();
+            }
+            catch (Exception e) when (e.FirstInner<SocketException>() != null)
+            {
+                Console.WriteLine(e);
+            }
+            ConsoleGoodbye();
         }
     }
 }
