@@ -127,5 +127,11 @@ class QuotationService : IQuotationService
    - we could mark the implemenations with a `PublicServiceAttribute : ServiceAttribute` to find them
    - `AppBoot` could be extended to know about the `PublicServiceAttribute` and make the registration based on it too
  
-#### 8. Implement proxies to call the services as REST API
+#### 8. Implement proxies to call the services as a REST API
+ - Create Proxies project (for simplicity we'll have one project for all services in the `Infrastructure`)
  - Install `Microsoft.AspNet.WebApi.Client`
+ - Start w/ implementation of `PortfolioServiceProxy` as being the simplest
+   - to call it from ConsoleUi:
+     - register it as a [Service]
+     - add Proxy prj in AppBoot dlls
+     - make ConsoleUi not to depend on `Portfolio.csproj` but on the proxy

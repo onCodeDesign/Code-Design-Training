@@ -173,9 +173,21 @@
 </ul>
 </li>
 </ul>
-<h4 id="implement-proxies-to-call-the-services-as-rest-api">8. Implement proxies to call the services as REST API</h4>
+<h4 id="implement-proxies-to-call-the-services-as-a-rest-api">8. Implement proxies to call the services as a REST API</h4>
 <ul>
+<li>Create Proxies project (for simplicity we'll have one project for all services in the <code>Infrastructure</code>)</li>
 <li>Install <code>Microsoft.AspNet.WebApi.Client</code></li>
+<li>Start w/ implementation of <code>PortfolioServiceProxy</code> as being the simplest
+<ul>
+<li>to call it from ConsoleUi:
+<ul>
+<li>register it as a [Service]</li>
+<li>add Proxy prj in AppBoot dlls</li>
+<li>make ConsoleUi not to depend on <code>Portfolio.csproj</code> but on the proxy</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
     </div>
