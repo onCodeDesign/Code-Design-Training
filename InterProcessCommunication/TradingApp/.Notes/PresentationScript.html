@@ -189,6 +189,44 @@
 </ul>
 </li>
 </ul>
+<p><strong>Points:</strong></p>
+<ul>
+<li><code>ConsoleUi</code> loads service implementations AND / OR proxies
+<ul>
+<li>if we comment out the implementations only proxies are loaded =&gt; always inter-process communication</li>
+<li><code>ConsoleUi</code> may act like a FE app if does not load service implementations.
+<ul>
+<li>It always calls services as inter-proc</li>
+<li>just through deployment <code>ConsoleUi</code> may call services <em>in-process</em> or <em>inter-process</em>
+<ul>
+<li>play w/ <code>PortfolioService</code> and w/ <code>QuotationService</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>If for one service (interface) both the implementation and the proxy is deployed, then the last one AppBoot finds orverwrites the previous
+<ul>
+<li>non deterministic
+<ul>
+<li>even if the real implementation is deployed, it may not be used</li>
+<li>ex1: <code>ConsoleUi</code> loads the <code>QuotationServices.dll</code> and <code>PortfolioService</code> we would expect a <em>in-process</em> communication
+<ul>
+<li>but! the <code>PortfolioService</code> may get a proxy to call the <code>QuotationService</code> this result in a <em>inter-process</em> communitcation between <code>PortfolioSerivce</code> and <code>QuotationService</code></li>
+</ul>
+</li>
+<li>ex2:
+<ul>
+<li><code>ConsoleUi</code> loads only proxies, the communication between <code>PortfolioSerivce</code> and <code>QuotationService</code> happens on the <code>ConsoleHost</code> only, in process!</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>--&gt; we need some prioritization for AppBoot (see next step)</li>
+</ul>
+</li>
+</ul>
 
     </div>
 </body>
