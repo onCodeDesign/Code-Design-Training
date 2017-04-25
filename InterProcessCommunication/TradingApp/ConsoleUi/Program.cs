@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Reflection;
+using System.Web;
 using Contracts.Infrastructure;
 using Contracts.Portfolio.Services;
+using Contracts.Quotations.Services;
 using Contracts.Sales.Services;
 using iQuarc.AppBoot;
 using iQuarc.AppBoot.Unity;
@@ -22,6 +24,8 @@ namespace ConsoleUi
             ConsoleWriteRegisteredModules();
 
             DisplayPortfolioValue();
+
+            DisplayQuotationsByExchange();
 
             PlaceLimitOrder();
         }
@@ -66,6 +70,18 @@ namespace ConsoleUi
             
             decimal value = srv.GetPortfolioValue();
             Console.WriteLine($"The portfolio value is: {value:C2}");
+            ConsoleWriteSeparator();
+        }
+
+        private static void DisplayQuotationsByExchange()
+        {
+            Console.WriteLine("Displaying Quotations by Exchange code.");
+            string exchange = ConsoleEx.AskInput<string>("Enter the exchange code: "); //NYSE
+
+            IQuotationService srv = ServiceLocator.Current.GetInstance<IQuotationService>();
+            var quotations = srv.GetQuotations(exchange, string.Empty, DateTime.Now, DateTime.Now);
+            quotations.ForEach(ConsoleEx.WriteEntity);
+
             ConsoleWriteSeparator();
         }
 
@@ -123,6 +139,11 @@ namespace ConsoleUi
             try
             {
                 RunDemoApp();
+            }
+            catch (HttpException httpException)
+            {
+                Console.WriteLine("HttpError:");
+                Console.WriteLine($"\t{httpException.Message}");
             }
             catch (Exception e) when (e.FirstInner<SocketException>() != null)
             {
