@@ -61,6 +61,7 @@
     <Compile Include="HttpHelpers.cs" />
     <Compile Include="PortfolioServiceProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProxiesModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\_Contracts\Contracts.csproj">
