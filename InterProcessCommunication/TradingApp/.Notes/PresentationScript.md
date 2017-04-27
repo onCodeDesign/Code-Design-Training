@@ -138,15 +138,16 @@ class QuotationService : IQuotationService
  
 **Points:**
  - `ConsoleUi` loads service implementations AND / OR proxies
-   - if we comment out the implementations only proxies are loaded => always inter-process communication
+   - if we comment out the load of the modules with implementation (in AppBoot bootstrapp) only proxies are loaded => always inter-process communication
    - `ConsoleUi` may act like a FE app if does not load service implementations. 
      - It always calls services as inter-proc
      - just through deployment `ConsoleUi` may call services *in-process* or *inter-process*
        - play w/ `PortfolioService` and w/ `QuotationService`
  - If for one service (interface) both the implementation and the proxy is deployed, then the last one AppBoot finds orverwrites the previous
-    - non deterministic
+    - **non deterministic!**
       - even if the real implementation is deployed, it may not be used 
-      - ex1: `ConsoleUi` loads the `QuotationServices.dll` and `PortfolioService` we would expect a *in-process* communication
+      - ex1: (to have this demoed we might need to comment our the `PortfolioServiceProxy` othewise the non-deterministic behavior may make this tricky to demo)
+        -  `ConsoleUi` loads the `QuotationServices.dll` and `PortfolioService.dll` we would expect a *in-process* communication
         -  but! the `PortfolioService` may get a proxy to call the `QuotationService` this result in a *inter-process* communitcation between `PortfolioSerivce` and `QuotationService`
       - ex2: 
         - `ConsoleUi` loads only proxies, the communication between `PortfolioSerivce` and `QuotationService` happens on the `ConsoleHost` only, in process!
