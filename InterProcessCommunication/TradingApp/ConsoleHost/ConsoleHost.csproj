@@ -107,6 +107,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AppBootEx\AppBootEx.csproj">
+      <Project>{C378E838-1688-484B-A35E-A95E003E28BC}</Project>
+      <Name>AppBootEx</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Modules\_Contracts\Contracts.csproj">
       <Project>{19297424-954D-42F5-AC38-6F22A25EA682}</Project>
       <Name>Contracts</Name>
