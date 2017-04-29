@@ -21,9 +21,6 @@ namespace ConsoleUi
     {
         static void RunDemoApp()
         {
-            Bootstrapp();
-            ConsoleWriteRegisteredModules();
-
             DisplayPortfolioValue();
 
             DisplayQuotationsByExchange();
@@ -69,7 +66,7 @@ namespace ConsoleUi
         private static void DisplayPortfolioValue()
         {
             IPortfolioService srv = ServiceLocator.Current.GetInstance<IPortfolioService>();
-            
+
             decimal value = srv.GetPortfolioValue();
             Console.WriteLine($"The portfolio value is: {value:C2}");
             ConsoleWriteSeparator();
@@ -93,7 +90,7 @@ namespace ConsoleUi
             decimal price = ConsoleEx.AskInput<decimal>("Enter the limit price: "); //11.6
 
             IOrdersService srv = ServiceLocator.Current.GetInstance<IOrdersService>();
-            srv.PlaceBuyLimitOrder("AAPL.S.NASDAQ",price, DateTime.UtcNow.AddDays(-1));
+            srv.PlaceBuyLimitOrder("AAPL.S.NASDAQ", price, DateTime.UtcNow.AddDays(-1));
             Console.WriteLine("Your order request has been sent");
             Console.WriteLine("Your limit orders are:");
             var orders = srv.GetLimitOrders();
@@ -104,6 +101,7 @@ namespace ConsoleUi
 
         private static void ConsoleWelcome()
         {
+            Console.Clear();
             Console.WriteLine("This is the UI of this demo app!");
             Console.WriteLine("---------------------------------------");
             Console.WriteLine();
@@ -114,7 +112,6 @@ namespace ConsoleUi
             Console.WriteLine("");
             Console.WriteLine("---------------------------------------");
             Console.WriteLine("The demo has ended...");
-            Console.ReadLine();
         }
 
         private static void ConsoleWriteSeparator()
@@ -137,21 +134,30 @@ namespace ConsoleUi
 
         static void Main(string[] args)
         {
-            ConsoleWelcome();
-            try
+            string reRun;
+            do
             {
-                RunDemoApp();
-            }
-            catch (HttpException httpException)
-            {
-                Console.WriteLine("HttpError:");
-                Console.WriteLine($"\t{httpException.Message}");
-            }
-            catch (Exception e) when (e.FirstInner<SocketException>() != null)
-            {
-                Console.WriteLine(e);
-            }
-            ConsoleGoodbye();
+                ConsoleWelcome();
+                Bootstrapp();
+                ConsoleWriteRegisteredModules();
+
+                try
+                {
+                    RunDemoApp();
+                }
+                catch (HttpException httpException)
+                {
+                    Console.WriteLine("HttpError:");
+                    Console.WriteLine($"\t{httpException.Message}");
+                }
+                catch (Exception e) when (e.FirstInner<SocketException>() != null)
+                {
+                    Console.WriteLine(e);
+                }
+                ConsoleGoodbye();
+
+                reRun = ConsoleEx.AskInput<string>("Do you want to re-run the demo? [Y/N]");
+            } while (string.Equals(reRun, "y", StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }
