@@ -103,6 +103,33 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".Deployment\ConsoleHost.portfolio.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include=".Deployment\ConsoleHost.quotation.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include=".Deployment\ConsoleHost.sales.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include=".Deployment\Deploy-HostAll.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include=".Deployment\Deploy-HostPortfolio.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include=".Deployment\Deploy-HostEach.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include=".Deployment\startAll.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include=".Deployment\Deploy-HostQuotation.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include=".Deployment\Deploy-HostSales.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -116,5 +143,15 @@
       <Name>Contracts</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>call "$(TargetDir).Deployment\Deploy-HostAll.bat" "$(TargetDir).Deployment\"
+
+call "$(TargetDir).Deployment\Deploy-HostPortfolio.bat" "$(TargetDir).Deployment\"
+call "$(TargetDir).Deployment\Deploy-HostQuotation.bat" "$(TargetDir).Deployment\"
+call "$(TargetDir).Deployment\Deploy-HostSales.bat" "$(TargetDir).Deployment\"
+
+copy "$(TargetDir).Deployment\startAll.bat" "$(SolutionDir)bin\Deploy\"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

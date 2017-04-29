@@ -70,6 +70,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".Deployment\Deploy-ConsoleUi-ProxyOnly.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -84,4 +87,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>call "$(TargetDir).Deployment\Deploy-ConsoleUi-ProxyOnly.bat" "$(TargetDir).Deployment\"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
