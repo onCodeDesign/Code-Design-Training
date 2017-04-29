@@ -159,7 +159,7 @@ public enum OrderType
  - For now, all are loaded in the same process w/ ConsoleUi
    - only function calls between them
    - Already advantages in Dependencies Management, Modularity and constraints for achieving Separtaion of Concerns
-   - The deployment diagram for this would have ONE box: "The App"
+   - The deployment diagram for this would have ONE box: "The App" (*HostAllInConsoleUi*)
      - Inside I have modularization and SoC, but everythig deploys on one box (an web server)
      - I may have scalability (if stateless) , availablity and high maintainability. Valid and OK scenario!
 
@@ -190,7 +190,7 @@ public enum OrderType
  - References only to `Contracts` Look at the *Project Dependency Diagram*
  
  - ConsoleUi and ConsoleHost load the QuotationServices (and all of the other services) in their process.
-   - We have one **fat** process
+   - We have one **fat** process (digrams: *HostAll* & *HostAllInConsole*)
  
  - When someone calls the `/api/Portfolio/` the PortfolioService impl calls (in process) the IQuotationsService
    - same when `/api/Orders/ is called
@@ -283,7 +283,6 @@ public sealed class ServiceProxyRegistrationBehavior : IRegistrationBehavior
 - To have more instnaces of the ConsoleHost, and allow distributed system for the BE we need to:
   - Add in `app.config` different ports for each service
   - > `git ch ipc-step10a` 
-
 
 **Points:**
 
