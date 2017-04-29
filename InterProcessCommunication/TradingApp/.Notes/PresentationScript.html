@@ -263,6 +263,19 @@
 </ul>
 </li>
 </ul>
+<h4 id="add-the-serviceproxyregistrationbehavior-to-consolehost-and-host-each-service-in-its-own-process">10. Add the <code>ServiceProxyRegistrationBehavior</code> to <code>ConsoleHost</code> and host each service in its own process</h4>
+<ul>
+<li>Register the service behavior and load the Proxies dll:
+<ul>
+<li>in <code>AppBootBootstrapper.cs</code> add:
+<ul>
+<li><code>.AddRegistrationBehavior(new ServiceProxyRegistrationBehavior());</code></li>
+<li><code>|| filename.StartsWith(&quot;Proxies.&quot;)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
     </div>
 </body>

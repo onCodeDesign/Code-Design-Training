@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using AppBootEx;
 using iQuarc.AppBoot;
 using iQuarc.AppBoot.Unity;
 
@@ -14,6 +15,7 @@ namespace ConsoleHost
             var assemblies = GetApplicationAssemblies().ToArray();
             Bootstrapper bootstrapper = new Bootstrapper(assemblies);
             bootstrapper.ConfigureWithUnity();
+            bootstrapper.AddRegistrationBehavior(new ServiceProxyRegistrationBehavior());
             bootstrapper.AddRegistrationBehavior(new ServiceRegistrationBehavior());
 
             bootstrapper.Run();
@@ -31,6 +33,7 @@ namespace ConsoleHost
                 string filename = Path.GetFileName(dll);
                 if (filename != null && (filename.StartsWith("Contracts")
                                          || filename.StartsWith("Infra.")
+                                         || filename.StartsWith("Proxies.")
                                          || filename.StartsWith("Portfolio.")
                                          || filename.StartsWith("Quotations.")
                                          || filename.StartsWith("Sales.")

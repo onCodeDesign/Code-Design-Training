@@ -178,3 +178,11 @@ class QuotationService : IQuotationService
     - demo this with `ConsoleUi`
       - if implementations are deployed **everythign** is in one process
       - if we delete the implementations from the `\bin\` then we have *inter-process* communication with the Console Host!
+
+
+#### 10. Add the `ServiceProxyRegistrationBehavior` to `ConsoleHost` and host each service in its own process
+
+- Register the service behavior and load the Proxies dll: 
+  - in `AppBootBootstrapper.cs` add:
+      - `.AddRegistrationBehavior(new ServiceProxyRegistrationBehavior());`
+      - `|| filename.StartsWith("Proxies.")`
