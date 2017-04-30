@@ -1,12 +1,13 @@
 using System;
 using System.Net.Http;
 using System.Web;
+using AppBootEx;
 using Contracts.Sales.Services;
 using iQuarc.AppBoot;
 
 namespace Proxies
 {
-    [Service(typeof(IOrdersService))]
+    [ServiceProxy(typeof(IOrdersService))]
     class OrdersServiceProxy : IOrdersService
     {
         public void PlaceSellLimitOrder(string securityCode, decimal sellingPrice, DateTime validUntil)

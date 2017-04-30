@@ -1,12 +1,11 @@
 ﻿using System.Net.Http;
 using System.Web;
+using AppBootEx;
 using Contracts.Portfolio.Services;
-using Contracts.Quotations.Services;
-using iQuarc.AppBoot;
 
 namespace Proxies
 {
-    [Service(typeof(IPortfolioService))]
+    [ServiceProxy(typeof(IPortfolioService))]
     class PortfolioServiceProxy : IPortfolioService
     {
         public decimal GetPortfolioValue()

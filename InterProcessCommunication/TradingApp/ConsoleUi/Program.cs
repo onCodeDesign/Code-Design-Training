@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Web;
+using AppBootEx;
 using Contracts.Infrastructure;
 using Contracts.Portfolio.Services;
 using Contracts.Quotations.Services;
@@ -35,6 +36,7 @@ namespace ConsoleUi
             var assemblies = GetApplicationAssemblies().ToArray();
             Bootstrapper bootstrapper = new Bootstrapper(assemblies);
             bootstrapper.ConfigureWithUnity();
+            bootstrapper.AddRegistrationBehavior(new ServiceProxyRegistrationBehavior());
             bootstrapper.AddRegistrationBehavior(new ServiceRegistrationBehavior());
 
             bootstrapper.Run();
