@@ -28,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Notes", ".Notes", "{608836
 		PresentationScript.md = PresentationScript.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUi", "ConsoleUi\ConsoleUi.csproj", "{44125C18-6947-4193-8D44-C4F3546C0D47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{4110E4B3-FCBC-46E5-9F1C-C7158E08FC3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4110E4B3-FCBC-46E5-9F1C-C7158E08FC3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4110E4B3-FCBC-46E5-9F1C-C7158E08FC3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44125C18-6947-4193-8D44-C4F3546C0D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44125C18-6947-4193-8D44-C4F3546C0D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44125C18-6947-4193-8D44-C4F3546C0D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44125C18-6947-4193-8D44-C4F3546C0D47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
