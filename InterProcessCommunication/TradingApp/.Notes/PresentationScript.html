@@ -228,6 +228,41 @@
 </ul>
 </li>
 </ul>
+<h4 id="implement-servicepoxyattribute-and-serviceproxyregistrationbehavior">9. Implement <code>ServicePoxyAttribute</code> and <code>ServiceProxyRegistrationBehavior</code></h4>
+<ul>
+<li>Create the <code>AppBootEx</code> csproj</li>
+<li>Create <code>ServicePoxyAttribute</code> from scrach</li>
+<li>Create <code>ServiceProxyRegistrationBehavior</code>:</li>
+</ul>
+<pre><code class="language-csharp"> public sealed class ServiceProxyRegistrationBehavior : IRegistrationBehavior
+    {
+        public IEnumerable&lt;ServiceInfo&gt; GetServicesFrom(Type type)
+        {
+            IEnumerable&lt;ServiceProxyAttribute&gt; attributes = type.GetAttributes&lt;ServiceProxyAttribute&gt;(false);
+            return attributes.Select(a =&gt; new ServiceInfo(a.ExportType, type, string.Empty, Lifetime.AlwaysNew));
+        }
+    }
+</code></pre>
+<ul>
+<li>Add <code>ServiceProxyRegistrationBehavior</code> in the <code>Program.cs</code> at <code>AppBoot.Bootstrapp()</code>
+<ul>
+<li>the last added registration behavior, overwrites</li>
+</ul>
+</li>
+</ul>
+<p><strong>Points:</strong></p>
+<ul>
+<li>we have now the wanted behavior: <strong>Based on deployment we have <em>in-process</em> or <em>inter-process</em> communication</strong>
+<ul>
+<li>demo this with <code>ConsoleUi</code>
+<ul>
+<li>if implementations are deployed <strong>everythign</strong> is in one process</li>
+<li>if we delete the implementations from the <code>\bin\</code> then we have <em>inter-process</em> communication with the Console Host!</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
     </div>
 </body>

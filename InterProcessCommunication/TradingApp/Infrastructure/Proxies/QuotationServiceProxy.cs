@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Net.Http;
 using System.Web;
+using AppBootEx;
 using Contracts.Portfolio.Services;
 using Contracts.Quotations.Services;
 using iQuarc.AppBoot;
 
 namespace Proxies
 {
-    [Service(typeof(IQuotationService))]
+    [ServiceProxy(typeof(IQuotationService))]
     class QuotationServiceProxy : IQuotationService
     {
         public Quotation[] GetQuotations(string exchange, string instrument, DateTime @from, DateTime to)

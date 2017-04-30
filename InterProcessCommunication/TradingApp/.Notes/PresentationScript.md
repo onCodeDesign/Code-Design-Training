@@ -152,3 +152,29 @@ class QuotationService : IQuotationService
       - ex2: 
         - `ConsoleUi` loads only proxies, the communication between `PortfolioSerivce` and `QuotationService` happens on the `ConsoleHost` only, in process!
     - --> we need some prioritization for AppBoot (see next step)
+
+#### 9. Implement `ServicePoxyAttribute` and `ServiceProxyRegistrationBehavior`
+
+- Create the `AppBootEx` csproj 
+- Create `ServicePoxyAttribute` from scrach
+- Create `ServiceProxyRegistrationBehavior`:
+```csharp
+ public sealed class ServiceProxyRegistrationBehavior : IRegistrationBehavior
+    {
+        public IEnumerable<ServiceInfo> GetServicesFrom(Type type)
+        {
+            IEnumerable<ServiceProxyAttribute> attributes = type.GetAttributes<ServiceProxyAttribute>(false);
+            return attributes.Select(a => new ServiceInfo(a.ExportType, type, string.Empty, Lifetime.AlwaysNew));
+        }
+    }
+```
+
+- Add `ServiceProxyRegistrationBehavior` in the `Program.cs` at `AppBoot.Bootstrapp()`
+  - the last added registration behavior, overwrites
+
+
+**Points:**
+- we have now the wanted behavior: **Based on deployment we have *in-process* or *inter-process* communication**
+    - demo this with `ConsoleUi`
+      - if implementations are deployed **everythign** is in one process
+      - if we delete the implementations from the `\bin\` then we have *inter-process* communication with the Console Host!
