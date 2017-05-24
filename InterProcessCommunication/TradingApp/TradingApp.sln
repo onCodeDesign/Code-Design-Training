@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.0
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleHost", "ConsoleHost\ConsoleHost.csproj", "{F6399F1C-BF06-499B-A9DE-1F28EC35E589}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -38,6 +38,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUi", "ConsoleUi\ConsoleUi.csproj", "{44125C18-6947-4193-8D44-C4F3546C0D47}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B235C485-07B0-4BB5-A27A-B79DADC576AA} = {B235C485-07B0-4BB5-A27A-B79DADC576AA}
+		{C4A8A9D9-CF33-466C-829F-39DE80E99F38} = {C4A8A9D9-CF33-466C-829F-39DE80E99F38}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proxies", "Infrastructure\Proxies\Proxies.csproj", "{B235C485-07B0-4BB5-A27A-B79DADC576AA}"
