@@ -139,6 +139,12 @@
     <Compile Include="Lesson5\Line.cs" />
     <Compile Include="Lesson5\Modem.cs" />
     <Compile Include="Lesson5\Rectangle.cs" />
+    <Compile Include="Lesson6\CoreContainerLifetime\App.cs" />
+    <Compile Include="Lesson6\CoreContainerLifetime\MyController.cs" />
+    <Compile Include="Lesson6\CoreContainerLifetime\IOperation.cs" />
+    <Compile Include="Lesson6\CoreContainerLifetime\NetCoreLifetimeDemo.cs" />
+    <Compile Include="Lesson6\CoreContainerLifetime\Operation.cs" />
+    <Compile Include="Lesson6\CoreContainerLifetime\Service.cs" />
     <Compile Include="Lesson6\DI-Demo\FileStorage.cs" />
     <Compile Include="Lesson6\DI-Demo\IMovieConsoleCreator.cs" />
     <Compile Include="Lesson6\DI-Demo\IMovieTranslator.cs" />
