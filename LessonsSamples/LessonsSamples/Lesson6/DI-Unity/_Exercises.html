@@ -1,4 +1,11 @@
-﻿<h1 id="this-file-contains-some-exercises-for-dependency-injection-and-servicelocator-demo-app">This file contains some exercises for Dependency Injection and ServiceLocator demo app</h1>
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>This file contains some exercises for Dependency Injection and ServiceLocator demo app</title>
+</head>
+<body>
+
+    <h1 id="this-file-contains-some-exercises-for-dependency-injection-and-servicelocator-demo-app">This file contains some exercises for Dependency Injection and ServiceLocator demo app</h1>
 <h4 id="implement-option-3.list-movies">1. Implement option <em>3. List Movies</em></h4>
 <h4 id="implement-option-4.find-movies">2. Implement option <em>4. Find Movies</em></h4>
 <h4 id="integrate-the-servicelocator-into-the-app">3. Integrate the <code>ServiceLocator</code> into the app</h4>
@@ -6,7 +13,34 @@
 <li>Make one of the implementation get its dependencies through the static ServiceLocator.Current</li>
 <li>Get the IServiceLocator through Dependency Injection in one of your classes</li>
 </ul>
-<h4 id="implement-the-console-options-as-a-set-of-commands-registered-into-unity-container">4. Implement the console options as a set of commands registered into Unity Container</h4>
+<h4 id="create-an-abstraction-for-the-console-iconsole">4. Create an abstraction for the console: <code>IConsole</code></h4>
+<ol type="a">
+<li><p>Why would we abstract the existent static Console class through IConsole?</p>
+</li>
+<li><p>Why would we make an static caller to it that uses ServiceLocator to wrap the IConsole instance?</p>
+</li>
+</ol>
+<h4 id="implement-the-console-options-as-a-set-of-commands-registered-into-di-container">5. Implement the console options as a set of commands registered into DI Container</h4>
 <p>All the commands could implement an <code>ICommand</code> interface (you could use (or gent inspired from) the interface from the <code>System.Windows.Input</code>)</p>
 <p>Implement a class <code>Menu</code> that finds all <code>ICommand</code> implementations and displays the menu with them. When a menu entry is picked, it will execute that command by calling the <code>Execute()</code> function.</p>
 <p>The console app should discover all available commands, build the menu with them and then execute them based on the user input</p>
+<h4 id="have-more-movie-catalogs">6. Have more Movie Catalogs</h4>
+<p>Each <em>Moview Catalog</em> is stored in its own file and the name of the file is the name of the catalog.</p>
+<p><em>3. List Movies</em>  should first show the name of all available catalogs, and the user should type the catalog name that she wants to be listed</p>
+<p>Sugestion: add <code>void Open(string catalogName)</code> and <code>string Create()</code> methods to <code>ITextStorage</code> to implement this.</p>
+<h4 id="add-rating-to-a-movie">7. Add Rating to a movie</h4>
+<p>Implment a command for adding a rating to a movie</p>
+<p>The user will type the name of the movie and then the rating. The rating will be stored on the same line with the movie name by appending the text <em>| Rating: xxxxx</em></p>
+<p>This function may be added to the <code>Console</code> class for reading a user's input</p>
+<pre><code>public string AskInput(string message)
+{
+	Console.WriteLine();
+	Console.WriteLine(message);
+
+	return Console.ReadLine();
+}
+</code></pre>
+
+
+</body>
+</html>
