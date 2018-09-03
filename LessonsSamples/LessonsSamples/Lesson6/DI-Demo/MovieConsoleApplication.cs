@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LessonsSamples.Lesson6.DI_Unity
+namespace LessonsSamples.Lesson6
 {
 	public class MovieConsoleApplication
 	{

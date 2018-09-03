@@ -133,13 +133,13 @@
     <Compile Include="Lesson5\Line.cs" />
     <Compile Include="Lesson5\Modem.cs" />
     <Compile Include="Lesson5\Rectangle.cs" />
-    <Compile Include="Lesson6\DI-Unity\FileStorage.cs" />
-    <Compile Include="Lesson6\DI-Unity\IMovieConsoleCreator.cs" />
-    <Compile Include="Lesson6\DI-Unity\IMovieTranslator.cs" />
-    <Compile Include="Lesson6\DI-Unity\ITextStorage.cs" />
-    <Compile Include="Lesson6\DI-Unity\MovieConsoleApplication.cs" />
-    <Compile Include="Lesson6\DI-Unity\MovieTranslator.cs" />
-    <Compile Include="Lesson6\DI-Unity\UnityDemo.cs" />
+    <Compile Include="Lesson6\DI-Demo\FileStorage.cs" />
+    <Compile Include="Lesson6\DI-Demo\IMovieConsoleCreator.cs" />
+    <Compile Include="Lesson6\DI-Demo\IMovieTranslator.cs" />
+    <Compile Include="Lesson6\DI-Demo\ITextStorage.cs" />
+    <Compile Include="Lesson6\DI-Demo\MovieConsoleApplication.cs" />
+    <Compile Include="Lesson6\DI-Demo\MovieTranslator.cs" />
+    <Compile Include="Lesson6\DI-Demo\UnityDemo.cs" />
     <Compile Include="Lesson6\DI_AndDisposable\Model.cs" />
     <Compile Include="Lesson6\DI_AndDisposable\Repository.cs" />
     <Compile Include="Lesson6\DI_AndDisposable\RepositoryFactory.cs" />
@@ -205,13 +205,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Lesson6\DI-Unity\_Exercises.md" />
+    <None Include="Lesson6\DI-Demo\_Exercises.md" />
     <None Include="Lesson7\InheritanceComposition\LogSource.cd" />
     <None Include="Lesson7\InheritanceComposition\LogSource_2.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Lesson6\DI-Unity\_Exercises.html">
+    <Content Include="Lesson6\DI-Demo\_Exercises.html">
       <DependentUpon>_Exercises.md</DependentUpon>
     </Content>
   </ItemGroup>

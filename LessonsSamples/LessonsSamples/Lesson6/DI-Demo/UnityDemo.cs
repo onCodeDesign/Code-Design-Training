@@ -1,7 +1,7 @@
 ﻿using Unity;
 using Unity.Lifetime;
 
-namespace LessonsSamples.Lesson6.DI_Unity
+namespace LessonsSamples.Lesson6
 {
 	static class UnityDemo
 	{
