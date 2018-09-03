@@ -21,11 +21,17 @@ b) Why would we make an static caller to it that uses ServiceLocator to wrap the
 #### 5. Implement the console options as a set of commands registered into DI Container
 
 
-All the commands could implement an `ICommand` interface (you could use (or gent inspired from) the interface from the `System.Windows.Input`)
+All the commands could implement an `ICommand` interface. Example:
+```
+public interface ICommand
+{
+    void Execute();
+    char KeyChar { get; }
+    string MenuEntry { get; }
+}
+```
 
-Implement a class `Menu` that finds all `ICommand` implementations and displays the menu with them. When a menu entry is picked, it will execute that command by calling the `Execute()` function.
-
-The console app should discover all available commands, build the menu with them and then execute them based on the user input
+Build the menu by getting all the `ICommand` implementations through constructor DI. When a menu entry is picked, it will execute that command by calling the `Execute()` function.
 
 #### 6. Have more Movie Catalogs
 

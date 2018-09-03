@@ -21,9 +21,15 @@
 </li>
 </ol>
 <h4 id="implement-the-console-options-as-a-set-of-commands-registered-into-di-container">5. Implement the console options as a set of commands registered into DI Container</h4>
-<p>All the commands could implement an <code>ICommand</code> interface (you could use (or gent inspired from) the interface from the <code>System.Windows.Input</code>)</p>
-<p>Implement a class <code>Menu</code> that finds all <code>ICommand</code> implementations and displays the menu with them. When a menu entry is picked, it will execute that command by calling the <code>Execute()</code> function.</p>
-<p>The console app should discover all available commands, build the menu with them and then execute them based on the user input</p>
+<p>All the commands could implement an <code>ICommand</code> interface. Example:</p>
+<pre><code>public interface ICommand
+{
+    void Execute();
+    char KeyChar { get; }
+    string MenuEntry { get; }
+}
+</code></pre>
+<p>Build the menu by getting all the <code>ICommand</code> implementations through constructor DI. When a menu entry is picked, it will execute that command by calling the <code>Execute()</code> function.</p>
 <h4 id="have-more-movie-catalogs">6. Have more Movie Catalogs</h4>
 <p>Each <em>Moview Catalog</em> is stored in its own file and the name of the file is the name of the catalog.</p>
 <p><em>3. List Movies</em>  should first show the name of all available catalogs, and the user should type the catalog name that she wants to be listed</p>

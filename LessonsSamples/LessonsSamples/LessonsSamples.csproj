@@ -57,6 +57,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\iQuarc.SystemEx.1.0.0.0\lib\net40\iQuarc.SystemEx.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.1.1\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Moq, Version=4.9.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.9.0\lib\net45\Moq.dll</HintPath>
@@ -139,6 +145,7 @@
     <Compile Include="Lesson6\DI-Demo\ITextStorage.cs" />
     <Compile Include="Lesson6\DI-Demo\MovieConsoleApplication.cs" />
     <Compile Include="Lesson6\DI-Demo\MovieTranslator.cs" />
+    <Compile Include="Lesson6\DI-Demo\NetCoreContainerDemo.cs" />
     <Compile Include="Lesson6\DI-Demo\UnityDemo.cs" />
     <Compile Include="Lesson6\DI_AndDisposable\Model.cs" />
     <Compile Include="Lesson6\DI_AndDisposable\Repository.cs" />

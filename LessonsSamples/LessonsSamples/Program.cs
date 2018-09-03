@@ -15,7 +15,8 @@ namespace LessonsSamples
         {
             //TestRunner.RunTests();
 
-			UnityDemo.MainFunc();
+			//UnityDemo.MainFunc();
+			NetCoreContainerDemo.MainFunc();
 
             Console.WriteLine();
             Console.WriteLine("Demo ran. Press enter to close");
