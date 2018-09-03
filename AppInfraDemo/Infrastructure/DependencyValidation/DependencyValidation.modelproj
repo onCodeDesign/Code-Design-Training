@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9d8284b2-4f4e-40f7-b194-3f16f4e1e51b}</ProjectGuid>
+    <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
+    <Name>DependencyValidation</Name>
+    <RootNamespace>DependencyValidation</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Validate Include="DependencyValidation.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="DependencyValidation.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>DependencyValidation.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="DependencyValidation.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>DependencyValidation.layerdiagram</DependentUpon>
+    </Validate>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Modules\Contracts\Contracts.csproj">
+      <Name>Contracts</Name>
+      <Project>{7047438d-82dc-4868-acae-ee3df665337d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Export\Export.Services\Export.Services.csproj">
+      <Name>Export.Services</Name>
+      <Project>{99d5e040-832b-4a6d-abb2-5ade7921f92a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Notifications\Notification.Services\Notifications.Services.csproj">
+      <Name>Notifications.Services</Name>
+      <Project>{ed6ad59e-9538-4497-b99e-bde883513a24}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Sales\Sales.Services\Sales.Services.csproj">
+      <Name>Sales.Services</Name>
+      <Project>{4c4dd642-cc9a-410f-bc05-ac1487d61801}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Name>Common</Name>
+      <Project>{3d082ae2-d187-4c65-89f5-6224ee4a4aeb}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Name>DataAccess</Name>
+      <Project>{2a4ef3a0-4d6d-4d6a-a691-834278739cfa}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

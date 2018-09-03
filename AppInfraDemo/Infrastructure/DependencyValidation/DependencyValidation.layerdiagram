@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="4fafd775-02b3-47d2-829c-94cc63e6f1f6" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="c7ab2d96-7b60-4dd4-bfc5-7f15f00c72f2" name="Infrastructure&#xD;&#xA;">
+      <childLayers>
+        <layer Id="d213660a-8a08-45c6-adc2-20aecad9225d" name="Common">
+          <references>
+            <reference Id="50255ede-9d96-432d-8a41-7bbeda3a63ae" name="Common">
+              <ArtifactNode Label="Common" Category="CodeSchema_Project" Id="(Assembly=../Common/Common.csproj)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Common)" Label="Common.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="93b4a791-c556-4520-9713-dd353aa7c2f8" name="Modules">
+      <childLayers>
+        <layer Id="8349dfae-b7f4-46ae-9fa0-33c530cbba45" name="Export.Services">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="40b3df7a-2886-479c-bbd7-6dc27690a4fc" direction="Forward">
+              <layerMoniker Id="41e73857-e3ef-452e-a5c8-5e5b16e8aad1" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="e8be501d-9269-430c-8e43-7f591f124d3f" direction="Forward">
+              <layerMoniker Id="d213660a-8a08-45c6-adc2-20aecad9225d" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="3055e88d-39c9-406b-8fa7-445b5d3dbf1a" direction="Forward">
+              <layerMoniker Id="b5a17748-fba7-450d-a0fb-ba440666714c" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="43c1a06d-2c1b-4730-86a7-b4607942a2ae" name="Export.Services">
+              <ArtifactNode Label="Export.Services" Category="CodeSchema_Project" Id="(Assembly=../../Modules/Export/Export.Services/Export.Services.csproj)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Export.Services)" Label="Export.Services.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="41d248ad-fa66-40b1-979b-1895c2a7b7cd" name="Notifications.Services">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="60f652a4-2c65-4d59-b574-0002909d6e70" direction="Forward">
+              <layerMoniker Id="41e73857-e3ef-452e-a5c8-5e5b16e8aad1" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="6c6522d9-e544-4429-a2c7-0f1f321ce803" direction="Forward">
+              <layerMoniker Id="b5a17748-fba7-450d-a0fb-ba440666714c" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="f2fbb090-6523-4ba6-bcab-632449061c49" direction="Forward">
+              <layerMoniker Id="d213660a-8a08-45c6-adc2-20aecad9225d" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="9ee648b4-a5e5-42ae-b363-291e5c088f4f" name="Notifications.Services">
+              <ArtifactNode Label="Notifications.Services" Category="CodeSchema_Project" Id="(Assembly=../../Modules/Notifications/Notification.Services/Notifications.Services.csproj)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Notifications.Services)" Label="Notifications.Services.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="befc9c57-0778-40d2-86f1-ea5f3f2cebdc" name="Sales.Services">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="aa736a11-01db-4402-a2ce-3a85d7008360" direction="Forward">
+              <layerMoniker Id="41e73857-e3ef-452e-a5c8-5e5b16e8aad1" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="8feb9f9f-c4b8-4b24-afdf-35b54e01ccc7" direction="Forward">
+              <layerMoniker Id="d213660a-8a08-45c6-adc2-20aecad9225d" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="098f367b-8980-4b11-9ddc-56ebad88532a" direction="Forward">
+              <layerMoniker Id="b5a17748-fba7-450d-a0fb-ba440666714c" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="1aca593a-6535-4649-9def-7e3aa5c6eee2" name="Sales.Services">
+              <ArtifactNode Label="Sales.Services" Category="CodeSchema_Project" Id="(Assembly=../../Modules/Sales/Sales.Services/Sales.Services.csproj)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Sales.Services)" Label="Sales.Services.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="41e73857-e3ef-452e-a5c8-5e5b16e8aad1" name="Contracts">
+          <references>
+            <reference Id="7232ea39-8c1c-4950-8305-248ed6e77ef3" name="Contracts">
+              <ArtifactNode Label="Contracts" Category="CodeSchema_Project" Id="(Assembly=../../Modules/Contracts/Contracts.csproj)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Contracts)" Label="Contracts.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="681d6dce-e403-498c-abba-97278bd12ea1" name="Data Access Layer">
+      <childLayers>
+        <layer Id="b5a17748-fba7-450d-a0fb-ba440666714c" name="DataAccess">
+          <references>
+            <reference Id="7c47b391-66f0-4792-978c-4a2455025fcb" name="DataAccess">
+              <ArtifactNode Label="DataAccess" Category="CodeSchema_Project" Id="(Assembly=../DataAccess/DataAccess.csproj)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=DataAccess)" Label="DataAccess.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>

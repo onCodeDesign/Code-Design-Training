@@ -72,6 +72,10 @@
     <Content Include="AdventureWorksTestQueries\SalesOrdersHeader.sql" />
   </ItemGroup>
   <ItemGroup>
+    <AdditionalFiles Include="..\..\Infrastructure\DependencyValidation\DependencyValidation.layerdiagram">
+      <Link>DependencyValidation.layerdiagram</Link>
+      <Visible>False</Visible>
+    </AdditionalFiles>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -80,6 +84,10 @@
       <Project>{7047438D-82DC-4868-ACAE-EE3DF665337D}</Project>
       <Name>Contracts</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
