@@ -145,7 +145,9 @@
     <Compile Include="Lesson6\CoreContainerLifetime\NetCoreLifetimeDemo.cs" />
     <Compile Include="Lesson6\CoreContainerLifetime\Operation.cs" />
     <Compile Include="Lesson6\CoreContainerLifetime\Service.cs" />
+    <Compile Include="Lesson6\DI-Demo\AppConsole.cs" />
     <Compile Include="Lesson6\DI-Demo\FileStorage.cs" />
+    <Compile Include="Lesson6\DI-Demo\IConsole.cs" />
     <Compile Include="Lesson6\DI-Demo\IMovieConsoleCreator.cs" />
     <Compile Include="Lesson6\DI-Demo\IMovieTranslator.cs" />
     <Compile Include="Lesson6\DI-Demo\ITextStorage.cs" />

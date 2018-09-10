@@ -6,21 +6,7 @@
 <body>
 
     <h1 id="this-file-contains-some-exercises-for-dependency-injection-and-servicelocator-demo-app">This file contains some exercises for Dependency Injection and ServiceLocator demo app</h1>
-<h4 id="implement-option-3.list-movies">1. Implement option <em>3. List Movies</em></h4>
-<h4 id="implement-option-4.find-movies">2. Implement option <em>4. Find Movies</em></h4>
-<h4 id="integrate-the-servicelocator-into-the-app">3. Integrate the <code>ServiceLocator</code> into the app</h4>
-<ul>
-<li>Make one of the implementation get its dependencies through the static ServiceLocator.Current</li>
-<li>Get the IServiceLocator through Dependency Injection in one of your classes</li>
-</ul>
-<h4 id="create-an-abstraction-for-the-console-iconsole">4. Create an abstraction for the console: <code>IConsole</code></h4>
-<ol type="a">
-<li><p>Why would we abstract the existent static Console class through IConsole?</p>
-</li>
-<li><p>Why would we make an static caller to it that uses ServiceLocator to wrap the IConsole instance?</p>
-</li>
-</ol>
-<h4 id="implement-the-console-options-as-a-set-of-commands-registered-into-di-container">5. Implement the console options as a set of commands registered into DI Container</h4>
+<h4 id="implement-the-console-options-as-a-set-of-commands-registered-into-di-container">1. Implement the console options as a set of commands registered into DI Container</h4>
 <p>All the commands could implement an <code>ICommand</code> interface. Example:</p>
 <pre><code>public interface ICommand
 {
@@ -30,22 +16,72 @@
 }
 </code></pre>
 <p>Build the menu by getting all the <code>ICommand</code> implementations through constructor DI. When a menu entry is picked, it will execute that command by calling the <code>Execute()</code> function.</p>
-<h4 id="have-more-movie-catalogs">6. Have more Movie Catalogs</h4>
-<p>Each <em>Moview Catalog</em> is stored in its own file and the name of the file is the name of the catalog.</p>
-<p><em>3. List Movies</em>  should first show the name of all available catalogs, and the user should type the catalog name that she wants to be listed</p>
-<p>Sugestion: add <code>void Open(string catalogName)</code> and <code>string Create()</code> methods to <code>ITextStorage</code> to implement this.</p>
-<h4 id="add-rating-to-a-movie">7. Add Rating to a movie</h4>
-<p>Implment a command for adding a rating to a movie</p>
-<p>The user will type the name of the movie and then the rating. The rating will be stored on the same line with the movie name by appending the text <em>| Rating: xxxxx</em></p>
-<p>This function may be added to the <code>Console</code> class for reading a user's input</p>
-<pre><code>public string AskInput(string message)
+<h4 id="create-an-abstraction-for-the-console-iconsole">2. Create an abstraction for the console: <code>IConsole</code></h4>
+<ol type="a">
+<li><p>Why would we abstract the existent static Console class through IConsole?</p>
+</li>
+<li><p>Register in the DIC the <code>IConsole</code> with the <code>AppConsoleImplementation</code> and refactor the code to use the <code>IConsole</code></p>
+</li>
+</ol>
+<h4 id="implement-command-3.list-movies">3. Implement command <em>3. List Movies</em></h4>
+<h4 id="rewrite-the-moviesconsolecreator">4. Rewrite the <code>MoviesConsoleCreator</code></h4>
+<ol type="a">
+<li>Reimplement the <code>MoviesConsoleCreator</code> command to use the following interfaces:</li>
+</ol>
+<pre><code>interface IEntityReader
 {
-	Console.WriteLine();
-	Console.WriteLine(message);
-
-	return Console.ReadLine();
+    IEntityFieldsReader&lt;T&gt; BeginEntityRead&lt;T&gt;();
+}
+internal interface IEntityFieldsReader&lt;T&gt;
+{
+    IEnumerable&lt;string&gt; GetFields();
+    void StoreFieldValue(string value);
+    T GetEntity();
 }
 </code></pre>
+<ol type="a" start="2">
+<li>Write unit tests that prove that the new <code>MoviesConsoleCreator</code> works</li>
+</ol>
+<h4 id="implement-ientityreader-and-ientityfieldsreader">5. Implement <code>IEntityReader</code> and <code>IEntityFieldsReader</code></h4>
+<p><em>Suggestion</em>: Use <em>Service Locator Pattern</em> to get and return the <code>IEntityFieldsReader&lt;T&gt;</code> implementations on the <code>IEntityReader&lt;T&gt;()</code> function.</p>
+<h4 id="make-a-generic-implementation-of-ientityfieldsreadert">7. Make a generic implementation of  <code>IEntityFieldsReader&lt;T&gt;</code></h4>
+<p>We may have a generic class that implements <code>IEntityFieldsReader&lt;T&gt;</code> for any T by using reflection. It should be registered to DI by using the open generic type.</p>
+<h4 id="implement-option-4.find-movies">8. Implement option <em>4. Find Movies</em></h4>
+<ol type="a">
+<li>We could save the movies in an in-memory repository which has application lifetime.
+The find movies could work on this one.</li>
+</ol>
+<h4 id="make-a-generic-implementation-for-the-repository">9. Make a generic implementation for the repository</h4>
+<p>The repository interface may be like:</p>
+<pre><code>interface IFileRepository
+{
+    IQueryable&lt;T&gt; GetEntities&lt;T&gt;();
+    void Add&lt;T&gt;(T entity);
+}
+</code></pre>
+<p>We should individual implementations for each type, because each we'd like to save each type in its own file, following a naming convention for the file name. We'd like to have:</p>
+<pre><code>interface IFileRepository&lt;T&gt;
+{
+    IQueryable&lt;T&gt; GetEntities();
+    void Add(T entity);
+}
+
+class MovieRepository :  IFileRepository&lt;Movie&gt;
+{
+
+}
+</code></pre>
+<p><em>Suggestion</em>: the non-generic class that implements <code>IFileRepository</code> could use the <em>Service Locator Pattern</em> to get the generic implementation for the specific <code>T</code> and forward the call to it for each function.</p>
+<h4 id="create-and-store-reviews-for-movies">10. Create and store Reviews for Movies</h4>
+<p>We should have the <code>Review</code> entity:</p>
+<pre><code>class Review
+{
+    public string MovieTitle { get; set; }
+    public string Author { get; set; }
+    public string Body { get; set; }
+}
+</code></pre>
+<p>Use the generic implementations we have to implement a new command for creating Reviews.</p>
 
 
 </body>
