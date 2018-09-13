@@ -139,7 +139,12 @@
     <Compile Include="Lesson5\Line.cs" />
     <Compile Include="Lesson5\Modem.cs" />
     <Compile Include="Lesson5\Rectangle.cs" />
+    <Compile Include="Lesson6\CoreContainerConstructorSelection\App.cs" />
+    <Compile Include="Lesson6\CoreContainerConstructorSelection\IRootService.cs" />
+    <Compile Include="Lesson6\CoreContainerConstructorSelection\IService2.cs" />
+    <Compile Include="Lesson6\CoreContainerConstructorSelection\NetCoreConstructorSelectionDemo.cs" />
     <Compile Include="Lesson6\CoreContainerLifetime\App.cs" />
+    <Compile Include="Lesson6\CoreContainerConstructorSelection\IService1.cs" />
     <Compile Include="Lesson6\CoreContainerLifetime\MyController.cs" />
     <Compile Include="Lesson6\CoreContainerLifetime\IOperation.cs" />
     <Compile Include="Lesson6\CoreContainerLifetime\NetCoreLifetimeDemo.cs" />

@@ -7,6 +7,7 @@ namespace LessonsSamples.Lesson6.Logger
 	public interface ILogSrv
 	{
 		void WriteTrace(LogEntry entry);
+        //...
 	}
 
 	public	static class Logger

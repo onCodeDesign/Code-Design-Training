@@ -21,17 +21,17 @@ namespace LessonsSamples.Lesson6.InterfaceInjection
 
         public void InjectMovieProvider(IMovieProvider provider)
         {
-            this.movieProvider = provider;
+            movieProvider = provider;
         }
 
         public void InjectCountryFilter(ICountryFilter filter)
         {
-            this.countryFilter = filter;
+            countryFilter = filter;
         }
 
         public void InjectTitleMatcher(ITitleMatcher matcher)
         {
-            this.titleMatcher = matcher;
+            titleMatcher = matcher;
         }
     }
 
@@ -42,9 +42,11 @@ namespace LessonsSamples.Lesson6.InterfaceInjection
             injector.InjectMovieProvider(this);
         }
 
-      public IEnumerable<Movie> GetAll()
+        public IEnumerable<Movie> GetAll()
         {
-            throw new System.NotImplementedException();
+            yield return new Movie();
+            yield return new Movie();
+            yield return new Movie();
         }
     }
 

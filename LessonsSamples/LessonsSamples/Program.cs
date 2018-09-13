@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using iQuarc.AppBoot;
 using LessonsSamples.Lesson6;
+using LessonsSamples.Lesson6.CoreContainerConstructorSelection;
 using LessonsSamples.Lesson6.CoreContainerLifetime;
 using LessonsSamples.Lesson6.ServiceLocatorTestability;
 
@@ -16,10 +17,12 @@ namespace LessonsSamples
         {
             //TestRunner.RunTests();
 
-			//UnityDemo.MainFunc();
-			//NetCoreContainerDemo.MainFunc();
+            //UnityDemo.MainFunc();
+            //NetCoreContainerDemo.MainFunc();
+            NetCoreConstructorSelectionDemo.MainFunc();
 
-            NetCoreLifetimeDemo.MainFunc();
+
+            //NetCoreLifetimeDemo.MainFunc();
 
             Console.WriteLine();
             Console.WriteLine("Demo ran. Press enter to close");
