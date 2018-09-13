@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LessonsSamples.Lesson6
+namespace LessonsSamples.Lesson6.Expenses
 {
     public class ExpenseData
     {

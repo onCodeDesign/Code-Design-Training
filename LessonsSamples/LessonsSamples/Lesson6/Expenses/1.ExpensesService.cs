@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LessonsSamples.Lesson6
+namespace LessonsSamples.Lesson6.Expenses
 {
     class ExpensesService : IExpensesService
     {
@@ -15,27 +15,27 @@ namespace LessonsSamples.Lesson6
 
 	    public void Process(ExpenseData expense)
 	    {
-		    using (ProcessContext contex = new ProcessContext())
+		    using (ProcessContext context = new ProcessContext())
 		    {
 			    foreach (var processStep in steps)
 			    {
-				    bool shouldContinue = processStep.Process(expense, contex);
+				    bool shouldContinue = processStep.Process(expense, context);
 				    if (!shouldContinue)
 				    {
-					    HandlePartialResult(contex);
+					    HandlePartialResult(context);
 				    }
 			    }
 
-			    HandleCompleteResult(contex, expense);
+			    HandleCompleteResult(context, expense);
 		    }
 	    }
 
-	    private void HandleCompleteResult(ProcessContext contex, ExpenseData expense)
+	    private void HandleCompleteResult(ProcessContext context, ExpenseData expense)
         {
             
         }
 
-        private void HandlePartialResult(ProcessContext contex)
+        private void HandlePartialResult(ProcessContext context)
         {
         }
 
@@ -45,7 +45,7 @@ namespace LessonsSamples.Lesson6
     }
 
     // A business object encapsulating the state of the running of an expense processing process
-    //  It hides the state and gives meaningful functions to access and alter it 
+    //  It hides its inner state and gives meaningful functions to access and alter it 
     class ProcessContext : IDisposable
     {
         private readonly List<ExpenseData> additionalExpenses = new List<ExpenseData>(); 
@@ -73,6 +73,6 @@ namespace LessonsSamples.Lesson6
 
     interface IExpenseProcessStep
     {
-        bool Process(ExpenseData expense, ProcessContext contex);
+        bool Process(ExpenseData expense, ProcessContext context);
     }
 }

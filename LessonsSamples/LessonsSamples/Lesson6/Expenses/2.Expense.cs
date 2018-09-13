@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 
-namespace LessonsSamples.Lesson6
+namespace LessonsSamples.Lesson6.Expenses
 {
     public interface IExpensesFeedReader
     {

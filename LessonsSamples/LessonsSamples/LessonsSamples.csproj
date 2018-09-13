@@ -165,9 +165,9 @@
     <Compile Include="Lesson6\DI_AndDisposable\RepositoryFactory.cs" />
     <Compile Include="Lesson6\DI_AndDisposable\Service11.cs" />
     <Compile Include="Lesson6\DI_AndDisposable\Service12.cs" />
-    <Compile Include="Lesson6\Expenses\Expense.cs" />
-    <Compile Include="Lesson6\Expenses\ExpensesService.cs" />
-    <Compile Include="Lesson6\Expenses\IExpensesService.cs" />
+    <Compile Include="Lesson6\Expenses\2.Expense.cs" />
+    <Compile Include="Lesson6\Expenses\1.ExpensesService.cs" />
+    <Compile Include="Lesson6\Expenses\1.IExpensesService.cs" />
     <Compile Include="Lesson6\IMovieProvider.cs" />
     <Compile Include="Lesson6\Logger\LogEntry.cs" />
     <Compile Include="Lesson6\Logger\Logger.cs" />
@@ -175,7 +175,7 @@
     <Compile Include="Lesson6\MovieListerFactory.cs" />
     <Compile Include="Lesson6\MovieLister_InterafaceInj.cs" />
     <Compile Include="Lesson6\MovieLister_SL.cs" />
-    <Compile Include="Lesson6\Expenses\ExpenseData.cs" />
+    <Compile Include="Lesson6\Expenses\1.ExpenseData.cs" />
     <Compile Include="Lesson6\ServiceLocatorTestability\TestRunner.cs" />
     <Compile Include="Lesson6\ServiceLocatorTestability\UnderTest.cs" />
     <Compile Include="Lesson6\ServiceLocatorTestability\UnitTest.cs" />

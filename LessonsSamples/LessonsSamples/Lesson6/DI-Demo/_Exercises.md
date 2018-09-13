@@ -20,9 +20,14 @@ a) Why would we abstract the existent static Console class through IConsole?
 
 b) Register in the DIC the `IConsole` with the `AppConsoleImplementation` and refactor the code to use the `IConsole`
 
-#### 3. Implement command *3. List Movies*
+#### 3. Integrate the `ServiceLocator` into the app
 
-#### 4. Rewrite the `MoviesConsoleCreator`
+ - Make one of the implementation get its dependencies through the static `ServiceLocator.Current` or through an injected `IServiceProvider` or `IServiceLocator`
+ - Get the IServiceLocator through Dependency Injection in one of your classes
+
+#### 4. Implement command *3. List Movies*
+
+#### 5. Rewrite the `MoviesConsoleCreator`
 
 a) Reimplement the `MoviesConsoleCreator` command to use the following interfaces:
 
@@ -31,6 +36,7 @@ interface IEntityReader
 {
     IEntityFieldsReader<T> BeginEntityRead<T>();
 }
+
 internal interface IEntityFieldsReader<T>
 {
     IEnumerable<string> GetFields();
@@ -42,7 +48,7 @@ internal interface IEntityFieldsReader<T>
 b) Write unit tests that prove that the new `MoviesConsoleCreator` works
 
 
-#### 5. Implement `IEntityReader` and `IEntityFieldsReader`
+#### 6. Implement `IEntityReader` and `IEntityFieldsReader`
 
 *Suggestion*: Use *Service Locator Pattern* to get and return the `IEntityFieldsReader<T>` implementations on the `IEntityReader<T>()` function.
 

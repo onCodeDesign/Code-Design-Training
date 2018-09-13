@@ -23,8 +23,13 @@
 <li><p>Register in the DIC the <code>IConsole</code> with the <code>AppConsoleImplementation</code> and refactor the code to use the <code>IConsole</code></p>
 </li>
 </ol>
-<h4 id="implement-command-3.list-movies">3. Implement command <em>3. List Movies</em></h4>
-<h4 id="rewrite-the-moviesconsolecreator">4. Rewrite the <code>MoviesConsoleCreator</code></h4>
+<h4 id="integrate-the-servicelocator-into-the-app">3. Integrate the <code>ServiceLocator</code> into the app</h4>
+<ul>
+<li>Make one of the implementation get its dependencies through the static <code>ServiceLocator.Current</code> or through an injected <code>IServiceProvider</code> or <code>IServiceLocator</code></li>
+<li>Get the IServiceLocator through Dependency Injection in one of your classes</li>
+</ul>
+<h4 id="implement-command-3.list-movies">4. Implement command <em>3. List Movies</em></h4>
+<h4 id="rewrite-the-moviesconsolecreator">5. Rewrite the <code>MoviesConsoleCreator</code></h4>
 <ol type="a">
 <li>Reimplement the <code>MoviesConsoleCreator</code> command to use the following interfaces:</li>
 </ol>
@@ -32,6 +37,7 @@
 {
     IEntityFieldsReader&lt;T&gt; BeginEntityRead&lt;T&gt;();
 }
+
 internal interface IEntityFieldsReader&lt;T&gt;
 {
     IEnumerable&lt;string&gt; GetFields();
@@ -42,7 +48,7 @@ internal interface IEntityFieldsReader&lt;T&gt;
 <ol type="a" start="2">
 <li>Write unit tests that prove that the new <code>MoviesConsoleCreator</code> works</li>
 </ol>
-<h4 id="implement-ientityreader-and-ientityfieldsreader">5. Implement <code>IEntityReader</code> and <code>IEntityFieldsReader</code></h4>
+<h4 id="implement-ientityreader-and-ientityfieldsreader">6. Implement <code>IEntityReader</code> and <code>IEntityFieldsReader</code></h4>
 <p><em>Suggestion</em>: Use <em>Service Locator Pattern</em> to get and return the <code>IEntityFieldsReader&lt;T&gt;</code> implementations on the <code>IEntityReader&lt;T&gt;()</code> function.</p>
 <h4 id="make-a-generic-implementation-of-ientityfieldsreadert">7. Make a generic implementation of  <code>IEntityFieldsReader&lt;T&gt;</code></h4>
 <p>We may have a generic class that implements <code>IEntityFieldsReader&lt;T&gt;</code> for any T by using reflection. It should be registered to DI by using the open generic type.</p>
