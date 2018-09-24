@@ -1,6 +1,7 @@
-﻿using Microsoft.Practices.Unity;
+﻿using Unity;
+using Unity.Lifetime;
 
-namespace LessonsSamples.Lesson6.DI_Unity
+namespace LessonsSamples.Lesson6
 {
 	static class UnityDemo
 	{
@@ -11,7 +12,7 @@ namespace LessonsSamples.Lesson6.DI_Unity
 			container.RegisterType<IMovieConsoleCreator, MovieConsoleCreator>();
 			container.RegisterType<IMovieTranslator, MovieTranslator>();
 
-			// Demo the difference between PerResolveLivetimeManager and TransientLifetimeManager
+			// Demo the difference between PerResolveLifetimeManager and TransientLifetimeManager
 			container.RegisterType<ITextStorage, FileStorage>(new TransientLifetimeManager()); 
 
 

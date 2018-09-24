@@ -1,4 +1,4 @@
-﻿using Microsoft.Practices.ServiceLocation;
+﻿using CommonServiceLocator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -7,6 +7,7 @@ namespace LessonsSamples.Lesson6.Logger
 	public interface ILogSrv
 	{
 		void WriteTrace(LogEntry entry);
+        //...
 	}
 
 	public	static class Logger

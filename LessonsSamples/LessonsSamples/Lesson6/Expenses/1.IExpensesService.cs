@@ -1,4 +1,4 @@
-﻿namespace LessonsSamples.Lesson6
+﻿namespace LessonsSamples.Lesson6.Expenses
 {
     interface IExpensesService
     {

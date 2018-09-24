@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace LessonsSamples.Lesson6.DI_Unity
+namespace LessonsSamples.Lesson6
 {
 	class FileStorage : ITextStorage
 	{

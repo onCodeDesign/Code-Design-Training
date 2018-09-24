@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>This file contains some exercises for Dependency Injection and ServiceLocator demo app</title>
+</head>
+<body>
+
+    <h1 id="this-file-contains-some-exercises-for-dependency-injection-and-servicelocator-demo-app">This file contains some exercises for Dependency Injection and ServiceLocator demo app</h1>
+<h4 id="implement-the-console-options-as-a-set-of-commands-registered-into-di-container">1. Implement the console options as a set of commands registered into DI Container</h4>
+<p>All the commands could implement an <code>ICommand</code> interface. Example:</p>
+<pre><code>public interface ICommand
+{
+    void Execute();
+    char KeyChar { get; }
+    string MenuEntry { get; }
+}
+</code></pre>
+<p>Build the menu by getting all the <code>ICommand</code> implementations through constructor DI. When a menu entry is picked, it will execute that command by calling the <code>Execute()</code> function.</p>
+<h4 id="create-an-abstraction-for-the-console-iconsole">2. Create an abstraction for the console: <code>IConsole</code></h4>
+<ol type="a">
+<li><p>Why would we abstract the existent static Console class through IConsole?</p>
+</li>
+<li><p>Register in the DIC the <code>IConsole</code> with the <code>AppConsoleImplementation</code> and refactor the code to use the <code>IConsole</code></p>
+</li>
+</ol>
+<h4 id="integrate-the-servicelocator-into-the-app">3. Integrate the <code>ServiceLocator</code> into the app</h4>
+<ul>
+<li>Make one of the implementation get its dependencies through the static <code>ServiceLocator.Current</code> or through an injected <code>IServiceProvider</code> or <code>IServiceLocator</code></li>
+<li>Get the IServiceLocator through Dependency Injection in one of your classes</li>
+</ul>
+<h4 id="implement-command-3.list-movies">4. Implement command <em>3. List Movies</em></h4>
+<h4 id="rewrite-the-moviesconsolecreator">5. Rewrite the <code>MoviesConsoleCreator</code></h4>
+<ol type="a">
+<li>Reimplement the <code>MoviesConsoleCreator</code> command to support the following functionality:</li>
+</ol>
+<ul>
+<li>read more properties of a movie one by one. They UI will present the user the name of the property that she should enter</li>
+<li>The Movie should have at least the following fields: <code>Title :string</code> and <code>Rating :int</code></li>
+<li>when all properties of a movie were read, ask the user if she wants to add a new movie</li>
+</ul>
+<p>Use the following interfaces:</p>
+<pre><code>interface IEntityReader
+{
+    IEntityFieldsReader&lt;T&gt; BeginEntityRead&lt;T&gt;();
+}
+
+interface IEntityFieldsReader&lt;T&gt;
+{
+    IEnumerable&lt;string&gt; GetFields();
+    void SetFieldValue(string value);
+    T GetEntity();
+}
+
+interface IEntityRepository
+{
+    IEnumerable&lt;Movie&gt; GetAll();
+    void Add(Movie movie);
+}
+</code></pre>
+<ol type="a" start="2">
+<li>Write unit tests that prove that the new <code>MoviesConsoleCreator</code> works</li>
+</ol>
+<h4 id="implement-ientityreader-and-ientityfieldsreader">6. Implement <code>IEntityReader</code> and <code>IEntityFieldsReader</code></h4>
+<p><em>Suggestion</em>: Use <em>Service Locator Pattern</em> to get and return the <code>IEntityFieldsReader&lt;T&gt;</code> implementations on the <code>IEntityReader&lt;T&gt;()</code> function.</p>
+<h4 id="make-a-generic-implementation-of-ientityfieldsreadert">7. Make a generic implementation of  <code>IEntityFieldsReader&lt;T&gt;</code></h4>
+<p>We may have a generic class that implements <code>IEntityFieldsReader&lt;T&gt;</code> for any T by using reflection. It should be registered to DI by using the open generic type.</p>
+<h4 id="implement-option-4.find-movies">8. Implement option <em>4. Find Movies</em></h4>
+<ol type="a">
+<li>We could save the movies in an in-memory repository which has application lifetime.
+The find movies could work on this one.</li>
+</ol>
+<h4 id="make-a-repository-that-can-store-any-type-of-entity">9. Make a repository that can store any type of entity</h4>
+<p>Make a repository that supports any type of entity. We could add <code>MovieReview</code> entity beside the existent <code>Movie</code>.</p>
+<p>The repository interface may be like:</p>
+<pre><code>interface IEntityRepository
+{
+    IEnumerable&lt;T&gt; GetAll&lt;T&gt;();
+    void Add&lt;T&gt;(T entity);
+}
+</code></pre>
+<p>We could have individual implementations for each type, because each we'd like to save each type in its own file, following a naming convention for the file name. We'd like to have:</p>
+<pre><code>interface IEntityRepository&lt;T&gt;
+{
+    IEnumerable&lt;T&gt; GetEntities();
+    void Add(T entity);
+}
+
+class MovieRepository :  IEntityRepository&lt;Movie&gt;
+{
+    ...
+}
+</code></pre>
+<p><em>Suggestion</em>: the non-generic class that implements <code>IEntityRepository</code> could use the <em>Service Locator Pattern</em> to get the generic implementation for the specific <code>T</code> and forward the call to it for each function.</p>
+<h4 id="create-and-store-reviews-for-movies">10. Create and store Reviews for Movies</h4>
+<p>We should have the <code>MovieReview</code> entity:</p>
+<pre><code>class MovieReview
+{
+    public string MovieTitle { get; set; }
+    public string Author { get; set; }
+    public string Body { get; set; }
+}
+</code></pre>
+<p>Use the generic implementations we have to implement a new command for creating Reviews for already added Movies</p>
+<h4 id="create-movies-with-reviews">11. Create Movies with Reviews</h4>
+<p>Create a new command that allows the user to create a new movie, and after she enters the values for all its properties, the application asks her if she wants to add reviews for the Movie she is currently adding.</p>
+<p>If yes, then the reviews are added in the same session with the current movie that is being created.</p>
+<p><em>Optional:</em> At the end the user may have the posibility to Save or discard the Movie she just entered</p>
+<p>You should use an implementation of the <code>IEntityRepository</code> (not the generic one) and the command should depend only on this interface not on the generic one (IEntityRepository<T>)</p>
+
+
+</body>
+</html>

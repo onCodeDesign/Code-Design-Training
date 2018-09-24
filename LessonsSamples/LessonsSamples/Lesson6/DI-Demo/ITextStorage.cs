@@ -1,4 +1,4 @@
-namespace LessonsSamples.Lesson6.DI_Unity
+namespace LessonsSamples.Lesson6
 {
 	interface ITextStorage
 	{
