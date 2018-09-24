@@ -31,18 +31,30 @@
 <h4 id="implement-command-3.list-movies">4. Implement command <em>3. List Movies</em></h4>
 <h4 id="rewrite-the-moviesconsolecreator">5. Rewrite the <code>MoviesConsoleCreator</code></h4>
 <ol type="a">
-<li>Reimplement the <code>MoviesConsoleCreator</code> command to use the following interfaces:</li>
+<li>Reimplement the <code>MoviesConsoleCreator</code> command to support the following functionality:</li>
 </ol>
+<ul>
+<li>read more properties of a movie one by one. They UI will present the user the name of the property that she should enter</li>
+<li>The Movie should have at least the following fields: <code>Title :string</code> and <code>Rating :int</code></li>
+<li>when all properties of a movie were read, ask the user if she wants to add a new movie</li>
+</ul>
+<p>Use the following interfaces:</p>
 <pre><code>interface IEntityReader
 {
     IEntityFieldsReader&lt;T&gt; BeginEntityRead&lt;T&gt;();
 }
 
-internal interface IEntityFieldsReader&lt;T&gt;
+interface IEntityFieldsReader&lt;T&gt;
 {
     IEnumerable&lt;string&gt; GetFields();
-    void StoreFieldValue(string value);
+    void SetFieldValue(string value);
     T GetEntity();
+}
+
+interface IEntityRepository
+{
+    IEnumerable&lt;Movie&gt; GetAll();
+    void Add(Movie movie);
 }
 </code></pre>
 <ol type="a" start="2">
@@ -57,37 +69,43 @@ internal interface IEntityFieldsReader&lt;T&gt;
 <li>We could save the movies in an in-memory repository which has application lifetime.
 The find movies could work on this one.</li>
 </ol>
-<h4 id="make-a-generic-implementation-for-the-repository">9. Make a generic implementation for the repository</h4>
+<h4 id="make-a-repository-that-can-store-any-type-of-entity">9. Make a repository that can store any type of entity</h4>
+<p>Make a repository that supports any type of entity. We could add <code>MovieReview</code> entity beside the existent <code>Movie</code>.</p>
 <p>The repository interface may be like:</p>
-<pre><code>interface IFileRepository
+<pre><code>interface IEntityRepository
 {
-    IQueryable&lt;T&gt; GetEntities&lt;T&gt;();
+    IEnumerable&lt;T&gt; GetAll&lt;T&gt;();
     void Add&lt;T&gt;(T entity);
 }
 </code></pre>
-<p>We should individual implementations for each type, because each we'd like to save each type in its own file, following a naming convention for the file name. We'd like to have:</p>
-<pre><code>interface IFileRepository&lt;T&gt;
+<p>We could have individual implementations for each type, because each we'd like to save each type in its own file, following a naming convention for the file name. We'd like to have:</p>
+<pre><code>interface IEntityRepository&lt;T&gt;
 {
-    IQueryable&lt;T&gt; GetEntities();
+    IEnumerable&lt;T&gt; GetEntities();
     void Add(T entity);
 }
 
-class MovieRepository :  IFileRepository&lt;Movie&gt;
+class MovieRepository :  IEntityRepository&lt;Movie&gt;
 {
-
+    ...
 }
 </code></pre>
-<p><em>Suggestion</em>: the non-generic class that implements <code>IFileRepository</code> could use the <em>Service Locator Pattern</em> to get the generic implementation for the specific <code>T</code> and forward the call to it for each function.</p>
+<p><em>Suggestion</em>: the non-generic class that implements <code>IEntityRepository</code> could use the <em>Service Locator Pattern</em> to get the generic implementation for the specific <code>T</code> and forward the call to it for each function.</p>
 <h4 id="create-and-store-reviews-for-movies">10. Create and store Reviews for Movies</h4>
-<p>We should have the <code>Review</code> entity:</p>
-<pre><code>class Review
+<p>We should have the <code>MovieReview</code> entity:</p>
+<pre><code>class MovieReview
 {
     public string MovieTitle { get; set; }
     public string Author { get; set; }
     public string Body { get; set; }
 }
 </code></pre>
-<p>Use the generic implementations we have to implement a new command for creating Reviews.</p>
+<p>Use the generic implementations we have to implement a new command for creating Reviews for already added Movies</p>
+<h4 id="create-movies-with-reviews">11. Create Movies with Reviews</h4>
+<p>Create a new command that allows the user to create a new movie, and after she enters the values for all its properties, the application asks her if she wants to add reviews for the Movie she is currently adding.</p>
+<p>If yes, then the reviews are added in the same session with the current movie that is being created.</p>
+<p><em>Optional:</em> At the end the user may have the posibility to Save or discard the Movie she just entered</p>
+<p>You should use an implementation of the <code>IEntityRepository</code> (not the generic one) and the command should depend only on this interface not on the generic one (IEntityRepository<T>)</p>
 
 
 </body>

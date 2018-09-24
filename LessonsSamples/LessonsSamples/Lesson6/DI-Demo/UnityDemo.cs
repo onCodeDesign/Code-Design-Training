@@ -12,7 +12,7 @@ namespace LessonsSamples.Lesson6
 			container.RegisterType<IMovieConsoleCreator, MovieConsoleCreator>();
 			container.RegisterType<IMovieTranslator, MovieTranslator>();
 
-			// Demo the difference between PerResolveLivetimeManager and TransientLifetimeManager
+			// Demo the difference between PerResolveLifetimeManager and TransientLifetimeManager
 			container.RegisterType<ITextStorage, FileStorage>(new TransientLifetimeManager()); 
 
 
