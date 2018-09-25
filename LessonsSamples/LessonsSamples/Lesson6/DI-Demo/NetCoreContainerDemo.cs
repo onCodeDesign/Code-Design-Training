@@ -17,9 +17,9 @@ namespace LessonsSamples.Lesson6
         private static void ConfigureServices(ServiceCollection services)
         {
             services
-                .AddTransient<IMovieConsoleCreator, MovieConsoleCreator>()
-                .AddTransient<IMovieTranslator, MovieTranslator>()
-                .AddTransient<ITextStorage, FileStorage>()
+                .AddTransient<ICommand, MovieConsoleCreator>()
+                .AddTransient<ICommand, MovieTranslator>()
+                .AddScoped<ITextStorage, FileStorage>()
 
                 // Demo the difference between Scoped and Transient. This being the root container, Scoped will be promoted to Singleton
                 .AddTransient<MovieConsoleApplication, MovieConsoleApplication>()

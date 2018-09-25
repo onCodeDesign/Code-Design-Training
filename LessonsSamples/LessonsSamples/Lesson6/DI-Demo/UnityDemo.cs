@@ -9,8 +9,8 @@ namespace LessonsSamples.Lesson6
 		{
 			UnityContainer container = new UnityContainer();
 
-			container.RegisterType<IMovieConsoleCreator, MovieConsoleCreator>();
-			container.RegisterType<IMovieTranslator, MovieTranslator>();
+			//container.RegisterType<IMovieConsoleCreator, MovieConsoleCreator>();
+			//container.RegisterType<IMovieTranslator, MovieTranslator>();
 
 			// Demo the difference between PerResolveLifetimeManager and TransientLifetimeManager
 			container.RegisterType<ITextStorage, FileStorage>(new TransientLifetimeManager()); 
