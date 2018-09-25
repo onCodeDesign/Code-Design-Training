@@ -2,38 +2,46 @@
 
 namespace LessonsSamples.Lesson6
 {
-	class MovieConsoleCreator : ICommand
+    class MovieConsoleCreator : ICommand
 	{
-		private readonly ITextStorage storage;
+	    private readonly IEntityReader entityReader;
+	    private readonly IConsole console;
+	    private readonly IEntityRepository repository;
 
-		public MovieConsoleCreator(ITextStorage storage)
+	    public MovieConsoleCreator(IEntityReader entityReader, IConsole console, IEntityRepository repository)
+	    {
+	        this.entityReader = entityReader;
+	        this.console = console;
+	        this.repository = repository;
+	    }
+
+        public void Execute()
 		{
-			this.storage = storage;
-		}
+		    Console.WriteLine("Follow instructions to insert movies");
+		    Console.WriteLine("Press ESC when you are done.");
+		    Console.WriteLine();
+		    string readMore = string.Empty;
+		    do
+		    {
+		        console.WriteLine("------ Enter data for a new Movie ---------");
 
-		public void Execute()
-		{
-			Console.WriteLine("Insert One Movie on each line.");
-			Console.WriteLine("Press ESC when you are done.");
-            Console.WriteLine();
-			ConsoleKeyInfo c;
-			do
-			{
-				c = Console.ReadKey();
+		        IEntityFieldsReader<Movie> fieldsReader = entityReader.BeginEntityRead<Movie>();
+		        foreach (var field in fieldsReader.GetFields())
+		        {
+		            var value = console.AskInput($"Enter value for: Movie.{field}: ");
+		            fieldsReader.SetFieldValue(field, value);
+		        }
 
-				if (char.IsLetterOrDigit(c.KeyChar))
-					storage.Write(new string(c.KeyChar, 1));
-				else if (c.Key == ConsoleKey.Enter)
-				{
-					Console.WriteLine();
-					storage.WriteLine(string.Empty);
-				}
+		        Movie m = fieldsReader.GetEntity();
+		        repository.Add(m);
 
-			} while (c.Key != ConsoleKey.Escape);
+		        readMore = console.AskInput("Enter another movie? [Y/N]");
 
-			Console.WriteLine();
-			Console.WriteLine("Thank you!. Your movies were created");
-		}
+		    } while (string.Compare(readMore, "y", StringComparison.InvariantCultureIgnoreCase) == 0);
+
+		    Console.WriteLine();
+		    Console.WriteLine("Thank you!. Your movies were created");
+        }
 
 	    public char KeyChar => '1';
 	    public string MenuEntry => "Create Movies";
