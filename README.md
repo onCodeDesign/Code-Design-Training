@@ -1,9 +1,11 @@
 Code Design Training Code Samples
 ==============================
 
-Code samples used in the [Code Design Training](http://onCodeDesign.com/training-code-design) by [Florin Coros](http://oncodedesign.com).
+[![on Code Design](http://res.cloudinary.com/oncodedesign/image/upload/c_scale,h_79/v1529679269/OnCodeDesign-logo3-header_large.png)](https://oncodedesign.com/)
 
-Training home page: http://onCodeDesign.com/training-code-design
+This repository contains the code samples and exercises that are used in the [Code Design Training](https://onCodeDesign.com/training-code-design) by [Florin Coros](https://oncodedesign.com).
+
+Training home page: [https://onCodeDesign.com/training-code-design](https://onCodeDesign.com/training-code-design)
 
 Structure
 -----------
