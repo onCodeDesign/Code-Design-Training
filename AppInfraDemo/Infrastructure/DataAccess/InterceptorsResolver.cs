@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using iQuarc.SystemEx.Priority;
-using Microsoft.Practices.ServiceLocation;
 using iQuarc.AppBoot;
+using Microsoft.Practices.ServiceLocation;
 
 namespace DataAccess
 {
@@ -16,23 +16,23 @@ namespace DataAccess
     [Service(typeof(IInterceptorsResolver))]
     class InterceptorsResolver : IInterceptorsResolver
     {
-        private readonly IServiceLocator servicelocator;
+        private readonly IServiceLocator serviceLocator;
         private static readonly Type interceptorGenericType = typeof (IEntityInterceptor<>);
 
-        public InterceptorsResolver(IServiceLocator servicelocator)
+        public InterceptorsResolver(IServiceLocator serviceLocator)
         {
-            this.servicelocator = servicelocator;
+            this.serviceLocator = serviceLocator;
         }
 
         public IEnumerable<IEntityInterceptor> GetGlobalInterceptors()
         {
-            return servicelocator.GetAllInstances<IEntityInterceptor>().OrderByPriority();
+            return serviceLocator.GetAllInstances<IEntityInterceptor>().OrderByPriority();
         }
 
         public IEnumerable<IEntityInterceptor> GetEntityInterceptors(Type entityType)
         {
             Type interceptorType = interceptorGenericType.MakeGenericType(entityType);
-            return servicelocator.GetAllInstances(interceptorType).Cast<IEntityInterceptor>();
+            return serviceLocator.GetAllInstances(interceptorType).Cast<IEntityInterceptor>();
         }
     }
 }
