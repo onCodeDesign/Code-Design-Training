@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data;
-using Contracts.Notifications;
+﻿using Contracts.Notifications;
 using iQuarc.AppBoot;
 using iQuarc.SystemEx;
 using Microsoft.Practices.ServiceLocation;

@@ -4,10 +4,9 @@
 
 #### 1.1 Module notification
 
-Add a Notifications IModule and notify when it is alive.
+Add a `NotificationsModule : IModule` and notify when it is alive.
 
-As a model for this look on how SaleServicesModule is implementation on how its *I'm Alive* notification is shown in the ConsoleApplication. 
-Implement the same for a Notifications Module
+As a model for this, look on how `SaleServicesModule` is implemented and how its *I'm Alive* notification is shown in the `ConsoleApplication`.
 
 #### 1.2. Create a composite for `NotificationService.NotifyAlive()`
 
@@ -31,36 +30,29 @@ This try/catch is ugly and could be avoided w/ a composite `IAmAliveSubscriber` 
 ## 2. Console Application
 
 
-#### 2.1. Create a static wrapper for `IConsole` that facilitates its usage
-
-Make an static caller to it that uses `ServiceLocator` to wrap the `IConsole` instance
-
-
-### 2.2. `IConsole` through static caller
-
-
-Supposing we would have `IConsole` identical w/ the public interface of `Console` static class. 
-
-a) Why would we abstract the existent static `Console` class through `IConsole`?
-b) Why would we make an static caller to it that uses `ServiceLocator` to wrap the `IConsole` instance?
-
-
-### 2.3. Transform the OrdersConsoleApplication into an IModule
+### 2.1. Transform the OrdersConsoleApplication into an IModule
 	
-Make this app implement the `IModule`. 
-The `Program.Main()` not to depend on directly on it. On `IModule.Init()` the menu should be shown
+Make this class to implement the `IModule`. 
+The `Program.Main()` should not to depend directly on it. On `IModule.Init()` the menu should be shown
 
 
-### 2.4. Transform the OrdersConsoleApplication IModule in a generic console UI
+### 2.2. Transform the OrdersConsoleApplication IModule in a generic console UI
 
-The `ColsoleUiModule` would discover all the `IConsoleCommand` implementations.
+Create the `IConsoleCommand` interface as below:
 
-The `IConsoleCommand` would have an `Name` and an `Execute()` function.
+```
+public interface ICommand
+{
+    void Execute();
+    string MenuEntry { get; }
+}
+```
 
-The `ColsoleUiModule` on its `Init()` function will build the menu based on the commands, displaying the `Name` and a key which will trigger the `Execute()` function when it is pressed.
+The `ColsoleUiModule` would discover all the `IConsoleCommand` implementations, and will build a menu with them on its `Init()` function.
 
+This should allow any module to implement commands, which are low coupled, and the `ConsoleUiModule` will discover them and will present them to the user for execution.
 
-### 2.5. Unit Test the ShowAllOrders
+### 2.3. Unit Test the ShowAllOrders
 
 Write some unit tests for the `OrdersConsoleApplication.ShowAllOrders()` function
 
@@ -69,7 +61,10 @@ Write some unit tests for the `OrdersConsoleApplication.ShowAllOrders()` functio
 
 ## 3. Ordering Service
 
-### 3.1 Create an operation that returns all customers which have orders
+### 3.1 Create an operation that returns all the customers which have orders, ordered by name
+
+- Write unit tests for this. There should be tests that verify if there order by is applied.
+- Show only the customers that have the name starting with a character which was read from the console.
 
 ### 3.2 Add Persons Management Module
 
@@ -79,4 +74,28 @@ Create a new module named `Persons` which exposes a service that gives all the p
 
 As an alternative, the service from the `Persons` module could be used by the UI and `GetOrdersInfo()` just returns the `BusinessEntityID` key
 
+## 4. Add a new `Person`
 
+### 4.1 Create support to read a entity from the console
+
+Use the following interfaces:
+
+```
+interface IEntityReader
+{
+    IEntityFieldsReader<T> BeginEntityRead<T>();
+}
+
+interface IEntityFieldsReader<T>
+{
+    IEnumerable<string> GetFields();
+    void SetFieldValue(string value);
+    T GetEntity();
+}
+```
+
+Read a the data needed to create a `Person` entity
+
+### 4.2. Create a service that adds a new `Person` to the system
+
+The above console command which reads the person info should use this service to add the new read person.
