@@ -11,15 +11,15 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
 
     public class PageXmlExport_2
     {
-        private const string exportFolder = "c:\temp";
+        private const string exportFolder = @"c:\temp";
         private readonly string fileNameFormat; //used in 3/5 methods
         private readonly bool overwrite; //used in 3/5 methods
 
         private readonly int maxSalesOrders; // used in 3/5 methods
         private readonly bool addCustomerDetails; // used in 2/5 methods
 
-        private readonly ICrmService crmService; // used in 3/5 methods
-        private readonly ILocationService locationService; // used in 3/5 methods
+        private readonly ICrmService crmService; // used in 2/5 methods
+        private readonly ILocationService locationService; // used in 2/5 methods
 
         public PageXmlExport_2(
             string fileNameFormat,
@@ -175,7 +175,6 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
         }
 
         public IEnumerable<PageXml> GetPagesFromOrders(IEnumerable<Order> orders)
-
         {
             Dictionary<string, IEnumerable<Order>> customerOrders = GroupOrdersByCustomer(orders);
             foreach (var customerName in customerOrders.Keys)
@@ -211,12 +210,6 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             }
         }
 
-        private Dictionary<string, IEnumerable<Order>> GroupOrdersByCustomer(IEnumerable<Order> orders)
-        {
-            // group orders by customer name and return them in a dictionary, ordered by OrderDate
-            throw new NotImplementedException();
-        }
-
         public bool ExportPagesFromOrders(IEnumerable<Order> orders)
         {
             IEnumerable<PageXml> pages = GetPagesFromOrders(orders);
@@ -236,6 +229,12 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
                 }
             }
             return true;
+        }
+
+        private Dictionary<string, IEnumerable<Order>> GroupOrdersByCustomer(IEnumerable<Order> orders)
+        {
+            // group orders by customer name and return them in a dictionary, ordered by OrderDate
+            throw new NotImplementedException();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
 
     public class PageXmlExport_1
     {
-        private const string exportFolder = "c:\temp";
+        private const string exportFolder = @"c:\temp";
 
         private readonly string fileNameFormat;     //used in 3/5 methods
         private readonly bool overwrite;            //used in 3/5 methods

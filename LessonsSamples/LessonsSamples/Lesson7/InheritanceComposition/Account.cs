@@ -4,7 +4,7 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 {
     class Account
     {
-        private decimal ammount;
+        private decimal amount;
         private decimal interestRate;
 
         protected decimal CalculateTaxesForMoth(Month month)
@@ -13,15 +13,15 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
             return 100;
         }
 
-        public decimal Ammount
+        public decimal Amount
         {
-            get { return ammount; }
-            protected set { ammount = value; }
+            get { return amount; }
+            protected set { amount = value; }
         }
 
         public decimal MonthlyInterest()
         {
-            return ammount*interestRate/100;
+            return amount*interestRate/100;
         }
 
         public virtual void MonthlyRenewal()
@@ -29,7 +29,7 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 			decimal interest = MonthlyInterest();
 	        decimal taxes = CalculateTaxesForMoth(CurrentMonth);
 
-	        ammount = ammount + interest - taxes;
+	        amount = amount + interest - taxes;
         }
 
 	    public Month CurrentMonth { get; set; }
@@ -42,13 +42,14 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 			// ... 
 	        decimal taxes = 0;
 			Month moth = new Month();
-			// for each month
+			
+            // for each month
 				taxes += CalculateTaxesForMoth(moth);
 
 	        decimal deposits = CalculateYearlyDeposits();
             // ... 
 
-            return Ammount - deposits - taxes + MonthlyInterest();
+            return Amount - deposits - taxes + MonthlyInterest();
         }
 
         private decimal CalculateYearlyDeposits()
@@ -83,7 +84,7 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 	        decimal interest = MonthlyInterest();
 	        decimal taxes = CalculateTaxesForMoth(CurrentMonth);
 
-	        Ammount = Ammount - interest - taxes;
+	        Amount = Amount - interest - taxes;
         }
 
         public decimal TotalPayments()

@@ -14,8 +14,8 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
         private readonly int maxSalesOrders; // used in 3/5 methods
         private readonly bool addCustomerDetails; // used in 2/5 methods
 
-        private readonly ICrmService crmService; // used in 3/5 methods
-        private readonly ILocationService locationService; // used in 3/5 methods
+        private readonly ICrmService crmService; // used in 2/5 methods
+        private readonly ILocationService locationService; // used in 2/5 methods
 
         public PageXmlExport_3(
             IPageFileWriter fileWriter,
