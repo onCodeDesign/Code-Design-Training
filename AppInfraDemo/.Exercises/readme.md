@@ -19,7 +19,7 @@ This try/catch is ugly and could be avoided w/ a composite `IAmAliveSubscriber` 
 
 #### 1.3. OrderStateChangeSubscriber that writes in a text file
   
- Write a subscriber that writes in a test file when a new SalesOrder is created, deleted or changed
+ Write a subscriber that writes in a text file when a new SalesOrder is created, deleted or changed
 
 #### 1.4. OrderStateChangeSubscriber for the UI
  

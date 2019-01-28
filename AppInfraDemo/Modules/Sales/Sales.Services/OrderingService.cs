@@ -22,7 +22,6 @@ namespace Sales
             this.orderApproval = orderApproval;
         }
 
-
 	    public SalesOrderInfo[] GetOrdersInfo(string customerName)
 	    {
 		    var orders = repository.GetEntities<SalesOrderHeader>()

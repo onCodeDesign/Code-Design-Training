@@ -15,15 +15,15 @@ namespace ConsoleApplication
 			return Console.ReadLine();
 		}
 
-		public void WriteEntity<T>(T salesOrderInfo)
+		public void WriteEntity<T>(T entity)
 		{
 			Console.WriteLine();
 			Console.WriteLine($"--------------- {typeof(T).Name} ----------------");
-			var properties = ReflectionExtensions.GetEditableSimpleProperties(salesOrderInfo);
+			var properties = ReflectionExtensions.GetEditableSimpleProperties(entity);
 			foreach (var propertyInfo in properties)
 			{
 				Console.Write($"{propertyInfo.Name}: ");
-				Console.WriteLine(propertyInfo.GetValue(salesOrderInfo));
+				Console.WriteLine(propertyInfo.GetValue(entity));
 			}
 
 			Console.WriteLine("-----------------------------------------------------");
