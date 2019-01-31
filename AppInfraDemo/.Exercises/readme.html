@@ -14,40 +14,67 @@
 <p>Current implementation of <code>NotifyAlive()</code> first tries to get the unlabeled <code>IAmAliveSubscriber&lt;T&gt;</code> implementation and then it get all labeled implementation.</p>
 <p>This try/catch is ugly and could be avoided w/ a composite <code>IAmAliveSubscriber</code> which gets all labeled <code>IAmAliveSubscriber</code> and forwards the call to them</p>
 <p><strong>Solution</strong> see branch <code>ex/NotificationServiceComposite</code></p>
-<h4 id="orderstatechangesubscriber-that-writes-in-a-text-file">1.3. OrderStateChangeSubscriber that writes in a text file</h4>
+<h4 id="orderstatuschangesubscriber-that-writes-in-a-text-file">1.3. OrderStatusChangeSubscriber that writes in a text file</h4>
 <p>Write a subscriber that writes in a text file when a new SalesOrder is created, deleted or changed</p>
-<h4 id="orderstatechangesubscriber-for-the-ui">1.4. OrderStateChangeSubscriber for the UI</h4>
+<h4 id="orderstatuschangesubscriber-for-the-ui">1.4. OrderStatusChangeSubscriber for the UI</h4>
 <p>Write a subscriber that shows on the UI when a new SalesOrder is created, deleted or changed</p>
 <hr />
 <h2 id="console-application">2. Console Application</h2>
 <h3 id="transform-the-ordersconsoleapplication-into-an-imodule">2.1. Transform the OrdersConsoleApplication into an IModule</h3>
-<p>Make this class to implement the <code>IModule</code>.
-The <code>Program.Main()</code> should not to depend directly on it. On <code>IModule.Init()</code> the menu should be shown</p>
-<h3 id="transform-the-ordersconsoleapplication-imodule-in-a-generic-console-ui">2.2. Transform the OrdersConsoleApplication IModule in a generic console UI</h3>
+<p>Make this class to implement the <code>IModule</code>.</p>
+<ul>
+<li>You should also consider to rename it, so its name reflects that it is a module</li>
+</ul>
+<p>The <code>Program.Main()</code> should not to depend directly on it. On <code>IModule.Init()</code> the menu should be shown</p>
+<h3 id="unit-test-the-init-function-of-the-resulted-module">2.2. Unit Test the <code>Init()</code> function of the resulted Module</h3>
+<p>Which is the external dependencies?
+When do we use stubs and when mocks?</p>
+<h2 id="create-a-composite-console-application">3. Create a Composite Console Application</h2>
+<h3 id="transform-the-ordersconsoleapplication-in-a-module-which-is-generic-and-a-composite-console-ui">3.1. Transform the OrdersConsoleApplication, in a module which is generic and a composite console UI</h3>
 <p>Create the <code>IConsoleCommand</code> interface as below:</p>
-<pre><code>public interface ICommand
+<pre><code>public interface IConsoleCommand
 {
     void Execute();
-    string MenuEntry { get; }
+    string MenuLabel { get; }
 }
 </code></pre>
 <p>The <code>ColsoleUiModule</code> would discover all the <code>IConsoleCommand</code> implementations, and will build a menu with them on its <code>Init()</code> function.</p>
 <p>This should allow any module to implement commands, which are low coupled, and the <code>ConsoleUiModule</code> will discover them and will present them to the user for execution.</p>
-<h3 id="unit-test-the-showallorders">2.3. Unit Test the ShowAllOrders</h3>
-<p>Write some unit tests for the <code>OrdersConsoleApplication.ShowAllOrders()</code> function</p>
+<h3 id="update-the-solution-structure-in-such-way-that-each-module-may-have-its-own-consolemodule">3.2. Update the solution structure in such way that each module may have its own <code>ConsoleModule</code></h3>
+<p>Now, the <code>IModule</code> resulted from the previous <code>OrdersConsoleApplication</code> sits in the <code>ConsoleApplication</code>, but it is quite intimate with the <code>Sales</code> module
+We could move it to a new console project into the <code>Sales</code> module folder structure, and the new <code>CompositeConsoleUiModule</code> should discover it and use it.</p>
+<h3 id="order-the-menu-entries">3.3. Order the Menu entries</h3>
+<ol type="a">
+<li>in a declarative manner</li>
+<li>by module and then by more entries in the same module</li>
+</ol>
 <hr />
-<h2 id="ordering-service">3. Ordering Service</h2>
-<h3 id="create-an-operation-that-returns-all-the-customers-which-have-orders-ordered-by-name">3.1 Create an operation that returns all the customers which have orders, ordered by name</h3>
+<h2 id="ordering-service">4. Ordering Service</h2>
+<p>All below should be called through a simple UI like the Console UI built in previous exercises</p>
+<h3 id="create-an-operation-that-returns-all-the-customers-which-have-orders-ordered-by-name">4.1. Create an operation that returns all the customers which have orders, ordered by name</h3>
 <ul>
-<li>Write unit tests for this. There should be tests that verify if there order by is applied.</li>
-<li>Show only the customers that have the name starting with a character which was read from the console.</li>
+<li>Write unit tests for this.</li>
+<li>There should be tests that verify if there order by is applied.</li>
 </ul>
-<h3 id="add-persons-management-module">3.2 Add Persons Management Module</h3>
+<h3 id="add-more-filters">4.2. Add more filters</h3>
+<ul>
+<li>Show only the customers that have the name starting with a string which was read from the console.</li>
+<li>Show only the customers that have in the name a string which was read from the console</li>
+<li>Write Unit Tests for the above</li>
+</ul>
+<h3 id="create-a-console-command-that-sets-the-status-of-all-orders-of-a-customer">4.3. Create a console command that sets the status of all orders of a customer</h3>
+<ul>
+<li>We can hardcode the status that will be set OR read it from console</li>
+<li>We should read some relevant info about the customer that we will use to find the orders to which we will change the status</li>
+</ul>
+<p>!Observe how the interceptors created in exercises 1.3. and 1.4. are called when the update happens</p>
+<h2 id="add-persons-management-module">5. Add Persons Management Module</h2>
+<h3 id="use-services-from-persons-module-in-sales-module">5.1. Use Services from Persons Module in Sales Module</h3>
 <p><code>SalesPerson</code> references through <code>BusinessEntityID</code> a <code>Person</code> from Person schema.</p>
 <p>Create a new module named <code>Persons</code> which exposes a service that gives all the persons. This service should be used by <code>GetOrdersInfo()</code> to return the person name in the <code>SalesOrderInfo</code> result.</p>
 <p>As an alternative, the service from the <code>Persons</code> module could be used by the UI and <code>GetOrdersInfo()</code> just returns the <code>BusinessEntityID</code> key</p>
-<h2 id="add-a-new-person">4. Add a new <code>Person</code></h2>
-<h3 id="create-support-to-read-a-entity-from-the-console">4.1 Create support to read a entity from the console</h3>
+<h2 id="add-a-new-person">6 Add a new <code>Person</code></h2>
+<h3 id="create-support-to-read-a-entity-from-the-console">6.1 Create support to read a entity from the console</h3>
 <p>Use the following interfaces:</p>
 <pre><code>interface IEntityReader
 {
@@ -62,8 +89,21 @@ interface IEntityFieldsReader&lt;T&gt;
 }
 </code></pre>
 <p>Read a the data needed to create a <code>Person</code> entity</p>
-<h3 id="create-a-service-that-adds-a-new-person-to-the-system">4.2. Create a service that adds a new <code>Person</code> to the system</h3>
+<h3 id="create-a-service-that-adds-a-new-person-to-the-system">6.1. Create a service that adds a new <code>Person</code> to the system</h3>
 <p>The above console command which reads the person info should use this service to add the new read person.</p>
+<h2 id="add-audit-to-entity-changes">7. Add Audit to entity changes</h2>
+<h3 id="we-want-to-consistently-set-the-modifieddate-for-all-entities-that-have-this-column">7.1. We want to consistently set the <code>ModifiedDate</code> for all entities that have this column</h3>
+<ul>
+<li>Now when we modify the order in exercise 4.3 or we add persons in exercise 5 the <code>ModifiedDate</code> is not set.</li>
+<li>One way would be to go in all use cases where these entities are modified / created and set the <code>ModifiedDate</code> as well. This would be cumbersome and error prone</li>
+<li>We should leverage the advantage of the encapsulated Data Access and extend the infrastructure, with an interceptors that does this for all entities.</li>
+</ul>
+<p>The interface which should be implemented by the Data Model entities could look like:</p>
+<pre><code>interface IAuditable
+{
+    DateTime ModifiedDate {get;set;}
+}
+</code></pre>
 
 
 </body>

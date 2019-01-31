@@ -30,7 +30,7 @@ namespace Sales
 			    {
 					CustomerName = customerName,
 					Number = soh.SalesOrderNumber,
-					//SalesPersonName = soh.SalesPerson. // see exercise: 3.2.
+					//SalesPersonName = soh.SalesPerson. // see exercise: 5.1.
 					DueDate = soh.DueDate,
 					TotalDue = soh.TotalDue
 			    });
@@ -49,8 +49,7 @@ namespace Sales
             {
                 using (IUnitOfWork uof = repository.CreateUnitOfWork())
                 {
-                    SalesOrderHeader order
-                        = uof.GetEntities<SalesOrderHeader>()
+                    SalesOrderHeader order = uof.GetEntities<SalesOrderHeader>()
                              .FirstOrDefault(o => o.CustomerID == c.CustomerID &&
                              o.OrderDate.Month == DateTime.Now.Month);
 
