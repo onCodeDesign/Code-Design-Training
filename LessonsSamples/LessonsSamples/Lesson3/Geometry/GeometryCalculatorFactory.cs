@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using PolymorphicShapes;
+using ProceduralShapes;
 
 namespace LessonsSamples.Lesson3.Geometry
 {
@@ -15,7 +15,7 @@ namespace LessonsSamples.Lesson3.Geometry
         {
             {typeof (Square), () => new SquareGeometry()},
             {typeof (Rectangle), () => new RectangleGeometry()},
-            {typeof (Circle), () => new CircleGeometry()}
+            {typeof (Circle), () => new CircleGeometry()},
         };
 
 
