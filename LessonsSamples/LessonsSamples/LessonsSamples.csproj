@@ -171,6 +171,7 @@
     <Compile Include="Lesson6\IMovieProvider.cs" />
     <Compile Include="Lesson6\Logger\LogEntry.cs" />
     <Compile Include="Lesson6\Logger\Logger.cs" />
+    <Compile Include="Lesson6\Movie.cs" />
     <Compile Include="Lesson6\MovieLister_DI.cs" />
     <Compile Include="Lesson6\MovieListerFactory.cs" />
     <Compile Include="Lesson6\MovieLister_InterafaceInj.cs" />
