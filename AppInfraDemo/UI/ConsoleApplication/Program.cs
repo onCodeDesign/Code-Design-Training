@@ -40,10 +40,10 @@ namespace ConsoleApplication
 
 	    private static IEnumerable<Assembly> GetApplicationAssemblies()
 		{
-			string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-			yield return Assembly.GetExecutingAssembly();
+		    yield return Assembly.GetExecutingAssembly();
 
-			foreach (string dll in Directory.GetFiles(path, "*.dll"))
+		    string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+		    foreach (string dll in Directory.GetFiles(path, "*.dll"))
 			{
 				string filename = Path.GetFileName(dll);
 				if (filename != null && (filename.StartsWith("Common")
