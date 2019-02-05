@@ -16,7 +16,7 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 
         public IEnumerable<LogEntry> GetAllLogEntries()
         {
-            IEnumerable<string> logMessages = LoadAllLogEntires();
+            IEnumerable<string> logMessages = LoadAllLogEntries();
 
             foreach (var message in logMessages)
             {
@@ -36,7 +36,7 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
             return GetAllLogEntries().Where(l => l.Severity > 10);
         }
 
-        private IEnumerable<string> LoadAllLogEntires()
+        private IEnumerable<string> LoadAllLogEntries()
         {
             messageIndex = 0;
             string logMessage = string.Empty;

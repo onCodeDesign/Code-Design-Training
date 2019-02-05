@@ -128,6 +128,6 @@ Create a new command that allows the user to create a new movie, and after she e
 
 If yes, then the reviews are added in the same session with the current movie that is being created.
 
-*Optional:* At the end the user may have the posibility to Save or discard the Movie she just entered
+*Optional:* At the end the user may have the possibility to Save or discard the Movie she just entered
 
 You should use an implementation of the `IEntityRepository` (not the generic one) and the command should depend only on this interface not on the generic one (IEntityRepository<T>)

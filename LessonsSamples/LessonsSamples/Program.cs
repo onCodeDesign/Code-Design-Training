@@ -17,9 +17,9 @@ namespace LessonsSamples
         {
             //TestRunner.RunTests();
 
-            //UnityDemo.MainFunc();
+            UnityDemo.MainFunc();
             //NetCoreContainerDemo.MainFunc();
-            NetCoreConstructorSelectionDemo.MainFunc();
+            //NetCoreConstructorSelectionDemo.MainFunc();
 
 
             //NetCoreLifetimeDemo.MainFunc();

@@ -11,7 +11,7 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
 
     public class PageXmlExport
     {
-        private const string exportFolder = "c:\temp";
+        private const string exportFolder = @"c:\temp";
 
         public bool ExportCustomerPage(
             string fileNameFormat,
@@ -121,7 +121,7 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
                 {
                     Coordinates coordinates = locationService.GetCoordinates(address.City, address.Street, address.Number);
                     if (coordinates != null)
-                        address.Coordinates = string.Format("{0},{1}", coordinates.Latitude, coordinates.Longitude);
+                        address.Coordinates = $"{coordinates.Latitude},{coordinates.Longitude}";
                 }
             }
 
@@ -197,7 +197,7 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
                     {
                         Coordinates coordinates = locationService.GetCoordinates(address.City, address.Street, address.Number);
                         if (coordinates != null)
-                            address.Coordinates = string.Format("{0},{1}", coordinates.Latitude, coordinates.Longitude);
+                            address.Coordinates = $"{coordinates.Latitude},{coordinates.Longitude}";
                     }
                 }
 
@@ -216,8 +216,10 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
             foreach (var pageXml in pages)
             {
                 string customerName = pageXml.Customer.Name;
+
                 string fileName = string.Format(fileNameFormat, "CustomerOrdersPage", customerName, DateTime.Now);
                 string filePath = Path.Combine(exportFolder, fileName);
+
                 if (!overwrite && File.Exists(filePath))
                     return false;
 

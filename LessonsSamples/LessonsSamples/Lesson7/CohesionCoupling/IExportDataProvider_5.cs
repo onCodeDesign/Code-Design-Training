@@ -5,7 +5,7 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
 	public interface IExportDataProvider_5
 	{
 		IEnumerable<CustomerData> GetCustomerOrders(string customerName);
-		CustomerInfo GetCustomerInfo(string name);
+		CustomerInfo GetCustomerInfo(string customerName);
 	}
 
 	class ExportDataProvider : IExportDataProvider_5
@@ -26,7 +26,7 @@ namespace LessonsSamples.Lesson7.CohesionCoupling
 			throw new System.NotImplementedException();
 		}
 
-		public CustomerInfo GetCustomerInfo(string name)
+		public CustomerInfo GetCustomerInfo(string customerName)
 		{
 			throw new System.NotImplementedException();
 		}
