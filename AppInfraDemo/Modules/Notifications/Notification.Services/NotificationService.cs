@@ -1,6 +1,6 @@
-﻿using Contracts.Notifications;
+﻿using System.Collections;
+using Contracts.Notifications;
 using iQuarc.AppBoot;
-using iQuarc.SystemEx;
 using Microsoft.Practices.ServiceLocation;
 
 namespace Notifications
@@ -25,17 +25,8 @@ namespace Notifications
 
         public void NotifyAlive<T>(T item)
         {
-            try
-            {
-                var subscriber = serviceLocator.GetInstance<IAmAliveSubscriber<T>>();
-                subscriber.AmAlive(item);
-            }
-            catch (ActivationException)
-            {
-            }
-
-            var subscribers = serviceLocator.GetAllInstances<IAmAliveSubscriber<T>>();
-            subscribers.ForEach(s => s.AmAlive(item));
+            var subscriber = serviceLocator.GetInstance<IAmAliveSubscriber<T>>();
+            subscriber.AmAlive(item);
         }
 
         public void NotifyDeleted<T>(T item)
