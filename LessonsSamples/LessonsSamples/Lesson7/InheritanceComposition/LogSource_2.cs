@@ -16,16 +16,16 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 
         public IEnumerable<LogEntry> GetAllLogEntries()
         {
-            IEnumerable<string> logMessages = LoadAllLogEntries();
+            IEnumerable<string> logMessages = LoadLogMessages();
 
             foreach (var message in logMessages)
             {
                 yield return new LogEntry
                 {
-                    Time = messageParser.GetTime(message),
-                    Severity = messageParser.GetSeverity(message),
-                    Description = messageParser.GetDescription(message),
-                    Version = messageParser.GetVersion(message),
+                    Time = messageParser.GetTime(message, messageIndex),
+                    Severity = messageParser.GetSeverity(message, messageIndex),
+                    Description = messageParser.GetDescription(message, messageIndex),
+                    Version = messageParser.GetVersion(message, messageIndex),
                     Body = message
                 };
             }
@@ -36,7 +36,7 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
             return GetAllLogEntries().Where(l => l.Severity > 10);
         }
 
-        private IEnumerable<string> LoadAllLogEntries()
+        private IEnumerable<string> LoadLogMessages()
         {
             messageIndex = 0;
             string logMessage = string.Empty;
@@ -52,22 +52,22 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 
     internal class XmlLogMessageParser : ILogMessageParser
     {
-        public string GetVersion(string logMessage)
+        public string GetVersion(string logMessage, int messageIndex)
         {
             throw new NotImplementedException();
         }
 
-        public DateTime GetTime(string logMessage)
+        public DateTime GetTime(string logMessage, int messageIndex)
         {
             throw new NotImplementedException();
         }
 
-        public int GetSeverity(string logMessage)
+        public int GetSeverity(string logMessage, int messageIndex)
         {
             throw new NotImplementedException();
         }
 
-        public string GetDescription(string logMessage)
+        public string GetDescription(string logMessage, int messageIndex)
         {
             throw new NotImplementedException();
         }
@@ -75,22 +75,22 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 
     class CsvLogMessageParser : ILogMessageParser
     {
-        public string GetVersion(string logMessage)
+        public string GetVersion(string logMessage, int messageIndex)
         {
             throw new NotImplementedException();
         }
 
-        public DateTime GetTime(string logMessage)
+        public DateTime GetTime(string logMessage, int messageIndex)
         {
             throw new NotImplementedException();
         }
 
-        public int GetSeverity(string logMessage)
+        public int GetSeverity(string logMessage, int messageIndex)
         {
             throw new NotImplementedException();
         }
 
-        public string GetDescription(string logMessage)
+        public string GetDescription(string logMessage, int messageIndex)
         {
             throw new NotImplementedException();
         }

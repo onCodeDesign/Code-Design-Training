@@ -39,15 +39,15 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
             yield return logMessage;
         }
 
-        public IEnumerable<LogEntry> GetCriticalLogEntries()
-        {
-            return GetAllLogEntries().Where(l => l.Severity > 10);
-        }
-
         protected abstract string GetVersion(string logMessage);
         protected abstract DateTime GetTime(string logMessage);
         protected abstract string GetDescription(string logMessage);
         protected abstract int GetSeverity(string logMessage);
+
+        public IEnumerable<LogEntry> GetCriticalLogEntries()
+        {
+            return GetAllLogEntries().Where(l => l.Severity > 10);
+        }
     }
 
 
@@ -55,21 +55,25 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
     {
         protected override string GetVersion(string logMessage)
         {
+            int index = messageIndex;
             throw new NotImplementedException();
         }
 
         protected override DateTime GetTime(string logMessage)
         {
+            int index = messageIndex;
             throw new NotImplementedException();
         }
 
         protected override string GetDescription(string logMessage)
         {
+            int index = messageIndex;
             throw new NotImplementedException();
         }
 
         protected override int GetSeverity(string logMessage)
         {
+            int index = messageIndex;
             throw new NotImplementedException();
         }
     }
@@ -78,21 +82,25 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
     {
         protected override string GetVersion(string logMessage)
         {
+            int index = messageIndex;
             throw new NotImplementedException();
         }
 
         protected override DateTime GetTime(string logMessage)
         {
+            int index = messageIndex;
             throw new NotImplementedException();
         }
 
         protected override string GetDescription(string logMessage)
         {
+            int index = messageIndex;
             throw new NotImplementedException();
         }
 
         protected override int GetSeverity(string logMessage)
         {
+            int index = messageIndex;
             throw new NotImplementedException();
         }
     }
