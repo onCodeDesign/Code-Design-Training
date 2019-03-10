@@ -198,10 +198,16 @@
     <Compile Include="Lesson7\CohesionCoupling\PageData.cs" />
     <Compile Include="Lesson7\CohesionCoupling\PageXml.cs" />
     <Compile Include="Lesson7\CohesionCoupling\01_PageXmlExport.cs" />
+    <Compile Include="Lesson7\CohesionCoupling\10_PageXmlExportClient.cs" />
+    <Compile Include="Lesson7\CohesionCoupling\11_PageXmlExportClient.cs" />
+    <Compile Include="Lesson7\CohesionCoupling\12_PageXmlExportClientcs.cs" />
+    <Compile Include="Lesson7\CohesionCoupling\13_PageXmlExportClient.cs" />
     <Compile Include="Lesson7\ErrorHandling\DeviceController.cs" />
     <Compile Include="Lesson7\ErrorHandling\CodeSnippet.cs" />
     <Compile Include="Lesson7\InheritanceComposition\Account.cs" />
     <Compile Include="Lesson7\InheritanceComposition\AccountClientCode.cs" />
+    <Compile Include="Lesson7\InheritanceComposition\AccountClientCodeTests.cs" />
+    <Compile Include="Lesson7\InheritanceComposition\AccountTests.cs" />
     <Compile Include="Lesson7\InheritanceComposition\ILogMessageParser.cs" />
     <Compile Include="Lesson7\InheritanceComposition\LogEntry.cs" />
     <Compile Include="Lesson7\InheritanceComposition\LogSource.cs" />
