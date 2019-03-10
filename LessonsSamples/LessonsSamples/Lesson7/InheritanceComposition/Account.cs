@@ -2,10 +2,15 @@
 
 namespace LessonsSamples.Lesson7.InheritanceComposition
 {
-    class Account
+    public class Account
     {
         private decimal amount;
-        private decimal interestRate;
+        private readonly decimal interestRate;
+
+        public Account(decimal interestRate)
+        {
+            this.interestRate = interestRate;
+        }
 
         protected decimal CalculateTaxesForMoth(Month month)
 		{
@@ -16,7 +21,7 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
         public decimal Amount
         {
             get { return amount; }
-            protected set { amount = value; }
+            set { amount = value; }
         }
 
         public decimal MonthlyInterest()
@@ -37,6 +42,10 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 
 	class SavingsAccount : Account
     {
+        public SavingsAccount(decimal interestRate) : base(interestRate)
+        {
+        }
+
         public decimal YearlyProfit()
         {
 			// ... 
@@ -60,18 +69,22 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 
     class CheckingAccount : Account
     {
+        public CheckingAccount(decimal interestRate) : base(interestRate)
+        {
+        }
+
         public decimal TransactionsCosts()
         {
 			// ... 
 			Month lastMonth = new Month();
 			var lastMonthTaxes = CalculateTaxesForMoth(lastMonth);
-			decimal lastMonthCommissions = CalculateLastMonthCommision();
+			decimal lastMonthBankCharges = CalculateLastMonthBankCharges();
             // ... 
 
-            return lastMonthCommissions + lastMonthTaxes;
+            return lastMonthBankCharges + lastMonthTaxes;
         }
 
-        private decimal CalculateLastMonthCommision()
+        private decimal CalculateLastMonthBankCharges()
         {
             throw new NotImplementedException();
         }
@@ -79,6 +92,10 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
 
     class AutoLoanAccount : Account
     {
+        public AutoLoanAccount(decimal interestRate) : base(interestRate)
+        {
+        }
+
         public override void MonthlyRenewal()
         {
 	        decimal interest = MonthlyInterest();

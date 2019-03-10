@@ -2,7 +2,7 @@
 {
     static class AccountClientCode
     {
-        public static decimal CalculateTotalMonthlyInterest(Account[] accounts)
+        public static decimal CalculateTotalInterestValue(Account[] accounts)
         {
             decimal amount = 0;
             for (int i = 0; i < accounts.Length; i++)
