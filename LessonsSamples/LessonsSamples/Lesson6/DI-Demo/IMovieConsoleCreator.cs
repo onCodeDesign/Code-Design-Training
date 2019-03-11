@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace LessonsSamples.Lesson6
 {
-	public interface IMovieConsoleCreator
+    public interface IMovieConsoleCreator
 	{
 		void Open();
 
@@ -10,32 +11,33 @@ namespace LessonsSamples.Lesson6
 
 	class MovieConsoleCreator : IConsoleCommand
 	{
-		private readonly ITextStorage storage;
+	    private readonly IEntityReader entityReader;
+	    private readonly IConsole console;
 
-		public MovieConsoleCreator(ITextStorage storage)
+	    public MovieConsoleCreator(IEntityReader entityReader, IConsole console)
 		{
-			this.storage = storage;
+		    this.entityReader = entityReader;
+		    this.console = console;
 		}
 
 		public void Execute()
 		{
-			Console.WriteLine("Insert One Movie on each line.");
+			Console.WriteLine("Insert Movies one by one.");
 			Console.WriteLine("Press ESC when you are done.");
             Console.WriteLine();
-			ConsoleKeyInfo c;
-			do
-			{
-				c = Console.ReadKey();
 
-				if (char.IsLetterOrDigit(c.KeyChar))
-					storage.Write(new string(c.KeyChar, 1));
-				else if (c.Key == ConsoleKey.Enter)
-				{
-					Console.WriteLine();
-					storage.WriteLine(string.Empty);
-				}
+		    IEntityFieldsReader<Movie> movieReader = entityReader.BeginEntityRead<Movie>();
+		    IEnumerable<string> movieFields = movieReader.GetFields();
+		    foreach (var field in movieFields)
+		    {
+		       string fieldValue = console.AskInput($"Enter value for: {field}"); 
+                movieReader.SetFieldValue(field, fieldValue);
+		    }
 
-			} while (c.Key != ConsoleKey.Escape);
+		    Movie movie = movieReader.GetEntity();
+
+            console.WriteLine("We have read the following entity");
+            console.WriteEntity(movie);
 
 			Console.WriteLine();
 			Console.WriteLine("Thank you!. Your movies were created");
