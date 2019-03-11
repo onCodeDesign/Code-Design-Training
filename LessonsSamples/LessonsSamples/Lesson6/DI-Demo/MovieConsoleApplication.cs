@@ -1,17 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LessonsSamples.Lesson6
 {
 	public class MovieConsoleApplication
 	{
-		private readonly IMovieConsoleCreator movieCreator;
-		private readonly IMovieTranslator movieTranslator;
+	    private readonly Dictionary<char, IConsoleCommand> commands;
 
-		public MovieConsoleApplication(IMovieConsoleCreator movieCreator, IMovieTranslator movieTranslator)
-		{
-			this.movieCreator = movieCreator;
-			this.movieTranslator = movieTranslator;
-		}
+	    public MovieConsoleApplication(IEnumerable<IConsoleCommand> commands)
+	    {
+	        this.commands = commands.ToDictionary(c => c.KeyChar, c => c);
+	    }
 
 		public void Run()
 		{
@@ -23,10 +23,11 @@ namespace LessonsSamples.Lesson6
 				c = Console.ReadKey();
                 WriteLineSeparator();
 
-                if (c.KeyChar == '1')
-                    movieCreator.Open();
-			    if (c.KeyChar == '2')
-			        movieTranslator.TranslateTitles();
+			    char key = c.KeyChar;
+			    if (commands.TryGetValue(key, out var cmd))
+			    {
+                    cmd.Execute();
+			    }
 
                 if (!IsExitKey(c))
                     WriteMenu();
@@ -35,15 +36,16 @@ namespace LessonsSamples.Lesson6
 
 		}
 
-	    private static void WriteMenu()
+	    private void WriteMenu()
 		{
 			WriteLineSeparator();
 
-		    Console.WriteLine("1. Create movies");
-			Console.WriteLine("2. Translate movies");
-			Console.WriteLine("3. List movies");
-			Console.WriteLine("4. Find movie");
-			Console.WriteLine();
+		    foreach (var cmd in commands.Values)
+		    {
+		        Console.WriteLine($"{cmd.KeyChar}. {cmd.MenuEntry}");
+		    }
+
+		    Console.WriteLine();
 			Console.WriteLine("0. Quit");
 
             Console.Write("Your command: ");
