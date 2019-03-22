@@ -23,8 +23,8 @@ namespace LessonsSamples.Lesson6.ServiceLocatorTestability
         public void TestInitialize()
         {
             slStub = new Mock<IServiceLocator>();
-            //ServiceLocator.SetLocatorProvider(() => slStub.Object);
-            ServiceLocatorDoubleStorage.SetInstance(slStub.Object);
+            ServiceLocator.SetLocatorProvider(() => slStub.Object);
+            //ServiceLocatorDoubleStorage.SetInstance(slStub.Object);
         }
 
         [TestCleanup]
