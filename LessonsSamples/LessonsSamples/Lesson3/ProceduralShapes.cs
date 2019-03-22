@@ -21,7 +21,12 @@ namespace ProceduralShapes
         public Point Center;
         public double Radius;
     }
-    
+
+    class Triangle
+    {
+
+    }
+
     class Geometry
     {
         public double GetArea(object shape)

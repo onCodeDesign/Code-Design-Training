@@ -16,6 +16,7 @@ namespace LessonsSamples.Lesson3.Geometry
             {typeof (Square), () => new SquareGeometry()},
             {typeof (Rectangle), () => new RectangleGeometry()},
             {typeof (Circle), () => new CircleGeometry()},
+            {typeof (Triangle), () => new TriangleGeometry()},
         };
 
 
@@ -23,6 +24,14 @@ namespace LessonsSamples.Lesson3.Geometry
         {
             var constructor = constructors[shape];
             return constructor();
+        }
+    }
+
+    internal class TriangleGeometry : GeometryCalculator<Triangle>
+    {
+        public override double GetArea(Triangle shape)
+        {
+            throw new NotImplementedException();
         }
     }
 }
