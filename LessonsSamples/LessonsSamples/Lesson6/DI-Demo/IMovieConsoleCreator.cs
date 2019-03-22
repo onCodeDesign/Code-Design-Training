@@ -18,19 +18,19 @@ namespace LessonsSamples.Lesson6
 
         public void Execute()
         {
-            Console.WriteLine("Insert Movies");
+            Console.WriteLine("Follow the instructions to enter movies:");
             Console.WriteLine();
 
             string readMore;
             do
             {
-                console.WriteLine("Insert movie properties");
+                console.WriteLine("------- Enter data for a new Movie ----------");
 
                 IEntityFieldsReader<Movie> fieldsReader = entityReader.BeginEntityRead<Movie>();
                 IEnumerable<string> fields = fieldsReader.GetFields();
                 foreach (var field in fields)
                 {
-                    string value = console.AskInput($"Please enter values for: {field}");
+                    string value = console.AskInput($"Please enter value for Movie.{field}: ");
                     fieldsReader.SetFieldValue(field, value);
                 }
 

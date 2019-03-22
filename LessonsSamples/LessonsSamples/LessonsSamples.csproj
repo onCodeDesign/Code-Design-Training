@@ -158,8 +158,10 @@
     <Compile Include="Lesson6\DI-Demo\IEntityReader.cs" />
     <Compile Include="Lesson6\DI-Demo\IEntityRepository.cs" />
     <Compile Include="Lesson6\DI-Demo\IMovieConsoleCreator.cs" />
+    <Compile Include="Lesson6\DI-Demo\InMemoryFileRepository.cs" />
     <Compile Include="Lesson6\DI-Demo\ITextStorage.cs" />
     <Compile Include="Lesson6\DI-Demo\MovieConsoleApplication.cs" />
+    <Compile Include="Lesson6\DI-Demo\MovieFieldsReader.cs" />
     <Compile Include="Lesson6\DI-Demo\MovieTranslator.cs" />
     <Compile Include="Lesson6\DI-Demo\NetCoreContainerDemo.cs" />
     <Compile Include="Lesson6\DI-Demo\UnityDemo.cs" />
