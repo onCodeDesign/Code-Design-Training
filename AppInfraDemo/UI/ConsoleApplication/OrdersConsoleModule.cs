@@ -15,7 +15,6 @@ namespace ConsoleApplication
 			this.orderingService = orderingService;
 		}
 
-
 		public void Initialize()
 		{
 			console.WriteLine("OrdersConsole: Show all orders function");
