@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Enforce Data Access Layer and Business Logic Layer separation</title>
+</head>
+<body>
+
+    <h1 id="enforce-data-access-layer-and-business-logic-layer-separation">Enforce Data Access Layer and Business Logic Layer separation</h1>
+<ul>
+<li><p>No assembly except the <code>*.DataAccess</code> ones are allowed to reference the <code>Entity Framework</code></p>
+</li>
+<li><p>By default the EF generates the DTOs in the same project w/ the <code>DbContext</code>. This does not enforce the separation.</p>
+</li>
+<li><p>We should change the generator to put in the <code>DataAccess</code> the <code>DbContext</code> needed for implementing the <code>Repository</code> and <code>UnitOfWork</code> and in the Sales Module the DTOs as they are its Data Model</p>
+</li>
+<li><p>The tag <code>Infra_DataAccessDependsOnSales</code> shows a first step on doing this.</p>
+<ul>
+<li>however, here there is &quot;wrong&quot; reference from the <code>DataAccess</code> to the Sales Modules assembly</li>
+</ul>
+</li>
+<li><p>The tag <code>Infra_DataAccessDependencyOnSalesRemoved</code> shows how this reference is inverted by using the <code>IDbContextFactory</code> abstraction</p>
+</li>
+</ul>
+
+
+</body>
+</html>

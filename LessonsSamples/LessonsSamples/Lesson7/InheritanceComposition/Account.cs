@@ -29,15 +29,13 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
             return amount*interestRate/100;
         }
 
-        public virtual void MonthlyRenewal()
+        public virtual void MonthlyRenewal(Month currentMonth)
         {
 			decimal interest = MonthlyInterest();
-	        decimal taxes = CalculateTaxesForMoth(CurrentMonth);
+	        decimal taxes = CalculateTaxesForMoth(currentMonth);
 
 	        amount = amount + interest - taxes;
         }
-
-	    public Month CurrentMonth { get; set; }
     }
 
 	class SavingsAccount : Account
@@ -96,10 +94,10 @@ namespace LessonsSamples.Lesson7.InheritanceComposition
         {
         }
 
-        public override void MonthlyRenewal()
+        public override void MonthlyRenewal(Month currentMonth)
         {
 	        decimal interest = MonthlyInterest();
-	        decimal taxes = CalculateTaxesForMoth(CurrentMonth);
+	        decimal taxes = CalculateTaxesForMoth(currentMonth);
 
 	        Amount = Amount - interest - taxes;
         }

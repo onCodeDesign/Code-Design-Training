@@ -8,7 +8,11 @@ Add a `NotificationsModule : IModule` and notify when it is alive.
 
 As a model for this, look on how `SaleServicesModule` is implemented and how its *I'm Alive* notification is shown in the `ConsoleApplication`.
 
-#### 1.2. Create a composite for `NotificationService.NotifyAlive()`
+#### 1.2. Change the order in which the modules are initialized in a loosely coupled way
+
+Use the `PriorityAttribute` and the `OrderByPriority<T>()` helper method, from `iQuarc.SystemEx` package
+
+#### 1.3. Create a composite for `NotificationService.NotifyAlive()`
 
 Current implementation of `NotifyAlive()` first tries to get the unlabeled `IAmAliveSubscriber<T>` implementation and then it get all labeled implementation.
 	
@@ -17,11 +21,11 @@ This try/catch is ugly and could be avoided w/ a composite `IAmAliveSubscriber` 
  **Solution** see branch `ex/NotificationServiceComposite`
 
 
-#### 1.3. OrderStatusChangeSubscriber that writes in a text file
+#### 1.4. OrderStatusChangeSubscriber that writes in a text file
   
  Write a subscriber that writes in a text file when a new SalesOrder is created, deleted or changed
 
-#### 1.4. OrderStatusChangeSubscriber for the UI
+#### 1.5. OrderStatusChangeSubscriber for the UI
  
  Write a subscriber that shows on the UI when a new SalesOrder is created, deleted or changed
 
@@ -35,7 +39,7 @@ This try/catch is ugly and could be avoided w/ a composite `IAmAliveSubscriber` 
 Make this class to implement the `IModule`. 
  - You should also consider to rename it, so its name reflects that it is a module
 
-The `Program.Main()` should not to depend directly on it. On `IModule.Init()` the menu should be shown
+The `Program.Main()` should not to depend directly on it. On `IModule.Initialize()` the menu should be shown
 
 ### 2.2. Unit Test the `Init()` function of the resulted Module
 
@@ -45,9 +49,11 @@ When do we use stubs and when mocks?
 
 ## 3. Create a Composite Console Application
 
-### 3.1. Transform the OrdersConsoleApplication, in a module which is generic and a composite console UI
+### 3.1. Create a Console Ui Module that discovers commands and builds a menu from them
 
-Create the `IConsoleCommand` interface as below:
+Follow the following steps as guidance:
+
+1. Create the `IConsoleCommand` interface as below:
 
 ```
 public interface IConsoleCommand
@@ -57,14 +63,32 @@ public interface IConsoleCommand
 }
 ```
 
-The `ColsoleUiModule` would discover all the `IConsoleCommand` implementations, and will build a menu with them on its `Init()` function.
+2. Create the `ConsoleUiModule` class that implements `IModule`. It would discover all the `IConsoleCommand` implementations, and will build a menu with them on its `Initialize()` function.
 
-This should allow any module to implement commands, which are low coupled, and the `ConsoleUiModule` will discover them and will present them to the user for execution.
 
-### 3.2. Update the solution structure in such way that each module may have its own `ConsoleModule`
+ 3. Transform the OrdersConsoleApplication, in a `IConsoleCommand` implementation
 
-Now, the `IModule` resulted from the previous `OrdersConsoleApplication` sits in the `ConsoleApplication`, but it is quite intimate with the `Sales` module
-We could move it to a new console project into the `Sales` module folder structure, and the new `CompositeConsoleUiModule` should discover it and use it.
+
+This should allow any other functional module to provide `IConsoleCommand` implementations. The `ConsoleUiModule` will discover them and will present them to the user for execution. It results a loosely coupling between the modules and their UI commands
+
+### 3.2. Update the solution structure in such way that each module may have its own Console Commands and it does not depend on the host process or the UI app
+
+Now, the `OrdersConsoleCommand` resulted from transforming the `OrdersConsoleApplication` into a `IConsoleCommand` sits in the `ConsoleApplication`, but it is quite intimate with the *Sales* module
+
+We could move it to a new console project into the *Sales* module folder structure, and the new `CompositeConsoleUiModule` should discover it and use it.
+
+*Hints:*
+ 1. the project should be a class library so it can be deployed on any .NET process
+ 2. adjust the build output older to be as it is for the other `Sales.*` assemblies
+
+The assemblies from any module (including *Sales*) should not depend on the `ConsoleApplication` assembly which is the host process and the UI. The dependency should be the other way around. We should invert it by moving the `IConsoleCommand` and the `IConsole` to the `Contracts` assembly  into a new `ConsoleUi` folder.
+
+> !Observation:
+By doing this we are decoupling the application from its UI. All the `ConsoleCommand` could be displayed and executed from another host or UI, may that be an WPF app or a Web App.
+
+> !Observation:
+Look at the references by generating the *Project Dependency Diagram*
+
 
 ### 3.3. Order the Menu entries
 
@@ -78,10 +102,24 @@ b) by module and then by more entries in the same module
 
 All below should be called through a simple UI like the Console UI built in previous exercises
 
-### 4.1. Create an operation that returns all the customers which have orders, ordered by name
+### 4.1. Create an operation that returns all the customers which have orders, ordered by store name
 
 - Write unit tests for this. 
 - There should be tests that verify if there order by is applied.
+
+*Hint (linq query):*
+```
+Customers.Where(c => c.SalesOrderHeaders.Any()
+		&& c.StoreID != null
+		&& c.Store.Name.StartsWith("Active"))
+	.OrderBy(c => c.Store.Name)
+	.Select(c => new
+	{
+		Id = c.CustomerID,
+		AccountNumber = c.AccountNumber,
+		Name = c.Store.Name
+	});
+```
 
 ### 4.2. Add more filters
 
@@ -94,7 +132,7 @@ All below should be called through a simple UI like the Console UI built in prev
  - We can hardcode the status that will be set OR read it from console
  - We should read some relevant info about the customer that we will use to find the orders to which we will change the status
 
-!Observe how the interceptors created in exercises 1.3. and 1.4. are called when the update happens
+>!Observation: look at how the interceptors created in exercises 1.3. and 1.4. are called when the update happens
 
 ## 5. Add Persons Management Module
 
@@ -126,7 +164,7 @@ interface IEntityFieldsReader<T>
 }
 ```
 
-Read a the data needed to create a `Person` entity
+Read the data needed to create a `Person` entity
 
 ### 6.1. Create a service that adds a new `Person` to the system
 
@@ -138,7 +176,7 @@ The above console command which reads the person info should use this service to
 
  - Now when we modify the order in exercise 4.3 or we add persons in exercise 5 the `ModifiedDate` is not set.
  - One way would be to go in all use cases where these entities are modified / created and set the `ModifiedDate` as well. This would be cumbersome and error prone
- - We should leverage the advantage of the encapsulated Data Access and extend the infrastructure, with an interceptors that does this for all entities.
+ - We should leverage the advantage of the encapsulated Data Access and extend the infrastructure, with an interceptor that does this for all entities.
 
  The interface which should be implemented by the Data Model entities could look like:
 
