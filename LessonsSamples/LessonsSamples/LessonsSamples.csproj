@@ -152,6 +152,7 @@
     <Compile Include="Lesson6\CoreContainerLifetime\Service.cs" />
     <Compile Include="Lesson6\DI-Demo\AppConsole.cs" />
     <Compile Include="Lesson6\DI-Demo\FileStorage.cs" />
+    <Compile Include="Lesson6\DI-Demo\GenericFieldsReader.cs" />
     <Compile Include="Lesson6\DI-Demo\ICommand.cs" />
     <Compile Include="Lesson6\DI-Demo\IConsole.cs" />
     <Compile Include="Lesson6\DI-Demo\IEntityFieldsReader.cs" />

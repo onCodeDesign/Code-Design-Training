@@ -18,6 +18,7 @@ namespace LessonsSamples.Lesson6
 
 		    container.RegisterType<IEntityReader, EntityReader>();
 		    container.RegisterType<IEntityFieldsReader<Movie>, MovieFieldsReader>();
+		    container.RegisterType(typeof(IEntityFieldsReader<>), typeof(GenericFieldsReader<>));
 
 		    container.RegisterType<IEntityRepository, InMemoryFileRepository>();
 
