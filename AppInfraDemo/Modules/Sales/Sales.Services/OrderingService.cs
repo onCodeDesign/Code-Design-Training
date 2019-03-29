@@ -38,7 +38,6 @@ namespace Sales
 	    }
 
 	    public SalesOrderResult PlaceOrder(string customerName, OrderRequest request)
-
         {
             Customer c = GetCustomer(customerName);
             if (c == null)
