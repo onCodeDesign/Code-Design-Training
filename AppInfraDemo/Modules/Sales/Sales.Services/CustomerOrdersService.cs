@@ -10,7 +10,7 @@ using Sales.DataModel;
 namespace Sales
 {
     [Service(typeof(ICustomerOrdersService))]
-    class CustomerOrdersService : ICustomerOrdersService
+    public class CustomerOrdersService : ICustomerOrdersService
     {
         private readonly IRepository rep;
 

@@ -74,6 +74,8 @@ Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "DependencyValidation", "Inf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.ConsoleUi", "Modules\Sales\Sales.ConsoleUi\Sales.ConsoleUi.csproj", "{E6535C35-9135-43EE-B75F-F7AE046880F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{ABEC9E07-D517-49A5-A8CE-72703ED39FB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -136,6 +138,10 @@ Global
 		{E6535C35-9135-43EE-B75F-F7AE046880F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6535C35-9135-43EE-B75F-F7AE046880F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6535C35-9135-43EE-B75F-F7AE046880F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABEC9E07-D517-49A5-A8CE-72703ED39FB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABEC9E07-D517-49A5-A8CE-72703ED39FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABEC9E07-D517-49A5-A8CE-72703ED39FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABEC9E07-D517-49A5-A8CE-72703ED39FB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -158,6 +164,7 @@ Global
 		{3CD21221-4782-4D17-A0C9-ECE1B15D4469} = {6F5615EC-7773-442D-9CA4-DB095E973202}
 		{9D8284B2-4F4E-40F7-B194-3F16F4E1E51B} = {3FCCB878-D700-4492-80F5-7C34990473DA}
 		{E6535C35-9135-43EE-B75F-F7AE046880F8} = {6F5615EC-7773-442D-9CA4-DB095E973202}
+		{ABEC9E07-D517-49A5-A8CE-72703ED39FB7} = {6F5615EC-7773-442D-9CA4-DB095E973202}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3893CACD-27B2-410A-A676-25F1B3194FCB}
