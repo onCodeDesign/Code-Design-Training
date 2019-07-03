@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using Contracts.Sales;
 using iQuarc.AppBoot;
@@ -23,8 +24,8 @@ namespace Sales
         }
 
 	    public SalesOrderInfo[] GetOrdersInfo(string customerName)
-	    {
-		    var orders = repository.GetEntities<SalesOrderHeader>()
+        {
+            var orders = repository.GetEntities<SalesOrderHeader>()
 			    .Where(soh => soh.Customer.Person.LastName == customerName)
 			    .Select(soh => new SalesOrderInfo
 			    {

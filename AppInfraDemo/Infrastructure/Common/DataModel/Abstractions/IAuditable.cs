@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataAccess
+namespace Common.DataModel.Abstractions
 {
     public interface IAuditable
     {
