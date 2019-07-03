@@ -109,6 +109,7 @@
     <Compile Include="Store.cs">
       <DependentUpon>SalesEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Values\SalesOrderHeaderStatusValues.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="SalesEntities.edmx">

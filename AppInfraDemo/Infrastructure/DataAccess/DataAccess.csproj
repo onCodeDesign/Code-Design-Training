@@ -63,7 +63,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuditableInterceptor.cs" />
     <Compile Include="CollectionExtensions.cs" />
     <Compile Include="EfRepository.cs" />
     <Compile Include="Exceptions\DataValidationResult.cs" />
@@ -79,7 +78,6 @@
     <Compile Include="Exceptions\Handlers\UpdateExceptionHandler.cs" />
     <Compile Include="Exceptions\ValidationError.cs" />
     <Compile Include="GlobalEntityInterceptor.cs" />
-    <Compile Include="IAuditable.cs" />
     <Compile Include="Exceptions\Handlers\SqlExceptionHandler.cs" />
     <Compile Include="Exceptions\DateTimeRangeRepositoryException.cs" />
     <Compile Include="Exceptions\DeadlockVictimRepositoryException.cs" />
