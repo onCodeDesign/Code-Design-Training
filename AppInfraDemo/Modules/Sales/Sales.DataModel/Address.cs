@@ -12,22 +12,27 @@ namespace Sales.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class CreditCard
+    public partial class Address
     {
-        public CreditCard()
+        public Address()
         {
-            this.PersonCreditCards = new HashSet<PersonCreditCard>();
+            this.CustomerAddresses = new HashSet<CustomerAddress>();
             this.SalesOrderHeaders = new HashSet<SalesOrderHeader>();
+            this.SalesOrderHeaders1 = new HashSet<SalesOrderHeader>();
         }
     
-        public int CreditCardID { get; set; }
-        public string CardType { get; set; }
-        public string CardNumber { get; set; }
-        public byte ExpMonth { get; set; }
-        public short ExpYear { get; set; }
+        public int AddressID { get; set; }
+        public string AddressLine1 { get; set; }
+        public string AddressLine2 { get; set; }
+        public string City { get; set; }
+        public string StateProvince { get; set; }
+        public string CountryRegion { get; set; }
+        public string PostalCode { get; set; }
+        public System.Guid rowguid { get; set; }
         public System.DateTime ModifiedDate { get; set; }
     
-        public virtual ICollection<PersonCreditCard> PersonCreditCards { get; set; }
+        public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
         public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaders1 { get; set; }
     }
 }

@@ -12,12 +12,11 @@ namespace Sales.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class CountryRegionCurrency
+    public partial class BuildVersion
     {
-        public string CountryRegionCode { get; set; }
-        public string CurrencyCode { get; set; }
+        public byte SystemInformationID { get; set; }
+        public string Database_Version { get; set; }
+        public System.DateTime VersionDate { get; set; }
         public System.DateTime ModifiedDate { get; set; }
-    
-        public virtual Currency Currency { get; set; }
     }
 }

@@ -35,28 +35,34 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CountryRegionCurrency.cs">
+    <Compile Include="Address.cs">
       <DependentUpon>SalesEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="CreditCard.cs">
-      <DependentUpon>SalesEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Currency.cs">
-      <DependentUpon>SalesEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CurrencyRate.cs">
+    <Compile Include="BuildVersion.cs">
       <DependentUpon>SalesEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Customer.cs">
       <DependentUpon>SalesEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Person.cs">
+    <Compile Include="CustomerAddress.cs">
       <DependentUpon>SalesEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="PersonCreditCard.cs">
+    <Compile Include="ErrorLog.cs">
       <DependentUpon>SalesEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
+      <DependentUpon>SalesEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCategory.cs">
+      <DependentUpon>SalesEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductDescription.cs">
+      <DependentUpon>SalesEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductModel.cs">
+      <DependentUpon>SalesEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductModelProductDescription.cs">
       <DependentUpon>SalesEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,39 +80,6 @@
       <DependentUpon>SalesEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="SalesOrderHeader.cs">
-      <DependentUpon>SalesEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SalesOrderHeaderSalesReason.cs">
-      <DependentUpon>SalesEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SalesPerson.cs">
-      <DependentUpon>SalesEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SalesPersonQuotaHistory.cs">
-      <DependentUpon>SalesEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SalesReason.cs">
-      <DependentUpon>SalesEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SalesTaxRate.cs">
-      <DependentUpon>SalesEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SalesTerritory.cs">
-      <DependentUpon>SalesEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SalesTerritoryHistory.cs">
-      <DependentUpon>SalesEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ShoppingCartItem.cs">
-      <DependentUpon>SalesEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SpecialOffer.cs">
-      <DependentUpon>SalesEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SpecialOfferProduct.cs">
-      <DependentUpon>SalesEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Store.cs">
       <DependentUpon>SalesEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Values\SalesOrderHeaderStatusValues.cs" />

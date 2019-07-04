@@ -25,26 +25,17 @@ namespace Sales.DataAccess
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CountryRegionCurrency> CountryRegionCurrencies { get; set; }
-        public virtual DbSet<CreditCard> CreditCards { get; set; }
-        public virtual DbSet<Currency> Currencies { get; set; }
-        public virtual DbSet<CurrencyRate> CurrencyRates { get; set; }
+        public virtual DbSet<BuildVersion> BuildVersions { get; set; }
+        public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
+        public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<PersonCreditCard> PersonCreditCards { get; set; }
+        public virtual DbSet<CustomerAddress> CustomerAddresses { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductCategory> ProductCategories { get; set; }
+        public virtual DbSet<ProductDescription> ProductDescriptions { get; set; }
+        public virtual DbSet<ProductModel> ProductModels { get; set; }
+        public virtual DbSet<ProductModelProductDescription> ProductModelProductDescriptions { get; set; }
         public virtual DbSet<SalesOrderDetail> SalesOrderDetails { get; set; }
         public virtual DbSet<SalesOrderHeader> SalesOrderHeaders { get; set; }
-        public virtual DbSet<SalesOrderHeaderSalesReason> SalesOrderHeaderSalesReasons { get; set; }
-        public virtual DbSet<SalesPerson> SalesPersons { get; set; }
-        public virtual DbSet<SalesPersonQuotaHistory> SalesPersonQuotaHistories { get; set; }
-        public virtual DbSet<SalesReason> SalesReasons { get; set; }
-        public virtual DbSet<SalesTaxRate> SalesTaxRates { get; set; }
-        public virtual DbSet<SalesTerritory> SalesTerritories { get; set; }
-        public virtual DbSet<SalesTerritoryHistory> SalesTerritoryHistories { get; set; }
-        public virtual DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
-        public virtual DbSet<SpecialOffer> SpecialOffers { get; set; }
-        public virtual DbSet<SpecialOfferProduct> SpecialOfferProducts { get; set; }
-        public virtual DbSet<Store> Stores { get; set; }
-        public virtual DbSet<Person> People { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
     }
 }

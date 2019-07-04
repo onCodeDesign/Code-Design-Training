@@ -5,52 +5,30 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5e5eafcd32e54aeb882f5e9843f37702" Name="Diagram1" ZoomLevel="124">
-        <EntityTypeShape EntityType="SalesDataModel.CountryRegionCurrency" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.CreditCard" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.Currency" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.CurrencyRate" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.Customer" Width="1.5" PointX="7.5" PointY="13.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.PersonCreditCard" Width="1.5" PointX="9.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.SalesOrderDetail" Width="1.5" PointX="12" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.SalesOrderHeader" Width="1.5" PointX="9.75" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.SalesOrderHeaderSalesReason" Width="1.5" PointX="15" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.SalesPerson" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.SalesPersonQuotaHistory" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.SalesReason" Width="1.5" PointX="12.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.SalesTaxRate" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.SalesTerritory" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.SalesTerritoryHistory" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.ShoppingCartItem" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.SpecialOffer" Width="1.5" PointX="7.5" PointY="18.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.SpecialOfferProduct" Width="1.5" PointX="9.75" PointY="18.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalesDataModel.Store" Width="1.5" PointX="5.25" PointY="18.375" IsExpanded="true" />
-        <AssociationConnector Association="SalesDataModel.FK_CountryRegionCurrency_Currency_CurrencyCode" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_PersonCreditCard_CreditCard_CreditCardID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_SalesOrderHeader_CreditCard_CreditCardID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_CurrencyRate_Currency_FromCurrencyCode" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_CurrencyRate_Currency_ToCurrencyCode" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_SalesOrderHeader_CurrencyRate_CurrencyRateID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_Customer_SalesTerritory_TerritoryID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_Customer_Store_StoreID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_SalesOrderHeader_Customer_CustomerID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_SalesOrderDetail_SpecialOfferProduct_SpecialOfferIDProductID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_SalesOrderHeader_SalesPerson_SalesPersonID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_SalesOrderHeader_SalesTerritory_TerritoryID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_SalesOrderHeaderSalesReason_SalesOrderHeader_SalesOrderID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_SalesOrderHeaderSalesReason_SalesReason_SalesReasonID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_SalesPerson_SalesTerritory_TerritoryID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_SalesPersonQuotaHistory_SalesPerson_BusinessEntityID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_SalesTerritoryHistory_SalesPerson_BusinessEntityID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_Store_SalesPerson_SalesPersonID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_SalesTerritoryHistory_SalesTerritory_TerritoryID" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesDataModel.FK_SpecialOfferProduct_SpecialOffer_SpecialOfferID" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="SalesDataModel.Person" Width="1.5" PointX="10.375" PointY="1" />
-        <AssociationConnector Association="SalesDataModel.FK_Customer_Person_PersonID" />
-        <AssociationConnector Association="SalesDataModel.FK_PersonCreditCard_Person_BusinessEntityID" />
-        <EntityTypeShape EntityType="SalesDataModel.Product" Width="1.5" PointX="0.75" PointY="10.375" />
-        <AssociationConnector Association="SalesDataModel.FK_ShoppingCartItem_Product_ProductID" />
-        <AssociationConnector Association="SalesDataModel.FK_SpecialOfferProduct_Product_ProductID" />
+        <EntityTypeShape EntityType="SalesDataModel.BuildVersion" Width="1.5" PointX="5.75" PointY="2.75" />
+        <EntityTypeShape EntityType="SalesDataModel.ErrorLog" Width="1.5" PointX="7.75" PointY="2.75" />
+        <EntityTypeShape EntityType="SalesDataModel.Address" Width="1.5" PointX="0.75" PointY="6.25" />
+        <EntityTypeShape EntityType="SalesDataModel.Customer" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SalesDataModel.CustomerAddress" Width="1.5" PointX="6" PointY="6.75" />
+        <EntityTypeShape EntityType="SalesDataModel.Product" Width="1.5" PointX="6" PointY="12.5" />
+        <EntityTypeShape EntityType="SalesDataModel.ProductCategory" Width="1.5" PointX="3.75" PointY="15.125" />
+        <EntityTypeShape EntityType="SalesDataModel.ProductDescription" Width="1.5" PointX="6.75" PointY="18.25" />
+        <EntityTypeShape EntityType="SalesDataModel.ProductModel" Width="1.5" PointX="3.75" PointY="12" />
+        <EntityTypeShape EntityType="SalesDataModel.ProductModelProductDescription" Width="1.5" PointX="9" PointY="12" />
+        <EntityTypeShape EntityType="SalesDataModel.SalesOrderDetail" Width="1.5" PointX="8.25" PointY="6.375" />
+        <EntityTypeShape EntityType="SalesDataModel.SalesOrderHeader" Width="1.5" PointX="3" PointY="4.875" />
+        <AssociationConnector Association="SalesDataModel.FK_CustomerAddress_Address_AddressID" />
+        <AssociationConnector Association="SalesDataModel.FK_SalesOrderHeader_Address_BillTo_AddressID" />
+        <AssociationConnector Association="SalesDataModel.FK_SalesOrderHeader_Address_ShipTo_AddressID" />
+        <AssociationConnector Association="SalesDataModel.FK_CustomerAddress_Customer_CustomerID" />
+        <AssociationConnector Association="SalesDataModel.FK_SalesOrderHeader_Customer_CustomerID" />
+        <AssociationConnector Association="SalesDataModel.FK_Product_ProductCategory_ProductCategoryID" />
+        <AssociationConnector Association="SalesDataModel.FK_Product_ProductModel_ProductModelID" />
+        <AssociationConnector Association="SalesDataModel.FK_SalesOrderDetail_Product_ProductID" />
+        <AssociationConnector Association="SalesDataModel.FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID" />
+        <AssociationConnector Association="SalesDataModel.FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID" />
+        <AssociationConnector Association="SalesDataModel.FK_ProductModelProductDescription_ProductModel_ProductModelID" />
+        <AssociationConnector Association="SalesDataModel.FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

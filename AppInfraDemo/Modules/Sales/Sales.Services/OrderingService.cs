@@ -25,7 +25,7 @@ namespace Sales
 	    public SalesOrderInfo[] GetOrdersInfo(string customerName)
         {
             var orders = repository.GetEntities<SalesOrderHeader>()
-			    .Where(soh => soh.Customer.Person.LastName == customerName)
+			    .Where(soh => soh.Customer.LastName == customerName)
 			    .Select(soh => new SalesOrderInfo
 			    {
 					CustomerName = customerName,
@@ -92,7 +92,7 @@ namespace Sales
         private Customer GetCustomer(string customerName)
         {
             return repository.GetEntities<Customer>()
-                             .FirstOrDefault(customer => customer.Person.LastName == customerName);
+                             .FirstOrDefault(customer => customer.LastName == customerName);
         }
 
         private SalesOrderHeader GetOrder(OrderRequest request, int customerId)

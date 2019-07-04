@@ -12,14 +12,15 @@ namespace Sales.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class SalesTaxRate
+    public partial class ProductModelProductDescription
     {
-        public int SalesTaxRateID { get; set; }
-        public int StateProvinceID { get; set; }
-        public byte TaxType { get; set; }
-        public decimal TaxRate { get; set; }
-        public string Name { get; set; }
+        public int ProductModelID { get; set; }
+        public int ProductDescriptionID { get; set; }
+        public string Culture { get; set; }
         public System.Guid rowguid { get; set; }
         public System.DateTime ModifiedDate { get; set; }
+    
+        public virtual ProductDescription ProductDescription { get; set; }
+        public virtual ProductModel ProductModel { get; set; }
     }
 }

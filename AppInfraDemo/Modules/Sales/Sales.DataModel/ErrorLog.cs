@@ -12,14 +12,16 @@ namespace Sales.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class SalesPersonQuotaHistory
+    public partial class ErrorLog
     {
-        public int BusinessEntityID { get; set; }
-        public System.DateTime QuotaDate { get; set; }
-        public decimal SalesQuota { get; set; }
-        public System.Guid rowguid { get; set; }
-        public System.DateTime ModifiedDate { get; set; }
-    
-        public virtual SalesPerson SalesPerson { get; set; }
+        public int ErrorLogID { get; set; }
+        public System.DateTime ErrorTime { get; set; }
+        public string UserName { get; set; }
+        public int ErrorNumber { get; set; }
+        public Nullable<int> ErrorSeverity { get; set; }
+        public Nullable<int> ErrorState { get; set; }
+        public string ErrorProcedure { get; set; }
+        public Nullable<int> ErrorLine { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }

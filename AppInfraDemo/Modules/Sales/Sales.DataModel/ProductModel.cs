@@ -12,21 +12,21 @@ namespace Sales.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Currency
+    public partial class ProductModel
     {
-        public Currency()
+        public ProductModel()
         {
-            this.CountryRegionCurrencies = new HashSet<CountryRegionCurrency>();
-            this.CurrencyRates = new HashSet<CurrencyRate>();
-            this.CurrencyRates1 = new HashSet<CurrencyRate>();
+            this.Products = new HashSet<Product>();
+            this.ProductModelProductDescriptions = new HashSet<ProductModelProductDescription>();
         }
     
-        public string CurrencyCode { get; set; }
+        public int ProductModelID { get; set; }
         public string Name { get; set; }
+        public string CatalogDescription { get; set; }
+        public System.Guid rowguid { get; set; }
         public System.DateTime ModifiedDate { get; set; }
     
-        public virtual ICollection<CountryRegionCurrency> CountryRegionCurrencies { get; set; }
-        public virtual ICollection<CurrencyRate> CurrencyRates { get; set; }
-        public virtual ICollection<CurrencyRate> CurrencyRates1 { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<ProductModelProductDescription> ProductModelProductDescriptions { get; set; }
     }
 }

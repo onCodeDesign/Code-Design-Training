@@ -12,18 +12,22 @@ namespace Sales.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class SalesReason
+    public partial class ProductCategory
     {
-        public SalesReason()
+        public ProductCategory()
         {
-            this.SalesOrderHeaderSalesReasons = new HashSet<SalesOrderHeaderSalesReason>();
+            this.Products = new HashSet<Product>();
+            this.ProductCategory1 = new HashSet<ProductCategory>();
         }
     
-        public int SalesReasonID { get; set; }
+        public int ProductCategoryID { get; set; }
+        public Nullable<int> ParentProductCategoryID { get; set; }
         public string Name { get; set; }
-        public string ReasonType { get; set; }
+        public System.Guid rowguid { get; set; }
         public System.DateTime ModifiedDate { get; set; }
     
-        public virtual ICollection<SalesOrderHeaderSalesReason> SalesOrderHeaderSalesReasons { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<ProductCategory> ProductCategory1 { get; set; }
+        public virtual ProductCategory ProductCategory2 { get; set; }
     }
 }
