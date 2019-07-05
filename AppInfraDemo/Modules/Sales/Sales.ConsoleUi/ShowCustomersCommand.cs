@@ -1,6 +1,7 @@
 ﻿using Contracts.ConsoleUi;
 using Contracts.Sales.CustomerOrders;
 using iQuarc.AppBoot;
+using iQuarc.SystemEx;
 
 namespace Sales.ConsoleUi
 {
@@ -18,7 +19,10 @@ namespace Sales.ConsoleUi
 
         public void Execute()
         {
-            var customers = customersSrv.GetCustomersWithOrders();
+            string nameStartsWith = console.AskInput("Filter by Name starting with: ");
+            string nameContains = console.AskInput("Filter by Name that contains: ");
+
+            var customers = customersSrv.GetCustomersWithOrdersByName(nameContains, nameStartsWith);
 
             console.WriteLine("The following customers were found:");
             console.WriteLine(string.Empty);
@@ -29,6 +33,6 @@ namespace Sales.ConsoleUi
             }
         }
 
-        public string MenuLabel => "Show Customers";
+        public string MenuLabel => "Show Customers with Orders";
     }
 }

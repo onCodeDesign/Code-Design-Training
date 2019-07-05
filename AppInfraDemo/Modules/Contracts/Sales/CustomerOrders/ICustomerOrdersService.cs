@@ -9,5 +9,6 @@ namespace Contracts.Sales.CustomerOrders
     public interface ICustomerOrdersService
     {
         IEnumerable<CustomerData> GetCustomersWithOrders();
+        IEnumerable<CustomerData> GetCustomersWithOrdersByName(string nameContains, string nameStartsWith);
     }
 }
