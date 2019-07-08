@@ -7,6 +7,7 @@ using Contracts.Sales.CustomerOrders;
 using iQuarc.AppBoot;
 using iQuarc.DataAccess;
 using Sales.DataModel;
+using Sales.DataModel.Values;
 
 namespace Sales
 {
@@ -38,6 +39,22 @@ namespace Sales
                 filter = c => c.Store.Name.Contains(nameContains);
 
             return GetCustomersBy(filter);
+        }
+
+        public void CancelAllOrdersForCustomer(string customerName)
+        {
+            using (var uof = rep.CreateUnitOfWork())
+            {
+                var customerOrders = uof.GetEntities<SalesOrderHeader>()
+                    .Where(o => o.Customer.Person.LastName == customerName);
+
+                foreach (var salesOrderHeader in customerOrders)
+                {
+                    salesOrderHeader.Status = 5;
+                }
+
+                uof.SaveChanges();
+            }
         }
 
         private IEnumerable<CustomerData> GetCustomersBy(Expression<Func<Customer, bool>> filter)

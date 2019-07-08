@@ -10,5 +10,6 @@ namespace Contracts.Sales.CustomerOrders
     {
         IEnumerable<CustomerData> GetCustomersWithOrders();
         IEnumerable<CustomerData> GetCustomersWithOrdersByName(string nameContains, string nameStartsWith);
+        void CancelAllOrdersForCustomer(string customerName);
     }
 }

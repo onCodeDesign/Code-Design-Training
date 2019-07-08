@@ -8,7 +8,7 @@ namespace Common.DataModel
     [Service(nameof(AuditableInterceptor), typeof(IEntityInterceptor))]
     sealed class AuditableInterceptor : GlobalEntityInterceptor<IAuditable>
     {
-        public override void OnSave(IEntityEntry<IAuditable> entry, IUnitOfWork repository)
+        public override void OnSave(IEntityEntry<IAuditable> entry)
         {
             var systemDate = DateTime.Now;
             entry.Entity.ModifiedDate = systemDate;
