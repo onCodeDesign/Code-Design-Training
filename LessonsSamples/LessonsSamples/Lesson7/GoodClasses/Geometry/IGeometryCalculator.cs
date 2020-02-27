@@ -1,6 +1,5 @@
-﻿using System;
-
-namespace LessonsSamples.Lesson3.Geometry
+﻿
+namespace LessonsSamples.Lesson7.GoodClasses.Geometry
 {
     class Geometry : IGeometryCalculator
     {

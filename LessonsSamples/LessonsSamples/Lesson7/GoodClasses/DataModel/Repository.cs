@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 using System.Security.Claims;
 using iQuarc.AppBoot;
 
-namespace LessonsSamples.Lesson3.DataModel
+namespace LessonsSamples.Lesson7.GoodClasses.DataModel
 {
     public interface IRepository : IDisposable
     {

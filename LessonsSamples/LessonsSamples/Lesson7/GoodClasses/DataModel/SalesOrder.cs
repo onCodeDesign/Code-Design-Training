@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using ClassLibrary1;
 
-namespace LessonsSamples.Lesson3.DataModel
+namespace LessonsSamples.Lesson7.GoodClasses.DataModel
 {
     public partial class SalesOrderHeader
     {
