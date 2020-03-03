@@ -52,6 +52,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApprovalService.cs" />
     <Compile Include="IApprovalService.cs" />
     <Compile Include="ModelInterceptors\InvalidOrderException.cs" />
     <Compile Include="ModelInterceptors\SalesOrderCalculationsInterceptors.cs" />
