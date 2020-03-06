@@ -5,7 +5,6 @@ namespace LessonsSamples.Lesson6
 	public interface IMovieConsoleCreator
 	{
 		void Open();
-
 	}
 
 	class MovieConsoleCreator : IMovieConsoleCreator
