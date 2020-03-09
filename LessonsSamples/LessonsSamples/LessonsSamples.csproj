@@ -126,13 +126,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs" />
-    <Compile Include="Lesson3\DataModel\Repository.cs" />
-    <Compile Include="Lesson3\DataModel\SalesOrder.cs" />
-    <Compile Include="Lesson3\Geometry\CircleGeometry.cs" />
-    <Compile Include="Lesson3\Geometry\GeometryCalculatorFactory.cs" />
-    <Compile Include="Lesson3\Geometry\IGeometryCalculator.cs" />
-    <Compile Include="Lesson3\PolymorphicShapes.cs" />
-    <Compile Include="Lesson3\ProceduralShapes.cs" />
+    <Compile Include="Lesson7\GoodClasses\DataModel\Repository.cs" />
+    <Compile Include="Lesson7\GoodClasses\DataModel\SalesOrder.cs" />
     <Compile Include="Lesson5\ImageScale.cs" />
     <Compile Include="Lesson5\Shapes.cs" />
     <Compile Include="Lesson5\Class2.cs" />
@@ -204,6 +199,11 @@
     <Compile Include="Lesson7\CohesionCoupling\13_PageXmlExportClient.cs" />
     <Compile Include="Lesson7\ErrorHandling\DeviceController.cs" />
     <Compile Include="Lesson7\ErrorHandling\CodeSnippet.cs" />
+    <Compile Include="Lesson7\GoodClasses\Geometry\CircleGeometry.cs" />
+    <Compile Include="Lesson7\GoodClasses\Geometry\GeometryCalculatorFactory.cs" />
+    <Compile Include="Lesson7\GoodClasses\Geometry\IGeometryCalculator.cs" />
+    <Compile Include="Lesson7\GoodClasses\Geometry\PolymorphicShapes.cs" />
+    <Compile Include="Lesson7\GoodClasses\Geometry\ProceduralShapes.cs" />
     <Compile Include="Lesson7\InheritanceComposition\Account.cs" />
     <Compile Include="Lesson7\InheritanceComposition\AccountClientCode.cs" />
     <Compile Include="Lesson7\InheritanceComposition\AccountClientCodeTests.cs" />
@@ -244,6 +244,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Lesson3\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

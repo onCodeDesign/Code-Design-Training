@@ -12,13 +12,21 @@ public interface ICommand
 }
 ```
 
-Build the menu by getting all the `ICommand` implementations through constructor DI. When a menu entry is picked, it will execute that command by calling the `Execute()` function.
+Build the menu by getting all the `ICommand` implementations through constructor DI. 
+When a menu entry is picked, it will execute that command by calling the `Execute()` function.
+ The `MovieConsoleApplication` constructor can import all `IConsole` implementations as an `IEnumerable<IConsole>`:
+
+```
+    public MovieConsoleApplication(IEnumerable<ICommand> commands)
+    {
+    }
+```
 
 #### 2. Create an abstraction for the console: `IConsole`
 
-a) Why would we abstract the existent static Console class through IConsole? 
+a) Register in the DI Container the `IConsole` with the `AppConsole` implementation and refactor the code to use the `IConsole`
 
-b) Register in the DIC the `IConsole` with the `AppConsoleImplementation` and refactor the code to use the `IConsole`
+b) What benefits can you see?
 
 #### 3. Integrate the `ServiceLocator` into the app
 
@@ -30,8 +38,8 @@ b) Register in the DIC the `IConsole` with the `AppConsoleImplementation` and re
 #### 5. Rewrite the `MoviesConsoleCreator`
 
 a) Reimplement the `MoviesConsoleCreator` command to support the following functionality:
- - read more properties of a movie one by one. They UI will present the user the name of the property that she should enter
- - The Movie should have at least the following fields: `Title :string` and `Rating :int`
+ - read more properties of a movie one by one. They UI will show to the user the name of the property that she should enter
+ - The Movie should have at least the following fields: `Title :string` and `Rating :int` (see `Movie.cs`)
  - when all properties of a movie were read, ask the user if she wants to add a new movie
 
 Use the following interfaces:
@@ -39,20 +47,20 @@ Use the following interfaces:
 ```
 interface IEntityReader
 {
-    IEntityFieldsReader<T> BeginEntityRead<T>();
+    IEntityFieldsReader<TEntity> BeginEntityRead<TEntity>();
 }
 
-interface IEntityFieldsReader<T>
+interface IEntityFieldsReader<TEntity>
 {
     IEnumerable<string> GetFields();
     void SetFieldValue(string value);
-    T GetEntity();
+    TEntity GetEntity();
 }
 
-interface IEntityRepository
+interface IEntityRepository<TEntity>
 {
-    IEnumerable<Movie> GetAll();
-    void Add(Movie movie);
+    IEnumerable<TEntity> GetAll();
+    void Add(TEntity movie);
 }
 ```
 
@@ -61,7 +69,35 @@ b) Write unit tests that prove that the new `MoviesConsoleCreator` works
 
 #### 6. Implement `IEntityReader` and `IEntityFieldsReader`
 
-*Suggestion*: Use *Service Locator Pattern* to get and return the `IEntityFieldsReader<T>` implementations on the `IEntityReader<T>()` function.
+```
+class EntityReader : IEntityReader
+{
+    public IEntityFieldsReader<TEntity> BeginEntityRead<TEntity>()
+    {
+        ...
+    }
+}
+
+class MovieFieldsReader : IEntityFieldsReader<Movie>
+{
+    public IEnumerable<string> GetFields()
+    {
+        ...
+    }
+    
+    public void StoreFieldValue(string name, string value)
+    {
+        ...
+    }
+
+    public Movie GetEntity()
+    {
+        ...
+    }
+}
+```
+
+*Suggestion*: Use *Service Locator Pattern* to get and return the `IEntityFieldsReader<TEntity>` implementations on the `IEntityReader<TEntity>()` function.
 
 #### 7. Make a generic implementation of  `IEntityFieldsReader<T>`
 

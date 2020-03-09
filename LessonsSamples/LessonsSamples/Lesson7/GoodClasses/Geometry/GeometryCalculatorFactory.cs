@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using ProceduralShapes;
+using LessonsSamples.Lesson7.GoodClasses.Procedural;
 
-namespace LessonsSamples.Lesson3.Geometry
+namespace LessonsSamples.Lesson7.GoodClasses.Geometry
 {
     internal interface IGeometryCalculatorFactory
     {
@@ -17,7 +17,6 @@ namespace LessonsSamples.Lesson3.Geometry
             {typeof (Rectangle), () => new RectangleGeometry()},
             {typeof (Circle), () => new CircleGeometry()},
         };
-
 
         public IGeometryCalculator GetCalculator(Type shape)
         {

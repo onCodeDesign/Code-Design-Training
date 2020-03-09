@@ -1,6 +1,6 @@
 ﻿using System;
-using LessonsSamples.Lesson3.DataModel;
 using LessonsSamples.Lesson6.DependencyInjection;
+using LessonsSamples.Lesson7.GoodClasses.DataModel;
 
 namespace LessonsSamples.Lesson6
 {

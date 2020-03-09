@@ -1,7 +1,7 @@
 using System;
-using ProceduralShapes;
+using LessonsSamples.Lesson7.GoodClasses.Procedural;
 
-namespace LessonsSamples.Lesson3.Geometry
+namespace LessonsSamples.Lesson7.GoodClasses.Geometry
 {
     class SquareGeometry : GeometryCalculator<Square>
     {

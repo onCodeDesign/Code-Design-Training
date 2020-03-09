@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using LessonsSamples.Lesson3.DataModel;
+using LessonsSamples.Lesson7.GoodClasses.DataModel;
 
 namespace LessonsSamples.Lesson8.RowLevelAuth
 {

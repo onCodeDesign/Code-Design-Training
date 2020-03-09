@@ -1,7 +1,7 @@
 ﻿using System;
 using ClassLibrary1;
 
-namespace ProceduralShapes
+namespace LessonsSamples.Lesson7.GoodClasses.Procedural
 {
     class Square
     {

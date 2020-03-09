@@ -1,7 +1,7 @@
 using System;
 using ClassLibrary1;
 
-namespace PolymorphicShapes
+namespace LessonsSamples.Lesson7.GoodClasses.Polimorphic
 {
     interface IShape
     {
@@ -12,10 +12,10 @@ namespace PolymorphicShapes
     {
         private Point topLeft;
         private double side;
-        
+
         public double GetArea()
         {
-            return side*side;
+            return side * side;
         }
     }
 

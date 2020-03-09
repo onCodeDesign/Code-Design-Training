@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Data.Entity;
 using System.Linq;
-using LessonsSamples.Lesson3.DataModel;
+using LessonsSamples.Lesson7.GoodClasses.DataModel;
 
 namespace LessonsSamples.Lesson8.RowLevelAuth
 {
