@@ -16,6 +16,7 @@ namespace LessonsSamples.Lesson7.GoodClasses.Geometry
             {typeof (Square), () => new SquareGeometry()},
             {typeof (Rectangle), () => new RectangleGeometry()},
             {typeof (Circle), () => new CircleGeometry()},
+            {typeof (Triangle), () => new TriangleCalculator()},
         };
 
         public IGeometryCalculator GetCalculator(Type shape)

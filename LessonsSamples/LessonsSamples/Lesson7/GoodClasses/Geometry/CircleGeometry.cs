@@ -9,6 +9,11 @@ namespace LessonsSamples.Lesson7.GoodClasses.Geometry
         {
             return s.Side * s.Side;
         }
+
+        public override double GetPerimeter(Square shape)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     class RectangleGeometry : GeometryCalculator<Rectangle>
@@ -17,6 +22,11 @@ namespace LessonsSamples.Lesson7.GoodClasses.Geometry
         {
             return r.Height*r.Width;
         }
+
+        public override double GetPerimeter(Rectangle shape)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     class CircleGeometry : GeometryCalculator<Circle>
@@ -24,6 +34,24 @@ namespace LessonsSamples.Lesson7.GoodClasses.Geometry
         public override double GetArea(Circle c)
         {
             return Math.PI * c.Radius * c.Radius;
+        }
+
+        public override double GetPerimeter(Circle shape)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    class TriangleCalculator : GeometryCalculator<Triangle>
+    {
+        public override double GetArea(Triangle shape)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override double GetPerimeter(Triangle shape)
+        {
+            throw new NotImplementedException();
         }
     }
 }
