@@ -1,7 +1,9 @@
-﻿namespace LessonsSamples.Lesson5.ISP.Door
+﻿using System;
+
+namespace LessonsSamples.Lesson5.ISP.Door
 {
     public interface ITimerClient
     {
-        void TimeOut();
+        void TimeOut(Guid registrationId);
     }
 }

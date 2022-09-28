@@ -126,6 +126,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs" />
+    <Compile Include="Lesson5\ISP\Door\Delegation\DoorDelegationDemo.cs" />
+    <Compile Include="Lesson5\ISP\Door\Delegation\TimedDoor.cs" />
+    <Compile Include="Lesson5\ISP\Door\Delegation\DoorTimerAdapter.cs" />
     <Compile Include="Lesson5\ISP\Door\IDoor.cs" />
     <Compile Include="Lesson5\ISP\Door\ITimerClient.cs" />
     <Compile Include="Lesson5\ISP\Door\Timer.cs" />
@@ -250,7 +253,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lesson3\" />
-    <Folder Include="Lesson5\ISP\Door\Delegation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

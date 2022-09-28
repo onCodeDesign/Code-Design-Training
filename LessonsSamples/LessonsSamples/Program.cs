@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using iQuarc.AppBoot;
+using LessonsSamples.Lesson5.ISP.Door.Delegation;
 using LessonsSamples.Lesson6;
 using LessonsSamples.Lesson6.CoreContainerConstructorSelection;
 using LessonsSamples.Lesson6.CoreContainerLifetime;
@@ -17,12 +18,14 @@ namespace LessonsSamples
         {
             //TestRunner.RunTests();
 
-            UnityDemo.MainFunc();
+            //UnityDemo.MainFunc();
             //NetCoreContainerDemo.MainFunc();
             //NetCoreConstructorSelectionDemo.MainFunc();
 
 
             //NetCoreLifetimeDemo.MainFunc();
+
+            DoorDelegationDemo.MainFunc();
 
             Console.WriteLine();
             Console.WriteLine("Demo ran. Press enter to close");
