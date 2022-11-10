@@ -1,97 +1,124 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title>This file contains exercises based on the AppInfra demo</title>
+<!DOCTYPE html>
+<!-- saved from url=(0011)about:blank -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    
+    <!--<base href="http://browsing-file-host/">--><base href=".">
+    <style>
+        html, body {margin: 0; padding-bottom:10px}
+        /* From https://github.com/sindresorhus/github-markdown-css */
+
+.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:#24292f;background-color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none !important}
+.markdown-body a{background-color:transparent;color:#0969da;text-decoration:none}.markdown-body a:active,.markdown-body a:hover{outline-width:0}.markdown-body abbrMarkdown Preview{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:600}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:600;padding-bottom:.3em;font-size:2em;border-bottom:1px solid hsla(210,18%,87%,1)}.markdown-body mark{background-color:#fff8c5;color:#24292f}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace,monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid hsla(210,18%,87%,1);height:.25em;padding:0;margin:24px 0;background-color:#d0d7de;border:0}
+.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=button]::-moz-focus-inner,.markdown-body [type=reset]::-moz-focus-inner,.markdown-body [type=submit]::-moz-focus-inner{border-style:none;padding:0}.markdown-body [type=button]:-moz-focusring,.markdown-body [type=reset]:-moz-focusring,.markdown-body [type=submit]:-moz-focusring{outline:1px dotted ButtonText}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]{-webkit-appearance:textfield;outline-offset:-2px}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}
+.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body hr:before{display:table;content:""}.markdown-body hr:after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>*:not(summary){display:none !important}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:#24292f;vertical-align:middle;background-color:#f6f8fa;border:solid 1px rgba(175,184,193,.2);border-bottom-color:rgba(175,184,193,.2);border-radius:6px;box-shadow:inset 0 -1px 0 rgba(175,184,193,.2)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}
+.markdown-body h2{font-weight:600;padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid hsla(210,18%,87%,1)}.markdown-body h3{font-weight:600;font-size:1.25em}.markdown-body h4{font-weight:600;font-size:1em}.markdown-body h5{font-weight:600;font-size:.875em}.markdown-body h6{font-weight:600;font-size:.85em;color:#57606a}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body ul {list-style:disc}.markdown-body ul,.markdown-body ol{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ul ul ol,.markdown-body ul ol ol,.markdown-body ol ul ol,.markdown-body ol ol ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body tt,.markdown-body code{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}
+.markdown-body .octicon{display:inline-block;overflow:visible !important;vertical-align:text-bottom;fill:currentColor}.markdown-body ::placeholder{color:#6e7781;opacity:1}.markdown-body input::-webkit-outer-spin-button,.markdown-body input::-webkit-inner-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body .pl-c{color:#6e7781}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:#0550ae}.markdown-body .pl-e,.markdown-body .pl-en{color:#8250df}.markdown-body .pl-smi,.markdown-body .pl-s .pl-s1{color:#24292f}.markdown-body .pl-ent{color:#116329}.markdown-body .pl-k{color:#cf222e}.markdown-body .pl-s,.markdown-body .pl-pds,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sre,.markdown-body .pl-sr .pl-sra{color:#0a3069}.markdown-body .pl-v,.markdown-body .pl-smw{color:#953800}.markdown-body .pl-bu{color:#82071e}.markdown-body .pl-ii{color:#f6f8fa;background-color:#82071e}.markdown-body .pl-c2{color:#f6f8fa;background-color:#cf222e}
+.markdown-body .pl-sr .pl-cce{font-weight:700;color:#116329}.markdown-body .pl-ml{color:#3b2300}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:#0550ae}.markdown-body .pl-mi{font-style:italic;color:#24292f}.markdown-body .pl-mb{font-weight:700;color:#24292f}.markdown-body .pl-md{color:#82071e;background-color:#ffebe9}.markdown-body .pl-mi1{color:#116329;background-color:#dafbe1}.markdown-body .pl-mc{color:#953800;background-color:#ffd8b5}.markdown-body .pl-mi2{color:#eaeef2;background-color:#0550ae}.markdown-body .pl-mdr{font-weight:700;color:#8250df}.markdown-body .pl-ba{color:#57606a}.markdown-body .pl-sg{color:#8c959f}.markdown-body .pl-corl{text-decoration:underline;color:#0a3069}.markdown-body [data-catalyst]{display:block}.markdown-body g-emoji{font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal !important;font-weight:400;line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}
+.markdown-body:before{display:table;content:""}.markdown-body:after{display:table;clear:both;content:""}.markdown-body>*:first-child{margin-top:0 !important}.markdown-body>*:last-child{margin-bottom:0 !important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#cf222e}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre,.markdown-body details{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body sup>a:before{content:"["}.markdown-body sup>a:after{content:"]"}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#24292f;vertical-align:middle;visibility:hidden}
+.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code{padding:0 .2em;font-size:inherit}.markdown-body ul.no-list,.markdown-body ol.no-list{padding:0;list-style-type:none}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body ol[type=a]{list-style-type:lower-alpha}
+.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:600}.markdown-body table th,.markdown-body table td{padding:6px 13px;border:1px solid #d0d7de}.markdown-body table tr{background-color:#fff;border-top:1px solid hsla(210,18%,87%,1)}.markdown-body table tr:nth-child(2n){background-color:#f6f8fa}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}
+.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #d0d7de}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#24292f}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}
+.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;background-color:rgba(175,184,193,.2);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}
+.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:600;background:#f6f8fa;border-top:0}.markdown-body .footnotes{font-size:12px;color:#57606a;border-top:1px solid #d0d7de}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target:before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid #0969da;border-radius:6px}.markdown-body .footnotes li:target{color:#24292f}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:400}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.6em;vertical-align:middle}
+.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}/* PrismJS 1.25.0
+https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+aspnet+basic+c+csharp+cpp+clojure+dart+docker+fsharp+go+graphql+java+json+kotlin+markdown+markup-templating+perl+php+powershell+protobuf+python+qsharp+r+cshtml+ruby+rust+scss+sql+typescript+vbnet+visual-basic+yaml */
+code[class*=language-],pre[class*=language-]{color:#000;background:0 0;text-shadow:0 1px #fff;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-] ::-moz-selection,code[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}
+    </style>
+    <title>Exercises</title>
+    <meta http-equiv="cache-control" content="no-cache">
 </head>
 <body>
 
-    <h1 id="this-file-contains-exercises-based-on-the-appinfra-demo">This file contains exercises based on the AppInfra demo</h1>
-<h2 id="notification-service">1. Notification Service</h2>
-<blockquote>
-<p><strong>!Objective</strong>: Get familiar with the DemoApp, and see how the Bootstrapper, the Application Initialization, Dependency Injection and Service Locator work</p>
+    
+    <div id="___markdown-content___" class="markdown-body">
+        <h1 id="this-file-contains-exercises-based-on-the-appinfra-demo"><a id="pragma-line-0"></a>This file contains exercises based on the AppInfra demo</h1>
+<h2 id="notification-service"><a id="pragma-line-2"></a>1. Notification Service</h2>
+<blockquote id="pragma-line-4">
+<p id="pragma-line-4"><strong>!Objective</strong>: Get familiar with the DemoApp, and see how the Bootstrapper, the Application Initialization, Dependency Injection and Service Locator work</p>
 </blockquote>
-<h4 id="notifications-module">1.1 Notifications Module</h4>
-<p>Add a <code>NotificationsModule : IModule</code> and notify when it is alive.</p>
-<p>As a model for this, look on how <code>SaleServicesModule</code> is implemented and how its <em>I'm Alive</em> notification is shown in the <code>ConsoleApplication</code>.</p>
-<h4 id="change-the-order-in-which-the-modules-are-initialized-in-a-loosely-coupled-way">1.2. Change the order in which the modules are initialized in a loosely coupled way</h4>
-<p>Use the <code>PriorityAttribute</code> and the <code>OrderByPriority&lt;T&gt;()</code> helper method, from <code>iQuarc.SystemEx</code> package</p>
-<h4 id="create-a-composite-for-notificationservice.notifyalive">1.3. Create a composite for <code>NotificationService.NotifyAlive()</code></h4>
-<p>Current implementation of <code>NotifyAlive()</code> first tries to get the unlabeled <code>IAmAliveSubscriber&lt;T&gt;</code> implementation and then it get all labeled implementation.</p>
-<p>This try/catch is ugly and could be avoided w/ a composite <code>IAmAliveSubscriber</code> which gets all labeled <code>IAmAliveSubscriber</code> and forwards the call to them</p>
-<p><strong>Solution</strong> see branch <code>ex/AppInfra/NotificationServiceComposite</code></p>
-<hr />
-<h2 id="console-application">2. Console Application</h2>
-<blockquote>
-<p>Understand AppBoot basics: Modules, Dependency Injection, and Service Locator</p>
+<h4 id="notifications-module"><a id="pragma-line-6"></a>1.1 Notifications Module</h4>
+<p id="pragma-line-8">Add a <code>NotificationsModule : IModule</code> and notify when it is alive.</p>
+<p id="pragma-line-10">As a model for this, look on how <code>SaleServicesModule</code> is implemented and how its <em>I'm Alive</em> notification is shown in the <code>ConsoleApplication</code>.</p>
+<h4 id="change-the-order-in-which-the-modules-are-initialized-in-a-loosely-coupled-way"><a id="pragma-line-12"></a>1.2. Change the order in which the modules are initialized in a loosely coupled way</h4>
+<p id="pragma-line-14">Use the <code>PriorityAttribute</code> and the <code>OrderByPriority&lt;T&gt;()</code> helper method, from <code>iQuarc.SystemEx</code> package</p>
+<h4 id="create-a-composite-for-notificationservice.notifyalive"><a id="pragma-line-16"></a>1.3. Create a composite for <code>NotificationService.NotifyAlive()</code></h4>
+<p id="pragma-line-18">Current implementation of <code>NotifyAlive()</code> first tries to get the unlabeled <code>IAmAliveSubscriber&lt;T&gt;</code> implementation and then it get all labeled implementation.</p>
+<p id="pragma-line-20">This try/catch is ugly and could be avoided w/ a composite <code>IAmAliveSubscriber</code> which gets all labeled <code>IAmAliveSubscriber</code> and forwards the call to them</p>
+<p id="pragma-line-22"><strong>Solution</strong> see branch <code>ex/AppInfra/NotificationServiceComposite</code></p>
+<hr id="pragma-line-24">
+<h2 id="console-application"><a id="pragma-line-26"></a>2. Console Application</h2>
+<blockquote id="pragma-line-28">
+<p id="pragma-line-28">Understand AppBoot basics: Modules, Dependency Injection, and Service Locator</p>
 </blockquote>
-<h3 id="transform-the-ordersconsoleapplication-into-an-imodule">2.1. Transform the OrdersConsoleApplication into an IModule</h3>
-<p>Make this class to implement the <code>IModule</code>.</p>
-<ul>
-<li>You should also consider to rename it, so its name reflects that it is a module</li>
-<li>The <code>Program.Main()</code> should no longer directly depend on it. With this refactor, on the <code>IModule.Initialize()</code> the menu should be shown.</li>
+<h3 id="transform-the-ordersconsoleapplication-into-an-imodule"><a id="pragma-line-30"></a>2.1. Transform the OrdersConsoleApplication into an IModule</h3>
+<p id="pragma-line-32">Make this class to implement the <code>IModule</code>.</p>
+<ul id="pragma-line-33">
+<li id="pragma-line-33">You should also consider to rename it, so its name reflects that it is a module</li>
+<li id="pragma-line-34">The <code>Program.Main()</code> should no longer directly depend on it. With this refactor, on the <code>IModule.Initialize()</code> the menu should be shown.</li>
 </ul>
-<h3 id="unit-test-the-init-function-of-the-resulted-module">2.2. Unit Test the <code>Init()</code> function of the resulted Module</h3>
-<p>Which is the external dependencies?
+<h3 id="unit-test-the-init-function-of-the-resulted-module"><a id="pragma-line-36"></a>2.2. Unit Test the <code>Init()</code> function of the resulted Module</h3>
+<p id="pragma-line-38">Which is the external dependencies?
 When do we use stubs and when mocks?</p>
-<hr />
-<h2 id="create-a-composite-console-application">3. Create a Composite Console Application</h2>
-<blockquote>
-<p>Understand how to benefit from the AppBoot dependency discovery and loosely coupled modules</p>
+<hr id="pragma-line-41">
+<h2 id="create-a-composite-console-application"><a id="pragma-line-43"></a>3. Create a Composite Console Application</h2>
+<blockquote id="pragma-line-45">
+<p id="pragma-line-45">Understand how to benefit from the AppBoot dependency discovery and loosely coupled modules</p>
 </blockquote>
-<h3 id="create-a-console-ui-module-that-discovers-commands-and-builds-a-menu-from-them">3.1. Create a Console Ui Module that discovers commands and builds a menu from them</h3>
-<p>Follow the following steps as guidance:</p>
-<ol>
-<li>Create the <code>IConsoleCommand</code> interface as below:</li>
+<h3 id="create-a-console-ui-module-that-discovers-commands-and-builds-a-menu-from-them"><a id="pragma-line-47"></a>3.1. Create a Console Ui Module that discovers commands and builds a menu from them</h3>
+<p id="pragma-line-49">Follow the following steps as guidance:</p>
+<ol id="pragma-line-51">
+<li id="pragma-line-51">Create the <code>IConsoleCommand</code> interface as below:</li>
 </ol>
-<pre><code>public interface IConsoleCommand
+<pre><code id="pragma-line-53">public interface IConsoleCommand
 {
     void Execute();
     string MenuLabel { get; }
 }
 </code></pre>
-<ol start="2">
-<li><p>Create the <code>ConsoleUiModule</code> class that implements <code>IModule</code>. It would discover all the <code>IConsoleCommand</code> implementations, and will build a menu with them on its <code>Initialize()</code> function.</p>
+<ol start="2" id="pragma-line-61">
+<li id="pragma-line-61"><p id="pragma-line-61">Create the <code>ConsoleUiModule</code> class that implements <code>IModule</code>. It would discover all the <code>IConsoleCommand</code> implementations, and will build a menu with them on its <code>Initialize()</code> function.</p>
 </li>
-<li><p>Transform the OrdersConsoleApplication, in a <code>IConsoleCommand</code> implementation</p>
+<li id="pragma-line-64"><p id="pragma-line-64">Transform the OrdersConsoleApplication, in a <code>IConsoleCommand</code> implementation</p>
 </li>
 </ol>
-<p>This should allow any other functional module to provide <code>IConsoleCommand</code> implementations. The <code>ConsoleUiModule</code> will discover them and will present them to the user for execution. It results a loosely coupling between the modules and their UI commands</p>
-<h3 id="update-the-solution-structure-in-such-way-that-each-module-may-have-its-own-console-commands-and-it-does-not-depend-on-the-host-process-or-the-ui-app">3.2. Update the solution structure in such way that each module may have its own Console Commands and it does not depend on the host process or the UI app</h3>
-<p>Now, the <code>OrdersConsoleCommand</code> resulted from transforming the <code>OrdersConsoleApplication</code> into a <code>IConsoleCommand</code> sits in the <code>ConsoleApplication</code>, but it is quite intimate with the <em>Sales</em> module</p>
-<p>We could move it to a new console project into the <em>Sales</em> module folder structure, and the new <code>CompositeConsoleUiModule</code> should discover it and use it.</p>
-<p><em>Hints:</em></p>
-<ol>
-<li>the project should be a class library so it can be deployed on any .NET process</li>
-<li>adjust the build output older to be as it is for the other <code>Sales.*</code> assemblies</li>
+<p id="pragma-line-67">This should allow any other functional module to provide <code>IConsoleCommand</code> implementations. The <code>ConsoleUiModule</code> will discover them and will present them to the user for execution. It results a loosely coupling between the modules and their UI commands</p>
+<h3 id="update-the-solution-structure-in-such-way-that-each-module-may-have-its-own-console-commands-and-it-does-not-depend-on-the-host-process-or-the-ui-app"><a id="pragma-line-69"></a>3.2. Update the solution structure in such way that each module may have its own Console Commands and it does not depend on the host process or the UI app</h3>
+<p id="pragma-line-71">Now, the <code>OrdersConsoleCommand</code> resulted from transforming the <code>OrdersConsoleApplication</code> into a <code>IConsoleCommand</code> sits in the <code>ConsoleApplication</code>, but it is quite intimate with the <em>Sales</em> module</p>
+<p id="pragma-line-73">We could move it to a new console project into the <em>Sales</em> module folder structure, and the new <code>CompositeConsoleUiModule</code> should discover it and use it.</p>
+<p id="pragma-line-75"><em>Hints:</em></p>
+<ol id="pragma-line-76">
+<li id="pragma-line-76">the project should be a class library so it can be deployed on any .NET process</li>
+<li id="pragma-line-77">adjust the build output older to be as it is for the other <code>Sales.*</code> assemblies</li>
 </ol>
-<p>The assemblies from any module (including <em>Sales</em>) should not depend on the <code>ConsoleApplication</code> assembly which is the host process and the UI. The dependency should be the other way around. We should invert it by moving the <code>IConsoleCommand</code> and the <code>IConsole</code> to the <code>Contracts</code> assembly  into a new <code>ConsoleUi</code> folder.</p>
-<blockquote>
-<p>!Observation:
+<p id="pragma-line-79">The assemblies from any module (including <em>Sales</em>) should not depend on the <code>ConsoleApplication</code> assembly which is the host process and the UI. The dependency should be the other way around. We should invert it by moving the <code>IConsoleCommand</code> and the <code>IConsole</code> to the <code>Contracts</code> assembly  into a new <code>ConsoleUi</code> folder.</p>
+<blockquote id="pragma-line-81">
+<p id="pragma-line-81">!Observation:
 By doing this we are decoupling the application from its UI. All the <code>ConsoleCommand</code> could be displayed and executed from another host or UI, may that be an WPF app or a Web App.</p>
 </blockquote>
-<blockquote>
-<p>!Observation:
+<blockquote id="pragma-line-84">
+<p id="pragma-line-84">!Observation:
 Look at the references by generating the <em>Project Dependency Diagram</em></p>
 </blockquote>
-<h3 id="order-the-menu-entries">3.3. Order the Menu entries</h3>
-<ol type="a">
-<li>in a declarative manner</li>
-<li>by module and then by more entries in the same module</li>
+<h3 id="order-the-menu-entries"><a id="pragma-line-88"></a>3.3. Order the Menu entries</h3>
+<ol type="a" id="pragma-line-90">
+<li id="pragma-line-90">in a declarative manner</li>
+<li id="pragma-line-91">by module and then by more entries in the same module</li>
 </ol>
-<hr />
-<h2 id="ordering-service">4. Ordering Service</h2>
-<blockquote>
-<p>!Objective: Understand DataAccess implementation</p>
+<hr id="pragma-line-93">
+<h2 id="ordering-service"><a id="pragma-line-96"></a>4. Ordering Service</h2>
+<blockquote id="pragma-line-98">
+<p id="pragma-line-98">!Objective: Understand DataAccess implementation</p>
 </blockquote>
-<p>All below should be called through a simple UI like the Console UI built in previous exercises</p>
-<h3 id="create-an-operation-that-returns-all-the-customers-which-have-orders-ordered-by-store-name">4.1. Create an operation that returns all the customers which have orders, ordered by store name</h3>
-<ul>
-<li>Write unit tests for this.</li>
-<li>There should be tests that verify if there order by is applied.</li>
+<p id="pragma-line-100">All below should be called through a simple UI like the Console UI built in previous exercises</p>
+<h3 id="create-an-operation-that-returns-all-the-customers-which-have-orders-ordered-by-store-name"><a id="pragma-line-102"></a>4.1. Create an operation that returns all the customers which have orders, ordered by store name</h3>
+<ul id="pragma-line-104">
+<li id="pragma-line-104">Write unit tests for this.</li>
+<li id="pragma-line-105">There should be tests that verify if there order by is applied.</li>
 </ul>
-<p><em>Hint (linq query):</em></p>
-<pre><code>Customers.Where(c =&gt; c.SalesOrderHeaders.Any() &amp;&amp; c.StoreID != null)
-		// &amp;&amp; c.Store.Name.StartsWith(&quot;Active&quot;)) - this may be appended for 4.2
+<p id="pragma-line-107"><em>Hint (linq query):</em></p>
+<pre><code id="pragma-line-108">Customers.Where(c =&gt; c.SalesOrderHeaders.Any() &amp;&amp; c.StoreID != null)
+		// &amp;&amp; c.Store.Name.StartsWith("Active")) - this may be appended for 4.2
 	.OrderBy(c =&gt; c.Store.Name)
 	.Select(c =&gt; new
 	{
@@ -100,65 +127,65 @@ Look at the references by generating the <em>Project Dependency Diagram</em></p>
 		Name = c.Store.Name
 	});
 </code></pre>
-<h3 id="add-more-filters">4.2. Add more filters</h3>
-<ul>
-<li>Show only the customers that have the name starting with a string which was read from the console.</li>
-<li>Show only the customers that have in the name a string which was read from the console</li>
-<li>Write Unit Tests for the above</li>
+<h3 id="add-more-filters"><a id="pragma-line-120"></a>4.2. Add more filters</h3>
+<ul id="pragma-line-122">
+<li id="pragma-line-122">Show only the customers that have the name starting with a string which was read from the console.</li>
+<li id="pragma-line-123">Show only the customers that have in the name a string which was read from the console</li>
+<li id="pragma-line-124">Write Unit Tests for the above</li>
 </ul>
-<h3 id="create-a-console-command-that-sets-the-status-of-all-orders-of-a-customer">4.3. Create a console command that sets the status of all orders of a customer</h3>
-<ul>
-<li>We can hardcode the status that will be set OR read it from console</li>
-<li>We should read some relevant info about the customer that we will use to find the orders to which we will change the status</li>
+<h3 id="create-a-console-command-that-sets-the-status-of-all-orders-of-a-customer"><a id="pragma-line-126"></a>4.3. Create a console command that sets the status of all orders of a customer</h3>
+<ul id="pragma-line-128">
+<li id="pragma-line-128">We can hardcode the status that will be set OR read it from console</li>
+<li id="pragma-line-129">We should read some relevant info about the customer that we will use to find the orders to which we will change the status</li>
 </ul>
-<p>See the <code>SalesOrderHeaderStatusValues</code> class for the values of the <code>SalesOrderHeader.Status</code> property</p>
-<hr />
-<h2 id="dataaccess.entityinterceptors">5. DataAccess.EntityInterceptors</h2>
-<blockquote>
-<p>!Objective: Understand and use EntityInterceptors</p>
+<p id="pragma-line-131">See the <code>SalesOrderHeaderStatusValues</code> class for the values of the <code>SalesOrderHeader.Status</code> property</p>
+<hr id="pragma-line-133">
+<h2 id="dataaccess.entityinterceptors"><a id="pragma-line-135"></a>5. DataAccess.EntityInterceptors</h2>
+<blockquote id="pragma-line-137">
+<p id="pragma-line-137">!Objective: Understand and use EntityInterceptors</p>
 </blockquote>
-<p>Use <code>EntityInterceptors</code> and <code>INotificationService</code> to implement:</p>
-<h3 id="implement-a-istatechangesubscribersalesorder-that-shows-on-the-console-when-a-salesorder-is-created-deleted-or-changed">5.1. Implement a <code>IStateChangeSubscriber&lt;SalesOrder&gt;</code> that shows on the console when a <code>SalesOrder</code> is created, deleted or changed</h3>
-<p><em>Hint:</em> This should be part of the Sales Module</p>
-<h3 id="implement-a-default-istatechangesubscribert-that-writes-in-a-text-file-when-any-dto-is-created-deleted-or-changed">5.2 Implement a default <code>IStateChangeSubscriber&lt;T&gt;</code> that writes in a text file when any DTO is created, deleted or changed</h3>
-<p><em>Hint:</em> This should be part of the Notifications Module</p>
-<blockquote>
-<p>!Observe and discuss the differences of who triggers the notification</p>
+<p id="pragma-line-139">Use <code>EntityInterceptors</code> and <code>INotificationService</code> to implement:</p>
+<h3 id="implement-a-istatechangesubscribersalesorder-that-shows-on-the-console-when-a-salesorder-is-created-deleted-or-changed"><a id="pragma-line-141"></a>5.1. Implement a <code>IStateChangeSubscriber&lt;SalesOrder&gt;</code> that shows on the console when a <code>SalesOrder</code> is created, deleted or changed</h3>
+<p id="pragma-line-143"><em>Hint:</em> This should be part of the Sales Module</p>
+<h3 id="implement-a-default-istatechangesubscribert-that-writes-in-a-text-file-when-any-dto-is-created-deleted-or-changed"><a id="pragma-line-145"></a>5.2 Implement a default <code>IStateChangeSubscriber&lt;T&gt;</code> that writes in a text file when any DTO is created, deleted or changed</h3>
+<p id="pragma-line-147"><em>Hint:</em> This should be part of the Notifications Module</p>
+<blockquote id="pragma-line-149">
+<p id="pragma-line-149">!Observe and discuss the differences of who triggers the notification</p>
 </blockquote>
-<hr />
-<h2 id="add-entity-auditing">6. Add Entity Auditing</h2>
-<blockquote>
-<p>!Objective: Understand the DataAccess benefit of low costs when adding new features</p>
+<hr id="pragma-line-151">
+<h2 id="add-entity-auditing"><a id="pragma-line-153"></a>6. Add Entity Auditing</h2>
+<blockquote id="pragma-line-155">
+<p id="pragma-line-155">!Objective: Understand the DataAccess benefit of low costs when adding new features</p>
 </blockquote>
-<h3 id="we-want-to-consistently-set-the-modifieddate-for-all-entities-that-have-this-column">6.1. We want to consistently set the <code>ModifiedDate</code> for all entities that have this column</h3>
-<ul>
-<li>Now when we modify the order in exercise 4.3 or we add persons in exercise 5 the <code>ModifiedDate</code> is not set.</li>
-<li>One way would be to go in all use cases where these entities are modified / created and set the <code>ModifiedDate</code> as well. This would be cumbersome and error prone</li>
-<li>We should leverage the advantage of the encapsulated Data Access and extend the infrastructure, with an interceptor that does this for all entities.</li>
+<h3 id="we-want-to-consistently-set-the-modifieddate-for-all-entities-that-have-this-column"><a id="pragma-line-157"></a>6.1. We want to consistently set the <code>ModifiedDate</code> for all entities that have this column</h3>
+<ul id="pragma-line-159">
+<li id="pragma-line-159">Now when we modify the order in exercise 4.3 or we add persons in exercise 5 the <code>ModifiedDate</code> is not set.</li>
+<li id="pragma-line-160">One way would be to go in all use cases where these entities are modified / created and set the <code>ModifiedDate</code> as well. This would be cumbersome and error prone</li>
+<li id="pragma-line-161">We should leverage the advantage of the encapsulated Data Access and extend the infrastructure, with an interceptor that does this for all entities.</li>
 </ul>
-<p>The interface which should be implemented by the Data Model entities could look like:</p>
-<pre><code>interface IAuditable
+<p id="pragma-line-163">The interface which should be implemented by the Data Model entities could look like:</p>
+<pre><code id="pragma-line-165">interface IAuditable
 {
     DateTime ModifiedDate {get;set;}
 }
 </code></pre>
-<hr />
-<h2 id="add-persons-management-module">7. Add Persons Management Module</h2>
-<blockquote>
-<p>!Objective: Understand how to add new modules to this Application Infrastructure</p>
+<hr id="pragma-line-172">
+<h2 id="add-persons-management-module"><a id="pragma-line-174"></a>7. Add Persons Management Module</h2>
+<blockquote id="pragma-line-176">
+<p id="pragma-line-176">!Objective: Understand how to add new modules to this Application Infrastructure</p>
 </blockquote>
-<h3 id="use-services-from-persons-module-in-sales-module">7.1. Use Services from Persons Module in Sales Module</h3>
-<p><code>SalesPerson</code> references through <code>BusinessEntityID</code> a <code>Person</code> from Person schema.</p>
-<p>Create a new module named <code>Persons</code> which exposes a service that gives all the persons. This service should be used by <code>GetOrdersInfo()</code> to return the person name in the <code>SalesOrderInfo</code> result.</p>
-<p>As an alternative, the service from the <code>Persons</code> module could be used by the UI and <code>GetOrdersInfo()</code> just returns the <code>BusinessEntityID</code> key</p>
-<hr />
-<h2 id="add-a-new-person">8 Add a new <code>Person</code></h2>
-<blockquote>
-<p>!Objective: See how existent Application Infrastructure capabilities are used by new features of new Modules</p>
+<h3 id="use-services-from-persons-module-in-sales-module"><a id="pragma-line-178"></a>7.1. Use Services from Persons Module in Sales Module</h3>
+<p id="pragma-line-180"><code>SalesPerson</code> references through <code>BusinessEntityID</code> a <code>Person</code> from Person schema.</p>
+<p id="pragma-line-182">Create a new module named <code>Persons</code> which exposes a service that gives all the persons. This service should be used by <code>GetOrdersInfo()</code> to return the person name in the <code>SalesOrderInfo</code> result.</p>
+<p id="pragma-line-184">As an alternative, the service from the <code>Persons</code> module could be used by the UI and <code>GetOrdersInfo()</code> just returns the <code>BusinessEntityID</code> key</p>
+<hr id="pragma-line-186">
+<h2 id="add-a-new-person"><a id="pragma-line-188"></a>8 Add a new <code>Person</code></h2>
+<blockquote id="pragma-line-190">
+<p id="pragma-line-190">!Objective: See how existent Application Infrastructure capabilities are used by new features of new Modules</p>
 </blockquote>
-<h3 id="create-support-to-read-a-entity-from-the-console">8.1 Create support to read a entity from the console</h3>
-<p>Use the following interfaces:</p>
-<pre><code>interface IEntityReader
+<h3 id="create-support-to-read-a-entity-from-the-console"><a id="pragma-line-192"></a>8.1 Create support to read a entity from the console</h3>
+<p id="pragma-line-194">Use the following interfaces:</p>
+<pre><code id="pragma-line-196">interface IEntityReader
 {
     IEntityFieldsReader&lt;T&gt; BeginEntityRead&lt;T&gt;();
 }
@@ -170,13 +197,20 @@ interface IEntityFieldsReader&lt;T&gt;
     T GetEntity();
 }
 </code></pre>
-<p>Read the data needed to create a <code>Person</code> entity</p>
-<h3 id="create-a-service-that-adds-a-new-person-to-the-system">8.1. Create a service that adds a new <code>Person</code> to the system</h3>
-<p>The above console command which reads the person info should use this service to add the new read person.</p>
-<blockquote>
-<p>!Observe: how the interceptors created in ex. 5 &amp; 6 are working when a new Person is added</p>
+<p id="pragma-line-210">Read the data needed to create a <code>Person</code> entity</p>
+<h3 id="create-a-service-that-adds-a-new-person-to-the-system"><a id="pragma-line-212"></a>8.1. Create a service that adds a new <code>Person</code> to the system</h3>
+<p id="pragma-line-214">The above console command which reads the person info should use this service to add the new read person.</p>
+<blockquote id="pragma-line-216">
+<p id="pragma-line-216">!Observe: how the interceptors created in ex. 5 &amp; 6 are working when a new Person is added</p>
 </blockquote>
 
+    </div>
+    <script src="http://markdown-editor-host/margin/prism.js"></script>
+    <script src="http://markdown-editor-host/margin/mermaid.min.js"></script>
+    <!--<script src="http://markdown-editor-host/margin/mathjax.js"></script>-->
+    <script>
+        mermaid.initialize({ 'securityLevel': 'loose', 'theme': 'forest', startOnLoad: true, flowchart: { htmlLabels: false } });
+    </script>
+    
 
-</body>
-</html>
+</body></html>

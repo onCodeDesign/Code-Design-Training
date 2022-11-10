@@ -12,3 +12,5 @@ To configure this follow these steps:
     - see `AppInfraDemo\UI\ConsoleApplication\App.config`
     - ex: `data source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\AdventureWorks2012.mdf;initial catalog=AdventureWorks2012;Integrated Security=True;MultipleActiveResultSets=True;App=EntityFramework`
     - make sure that the `AdventureWorks2012.mdf` file name matches the one in the connection string
+
+More about AdventureWorks sample databases [here](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms).
