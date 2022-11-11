@@ -4,7 +4,7 @@ using Sales.DataModel;
 
 namespace Sales
 {
-    public interface IPriceCalculator
+    interface IPriceCalculator
     {
         decimal CalculateTaxes(OrderRequest o, Customer c);
 
@@ -12,7 +12,7 @@ namespace Sales
     }
 
     [Service(typeof (IPriceCalculator), Lifetime.Instance)]
-    public class PriceCalculator : IPriceCalculator
+    class PriceCalculator : IPriceCalculator
     {
         public decimal CalculateTaxes(OrderRequest o, Customer c)
         {
