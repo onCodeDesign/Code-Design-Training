@@ -33,8 +33,19 @@ namespace ConsoleHost.Filters
 
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
-            HttpStatusCode status = actionExecutedContext.Response.StatusCode;
-            Console.WriteLine($"\t - Status: {(int)status} - {status} Reason: {actionExecutedContext.Response?.ReasonPhrase}\n");
+            if (actionExecutedContext.Response != null)
+            {
+                HttpStatusCode status = actionExecutedContext.Response.StatusCode;
+                Console.WriteLine($"\t - Status: {(int) status} - {status} Reason: {actionExecutedContext.Response?.ReasonPhrase}\n");
+            }
+            else if (actionExecutedContext.Exception != null)
+            {
+                Console.WriteLine($"\t  Error: {actionExecutedContext.Exception.Message}");
+            }
+            else
+            {
+                Console.WriteLine("\t Unknown call status");
+            }
         }
     }
 }

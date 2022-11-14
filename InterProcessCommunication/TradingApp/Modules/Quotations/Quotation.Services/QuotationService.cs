@@ -29,7 +29,7 @@ namespace Quotations.Services
             return result.ToArray();
         }
 
-        public Quotation[] GetQuotations(string securityCode, DateTime @from, DateTime to)
+        public Quotation[] GetQuotations(string securityCode, DateTime from, DateTime to)
         {
             return array.Where(q => q.SecurityCode == securityCode).ToArray();
         }

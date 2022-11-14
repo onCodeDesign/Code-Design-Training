@@ -18,12 +18,12 @@ namespace ConsoleHost.Controllers
             return quotationService.GetQuotations(exchange, instrument, from, to);
         }
 
-        public IEnumerable<Quotation> GetBySecurity(string securityCode, DateTime from, DateTime to)
+        public IEnumerable<Quotation> GetBySecurity([FromUri] string securityCode, [FromUri] DateTime from, [FromUri] DateTime to)
         {
             return quotationService.GetQuotations(securityCode, from, to);
         }
 
-        public IEnumerable<Quotation> GetBySecurities([FromUri] string[] securities, DateTime from, DateTime to)
+        public IEnumerable<Quotation> GetBySecurities([FromUri] string[] securities, [FromUri] DateTime from, [FromUri] DateTime to)
         {
             return quotationService.GetQuotations(securities, from, to);
         }
