@@ -27,12 +27,12 @@ namespace Proxies
             }
         }
 
-        public Quotation[] GetQuotations(string securityCode, DateTime @from, DateTime to)
+        public Quotation[] GetQuotations(string securityCode, DateTime from, DateTime to)
         {
             using (HttpClient client = HttpHelpers.CreateNewClient<IQuotationService>())
             {
                 string path = HttpHelpers.GetServicePath<IQuotationService>("GetBySecurity");
-                string uri = $"{path}?securityCode={securityCode}&from={from}&to={to}";
+                string uri = $"{path}?securityCode={securityCode}&from={from:yyyy-MM-dd}&to={to:yyyy-MM-dd}";
                 HttpResponseMessage response = client.GetAsync(uri).Result;
                 if (response.IsSuccessStatusCode)
                 {
@@ -44,7 +44,7 @@ namespace Proxies
             }
         }
 
-        public Quotation[] GetQuotations(string[] securities, DateTime @from, DateTime to)
+        public Quotation[] GetQuotations(string[] securities, DateTime from, DateTime to)
         {
             using (HttpClient client = HttpHelpers.CreateNewClient<IQuotationService>())
             {
