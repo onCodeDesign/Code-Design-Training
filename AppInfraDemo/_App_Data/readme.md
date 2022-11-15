@@ -1,11 +1,11 @@
 Use this folder when you want to use the AdventureWorks2012 database from the local SQL Express.
 -----------------
 
-The `AppInfraDemo\.App_Data` folder should contain the `AdventureWorks2012.mdf` in order to be attached to the local database on the application start. 
+The `AppInfraDemo\_App_Data` folder should contain the `AdventureWorks2012.mdf` in order to be attached to the local database on the application start. 
 
 To configure this follow these steps:
  1. Download the `AdventureWorks2012.mdf` from [https://1drv.ms/u/s!AttpJoJRCtSQiiG8WJT8t3C4y450](https://1drv.ms/u/s!AttpJoJRCtSQiiG8WJT8t3C4y450)
- 2. Copy it to `AppInfraDemo\.App_Data` folder 
+ 2. Copy it to `AppInfraDemo\_App_Data` folder 
  3. Make sure that your host app sets the |DataDirectory| on the AppDomain
     - see `AppInfraDemo\UI\ConsoleApplication\Program.SetupDataDirectory()`
  4. Set the connection string that uses `AttachDbFilename` setting
