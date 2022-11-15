@@ -26,6 +26,7 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
 code[class*=language-],pre[class*=language-]{color:#000;background:0 0;text-shadow:0 1px #fff;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-] ::-moz-selection,code[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}
     </style>
     <title>Exercises</title>
+	<link rel="icon" href="https://oncodedesign.com/content/images/size/w256h256/2022/06/favicon.png" type="image/png">
     <meta http-equiv="cache-control" content="no-cache">
 </head>
 <body>
@@ -145,7 +146,7 @@ Look at the references by generating the <em>Project Dependency Diagram</em></p>
 <p id="pragma-line-137">!Objective: Understand and use EntityInterceptors</p>
 </blockquote>
 <p id="pragma-line-139">Use <code>EntityInterceptors</code> and <code>INotificationService</code> to implement:</p>
-<h3 id="implement-a-istatechangesubscribersalesorder-that-shows-on-the-console-when-a-salesorder-is-created-deleted-or-changed"><a id="pragma-line-141"></a>5.1. Implement a <code>IStateChangeSubscriber&lt;SalesOrder&gt;</code> that shows on the console when a <code>SalesOrder</code> is created, deleted or changed</h3>
+<h3 id="implement-a-istatechangesubscribersalesorderheader-that-shows-on-the-console-when-a-salesorderheader-is-created-deleted-or-changed"><a id="pragma-line-141"></a>5.1. Implement a <code>IStateChangeSubscriber&lt;SalesOrderHeader&gt;</code> that shows on the console when a <code>SalesOrderHeader</code> is created, deleted or changed</h3>
 <p id="pragma-line-143"><em>Hint:</em> This should be part of the Sales Module</p>
 <h3 id="implement-a-default-istatechangesubscribert-that-writes-in-a-text-file-when-any-dto-is-created-deleted-or-changed"><a id="pragma-line-145"></a>5.2 Implement a default <code>IStateChangeSubscriber&lt;T&gt;</code> that writes in a text file when any DTO is created, deleted or changed</h3>
 <p id="pragma-line-147"><em>Hint:</em> This should be part of the Notifications Module</p>
@@ -159,7 +160,7 @@ Look at the references by generating the <em>Project Dependency Diagram</em></p>
 </blockquote>
 <h3 id="we-want-to-consistently-set-the-modifieddate-for-all-entities-that-have-this-column"><a id="pragma-line-157"></a>6.1. We want to consistently set the <code>ModifiedDate</code> for all entities that have this column</h3>
 <ul id="pragma-line-159">
-<li id="pragma-line-159">Now when we modify the order in exercise 4.3 or we add persons in exercise 5 the <code>ModifiedDate</code> is not set.</li>
+<li id="pragma-line-159">Now when we modify the order in exercise 4.3 or we add persons in exercise 8 the <code>ModifiedDate</code> is not set.</li>
 <li id="pragma-line-160">One way would be to go in all use cases where these entities are modified / created and set the <code>ModifiedDate</code> as well. This would be cumbersome and error prone</li>
 <li id="pragma-line-161">We should leverage the advantage of the encapsulated Data Access and extend the infrastructure, with an interceptor that does this for all entities.</li>
 </ul>
