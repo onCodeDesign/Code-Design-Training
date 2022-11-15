@@ -15,7 +15,7 @@ namespace ConsoleApplication
 		private static void Main(string[] args)
 		{
 		    SetupDataDirectory();
-			IServiceLocator serviceLocator = Bootstrapp();
+			Bootstrapp();
 
 			Console.WriteLine();
 			Console.WriteLine("Press any key to close the application...");
