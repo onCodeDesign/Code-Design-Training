@@ -139,7 +139,7 @@ See the `SalesOrderHeaderStatusValues` class for the values of the `SalesOrderHe
 
 Use `EntityInterceptors` and `INotificationService` to implement:
 
-### 5.1. Implement a `IStateChangeSubscriber<SalesOrder>` that shows on the console when a `SalesOrder` is created, deleted or changed 
+### 5.1. Implement a `IStateChangeSubscriber<SalesOrderHeader>` that shows on the console when a `SalesOrderHeader` is created, deleted or changed 
 
 *Hint:* This should be part of the Sales Module
 
@@ -157,7 +157,7 @@ Use `EntityInterceptors` and `INotificationService` to implement:
 
 ### 6.1. We want to consistently set the `ModifiedDate` for all entities that have this column
 
- - Now when we modify the order in exercise 4.3 or we add persons in exercise 5 the `ModifiedDate` is not set.
+ - Now when we modify the order in exercise 4.3 or we add persons in exercise 8 the `ModifiedDate` is not set.
  - One way would be to go in all use cases where these entities are modified / created and set the `ModifiedDate` as well. This would be cumbersome and error prone
  - We should leverage the advantage of the encapsulated Data Access and extend the infrastructure, with an interceptor that does this for all entities.
 
