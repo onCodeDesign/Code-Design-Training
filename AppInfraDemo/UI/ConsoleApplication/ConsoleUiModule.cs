@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using iQuarc.AppBoot;
+using iQuarc.SystemEx.Priority;
 
 namespace ConsoleApplication
 {
     [Service(nameof(ConsoleUiModule), typeof(IModule))]
+    [Priority(Priorities.VeryLow)]
     class ConsoleUiModule : IModule
     {
         private readonly IConsole console;
