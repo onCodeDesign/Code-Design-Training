@@ -17,8 +17,8 @@ namespace ConsoleApplication
 		    SetupDataDirectory();
 			IServiceLocator serviceLocator = Bootstrapp();
 
-			//OrdersConsoleApplication app = serviceLocator.GetInstance<OrdersConsoleApplication>();
-			//app.ShowAllOrders();
+			OrdersConsoleApplication app = serviceLocator.GetInstance<OrdersConsoleApplication>();
+			app.ShowAllOrders();
 
 			Console.WriteLine();
 			Console.WriteLine("Press any key to close the application...");
@@ -64,7 +64,7 @@ namespace ConsoleApplication
 	    private static void SetupDataDirectory()
 	    {
 	        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-	        AppDomain.CurrentDomain.SetData("DataDirectory", Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\.App_Data")));
+	        AppDomain.CurrentDomain.SetData("DataDirectory", Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\App_Data")));
 	    }
 	}
 }
