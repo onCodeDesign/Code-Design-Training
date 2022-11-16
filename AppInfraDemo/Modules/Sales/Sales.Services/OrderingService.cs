@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Contracts.Crm;
 using Contracts.Sales;
 using iQuarc.AppBoot;
 using iQuarc.DataAccess;
 using Sales.DataModel;
+using CustomerInfo = Contracts.Sales.CustomerInfo;
 
 namespace Sales
 {
@@ -37,7 +39,22 @@ namespace Sales
 		    return orders.ToArray();
 	    }
 
-	    public SalesOrderResult PlaceOrder(string customerName, OrderRequest request)
+        public CustomerInfo[] GetCustomersWithOrders()
+        {
+         var customers = repository.GetEntities<Customer>()
+             .Where(c => c.SalesOrderHeaders.Any() && c.StoreID != null)
+                // && c.Store.Name.StartsWith("Active")) - this may be appended for 4.2
+                .OrderBy(c => c.Store.Name)
+                .Select(c => new CustomerInfo
+                {
+                    Id = c.CustomerID,
+                    AccountNumber = c.AccountNumber,
+                    Name = c.Store.Name
+                });
+         return customers.ToArray();
+        }
+
+        public SalesOrderResult PlaceOrder(string customerName, OrderRequest request)
         {
             Customer c = GetCustomer(customerName);
             if (c == null)

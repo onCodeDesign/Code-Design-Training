@@ -41,6 +41,7 @@
     <Compile Include="Notifications\INotificationService.cs" />
     <Compile Include="Notifications\IStateChangeSubscriber.cs" />
     <Compile Include="Notifications\Status.cs" />
+    <Compile Include="Sales\CustomerInfo.cs" />
     <Compile Include="Sales\IOrderingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sales\OrderRequest.cs" />
