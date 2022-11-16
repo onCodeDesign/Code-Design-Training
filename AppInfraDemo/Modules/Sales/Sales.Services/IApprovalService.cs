@@ -1,6 +1,6 @@
 namespace Sales
 {
-    internal interface IApprovalService
+    public interface IApprovalService
     {
         bool Approve(ApproveRequest approveRequest);
     }

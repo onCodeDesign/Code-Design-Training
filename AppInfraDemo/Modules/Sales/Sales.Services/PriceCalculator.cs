@@ -4,7 +4,7 @@ using Sales.DataModel;
 
 namespace Sales
 {
-    interface IPriceCalculator
+    public interface IPriceCalculator
     {
         decimal CalculateTaxes(OrderRequest o, Customer c);
 

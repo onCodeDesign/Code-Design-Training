@@ -49,7 +49,7 @@ namespace Sales
                 {
                     Id = c.CustomerID,
                     AccountNumber = c.AccountNumber,
-                    Name = c.Store.Name
+                    StoreName = c.Store.Name
                 });
          return customers.ToArray();
         }

@@ -54,7 +54,7 @@ namespace Sales
         }
     }
 
-    internal class ApproveRequest
+    public class ApproveRequest
     {
         public Customer Customer { get; set; }
         public OrderRequest Order { get; set; }
