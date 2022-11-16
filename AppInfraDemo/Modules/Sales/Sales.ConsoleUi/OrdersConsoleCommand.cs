@@ -1,7 +1,8 @@
-﻿using Contracts.Sales;
+﻿using Contracts.ConsoleUi;
+using Contracts.Sales;
 using iQuarc.AppBoot;
 
-namespace ConsoleApplication
+namespace Sales.ConsoleUi
 {
 	[Service(nameof(OrdersConsoleCommand), typeof(IConsoleCommand))]
 	class OrdersConsoleCommand : IConsoleCommand

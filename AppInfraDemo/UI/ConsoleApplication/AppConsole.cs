@@ -2,6 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using iQuarc.AppBoot;
 using iQuarc.SystemEx;
+using Contracts.ConsoleUi;
 
 namespace ConsoleApplication
 {

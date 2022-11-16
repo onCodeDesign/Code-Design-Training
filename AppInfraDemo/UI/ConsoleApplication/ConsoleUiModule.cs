@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Contracts.ConsoleUi;
 using iQuarc.AppBoot;
 using iQuarc.SystemEx.Priority;
 
