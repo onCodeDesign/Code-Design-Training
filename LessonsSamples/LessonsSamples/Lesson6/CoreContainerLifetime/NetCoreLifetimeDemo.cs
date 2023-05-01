@@ -27,7 +27,7 @@ namespace LessonsSamples.Lesson6.CoreContainerLifetime
             services.AddTransient<IOperationTransient, Operation>();
             services.AddScoped<IOperationScoped, Operation>();
             services.AddSingleton<IOperationSingleton, Operation>();
-            services.AddSingleton<IOperationSingletonInstance>(new Operation(Guid.Empty));
+            services.AddSingleton<IOperationSingletonInstance>(new Operation(Guid.NewGuid()));
 
             services.AddTransient<IService, Service>();
             services.AddTransient<MyController, MyController>();
