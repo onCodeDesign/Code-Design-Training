@@ -10,6 +10,38 @@ using iQuarc.AppBoot;
 
 namespace DataAccess
 {
+	class ErrorHandlingRepository : IRepository
+	{
+		private IRepository repositoryImplementation;
+		private IExceptionHandler handler;
+
+		public ErrorHandlingRepository(IRepository repositoryImplementation, IExceptionHandler handler)
+		{
+			this.repositoryImplementation = repositoryImplementation;
+			this.handler = handler;
+		}
+
+		public IQueryable<TDbEntity> GetEntities<TDbEntity>() where TDbEntity : class
+		{
+			try
+			{
+				return repositoryImplementation.GetEntities<TDbEntity>();
+			}
+			catch (Exception e)
+			{
+				handler.Handle(e);
+			}
+
+			return null;
+		}
+
+		public IUnitOfWork CreateUnitOfWork()
+		{
+			return repositoryImplementation.CreateUnitOfWork();
+		}
+	}
+
+
 	[Service(typeof (IRepository))]
 	internal class EfRepository : IRepository, IDisposable
 	{

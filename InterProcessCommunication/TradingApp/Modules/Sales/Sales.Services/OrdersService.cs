@@ -23,7 +23,7 @@ namespace Sales.Services
         public void PlaceSellLimitOrder(string securityCode, decimal sellingPrice, DateTime validUntil)
         {
             List<LimitOrder> limitOrders = new List<LimitOrder>();
-            var todayQuotations = quotationService.GetQuotations(securityCode, DateTime.Today.AddDays(-1), DateTime.Today);
+            Quotation[] todayQuotations = quotationService.GetQuotations(securityCode, DateTime.Today.AddDays(-1), DateTime.Today);
             foreach (var quotation in todayQuotations)
             {
                 if (quotation.AskPrice >= sellingPrice)
