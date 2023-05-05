@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs" />
+    <Compile Include="Lesson5\TimedDoorAdapter.cs" />
     <Compile Include="Lesson7\GoodClasses\DataModel\Repository.cs" />
     <Compile Include="Lesson7\GoodClasses\DataModel\SalesOrder.cs" />
     <Compile Include="Lesson5\ImageScale.cs" />
