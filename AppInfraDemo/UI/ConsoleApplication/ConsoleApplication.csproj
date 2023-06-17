@@ -45,15 +45,15 @@
     </Reference>
     <Reference Include="iQuarc.AppBoot, Version=2.0.3.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\iQuarc.AppBoot.2.0.3-disposables002\lib\net45\iQuarc.AppBoot.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="iQuarc.AppBoot.Unity, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\iQuarc.AppBoot.Unity.2.0.3\lib\net45\iQuarc.AppBoot.Unity.dll</HintPath>
-      <Private>True</Private>
+    </Reference>
+    <Reference Include="iQuarc.DataAccess, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\iQuarc.DataAccess.1.0.6\lib\net45\iQuarc.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="iQuarc.DataAccess.AppBoot, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\iQuarc.DataAccess.AppBoot.1.0.0\lib\net45\iQuarc.DataAccess.AppBoot.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="iQuarc.SystemEx, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\iQuarc.SystemEx.1.0.0.0\lib\net40\iQuarc.SystemEx.dll</HintPath>
