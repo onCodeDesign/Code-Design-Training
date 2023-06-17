@@ -34,7 +34,6 @@
   <ItemGroup>
     <Reference Include="iQuarc.AppBoot, Version=2.0.3.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\iQuarc.AppBoot.2.0.3-disposables002\lib\net45\iQuarc.AppBoot.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="iQuarc.SystemEx">
       <HintPath>..\..\..\packages\iQuarc.SystemEx.1.0.0.0\lib\net40\iQuarc.SystemEx.dll</HintPath>

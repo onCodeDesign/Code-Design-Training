@@ -64,7 +64,7 @@ namespace ConsoleApplication
 	    private static void SetupDataDirectory()
 	    {
 	        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-	        AppDomain.CurrentDomain.SetData("DataDirectory", Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\App_Data")));
+	        AppDomain.CurrentDomain.SetData("DataDirectory", Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\_App_Data")));
 	    }
 	}
 }
