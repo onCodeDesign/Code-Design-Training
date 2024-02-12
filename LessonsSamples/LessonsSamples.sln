@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LessonsSamples", "LessonsSamples\LessonsSamples.csproj", "{2D89055D-8103-4DF9-8ECB-E1779C63E547}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lesson2", "Lesson2", "{9948D9E8-357D-4ECA-BAD8-64556255921E}"
+	ProjectSection(SolutionItems) = preProject
+		LessonsSamples\Lesson2\querymanager.cpp = LessonsSamples\Lesson2\querymanager.cpp
+		LessonsSamples\Lesson2\querymanager.cs = LessonsSamples\Lesson2\querymanager.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A35F63B7-48F6-4E4D-A062-2A6ABE94EAFB}
 	EndGlobalSection
 EndGlobal
