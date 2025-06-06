@@ -52,9 +52,9 @@ namespace ConsoleUi
                 if (filename != null && (filename.StartsWith("Contracts")
                                          || filename.StartsWith("Proxies.")
                                          || filename.StartsWith("Infra.")
-                                         || filename.StartsWith("Portfolio.")
-                                         || filename.StartsWith("Quotations.")
-                                         || filename.StartsWith("Sales.")
+                                         //|| filename.StartsWith("Portfolio.")
+                                         //|| filename.StartsWith("Quotations.")
+                                         //|| filename.StartsWith("Sales.")
                     ))
                 {
                     Assembly assembly = Assembly.LoadFile(dll);

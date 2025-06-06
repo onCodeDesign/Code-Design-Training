@@ -46,9 +46,6 @@
     <Compile Include="ServiceProxyRegistrationBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="CommonServiceLocator">
-      <Version>2.0.7</Version>
-    </PackageReference>
     <PackageReference Include="iQuarc.AppBoot">
       <Version>2.1.2</Version>
     </PackageReference>

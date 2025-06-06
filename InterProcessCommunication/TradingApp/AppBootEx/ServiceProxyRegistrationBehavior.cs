@@ -11,7 +11,7 @@ namespace AppBootEx
         public IEnumerable<ServiceInfo> GetServicesFrom(Type type)
         {
             IEnumerable<ServiceProxyAttribute> attributes = type.GetAttributes<ServiceProxyAttribute>(false);
-            return attributes.Select(a => new ServiceInfo(a.ExportType, type, string.Empty, Lifetime.AlwaysNew));
+            return attributes.Select(a => new ServiceInfo(a.ExportType, type, null, Lifetime.AlwaysNew));
         }
     }
 }
