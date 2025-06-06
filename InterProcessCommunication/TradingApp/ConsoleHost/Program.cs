@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Configuration;
-using System.Threading;
+using CommonServiceLocator;
 using Contracts.Infrastructure;
 using iQuarc.SystemEx;
 using Microsoft.Owin.Hosting;
-using Microsoft.Practices.ServiceLocation;
 
 namespace ConsoleHost
 {

@@ -33,8 +33,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.7\lib\net48\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="iQuarc.AppBoot, Version=2.0.3.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\iQuarc.AppBoot.2.0.3-disposables002\lib\net45\iQuarc.AppBoot.dll</HintPath>
+    </Reference>
+    <Reference Include="iQuarc.AppBoot.Unity, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\iQuarc.AppBoot.Unity.2.1.1\lib\net48\iQuarc.AppBoot.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="iQuarc.SystemEx, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\iQuarc.SystemEx.1.1.0\lib\net48\iQuarc.SystemEx.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,6 +57,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions, Version=5.11.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.10\lib\net48\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.11.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.10\lib\net48\Unity.Container.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleEx.cs" />
@@ -53,6 +74,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppBootEx\AppBootEx.csproj">
@@ -63,23 +85,6 @@
       <Project>{19297424-954D-42F5-AC38-6F22A25EA682}</Project>
       <Name>Contracts</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="CommonServiceLocator">
-      <Version>2.0.7</Version>
-    </PackageReference>
-    <PackageReference Include="iQuarc.AppBoot">
-      <Version>2.1.2</Version>
-    </PackageReference>
-    <PackageReference Include="iQuarc.AppBoot.Unity">
-      <Version>2.1.2</Version>
-    </PackageReference>
-    <PackageReference Include="iQuarc.SystemEx">
-      <Version>1.1.0</Version>
-    </PackageReference>
-    <PackageReference Include="Unity">
-      <Version>5.11.10</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
