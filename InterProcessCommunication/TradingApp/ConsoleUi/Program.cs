@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Web;
 using AppBootEx;
+using CommonServiceLocator;
 using Contracts.Infrastructure;
 using Contracts.Portfolio.Services;
 using Contracts.Quotations.Services;
@@ -13,7 +14,6 @@ using Contracts.Sales.Services;
 using iQuarc.AppBoot;
 using iQuarc.AppBoot.Unity;
 using iQuarc.SystemEx;
-using Microsoft.Practices.ServiceLocation;
 
 namespace ConsoleUi
 {
@@ -52,9 +52,9 @@ namespace ConsoleUi
                 if (filename != null && (filename.StartsWith("Contracts")
                                          || filename.StartsWith("Proxies.")
                                          || filename.StartsWith("Infra.")
-                                         || filename.StartsWith("Portfolio.")
-                                         || filename.StartsWith("Quotations.")
-                                         || filename.StartsWith("Sales.")
+                                         //|| filename.StartsWith("Portfolio.")
+                                         //|| filename.StartsWith("Quotations.")
+                                         //|| filename.StartsWith("Sales.")
                     ))
                 {
                     Assembly assembly = Assembly.LoadFile(dll);
